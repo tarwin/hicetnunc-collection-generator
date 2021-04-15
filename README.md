@@ -24,6 +24,8 @@ Also thanks to
 - Right click, Copy -> Copy Response
 - Paste this into `data.json`
 
+- Copy your TZ address into the `ownerAddress` variable at the top of `test.js`
+
 # Requirements
 
 - `npm install`
