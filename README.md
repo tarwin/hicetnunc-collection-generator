@@ -8,6 +8,12 @@ What's the point? Well there will be a static site generator coming soon so you 
 
 I also plan on making a "slideshow" version that you can display on a screen on something like a Rasberry Pi or even cast to a Chromecast. Here's hoping I don't run out of steam.
 
+# The code
+
+It's a mess. I know. Just hacking things together as quick as possible to see if it works. It does. Kinda. I hope. If you want to make it nicer please fork / pull request.
+
+Also thanks to 
+
 # First
 
 - Open H=N
@@ -29,3 +35,8 @@ I also plan on making a "slideshow" version that you can display on a screen on 
 
 - `serve -C`
 - `node test.js`
+
+# Thanks
+
+- @quasimondo scraper: https://gist.github.com/Quasimondo/30416ce22243610a9c95424e8796b008
+- all @hicetnunc2000 community
