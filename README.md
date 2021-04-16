@@ -22,9 +22,9 @@ Also thanks to
 - Filter by `/tz`
 - Find the call to something like `https://51rknuvw76.execute-api.us-east-1.amazonaws.com/dev/tz`
 - Right click, Copy -> Copy Response
-- Paste this into `data.json`
+- Paste this into `./data.json`
 
-- Copy your TZ address into the `ownerAddress` variable at the top of `test.js`
+- Copy your TZ address into the `ownerAddress` variable into `./config.json`
 
 # Requirements
 
@@ -33,10 +33,26 @@ Also thanks to
 - python3
 - python3: `python -m pip install ipfsapi` (IPFS API)
 
+# Config
+
+- `ownerAddress : string`: your Tezos wallet address
+- `cloudFlareUrl : string`: at the moment just leave this ...
+- `downloadPath : string`: the location to store downloaded files
+- `largeImagePath : string`: the location to store large images
+- `thumbnailPath : string`: the location to store thumbnails
+- `thumbnail`: options for thumbnail generation
+  - `image : Array<{size, type, path}>`: an array of image thumbnail versions to create
+    - `size : int`: width or height, depending on type
+    - `type : string`: can be one of `contain`, `width` or `height`
+    - `path : string`: the path under `thumbnailPath` to store these thumbnails
+
+*Only "contain" works so far*
+
 # Run
 
-- `serve -C`
-- `node test.js`
+- In two different CLIs run:
+  - `serve -C`
+  - `npm start`
 
 # Thanks
 

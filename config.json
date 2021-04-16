@@ -1,0 +1,26 @@
+{
+  "ownerAddress": "tz1g7Aaac9ssD7cDUTngyXyx8QiVUsAVZCjQ",
+  "cloudFlareUrl": "https://cloudflare-ipfs.com/ipfs/",
+  "downloadPath": "./downloads",
+  "largeImagePath": "./large-images",
+  "thumbnailPath": "./generated-thumbnails",
+  "thumbnail": {
+    "image": [
+      {
+        "size": 128,
+        "type": "contain",
+        "path": "thumb-128"
+      },
+      {
+        "size": 400,
+        "type": "contain",
+        "path": "thumb-400"
+      },
+      {
+        "size": 800,
+        "type": "contain",
+        "path": "thumb-800"
+      }
+    ]
+  }
+}

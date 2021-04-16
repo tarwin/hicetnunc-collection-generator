@@ -3,11 +3,11 @@ import sys
 import ipfsapi
 
 uri = sys.argv[1]
-filename = sys.argv[2]
+assetFolder = sys.argv[2]
+filename = sys.argv[3]
 
 api = ipfsapi.Client(host='https://ipfs.infura.io', port=5001)
 
-assetFolder = "out/full/"
 os.chdir(assetFolder)
 
 api.get(uri)
