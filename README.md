@@ -39,20 +39,28 @@ Also thanks to
 - `cloudFlareUrl : string`: at the moment just leave this ...
 - `downloadPath : string`: the location to store downloaded files
 - `largeImagePath : string`: the location to store large images
-- `thumbnailPath : string`: the location to store thumbnails
+- `distPath : string`: the location for generated data
 - `thumbnail`: options for thumbnail generation
+  - `path: string`: the directory under your `distPath` to store generated thumbnails
   - `image : Array<{size, type, path}>`: an array of image thumbnail versions to create
     - `size : int`: width or height, depending on type
     - `type : string`: can be one of `contain`, `width` or `height`
     - `path : string`: the path under `thumbnailPath` to store these thumbnails
 
-*Only "contain" works so far*
+*Only `"type": "contain"` works so far*
 
 # Run
 
 - In two different CLIs run:
   - `serve -C`
   - `npm start`
+
+# Viewing
+
+- run `npm run serve-dist`
+- open a URL displayed
+
+This is just a simple test so far.
 
 # Thanks
 

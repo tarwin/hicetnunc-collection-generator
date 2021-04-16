@@ -3,8 +3,9 @@
   "cloudFlareUrl": "https://cloudflare-ipfs.com/ipfs/",
   "downloadPath": "./downloads",
   "largeImagePath": "./large-images",
-  "thumbnailPath": "./generated-thumbnails",
+  "distPath": "./dist",
   "thumbnail": {
+    "path": "thumbs",
     "image": [
       {
         "size": 128,

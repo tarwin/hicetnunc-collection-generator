@@ -5,6 +5,13 @@ const config = require('./config.json')
 const browserWidth = 2000;
 const browserHeight = 2000;
 
+// data from your TZ profile page
+const data = require('./data.json').result
+
+// items you own, others are ones you created
+const owned = data.filter(d => !d.token_info.creators.includes(config.ownerAddress))
+console.log('OWNED: ', owned.length)
+
 // ------------------------------------------------------------------
 // libs
 const sharp = require('sharp');
@@ -136,12 +143,14 @@ function sleep(ms) {
 }
 
 // create directories if they don't exist
+const thumbnailPath = `${config.distPath}/${config.thumbnail.path}`
 if (!fs.existsSync(config.downloadPath)) fs.mkdirSync(config.downloadPath)
 if (!fs.existsSync(config.largeImagePath)) fs.mkdirSync(config.largeImagePath)
-if (!fs.existsSync(config.thumbnailPath)) fs.mkdirSync(config.thumbnailPath)
+if (!fs.existsSync(config.distPath)) fs.mkdirSync(config.distPath)
+if (!fs.existsSync(thumbnailPath)) fs.mkdirSync(thumbnailPath)
 
 for (let thumbDef of config.thumbnail.image) {
-  if (!fs.existsSync(`${config.thumbnailPath}/${thumbDef.path}`)) fs.mkdirSync(`${config.thumbnailPath}/${thumbDef.path}`)
+  if (!fs.existsSync(`${thumbnailPath}/${thumbDef.path}`)) fs.mkdirSync(`${thumbnailPath}/${thumbDef.path}`)
 }
 
 const createThumbnails = async (largeImageFilename, objectId) => {
@@ -149,7 +158,7 @@ const createThumbnails = async (largeImageFilename, objectId) => {
     await resizeImageToMaxSize(
       thumbDef.size,
       `${config.largeImagePath}/${largeImageFilename}`,
-      `${config.thumbnailPath}/${thumbDef.path}/${objectId}.webp`
+      `${thumbnailPath}/${thumbDef.path}/${objectId}.webp`
     )
   }
 }
@@ -162,12 +171,33 @@ const createLargeImage = async (filename, objectId) => {
   )
 }
 
+const getNiceData = async() => {
+  const niceData = {
+    config: {
+      thumbnail: config.thumbnail
+    },
+    owner: {
+      address: config.ownerAddress
+    },
+    objects: []
+  }
+  for (let obj of owned) {
+    niceData.objects.push({
+      id: obj.token_id,
+      name: obj.token_info.token_info,
+      description: obj.token_info.description,
+      tags: obj.token_info.tags,
+      creatorAddress: obj.token_info.creators[0],
+      mime: obj.token_info.formats[0].mimeType,
+      artifactUri: obj.token_info.artifactUri,
+    })
+  }
+  return niceData
+}
+
 // ------------------------------------------------------------------
 // main func / loop
 const main = async () => {
-
-  // data from your TZ profile page
-  const data = require('./data.json').result
 
   // tried to get it directly but had problems
   // const res = await fetch('https://51rknuvw76.execute-api.us-east-1.amazonaws.com/dev/tz', {
@@ -176,10 +206,6 @@ const main = async () => {
   // })
   // const data = await res.json()
   // console.log(data)
-
-  // items you own, others are ones you created
-  const owned = data.filter(d => !d.token_info.creators.includes(config.ownerAddress))
-  console.log('OWNED: ', owned.length)
 
   // start puppeteer
   const browser = await puppeteer.launch({
@@ -198,6 +224,7 @@ const main = async () => {
 
   // go through each object
   for (let obj of owned) {
+    const tokenId = obj.token_id
     const mime = obj.token_info.formats[0].mimeType
     const converter = converters[mime]
 
@@ -206,13 +233,13 @@ const main = async () => {
     const url = config.cloudFlareUrl + ipfsUri
 
     // write actual
-    const filename = `${obj.piece}.${converter.ext}`
+    const filename = `${tokenId}.${converter.ext}`
     console.log(`\n====================\nProcessing ${filename}`)
 
     // if we don't have the original file download it
     if (converter.use !== 'html') {
       if (!fs.existsSync(`${config.downloadPath}/${filename}`)) {
-        console.log(`Downloading ${obj.piece}`)
+        console.log(`Downloading ${tokenId}`)
         // for some reason I couldn't simply use `fetch` to download from IPFS
         // something to do with HTTP Partial Content and me not wanting to handle it
         if (converter.use === 'ffmpeg') {
@@ -232,46 +259,46 @@ const main = async () => {
     if (converter) {
 
       // skip for existing thumbnails (only checks first folder)
-      if (fs.existsSync(`${config.thumbnailPath}/${config.thumbnail.image[0].path}/${obj.piece}.webp`)) {
+      if (fs.existsSync(`${thumbnailPath}/${config.thumbnail.image[0].path}/${tokenId}.webp`)) {
         continue
       }
 
       if (converter.use === 'sharp') {
         // making thumb
         fs.copyFileSync(`${config.downloadPath}/${filename}`, `${config.largeImagePath}/${filename}`)
-        await createThumbnails(filename, obj.piece)
+        await createThumbnails(filename, tokenId)
       } else if (converter.use === 'ffmpeg') {
         // remove if exists, otherwise FFMPEG may complain
-        if (fs.existsSync(`${config.largeImagePath}/${obj.piece}.png`)) {
-          fs.unlinkSync(`${config.largeImagePath}/${obj.piece}.png`) 
+        if (fs.existsSync(`${config.largeImagePath}/${tokenId}.png`)) {
+          fs.unlinkSync(`${config.largeImagePath}/${tokenId}.png`) 
         }
         // extract image from middle of video
         let convertCommand = `ffmpeg -i ${config.downloadPath}/${filename} -vcodec mjpeg -vframes 1 -an -f rawvideo`
         convertCommand += ` -ss \`ffmpeg -i ${config.downloadPath}/${filename} 2>&1 | grep Duration | awk '{print $2}' | tr -d , | awk -F ':' '{print ($3+$2*60+$1*3600)/2}'\``
-        convertCommand += ` ${config.largeImagePath}/${obj.piece}.png`
+        convertCommand += ` ${config.largeImagePath}/${tokenId}.png`
         await niceExec(convertCommand)
 
-        await createThumbnails(`${obj.piece}.png`, obj.piece)
+        await createThumbnails(`${tokenId}.png`, tokenId)
       } else if (converter.use === 'html') {
         // has thumb
         if (obj.token_info.displayUri) {
           const displayIpfsUri = obj.token_info.displayUri.substr(7)
           const displayUrl = config.cloudFlareUrl + displayIpfsUri
-          await downloadFile(displayUrl, `${config.downloadPath}/${obj.piece}_display`)
+          await downloadFile(displayUrl, `${config.downloadPath}/${tokenId}_display`)
           // rename to correct ext
-          const meta = await getImageMetadata(`${config.downloadPath}/${obj.piece}_display`)
-          fs.renameSync(`${config.downloadPath}/${obj.piece}_display`, `${config.downloadPath}/${obj.piece}.${meta.format}`)
-          fs.copyFileSync(`${config.downloadPath}/${obj.piece}.${meta.format}`, `${config.largeImagePath}/${obj.piece}.${meta.format}`)
+          const meta = await getImageMetadata(`${config.downloadPath}/${tokenId}_display`)
+          fs.renameSync(`${config.downloadPath}/${tokenId}_display`, `${config.downloadPath}/${tokenId}.${meta.format}`)
+          fs.copyFileSync(`${config.downloadPath}/${tokenId}.${meta.format}`, `${config.largeImagePath}/${tokenId}.${meta.format}`)
           // create thumbnail
-          await createThumbnails(`${obj.piece}.${meta.format}`, obj.piece)
+          await createThumbnails(`${tokenId}.${meta.format}`, tokenId)
         } else {
           // could use puppeteer to make a thumb but these SHOULD have them defined
-          console.log(`ERROR: Missing "displayUri" for ${obj.piece}`)
+          console.log(`ERROR: Missing "displayUri" for ${tokenId}`)
         }
       } else if (converter.use === 'gltf') {
         // don't think GL requires a displayUri so we're just going to have
         // to make thumbs ourselves.
-        const url = `http://localhost:5000/${config.downloadPath}/${obj.piece}.gltf`
+        const url = `http://localhost:5000/${config.downloadPath}/${tokenId}.gltf`
 
         const html = `<html>
           <head>
@@ -315,23 +342,23 @@ const main = async () => {
         console.log('Waiting for visibility')
         await browserPage.waitForSelector('#done')
         console.log('Visible')
-        await browserPage.screenshot({path: `${config.largeImagePath}/${obj.piece}.png`, omitBackground: true});
+        await browserPage.screenshot({path: `${config.largeImagePath}/${tokenId}.png`, omitBackground: true});
         await browserPage.close()
 
-        await createThumbnails(`${obj.piece}.png`, obj.piece)
+        await createThumbnails(`${tokenId}.png`, tokenId)
       } else if (converter.use === 'svg') {
         // has thumb
         if (obj.token_info.displayUri) {
           const displayIpfsUri = obj.token_info.displayUri.substr(7)
           const displayUrl = config.cloudFlareUrl + displayIpfsUri
-          await downloadFile(displayUrl, `${config.downloadPath}/${obj.piece}_display`)
+          await downloadFile(displayUrl, `${config.downloadPath}/${tokenId}_display`)
           // rename to correct ext
-          const meta = await getImageMetadata(`${config.downloadPath}/${obj.piece}_display`)
-          fs.renameSync(`${config.downloadPath}/${obj.piece}_display`, `${config.downloadPath}/${obj.piece}.${meta.format}`)
-          await createLargeImage(`${obj.piece}.${meta.format}`, obj.piece)
+          const meta = await getImageMetadata(`${config.downloadPath}/${tokenId}_display`)
+          fs.renameSync(`${config.downloadPath}/${tokenId}_display`, `${config.downloadPath}/${tokenId}.${meta.format}`)
+          await createLargeImage(`${tokenId}.${meta.format}`, tokenId)
         } else {
-          const url = `http://localhost:5000/${config.downloadPath.substr(2)}/${obj.piece}.svg`
-          const meta = await getImageMetadata(`./${config.downloadPath}/${obj.piece}.svg`)
+          const url = `http://localhost:5000/${config.downloadPath.substr(2)}/${tokenId}.svg`
+          const meta = await getImageMetadata(`./${config.downloadPath}/${tokenId}.svg`)
           const dims = getMaxDimensions(meta.width, meta.height, 2000)
 
           const html = `<html>
@@ -385,16 +412,20 @@ const main = async () => {
           await sleep(10)
           await chosenPage.mouse.move(dims.width/2+1, dims.height/2+1);
 
-          await chosenPage.screenshot({path: `./${config.largeImagePath}/${obj.piece}.png`, omitBackground: true});
+          await chosenPage.screenshot({path: `./${config.largeImagePath}/${tokenId}.png`, omitBackground: true});
           await browserPage.close()
           await chosenPage.close()
         }
         // create thumbnails from display or from created image
-        await createThumbnails(`${obj.piece}.png`, obj.piece)
+        await createThumbnails(`${tokenId}.png`, tokenId)
       }
     }
   }
   await browser.close();
+
+  // copy data
+  const niceData = await getNiceData()
+  fs.writeFileSync(`${config.distPath}/data.json`, JSON.stringify(niceData))
 }
 
 main()

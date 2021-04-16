@@ -4,7 +4,8 @@
   "description": "",
   "main": "test.js",
   "scripts": {
-    "start": "node index.js"
+    "start": "node index.js",
+    "serve-dist": "serve ./dist/ -C"
   },
   "author": "",
   "license": "ISC",

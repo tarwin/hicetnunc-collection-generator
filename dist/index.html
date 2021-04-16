@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>H=N Collection Example</title>
+    <meta name="description" content="H=N Collection Example">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- development version, includes helpful console warnings -->
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+    <!-- production version, optimized for size and speed -->
+    <!-- <script src="https://cdn.jsdelivr.net/npm/vue@2"></script> -->
+    <script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
+  </head>
+  <body>
+    <div id="app">
+      <div>{{ owner.alias }}</div>
+      <div><img :src="`https://services.tzkt.io/v1/avatars2/${owner.address}`"></div>
+      <div>
+        <a v-for="obj of objects" :href="`https://www.hicetnunc.xyz/objkt/${obj.id}`" target="_blank">
+          <img :src="`./${thumbPath}/${obj.id}.webp`" />
+        </a>
+      </div>
+      <!-- <model-viewer src="shared-assets/models/Astronaut.glb" alt="A 3D model of an astronaut" auto-rotate camera-controls></model-viewer> -->
+    </div>
+    <script>
+      async function getAddressInfo(address) {
+        const res = await fetch(`https://api.tzkt.io/v1/accounts/${address}/metadata`)
+        return await res.json()
+      }
+
+      var app = new Vue({
+        el: '#app',
+        data: {
+          owner: {},
+          config: {},
+          objects: [],
+          thumbs: [],
+          thumbPath: ''
+        },
+        mounted() {
+          fetch('./data.json')
+          .then((res) => {
+            return res.json()
+          })
+          .then(async (json) => {
+            console.log(json)
+            this.owner = await getAddressInfo(json.owner.address)
+            this.owner.address = json.owner.address
+            console.log(this.owner)
+            this.config = json.config
+            this.objects = json.objects
+            this.thumbPath = `${this.config.thumbnail.path}/${this.config.thumbnail.image[0].path}`
+            // this.thumbs = []
+            // for (let obj of json.objects)
+          })
+        }
+      })
+    </script>
+  </body>
+</html>
