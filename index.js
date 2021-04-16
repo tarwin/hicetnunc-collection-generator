@@ -242,7 +242,9 @@ const main = async () => {
         await createThumbnails(filename, obj.piece)
       } else if (converter.use === 'ffmpeg') {
         // remove if exists, otherwise FFMPEG may complain
-        fs.unlinkSync(`${largeImagePath}/${obj.piece}.png`)
+        if (fs.existsSync(`${config.largeImagePath}/${obj.piece}.png`)) {
+          fs.unlinkSync(`${config.largeImagePath}/${obj.piece}.png`) 
+        }
         // extract image from middle of video
         let convertCommand = `ffmpeg -i ${config.downloadPath}/${filename} -vcodec mjpeg -vframes 1 -an -f rawvideo`
         convertCommand += ` -ss \`ffmpeg -i ${config.downloadPath}/${filename} 2>&1 | grep Duration | awk '{print $2}' | tr -d , | awk -F ':' '{print ($3+$2*60+$1*3600)/2}'\``
@@ -328,7 +330,7 @@ const main = async () => {
           fs.renameSync(`${config.downloadPath}/${obj.piece}_display`, `${config.downloadPath}/${obj.piece}.${meta.format}`)
           await createLargeImage(`${obj.piece}.${meta.format}`, obj.piece)
         } else {
-          const url = `http://localhost:5000/${config.downloadPath}/${obj.piece}.svg`
+          const url = `http://localhost:5000/${config.downloadPath.substr(2)}/${obj.piece}.svg`
           const meta = await getImageMetadata(`./${config.downloadPath}/${obj.piece}.svg`)
           const dims = getMaxDimensions(meta.width, meta.height, 2000)
 
@@ -379,9 +381,9 @@ const main = async () => {
           }
           // opened page
           // move mouse around center in case it needs it?
-          // await chosenPage.mouse.move(dims.width/2, dims.height/2);
-          // await sleep(10)
-          // await chosenPage.mouse.move(dims.width/2+1, dims.height/2+1);
+          await chosenPage.mouse.move(dims.width/2, dims.height/2);
+          await sleep(10)
+          await chosenPage.mouse.move(dims.width/2+1, dims.height/2+1);
 
           await chosenPage.screenshot({path: `./${config.largeImagePath}/${obj.piece}.png`, omitBackground: true});
           await browserPage.close()
