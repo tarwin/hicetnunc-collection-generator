@@ -322,7 +322,14 @@ const main = async () => {
             </style>
           </head>
           <body>
-            <model-viewer id="viewer" src="${url}" auto-rotate></model-viewer>
+            <model-viewer
+              id="viewer"
+              src="${url}"
+              auto-rotate
+              auto-rotate-delay="1"
+              interaction-prompt="none"
+              rotation-per-second="360deg"
+            ></model-viewer>
             <script>
               const modelViewerParameters = document.querySelector('model-viewer#viewer');
               // once the model is visible
