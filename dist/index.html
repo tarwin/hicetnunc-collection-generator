@@ -33,6 +33,9 @@
         color: var(--text-color);
         transition: background-color .5s ease-out;
       }
+      a, a:visited {
+        color: var(--text-color);
+      }
       #hen {
         height: 20px;
         fill: #000;
@@ -95,6 +98,15 @@
         transition: background-color .5s ease-out;
       }
 
+      footer {
+        padding: 15px;
+        background-color: var(--text-color);
+        color: var(--bg-color);
+      }
+      footer a, footer a:visited {
+        color: var(--bg-color);
+      }
+
       @media only screen and (max-width: 1000px) {
         #container .item img {
           width: calc(50vw - 100px);
@@ -131,6 +143,9 @@
           <div class="name-wrapper"><div class="name">{{ obj.name }}</div></div>
         </a>
       </div>
+      <footer>
+        <div>Generated using <a href="https://twitter.com/tarwin">@tarwin</a>'s <a href="https://github.com/tarwin/hicetnunc-collection-generator">H=N Collection Generator</a>.</div>
+      </footer>
       <!-- <model-viewer src="shared-assets/models/Astronaut.glb" alt="A 3D model of an astronaut" auto-rotate camera-controls></model-viewer> -->
     </div>
     <script>
