@@ -184,7 +184,7 @@ const getNiceData = async() => {
   for (let obj of owned) {
     niceData.objects.push({
       id: obj.token_id,
-      name: obj.token_info.token_info,
+      name: obj.token_info.name,
       description: obj.token_info.description,
       tags: obj.token_info.tags,
       creatorAddress: obj.token_info.creators[0],

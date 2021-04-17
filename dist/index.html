@@ -6,24 +6,137 @@
     <title>H=N Collection Example</title>
     <meta name="description" content="H=N Collection Example">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://fonts.googleapis.com/css2?family=Alegreya:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
     <!-- development version, includes helpful console warnings -->
     <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
     <!-- production version, optimized for size and speed -->
     <!-- <script src="https://cdn.jsdelivr.net/npm/vue@2"></script> -->
     <script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
+    <script src="https://unpkg.com/vue-masonry@0.11.3/dist/vue-masonry-plugin-window.js"></script>
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <style>
+      :root {
+        --bg-color: #fefeff;
+        /* https://www.heropatterns.com/ */
+        --bg-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='4' height='4' viewBox='0 0 4 4'%3E%3Cpath fill='%23c7c7c7' fill-opacity='0.4' d='M1 3h1v1H1V3zm2-2h1v1H3V1z'%3E%3C/path%3E%3C/svg%3E");
+        --text-color: #000;
+      }
+      [data-theme="dark"] {
+        --bg-color: #000;
+        --bg-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='4' height='4' viewBox='0 0 4 4'%3E%3Cpath fill='%237a7a7a' fill-opacity='0.4' d='M1 3h1v1H1V3zm2-2h1v1H3V1z'%3E%3C/path%3E%3C/svg%3E");
+        --text-color: #fff;
+      }
+      body {
+        font-family: 'Alegreya', serif;
+        background-color: var(--bg-color);
+        background-image: var(--bg-image);
+        color: var(--text-color);
+        transition: background-color .5s ease-out;
+      }
+      #hen {
+        height: 20px;
+        fill: #000;
+        fill: var(--text-color);
+        transition: fill .5s ease-out;
+      }
+      #header-info > * {
+        padding: 15px;
+        display: inline-block;
+        vertical-align: middle;
+      }
+      #header-info img {
+        border-radius: 50%;
+        width: 50px;
+        height: 50px;
+        display: inline-block;
+      }
+      #container .item {
+        background: #fff;
+        margin: 30px;
+        border: 1vw solid #fff;
+        box-shadow:
+          0 0 0 3px hsl(0, 0%, 80%),
+          0 0 0 15px hsl(0, 0%, 90%),
+          0 0 0 16px hsl(0, 0%, 80%),
+          0 0 10px 20px rgba(0, 0, 0, 0.1)
+        ;
+          position: relative;
+      }
+      #container .item img {
+        width: calc(30vw - 70px);
+        height: auto;
+      }
+      .item .name-wrapper {
+        position: absolute;
+        bottom: -32px;
+        width: 100%;
+        text-align: center;
+      }
+      .item .name {
+        display: inline-block;
+        padding: 3px 15px;
+        background: rgb(2,0,36);
+        background: linear-gradient(176deg, rgba(2,0,36,1) 0%, rgba(0,0,0,1) 24%, rgba(45,45,45,1) 34%, rgba(0,0,0,1) 92%, rgba(0,0,0,1) 100%);
+        border-radius: 3px;
+        color: #fff;
+        border: 1px solid #000;
+        box-shadow: 3px 3px 5px 0px rgb(0 0 0 / 30%);
+      }
+
+      .theme-switch {
+        position: absolute;
+        top: 15px;
+        right: 15px;
+        width: 15px;
+        height: 15px;
+        border-radius: 50%;
+        background-color: var(--text-color);
+        cursor: pointer;
+        transition: background-color .5s ease-out;
+      }
+
+      @media only screen and (max-width: 1000px) {
+        #container .item img {
+          width: calc(50vw - 100px);
+        }
+      }
+      @media only screen and (max-width: 600px) {
+        #container .item img {
+          width: calc(100vw - 100px);
+        }
+      }
+    </style>
   </head>
   <body>
     <div id="app">
-      <div>{{ owner.alias }}</div>
-      <div><img :src="`https://services.tzkt.io/v1/avatars2/${owner.address}`"></div>
-      <div>
-        <a v-for="obj of objects" :href="`https://www.hicetnunc.xyz/objkt/${obj.id}`" target="_blank">
+      <div class="theme-switch" @click="isDark = !isDark"></div>
+      <div id="header-info">
+        <a href="https://www.hicetnunc.xyz/">
+          <svg id="hen" viewBox="0 0 196.87 53.23"><path d="M228.9,79.31H211.51a2.26,2.26,0,0,1-.35-.34.75.75,0,0,1-.16-.42c0-11.42,0-22.85,0-34.43H193.24v35H175.41V26.27H228.9Z" transform="translate(-32.03 -26.27)"></path><path d="M67.74,43.78V26.42H85.41V79.19H67.91V62.38a4.24,4.24,0,0,0-.52-.57.77.77,0,0,0-.42-.17H50V79.08H32V26.48H49.78v17.3Z" transform="translate(-32.03 -26.27)"></path><path d="M103.62,43.79V26.43h53.6c.09,5.62,0,11.41.05,17.36Z" transform="translate(-32.03 -26.27)"></path><path d="M103.71,61.71h53.38V78.84c-4.05.69-38.16.91-53.38.31Z" transform="translate(-32.03 -26.27)"></path></svg>
+        </a>
+        <div>Collection by {{ owner.alias }}</div>
+        <div>
+          <a :href="`https://www.hicetnunc.xyz/tz/${owner.address}`"><img :src="`https://services.tzkt.io/v1/avatars2/${owner.address}`"></a>
+        </div>
+      </div>
+      <div v-masonry id="container" transition-duration="0s" item-selector=".item">
+        <a
+          v-for="obj of objects"
+          :href="`https://www.hicetnunc.xyz/objkt/${obj.id}`"
+          target="_blank"
+          class="item"
+          v-masonry-tile
+        >
           <img :src="`./${thumbPath}/${obj.id}.webp`" />
+          <div class="name-wrapper"><div class="name">{{ obj.name }}</div></div>
         </a>
       </div>
       <!-- <model-viewer src="shared-assets/models/Astronaut.glb" alt="A 3D model of an astronaut" auto-rotate camera-controls></model-viewer> -->
     </div>
     <script>
+      var VueMasonryPlugin = window["vue-masonry-plugin"].VueMasonryPlugin
+      Vue.use(VueMasonryPlugin)
+
       async function getAddressInfo(address) {
         const res = await fetch(`https://api.tzkt.io/v1/accounts/${address}/metadata`)
         return await res.json()
@@ -36,7 +149,8 @@
           config: {},
           objects: [],
           thumbs: [],
-          thumbPath: ''
+          thumbPath: '',
+          isDark: false,
         },
         mounted() {
           fetch('./data.json')
@@ -50,10 +164,17 @@
             console.log(this.owner)
             this.config = json.config
             this.objects = json.objects
-            this.thumbPath = `${this.config.thumbnail.path}/${this.config.thumbnail.image[0].path}`
+            this.thumbPath = `${this.config.thumbnail.path}/${this.config.thumbnail.image[1].path}`
             // this.thumbs = []
             // for (let obj of json.objects)
           })
+
+          this.$watch('isDark', (isDark) => {
+            document.documentElement.setAttribute('data-theme', isDark ? 'dark' : 'light');
+          })
+          if (window.matchMedia &&  window.matchMedia('(prefers-color-scheme: dark)').matches) {
+            this.isDark = true
+          }
         }
       })
     </script>
