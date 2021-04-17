@@ -1,1 +1,1095 @@
-{"config":{"thumbnail":{"path":"thumbs","image":[{"size":128,"type":"contain","path":"thumb-128"},{"size":400,"type":"contain","path":"thumb-400"},{"size":800,"type":"contain","path":"thumb-800"}]}},"owner":{"address":"tz1g7Aaac9ssD7cDUTngyXyx8QiVUsAVZCjQ"},"objects":[{"id":27668,"name":"adam","description":"180f 600px */ @p1xelfool","tags":["gif","internetart","loop","code","generative"],"creatorAddress":"tz1TxDL7npfYDSyvrZFC4deUPMySvsL6xARU","mime":"image/gif","artifactUri":"ipfs://QmSwWBcnHMcC7pyQg5oWj7Po7wAxB8MbLcYmdRccRska9r"},{"id":27585,"name":"ʟɨʄɛʄօʀʍ 1","description":"It takes some time to grow every click = new lifeform. right click = save. space = pause.  Made by Shvembldr","tags":["generativeart","shvembldr","unique","interactive","abstract","lifeform"],"creatorAddress":"tz1WqBtWEXjYPwKofxDPsf2V8Jo7dRxdKYqu","mime":"application/x-directory","artifactUri":"ipfs://QmXhySRUAWGY66i2vVEmEiQZESWGSb8W4m3shnXiaHzSaY"},{"id":26667,"name":"Tiny Device #01: Shake-n-Draw","description":"How to draw:  1) Send 0.00XXYYꜩ (XX/YY = 01-99) to tz1hadV1B3jiey6xiUVgfdSPKwSdaMEUMmd9 to add a drawing point. 2) Send 0.01ꜩ to the same address to clear current drawings. This collaborative #OBJKT reads the transactions of a specified wallet and interprets the amounts received as drawing commands. Someone may be trying to paint at the same time as you, keep an eye on account activity here: https://tzkt.io/tz1hadV1B3jiey6xiUVgfdSPKwSdaMEUMmd9/operations/. Made by https://twitter.com/neelts.","tags":["tinydevice","svg","app","interactive","multiplayer","shake","draw","tzkt","api","transactions","etch-a-sketch"],"creatorAddress":"tz1LCENa3HQkcHPfonn1aYNqS66zWu3LQ4ny","mime":"image/svg+xml","artifactUri":"ipfs://QmY6sd3GdYfqnitTwj52dbigNZ9g8yD6xD3LU7xroHas18"},{"id":24439,"name":"Circle noise signals","description":"Excerpt from an interactive audio visualisation I made a few years ago - @unpetitsapin - www.petitsapin.com","tags":["GENERATIVE","PROCEDURAL","CREATIVECODING","INTERACTIVE","PETITSAPIN"],"creatorAddress":"tz1g3c9jDhoLVKyGEmBdTq9WPQhbNbcfb9YX","mime":"application/x-directory","artifactUri":"ipfs://QmceXXdSu3NUd9j3BPkoJuo2DzFJcxj7jehpDtWAKHa3bC"},{"id":24227,"name":"Rocks automata","description":"Srohastic one-dimentional cellular automata that constantly create rocks-like shapes, the lower ones overwrite the upper ones. The shape stabilizes, but you can break it again with the mouse.","tags":["Ivandianov","interactive","automata","cellularautomata","rocks","glsl","shader"],"creatorAddress":"tz1MwvWz611pLwYdFMZpWCEsh247MEYtm5ii","mime":"application/x-directory","artifactUri":"ipfs://QmUHCcJ4FsGhT643F5sKe9BpeuJkxuW951Qo95gHBegMzb"},{"id":22330,"name":"dancers","description":"swinging those digital hips @rofloos - This is my first interactive piece on here. Thanks for having me!","tags":["generative","processing","p5js","rofloos"],"creatorAddress":"tz1iCwjdmqb6rFuDVTBr3hZAV7TY427pswQi","mime":"application/x-directory","artifactUri":"ipfs://QmWcAaK61oPQvD6Ja2tfTmsVLWiTAEAF1dSa3haD9G4pJp"},{"id":22030,"name":"Family Issues","description":"ig: @burkabayram / tw: @burkabayramart","tags":["dither","animation","gif","bitmap"],"creatorAddress":"tz1YuyeYd9VhZ5QWR1Q9X8ikiRcmMCvmKJWw","mime":"image/gif","artifactUri":"ipfs://QmTd2NHB1vgRgeXaAgBn9tuipKfFDPe7jDRTicVBk4S6YX"},{"id":20783,"name":"flipped #1","description":"video segmentation / neural network colorization / particles flip fluid simulation . motion extracted from a performance by Manaho Shimokawa ","tags":[""],"creatorAddress":"tz1Rwx6G3MFW5VCeSd4bJQphXuUR3Q56omLW","mime":"video/quicktime","artifactUri":"ipfs://QmZjihVanuY7fdRv4ojdeggekEhQx4BeRGQ2fKUEHv6jyK"},{"id":20137,"name":"Zebra Zpinner","description":"SVG and CSS animation by Johan Karlsson (@DonKarlssonSan)","tags":["svg","css","animation","geometric","opart"],"creatorAddress":"tz1ZzZmioy5Ej3kpsec2rMz1temewbt1UcSz","mime":"image/svg+xml","artifactUri":"ipfs://QmW1XseiJa42VjQZ9RRRi8VCc8ab167nrtN2zLyQFA1Bh3"},{"id":20089,"name":"Light Balls","description":"Something with Cute Ending.","tags":[""],"creatorAddress":"tz1eUyqUE3mhmvHAa2TsNfSGhdCMvhA6eBHz","mime":"video/mp4","artifactUri":"ipfs://QmWZ3S2dTxu7xgTKaJApve8e5zR7jqWG9naUFBfPxDpfWm"},{"id":19579,"name":"Multiverse [Relativity Paths #3/5]","description":"#3 of 5 in the ‘Relativity Paths’ series from ‘Multiverse’ audiovisual installation, 2018. Created by @fuse_works with openFrameworks. Edition of 30. More info on fuseworks.it/en/works/multiverse","tags":["multiverse","relativity","particles","generative","openframeworks","fuse*","glsl"],"creatorAddress":"tz2DzCE5YPdboGCj81enidwbHRF2mWfpbVMr","mime":"video/mp4","artifactUri":"ipfs://Qmbre7F1rDHG1nXLtCNhmq2tPEsHMabwhwYdBjJeC9yjDy"},{"id":18995,"name":"ꜩruchet","description":"[5000x5000, png] Custom Truchet designs with ꜩ logo in the middle. Made by Alex Radomski (https://alexradomski.com), Twitter: @radomski_alex ","tags":["Processing","GenerativeArt","Pattern","Monochrome","CodeArt"],"creatorAddress":"tz1bJwj5KBMc3UFk3ijykA9c1sGDmw4FEy24","mime":"image/png","artifactUri":"ipfs://QmaRK4BNXvxsjizzQRga8xBJaZJXCVchj1NzxCPGbQqfdS"},{"id":15833,"name":"UCracking-ExploderSTL01A 0047F 4K","description":"3D geometry manipulated by iterative triangle subdision. 4000x4000 px PNG, minted for #OBJKT4OBJKT.","tags":["subdivision","processing","objkt4objkt"],"creatorAddress":"tz2NY3Fgt5QufrYGP1JKdvLKcWWt86sLsqrS","mime":"image/png","artifactUri":"ipfs://QmSpbrtVELY8XZRjHPgsMpAMauxd3i9jdqmghyqKn6tNBd"},{"id":15676,"name":"ᗰᗴᗰᗝᖇƳ ᑕᗴᒪᒪ","description":"https://www.memory-cell.com - this project aims to bring attention to generative art and independent dissemination of Climate-Positive Crypto Art based on Tezos. This is generative NFT that uses your wallet code as a seed to generate a unique image for each collector. This NFT will not be distributed on this platform so that each copy has one owner. Visit the website for details","tags":["generativeart","shvembldr","memorycell","721","unique","interactive","project","generativenft"],"creatorAddress":"tz1WqBtWEXjYPwKofxDPsf2V8Jo7dRxdKYqu","mime":"application/x-directory","artifactUri":"ipfs://QmS8nn5RVBwuLT9cyjW5Esq2amwZHwvf8UHuovwb2AgK1S"},{"id":15614,"name":"Ring feeder, specimen 17","description":"Generative geometry in Processing by Frederik Vanhoutte, @wblut","tags":["Processing","Creativecoding","Generativegeometry","@wblut","OBJKT4OBJKT"],"creatorAddress":"tz1TSWEDs9wcBx2KiRzVzyzECsNpRiZaLJ1D","mime":"model/gltf-binary","artifactUri":"ipfs://QmXDrLzNktgPE3VGLumvSVgWBggu462pWFg8pD6TwJ1UdS"},{"id":14435,"name":"clindsey/gradient-spill-0.0.3","description":"spilled paint @56clindsey","tags":["javascript","animation","webgl"],"creatorAddress":"tz1hQ9ch1VZSmD6Yeyia8oiBbFrBEyNaiZNZ","mime":"application/x-directory","artifactUri":"ipfs://QmQQ9HeUQx3Y5DcwCjdFe8ZPe8iTKfyQFhgy6EQ995reUb"},{"id":14423,"name":"age-of-the-phoenix","description":"Infinite running code generated audiovisual composition. NFT: SVG+JS (click to activate animation and sound). Alexandre Rangel, 2021 < @AlexandreRangel www.alexandrerangel.art.br >","tags":["generative","dynamicnft","code"],"creatorAddress":"tz1SvPd1aUYZSkr22JTdRzUEGMb6ZjoPEXTz","mime":"image/svg+xml","artifactUri":"ipfs://Qmd2FAMhPq7ZrmxucvySjsY9LzndTLFJcy5xBEeES2T5NY"},{"id":14310,"name":"|[]|][||| V2","description":"digital collage | composition changes every time the html is loaded or clicked on *:･ﾟ✧*:･ﾟ✧*:･ﾟ","tags":["digital","collage","random","js","art"],"creatorAddress":"tz1Noy6LnEgMjpAwf8nz3cHFAcF6tptGp4bq","mime":"application/x-directory","artifactUri":"ipfs://QmXeKAXS5NcXe8ppBo1yK7ZncZjsxtn6HJQCsYUcEzcQsg"},{"id":14213,"name":"Window Still Life 019","description":".gif by john karel","tags":["window","stilllife","disco","jjjjjohn"],"creatorAddress":"tz1gqaKjfQBhUMCE6LhbkpuittRiWv5Z6w38","mime":"image/gif","artifactUri":"ipfs://QmUdxrFMX48Nt3MGQgHAoxuvYuDSgE4ZJNqyfYDszmcie9"},{"id":13998,"name":"THE WIDOW","description":"in rest I may find peace. - L.A.","tags":["photo","woman","widow","bride"],"creatorAddress":"tz1gwdiqAqnjE7SUQeFvdjC6pHHDdvoyMT5x","mime":"image/jpeg","artifactUri":"ipfs://QmW11dtP3ZCuPLoFuERTdq1yBJ5mQExM84WDhHEDUc6VWD"},{"id":13942,"name":"Mind Pond 2 Little mind, Pitaru","description":"@pitaru - A code sketch of a mind handling things while a little mind behind it is becoming increasingly aware.","tags":["MindPond","pitaru","svg","p5js"],"creatorAddress":"tz1XQBiuYpkx3s9nF49D9HE2pbC3DUNnKZHJ","mime":"image/svg+xml","artifactUri":"ipfs://QmW27P58M5gR2shKY7wcAxMeRrptSx7yiqFo1YgpHCv6yZ"},{"id":13873,"name":"Hic et nunc variation","description":"A version of my recent research referring to the circle of Hic et Nunc to celebrate 10k OBJKT mints","tags":[""],"creatorAddress":"tz1QAevDTqQ92FWh7fXrS6esiFmFgnsEqi1b","mime":"image/png","artifactUri":"ipfs://QmeyVA4nVaWNJHv17GCx9FTgo1UHwVVkJ7BPRzaZDwSh6s"},{"id":13861,"name":"Undique 5","description":"Undique 5 (5/8) is part of a series of imaginary planets created from natural interferential colours captured in the sky. In the colours of @DiverseNftArt , this is a special edition offered to celebrate 10k OBJKT mints on @hicetnunc2000 . @dianedrubay","tags":["dichroic","planet","3Dmodel","photography","OBJKT4OBJKT"],"creatorAddress":"tz1b1sH2FmuVazszFdkUn8GvfvZpNxSa7C8J","mime":"model/gltf-binary","artifactUri":"ipfs://QmNaH89UsHTEwbjXXJYzDG7r8LxGiUX5zDmHdrVKtCGZM6"},{"id":13858,"name":"SCANNING THE SURFACE OF VALE TUDO 05","description":"By @BorisChimp504. Surface scans from ValeTudo moon, a recently discovered Jupiter's moon (which is apparently orbiting in the opposite direction). 4k (3840 x 2160). Extracted from the AV Installation presented in 2018. #OBJKT4OBJKT","tags":["TERRAIN","GRID","SCAN","SCI-FI","OUTER-SPACE","JUPITER","MOON","COSMONAUT","CHIMP","SPACE-TRAVELLER"],"creatorAddress":"tz1WeuBKYd2BQMbwgivmYqvt4dFuNudBHH56","mime":"image/jpeg","artifactUri":"ipfs://QmNTq9yEFh1xbeQJHAhZ1v4FmzW1FncEtfGJZ74Zii62Cc"},{"id":13854,"name":"THE WIDOW","description":"air is cold right now. - L.A.","tags":["photo","widow","woman","dress"],"creatorAddress":"tz1gwdiqAqnjE7SUQeFvdjC6pHHDdvoyMT5x","mime":"image/jpeg","artifactUri":"ipfs://Qmd14pEmQCG5UqTbqRJE8BxQvYZrGnRzzxGBexVJfAR9TK"},{"id":13851,"name":"#6 Doge","description":"\"One word : Doge\" - Elon Musk","tags":["card","3d","pixel","pixelart","doge","dog","dogecoin","elonmusk"],"creatorAddress":"tz1RxeY78zE8hNJbqPypB1mTVyTsBRmPuqry","mime":"video/mp4","artifactUri":"ipfs://QmRWWgXsvMdop3bcBfbwUqWqSqc6d63bVjLpGUFhtYnPgH"},{"id":13834,"name":"Three Bars","description":"0:13, 1080×1080, perfect loop","tags":["sdf","procedural","monochrome"],"creatorAddress":"tz1dEF5ZMTnBSkz2ZQPvpJjwyfeUUyGjeMtf","mime":"video/mp4","artifactUri":"ipfs://QmQxqhJcJBCJPkcGSxfUMeDQDaHyEVED5dbxTg1EwYKGnC"},{"id":13787,"name":"Little Red Riding Hood","description":"Personal interpretation of the Little Red Riding Hood tale.","tags":["glb","3d","illustration","hatching","wolf","forest","wood","black","white","red"],"creatorAddress":"tz1hv8sQYPXy1g2E2jaCrmqzjRoGLU1HcAoN","mime":"model/gltf-binary","artifactUri":"ipfs://QmfUnguEf4UXMto9s8cTP8Lea2whRjviBiyxGuMbs6Czg4"},{"id":13781,"name":"TWST XP #1","description":"Artist: Ricardo Matias / @ricardomatiaspt","tags":["OBJKT4OBJKT","dynamic","generative"],"creatorAddress":"tz1fTdo2iex6BPjy38ht8qsee4sMLaqta4z4","mime":"application/x-directory","artifactUri":"ipfs://QmYr8UyZsyhx2i9F27x2GjGqS9TgHghkwiuczAZrPvoZi2"},{"id":13276,"name":"Collective Flow","description":"This piece was released to celebrate 10k OBJKT mints on hic et nunc during the OBJKT4OBJKT event organized by twitter.com/DiverseNftArt | 1080 x 1080 px | T: @RT_Artwork | IG: @r.y.a.n.t.h.o.m.p.s.o.n | www.ryanthompson.name ","tags":["OBJKT4OBJKT","generative","generativeart","processing"],"creatorAddress":"tz1YokFzMR1hX4m4aBqgutxLSUKFDdNoYGEN","mime":"image/png","artifactUri":"ipfs://QmPovcsJLqNLNQz63A9qx3SGPfTqutXCCyDJTWYfQe9rMt"},{"id":12986,"name":"Shipping","description":"SVG subdivision, click to regenerate. Coded while waiting for Fedex.","tags":["js","svg"],"creatorAddress":"tz1i7fDupvRU8AWoQgPtqJvKivXnyvuvTLYN","mime":"application/x-directory","artifactUri":"ipfs://QmUnBGniqtDxYcbdGy9PH43SoJZTdfmrBVQfrpJo1Me8aA"},{"id":12724,"name":"Amazônia 01","description":"\"Amazônia 01\" is a generative video using real data on the deforestation of the Brazilian Amazon rainforest over a 1 year period. Made with Touchdesigner + Ableton Live + After Effects. https://twitter.com/vigasav","tags":["touchdesigner","abletonlive","vigasartist","vigas"],"creatorAddress":"tz1Kqmvynbg9Bh4WEZKob8v2nMacFG4A9dvX","mime":"video/mp4","artifactUri":"ipfs://QmckBexm2nL5YEw4M27jFgVc7JSHgZCU9kbxGwgEX7nfFw"},{"id":12184,"name":"V-BEND-01-01","description":"Interactive curve bender, series 01, iteration 01 (revision a). Made by @voorbeeld","tags":["SVG","interactive","creativecoding","generative","geometric","kotlin","voorbeeld"],"creatorAddress":"tz1TNtDa487UmKbAvAD8Q3GCWRuLTS1r1B16","mime":"image/svg+xml","artifactUri":"ipfs://QmUZErgJKavifPyb2ZvCXYDUJYiHUAusEHVmswpp1UtHHU"},{"id":11823,"name":"Sighting 004","description":"Rangus ⊙—⊙ - Filming the things I spot through my telescope!","tags":["rangus","sighting","video","telescope","bw","blackandwhite","lighthouse","night","sea"],"creatorAddress":"tz1bPRcJfZF1D9yw3zEkfiha4pF4VQtgF9Kv","mime":"video/mp4","artifactUri":"ipfs://QmcyDGvs23bvpBGQfbXqrm7yMisovJwwRdHdvJ3d1Fuqnz"},{"id":11821,"name":"Sighting 003","description":"Rangus ⊙—⊙ - Filming the things I spot through my telescope!","tags":["rangus","sighting","video","telescope","bw","blackandwhite","campfire","fire","woods"],"creatorAddress":"tz1bPRcJfZF1D9yw3zEkfiha4pF4VQtgF9Kv","mime":"video/mp4","artifactUri":"ipfs://QmQHu6EA71Cg76aB2sLdTcknZnV4dCYQajfsU3CfS7c4BH"},{"id":11597,"name":"Pink shard attractor","description":"A fabulous strange attractor brilliantly exhibits order and chaos.  And pink!  Artist: instagram.com/generomics","tags":["pink","attractor","chaos","mathart","generative","codeart"],"creatorAddress":"tz1X5wRkNVQG7QfUg4kSpaQbBWPzCv6wf6mV","mime":"image/png","artifactUri":"ipfs://QmZMFdopDbCDUUPDRL8Dwh2gxHmibtr7YCX5b5kszsoL9P"},{"id":11428,"name":"F*MMXX Commemorative Edition | Light side #2","description":"Commemorative poster https://spite.github.io/fuck-2020/index.html | 2600x3840 | PNG","tags":["f*mmxx","3d","realtime","demo","blender"],"creatorAddress":"tz1Ke6zycjmTQqMQ7DMpPg8JZsqWiHs9Qw8M","mime":"image/png","artifactUri":"ipfs://QmRUQiCuex9xmLSJPYqoTMM1EBtsx4AZJnpBapj3ahq8cT"},{"id":11246,"name":"Phyllotaxis (Infinite Loop)","description":"We tend to conceive of time as a linear progression. But perhaps the passage of time is more like the (un)folding of a great fractal spiral; an infinite series of cosmic inhales and exhales. By Will Geary (@wgeary).","tags":["Phyllotaxis","Generativeart"],"creatorAddress":"tz2Dmeg3NFMuKNBuw2XWufro5tnxuf37ukxB","mime":"image/svg+xml","artifactUri":"ipfs://QmS9g7XUGenhceyN7PP6HpYZxSy5CvucJwvqvZtKLeiMgw"},{"id":11043,"name":"Generative Digit: 0","description":"Digit 0 of the generative digits series (by Thomas Lin Pedersen, @thomasp85 on Twitter)","tags":["Generative","GenerativeArt","Particles","Digits"],"creatorAddress":"tz2Pkj2xWJovKKCsABjnr3NbyMVJTMBkpTvb","mime":"image/png","artifactUri":"ipfs://QmdAeranTNCgWb3WHWbQ1JQ53gTGi15b12ywuNDYYXSRN8"},{"id":10791,"name":"Mohr Cubes","description":"Hail the cybernetic master.","tags":["computational","cubes","black","white","code","@rapatski"],"creatorAddress":"tz1V12yD1yuxhnibYVEQ5CSeixyxzs3Tme5K","mime":"video/mp4","artifactUri":"ipfs://QmaFaSiQPAvmd1d9hDtbdpojuf4jY98vKpuE1FFXAvvpmt"},{"id":10744,"name":"Grid 20210322_165847","description":"Grid cells select two colors which transition across the canvas both vertically and horizontally. Generated in Processing by Dan Gries.","tags":["generative","generativeart","creativecoding","processing","grid","gries"],"creatorAddress":"tz1iw3iRSdANk5LKLgYbQQwPTpAZwgH1A1tQ","mime":"image/png","artifactUri":"ipfs://QmSzQ9uPJpGVzNK7uNCZR5CxQ9hdFNTtgwzdw3TGyr8osm"},{"id":10728,"name":"Huahoku","description":"Tropical fruit whose flavor is reminiscent of mango and papaya. Made with love and maths by Antonio Sánchez Chinchón (Twitter: @aschinchon)","tags":["generative","fractal","maths"],"creatorAddress":"tz1LLd8FJJtcTfFLiJeX6UL2oYQeLLAzUH7K","mime":"image/png","artifactUri":"ipfs://QmcDzbhYoem92NSExk4ErzobomQTZszqMJRnTb8UtZiaDc"},{"id":10693,"name":"Cosmic dispersion - #0e0e0e","description":"Gif Loop | 450 frames | 7 seconds | 540x540 | Made by creative code - Pizza-punk.com","tags":["creativecode","javascript","webgl","gif","loop"],"creatorAddress":"tz1QxDQFtjzn7q851vx1McZ6DnJZtbJ8eaxc","mime":"image/gif","artifactUri":"ipfs://QmYeHrXmbUFWrZJahqtMeQkAvBtkV4PJgfi5rhsLAwYqhz"},{"id":10664,"name":"Assorted debris 002","description":"8000x8000 Generative geometry by @wblut","tags":["Processing","Creativecoding","Generativegeometry","@wblut"],"creatorAddress":"tz1TSWEDs9wcBx2KiRzVzyzECsNpRiZaLJ1D","mime":"image/png","artifactUri":"ipfs://QmQjcVj3xHjviwBCJDmY5bZhXjtmLF3hpqUyoWwpqKicxW"},{"id":10656,"name":"Assorted debris 001","description":"8000x8000 Generative geometry by @wblut","tags":["Processing","Creativecoding","Generativegeometry","@wblut"],"creatorAddress":"tz1TSWEDs9wcBx2KiRzVzyzECsNpRiZaLJ1D","mime":"image/png","artifactUri":"ipfs://QmbPiv9Vrnaj8XwbK2VXF8ntNso81opaePGgfFV6NdryjG"},{"id":10643,"name":"Instantâneos em Movimento (Moving Snapshots) - Aves: #2 Onychognathus morio","description":"Second piece of the Moving Snapshots collection, presenting the Onychognathus morio (Red-Winged Starling). Segunda peça da coleção de Instantâneos em Movimento, apresentando o Estorninho de Asas Vermelhas.","tags":["Africa","brasil","brazil","photography","fotografia","bird","ave","snapshot","instantâneo","snapshotcollection","coleçãodeinstantâneos","wildlife","vidaselvagem","depth","profundidade","3D"],"creatorAddress":"tz1VCNMEvETjyWScgqYVZhhRnAx2FQoJLWbv","mime":"video/mp4","artifactUri":"ipfs://QmXs5cKCkjCzVkSSUkCwyJnK2UNnYk7WTneKtk82yETeqN"},{"id":10622,"name":"Careful Picnic with Octocrab Lady","description":"By Ori Toor (IG: @oritoor) https://bit.ly/3f40qnb ","tags":["picnic","crab","outside","spaceship"],"creatorAddress":"tz1UDLgvFfcnADcDBn39X44EKLURZzfP7jBu","mime":"image/jpeg","artifactUri":"ipfs://QmYbdByo5p9boUPPFB9VtGh4J8kRjyxh6woHhYdUy9YHnQ"},{"id":10539,"name":"Free curl #1","description":"Free lines on a curl field | Dark | 4096x4096 PNG","tags":["threejs","webgl"],"creatorAddress":"tz1VPAcK6PRLz2i2R7A6dPLurWoSNBARw6VN","mime":"image/png","artifactUri":"ipfs://QmYqTChaAqfHMDwBoz3URArkgRETSZMPiPvDNc9A4VT74m"},{"id":10345,"name":"ATLANTIS - Drowning in Thoughts [Abiogenesis]","description":"While only fading memories of humanity remain in ATLANTIS, complex interactions are slowly transforming the crystallized minerals into new organic lifeforms. - Biologically inspired real-time shader by RubenFro - Twitter: @Ruben_Fro","tags":["pointcloud","volumetric","atlantis","portraits","rubenfro","sea","abyss","ocean","realtime","unity"],"creatorAddress":"tz1cjn8DAkb7FsCHMJsJq17uRFWhCrGxnzqd","mime":"video/mp4","artifactUri":"ipfs://QmPfXhdMZCSEygBxGq96LehN9NqVsGvi5PjbeQAdR63iFV"},{"id":10222,"name":"tiling undulation","description":"animated gif 500x500px 96 frames by @echophons","tags":["processing","creativecoding","generativegeometry"],"creatorAddress":"tz1hLFtZGZifRn4Nrczm9bBeiiyaXDNygcZ9","mime":"image/gif","artifactUri":"ipfs://QmcTUqvhz15BMd36aEcm2it2RLNS4N5z5qGkrSRhnBt8Rz"},{"id":9733,"name":"Planned Obsolescence (Patch #1)","description":"Artist: Mario Klingemann / @Quasimondo | This is the patch #1 for my original work \"Planned Obsolescence\" (https://www.hicetnunc.xyz/objkt/8333) and fixes the problem that the original API call stopped working. This patch is part of the artwork and can not be bought separated from the original token #8333. It was provided for free to all legitimate collectors of the orginal NFT. If you bought this work on the secondary market request the person who sold it to you to also  send you the original token without any additional costs. If you want to collect this work please buy the original token 8333 and you will receive this patch and any future patches for free. ","tags":["experimental","aiart","decay","patch","SVG","obsolescence","transactions"],"creatorAddress":"tz1hb9PiWxQEf6J9xevPsUM6dkuCLnhDMvsp","mime":"image/svg+xml","artifactUri":"ipfs://QmcfYedwMXoscxig3GETHD58SDyNvUmvhsjaghmNgsttbM"},{"id":9634,"name":"Euro-gap","description":"Handmade stop-motion animation based on a Euro-gap I landed in McCarren skatepark in Brooklyn","tags":["Animation","StopMotion","Skateboard","11yo"],"creatorAddress":"tz1evoMKou7J22EqQarbwaSwbaE5cStPAGmq","mime":"image/gif","artifactUri":"ipfs://QmZ11neMnAD6DU7VDu1doVhYgTGzQKfppyAu5LnxoFYgHR"},{"id":9623,"name":"beegoonkee","description":"interactive svg, made with p5js. click and drag","tags":["p5js","interactive","mouse"],"creatorAddress":"tz1TS14F92TqsEVhWxGkeKq22p7HW7Kd4WXz","mime":"image/svg+xml","artifactUri":"ipfs://QmP9HMebPKDKpHR4LvxcxEFFxD2QkmDZNDmcgMvzo8tTXj"},{"id":9208,"name":"Behind Asteroids","description":"adapted a game I've created in 2015, \"Behind Asteroids\", winner of js13kgames of that year. https://github.com/gre/behind-asteroids","tags":["greweb","game"],"creatorAddress":"tz1cgQAQfECg5bPASYTMyJ9QJQjSUi8rfL67","mime":"image/svg+xml","artifactUri":"ipfs://QmbV6qDeRfNDHpgG4CWjwMsy2k1K6pC1ggusedFw4xSyup"},{"id":9120,"name":"BLACK & WHITE","description":"Toggle the theme","tags":["png","reactive","theme","dark","light"],"creatorAddress":"tz1UAY5RSuG6nRJhdHDVMVSg9Lt2pSZez5JR","mime":"image/png","artifactUri":"ipfs://QmctZjdH61ZbZPr16yAqkw7BuLEdJA5CAe2ENa1iQZ3C3G"},{"id":9099,"name":"Panzer Dragoon 1k","description":"remake of Panzer Dragoon is 1k of JavaScript wrapped in a SVG in an NFT =) by @greweb","tags":["js1k","greweb","game"],"creatorAddress":"tz1cgQAQfECg5bPASYTMyJ9QJQjSUi8rfL67","mime":"image/svg+xml","artifactUri":"ipfs://QmSAqGMS5MBEqBw3j7ggPCiQmdyKVpNarFoxPVtGsDxSa6"},{"id":8542,"name":"A Noir Type of Evening ","description":"double crossed, scorned and left for dead in the dessert. a loop by @culturehacker","tags":["loop","glitch","film","experimental"],"creatorAddress":"tz1hA8fvrFV9XbA1Z4BekjLZKthDdobv3AKF","mime":"video/mp4","artifactUri":"ipfs://QmeaKeV8tSyyhFY1RFGdgQcphR9YcCJMnL4bgZm6cdUegb"},{"id":8333,"name":"Planned Obsolescence","description":"Artist: Mario Klingemann / @Quasimondo | More is less. Every time one edition of this NFT is collected the image will get covered up with the new owner's wallet id. Note: This experimental NFT uses a call to an external API which at some point in the future might fail.","tags":["self-destructive","SVG","aiart","decay","obsolescence","transactions"],"creatorAddress":"tz1hb9PiWxQEf6J9xevPsUM6dkuCLnhDMvsp","mime":"image/svg+xml","artifactUri":"ipfs://QmaBAtgp6CKJwW6R4xKpNdcmjuzF132erhKExqo4wh6FCV"},{"id":8280,"name":"Full Disclosure","description":"The rise and fall of the wallet of Mario Klingemann / @Quasimondo. Note: this experimental NFT relies on an external API call which will very likely break in the future.","tags":["experimental","tezos","transparency","wallet","SVG"],"creatorAddress":"tz1hb9PiWxQEf6J9xevPsUM6dkuCLnhDMvsp","mime":"image/svg+xml","artifactUri":"ipfs://QmWFytZCn2nQcEwNmyRakKm5v5HjZ2gom6LEAt1pXviUXy"},{"id":7848,"name":"Sakura station","description":"4K, Generative geometry, @wblut","tags":["Processing","Generativegeometry","Creativecoding","@wblut"],"creatorAddress":"tz1TSWEDs9wcBx2KiRzVzyzECsNpRiZaLJ1D","mime":"image/png","artifactUri":"ipfs://QmbLiBfHUXkoeoiiKr9tBtgqgu7NPc2fPwaUP6swTQfzQF"},{"id":6991,"name":"This is Not a Code of Conduct v1.0","description":"Some personal thoughts for an emerging community by Mario Klingemann / @Quasimondo ","tags":["community","tolerance","values"],"creatorAddress":"tz1hb9PiWxQEf6J9xevPsUM6dkuCLnhDMvsp","mime":"image/png","artifactUri":"ipfs://QmPuhLBA7WuS18kc4rPAvG5kBUckqojV3crLD3bZ4jxe4Y"},{"id":5765,"name":"Window Still Life 006","description":".mp4 by john karel @johnnnnnnnnnn","tags":[""],"creatorAddress":"tz1gqaKjfQBhUMCE6LhbkpuittRiWv5Z6w38","mime":"video/mp4","artifactUri":"ipfs://QmdBrWGmfrsg5Z53NV2CektrD8CvHjQMHtSoFvKNrhc8a4"},{"id":5758,"name":"HEXSTAR 0xba9a5d","description":"written: 2010-01-12, rendered: 2021-03-14, shapes: 2.439.034, cfdg: 2195, variation: thf, source: https://gist.github.com/vse/fb243e936f9c30c0bbc18f5007e96cb8","tags":["cfd"],"creatorAddress":"tz1e7jPfPevUjvkZxpmsXnwwf7NKPm6n2Nzo","mime":"image/png","artifactUri":"ipfs://QmXJV47WC5zrn49KtRQrhju46gBNcENAs2pRtM7k463MK5"},{"id":4961,"name":"Fiber","description":"Fiber is a @p5xjs sketch designed and coded by @leithba #creativecoding #cleanNFT #tezos #xtz $xtz @hicetnunc2000","tags":["creativecoding","nft","cleannft","tezos","cryptoart","particle","p5js","leithba","leithba.com"],"creatorAddress":"tz2HwP1JKEjEy4H8RxPMkoHWuSzUWZsRSC3R","mime":"image/gif","artifactUri":"ipfs://QmfGgxsWwmdrx36u418NauvrdR12MQAack5V4sqyFT8Sua"},{"id":4924,"name":"Blender Default Cube","description":"","tags":["blendergltf"],"creatorAddress":"tz1UAY5RSuG6nRJhdHDVMVSg9Lt2pSZez5JR","mime":"model/gltf+json","artifactUri":"ipfs://Qmaza5qtvvrg9632z4SKEnctVEBvTGa6YbKj8KHAx3ftFu"},{"id":2309,"name":"Hexaspore","description":"Generative geometry, 5400x5400 PNG, @wblut","tags":["Processing","CreativeCoding","GenerativeGeometry"],"creatorAddress":"tz1TSWEDs9wcBx2KiRzVzyzECsNpRiZaLJ1D","mime":"image/png","artifactUri":"ipfs://QmcrjPo1QsvNzydGQBwFn93dANgvx4A6dMtFBWmcAfpRZy"},{"id":2071,"name":"🍆 Eggplant Heart Fumble","description":"Animation loop w/ music by Young Galaxy.","tags":[],"creatorAddress":"tz1ZMDCUyEvsQykWuxTkBzVDcTzMtUEwTeiw","mime":"video/mp4","artifactUri":"ipfs://QmYVZADnoGnru7i8gWnzgM8X1yt6Eq8nyx5gky93qocyXv"},{"id":910,"name":"Ward 242","description":"Generative geometry, 6000x6000 PNG","tags":[],"creatorAddress":"tz1TSWEDs9wcBx2KiRzVzyzECsNpRiZaLJ1D","mime":"image/png","artifactUri":"ipfs://QmYFar5hBagkkhiCQD1tTKzDKWt2g5Br1FUoGEYsJxrSPP"}]}
+{
+  "config": {
+    "thumbnail": {
+      "path": "thumbs",
+      "image": [
+        {
+          "size": 128,
+          "type": "contain",
+          "path": "thumb-128"
+        },
+        {
+          "size": 400,
+          "type": "contain",
+          "path": "thumb-400"
+        },
+        {
+          "size": 800,
+          "type": "contain",
+          "path": "thumb-800"
+        }
+      ]
+    }
+  },
+  "owner": {
+    "address": "tz1g7Aaac9ssD7cDUTngyXyx8QiVUsAVZCjQ"
+  },
+  "objects": [
+    {
+      "id": 27668,
+      "name": "adam",
+      "description": "180f 600px */ @p1xelfool",
+      "tags": [
+        "gif",
+        "internetart",
+        "loop",
+        "code",
+        "generative"
+      ],
+      "creatorAddress": "tz1TxDL7npfYDSyvrZFC4deUPMySvsL6xARU",
+      "mime": "image/gif",
+      "artifactUri": "ipfs://QmSwWBcnHMcC7pyQg5oWj7Po7wAxB8MbLcYmdRccRska9r",
+      "cid": "bafybeicelrxz5qk6v74vuicxuumuux5m4dfp24rs2l5ypzw3tpwwsnhoxu"
+    },
+    {
+      "id": 27585,
+      "name": "ʟɨʄɛʄօʀʍ 1",
+      "description": "It takes some time to grow every click = new lifeform. right click = save. space = pause.  Made by Shvembldr",
+      "tags": [
+        "generativeart",
+        "shvembldr",
+        "unique",
+        "interactive",
+        "abstract",
+        "lifeform"
+      ],
+      "creatorAddress": "tz1WqBtWEXjYPwKofxDPsf2V8Jo7dRxdKYqu",
+      "mime": "application/x-directory",
+      "artifactUri": "ipfs://QmXhySRUAWGY66i2vVEmEiQZESWGSb8W4m3shnXiaHzSaY",
+      "cid": "bafybeielf6hjheqhcark3mlip6o5y3gqlpq7p4kksojlj4xfjv6bj67n4u"
+    },
+    {
+      "id": 26667,
+      "name": "Tiny Device #01: Shake-n-Draw",
+      "description": "How to draw:  1) Send 0.00XXYYꜩ (XX/YY = 01-99) to tz1hadV1B3jiey6xiUVgfdSPKwSdaMEUMmd9 to add a drawing point. 2) Send 0.01ꜩ to the same address to clear current drawings. This collaborative #OBJKT reads the transactions of a specified wallet and interprets the amounts received as drawing commands. Someone may be trying to paint at the same time as you, keep an eye on account activity here: https://tzkt.io/tz1hadV1B3jiey6xiUVgfdSPKwSdaMEUMmd9/operations/. Made by https://twitter.com/neelts.",
+      "tags": [
+        "tinydevice",
+        "svg",
+        "app",
+        "interactive",
+        "multiplayer",
+        "shake",
+        "draw",
+        "tzkt",
+        "api",
+        "transactions",
+        "etch-a-sketch"
+      ],
+      "creatorAddress": "tz1LCENa3HQkcHPfonn1aYNqS66zWu3LQ4ny",
+      "mime": "image/svg+xml",
+      "artifactUri": "ipfs://QmY6sd3GdYfqnitTwj52dbigNZ9g8yD6xD3LU7xroHas18",
+      "cid": "bafybeierbvljwzoauhjsou6oq523dbpxxpwbaeqafcx3ikjzsc4iowvxw4"
+    },
+    {
+      "id": 24439,
+      "name": "Circle noise signals",
+      "description": "Excerpt from an interactive audio visualisation I made a few years ago - @unpetitsapin - www.petitsapin.com",
+      "tags": [
+        "GENERATIVE",
+        "PROCEDURAL",
+        "CREATIVECODING",
+        "INTERACTIVE",
+        "PETITSAPIN"
+      ],
+      "creatorAddress": "tz1g3c9jDhoLVKyGEmBdTq9WPQhbNbcfb9YX",
+      "mime": "application/x-directory",
+      "artifactUri": "ipfs://QmceXXdSu3NUd9j3BPkoJuo2DzFJcxj7jehpDtWAKHa3bC",
+      "cid": "bafybeigus7z42p44qkxibgrwmsctdjbm7osb4cdoq722lmue27tqwe6xf4"
+    },
+    {
+      "id": 24227,
+      "name": "Rocks automata",
+      "description": "Srohastic one-dimentional cellular automata that constantly create rocks-like shapes, the lower ones overwrite the upper ones. The shape stabilizes, but you can break it again with the mouse.",
+      "tags": [
+        "Ivandianov",
+        "interactive",
+        "automata",
+        "cellularautomata",
+        "rocks",
+        "glsl",
+        "shader"
+      ],
+      "creatorAddress": "tz1MwvWz611pLwYdFMZpWCEsh247MEYtm5ii",
+      "mime": "application/x-directory",
+      "artifactUri": "ipfs://QmUHCcJ4FsGhT643F5sKe9BpeuJkxuW951Qo95gHBegMzb",
+      "cid": "bafybeicyippbn42a3cfqmsyj6obehaiei5kb3cmdsh7tw255ossk6ganaq"
+    },
+    {
+      "id": 22330,
+      "name": "dancers",
+      "description": "swinging those digital hips @rofloos - This is my first interactive piece on here. Thanks for having me!",
+      "tags": [
+        "generative",
+        "processing",
+        "p5js",
+        "rofloos"
+      ],
+      "creatorAddress": "tz1iCwjdmqb6rFuDVTBr3hZAV7TY427pswQi",
+      "mime": "application/x-directory",
+      "artifactUri": "ipfs://QmWcAaK61oPQvD6Ja2tfTmsVLWiTAEAF1dSa3haD9G4pJp",
+      "cid": "bafybeid2235attuajmamzrvpnqjn3ougba2rkef6jfdiypfour3ipq22ru"
+    },
+    {
+      "id": 22030,
+      "name": "Family Issues",
+      "description": "ig: @burkabayram / tw: @burkabayramart",
+      "tags": [
+        "dither",
+        "animation",
+        "gif",
+        "bitmap"
+      ],
+      "creatorAddress": "tz1YuyeYd9VhZ5QWR1Q9X8ikiRcmMCvmKJWw",
+      "mime": "image/gif",
+      "artifactUri": "ipfs://QmTd2NHB1vgRgeXaAgBn9tuipKfFDPe7jDRTicVBk4S6YX",
+      "cid": "bafybeicopq3w5gpmuztwfcictufewy76jpbupilftmflrrefved5khozka"
+    },
+    {
+      "id": 20783,
+      "name": "flipped #1",
+      "description": "video segmentation / neural network colorization / particles flip fluid simulation . motion extracted from a performance by Manaho Shimokawa ",
+      "tags": [
+        ""
+      ],
+      "creatorAddress": "tz1Rwx6G3MFW5VCeSd4bJQphXuUR3Q56omLW",
+      "mime": "video/quicktime",
+      "artifactUri": "ipfs://QmZjihVanuY7fdRv4ojdeggekEhQx4BeRGQ2fKUEHv6jyK",
+      "cid": "bafybeifjlfwpqm5ixmm5734my66nyrw4axvk2dgtrz5l2fnmzvevlmqmqi"
+    },
+    {
+      "id": 20137,
+      "name": "Zebra Zpinner",
+      "description": "SVG and CSS animation by Johan Karlsson (@DonKarlssonSan)",
+      "tags": [
+        "svg",
+        "css",
+        "animation",
+        "geometric",
+        "opart"
+      ],
+      "creatorAddress": "tz1ZzZmioy5Ej3kpsec2rMz1temewbt1UcSz",
+      "mime": "image/svg+xml",
+      "artifactUri": "ipfs://QmW1XseiJa42VjQZ9RRRi8VCc8ab167nrtN2zLyQFA1Bh3",
+      "cid": "bafybeidr665s5gyfj3ccpg4cmj5owvpdegqsmbhz4hnsb5wbwp7bsatfri"
+    },
+    {
+      "id": 20089,
+      "name": "Light Balls",
+      "description": "Something with Cute Ending.",
+      "tags": [
+        ""
+      ],
+      "creatorAddress": "tz1eUyqUE3mhmvHAa2TsNfSGhdCMvhA6eBHz",
+      "mime": "video/mp4",
+      "artifactUri": "ipfs://QmWZ3S2dTxu7xgTKaJApve8e5zR7jqWG9naUFBfPxDpfWm",
+      "cid": "bafybeid2biugufyob4p3v5s577ki4ycgnwce5hvfjfexiwvfvskudq44by"
+    },
+    {
+      "id": 19579,
+      "name": "Multiverse [Relativity Paths #3/5]",
+      "description": "#3 of 5 in the ‘Relativity Paths’ series from ‘Multiverse’ audiovisual installation, 2018. Created by @fuse_works with openFrameworks. Edition of 30. More info on fuseworks.it/en/works/multiverse",
+      "tags": [
+        "multiverse",
+        "relativity",
+        "particles",
+        "generative",
+        "openframeworks",
+        "fuse*",
+        "glsl"
+      ],
+      "creatorAddress": "tz2DzCE5YPdboGCj81enidwbHRF2mWfpbVMr",
+      "mime": "video/mp4",
+      "artifactUri": "ipfs://Qmbre7F1rDHG1nXLtCNhmq2tPEsHMabwhwYdBjJeC9yjDy",
+      "cid": "bafybeigi22wlkspireu6lfwpr2lj66bjdll5nzh5fdqtlmqikdhrvctjxa"
+    },
+    {
+      "id": 18995,
+      "name": "ꜩruchet",
+      "description": "[5000x5000, png] Custom Truchet designs with ꜩ logo in the middle. Made by Alex Radomski (https://alexradomski.com), Twitter: @radomski_alex ",
+      "tags": [
+        "Processing",
+        "GenerativeArt",
+        "Pattern",
+        "Monochrome",
+        "CodeArt"
+      ],
+      "creatorAddress": "tz1bJwj5KBMc3UFk3ijykA9c1sGDmw4FEy24",
+      "mime": "image/png",
+      "artifactUri": "ipfs://QmaRK4BNXvxsjizzQRga8xBJaZJXCVchj1NzxCPGbQqfdS",
+      "cid": "bafybeiftpxwkmjueqmcc25zawv7otrm6hno6za6hkraq5duzb3bzi3jare"
+    },
+    {
+      "id": 15833,
+      "name": "UCracking-ExploderSTL01A 0047F 4K",
+      "description": "3D geometry manipulated by iterative triangle subdision. 4000x4000 px PNG, minted for #OBJKT4OBJKT.",
+      "tags": [
+        "subdivision",
+        "processing",
+        "objkt4objkt"
+      ],
+      "creatorAddress": "tz2NY3Fgt5QufrYGP1JKdvLKcWWt86sLsqrS",
+      "mime": "image/png",
+      "artifactUri": "ipfs://QmSpbrtVELY8XZRjHPgsMpAMauxd3i9jdqmghyqKn6tNBd",
+      "cid": "bafybeiccs7fbs3e65cwi4wtamxw6tmxoze4lc7c2n2l7h2a2tfdcjp4hiq"
+    },
+    {
+      "id": 15676,
+      "name": "ᗰᗴᗰᗝᖇƳ ᑕᗴᒪᒪ",
+      "description": "https://www.memory-cell.com - this project aims to bring attention to generative art and independent dissemination of Climate-Positive Crypto Art based on Tezos. This is generative NFT that uses your wallet code as a seed to generate a unique image for each collector. This NFT will not be distributed on this platform so that each copy has one owner. Visit the website for details",
+      "tags": [
+        "generativeart",
+        "shvembldr",
+        "memorycell",
+        "721",
+        "unique",
+        "interactive",
+        "project",
+        "generativenft"
+      ],
+      "creatorAddress": "tz1WqBtWEXjYPwKofxDPsf2V8Jo7dRxdKYqu",
+      "mime": "application/x-directory",
+      "artifactUri": "ipfs://QmS8nn5RVBwuLT9cyjW5Esq2amwZHwvf8UHuovwb2AgK1S",
+      "cid": "bafybeibymttktsnlzholvfllko37ob6r7otovmeoohuwm7mobj3zwguane"
+    },
+    {
+      "id": 15614,
+      "name": "Ring feeder, specimen 17",
+      "description": "Generative geometry in Processing by Frederik Vanhoutte, @wblut",
+      "tags": [
+        "Processing",
+        "Creativecoding",
+        "Generativegeometry",
+        "@wblut",
+        "OBJKT4OBJKT"
+      ],
+      "creatorAddress": "tz1TSWEDs9wcBx2KiRzVzyzECsNpRiZaLJ1D",
+      "mime": "model/gltf-binary",
+      "artifactUri": "ipfs://QmXDrLzNktgPE3VGLumvSVgWBggu462pWFg8pD6TwJ1UdS",
+      "cid": "bafybeied7ndabzjezn4b3cmn6crsiqu245qdq5mrqve26p3qrr2c5fjv3u"
+    },
+    {
+      "id": 14435,
+      "name": "clindsey/gradient-spill-0.0.3",
+      "description": "spilled paint @56clindsey",
+      "tags": [
+        "javascript",
+        "animation",
+        "webgl"
+      ],
+      "creatorAddress": "tz1hQ9ch1VZSmD6Yeyia8oiBbFrBEyNaiZNZ",
+      "mime": "application/x-directory",
+      "artifactUri": "ipfs://QmQQ9HeUQx3Y5DcwCjdFe8ZPe8iTKfyQFhgy6EQ995reUb",
+      "cid": "bafybeia6trxauskidr6gjktuakkadop4u5pqzfyowtmgdd24jjziy6zz3q"
+    },
+    {
+      "id": 14423,
+      "name": "age-of-the-phoenix",
+      "description": "Infinite running code generated audiovisual composition. NFT: SVG+JS (click to activate animation and sound). Alexandre Rangel, 2021 < @AlexandreRangel www.alexandrerangel.art.br >",
+      "tags": [
+        "generative",
+        "dynamicnft",
+        "code"
+      ],
+      "creatorAddress": "tz1SvPd1aUYZSkr22JTdRzUEGMb6ZjoPEXTz",
+      "mime": "image/svg+xml",
+      "artifactUri": "ipfs://Qmd2FAMhPq7ZrmxucvySjsY9LzndTLFJcy5xBEeES2T5NY",
+      "cid": "bafybeig2fa4wlec2mhxg62hobql5uiyqlkmoehfr7tfojkhzhuxyff4n6e"
+    },
+    {
+      "id": 14310,
+      "name": "|[]|][||| V2",
+      "description": "digital collage | composition changes every time the html is loaded or clicked on *:･ﾟ✧*:･ﾟ✧*:･ﾟ",
+      "tags": [
+        "digital",
+        "collage",
+        "random",
+        "js",
+        "art"
+      ],
+      "creatorAddress": "tz1Noy6LnEgMjpAwf8nz3cHFAcF6tptGp4bq",
+      "mime": "application/x-directory",
+      "artifactUri": "ipfs://QmXeKAXS5NcXe8ppBo1yK7ZncZjsxtn6HJQCsYUcEzcQsg",
+      "cid": "bafybeiekh6e3csja4mtifdnjotqs33nrbd2d6gdhn4w6g245yqlaas5md4"
+    },
+    {
+      "id": 14213,
+      "name": "Window Still Life 019",
+      "description": ".gif by john karel",
+      "tags": [
+        "window",
+        "stilllife",
+        "disco",
+        "jjjjjohn"
+      ],
+      "creatorAddress": "tz1gqaKjfQBhUMCE6LhbkpuittRiWv5Z6w38",
+      "mime": "image/gif",
+      "artifactUri": "ipfs://QmUdxrFMX48Nt3MGQgHAoxuvYuDSgE4ZJNqyfYDszmcie9",
+      "cid": "bafybeic5swa3n5f3uyuon6iavo3c275d3its5ygqkp45q6z4ztajvd7hqy"
+    },
+    {
+      "id": 13998,
+      "name": "THE WIDOW",
+      "description": "in rest I may find peace. - L.A.",
+      "tags": [
+        "photo",
+        "woman",
+        "widow",
+        "bride"
+      ],
+      "creatorAddress": "tz1gwdiqAqnjE7SUQeFvdjC6pHHDdvoyMT5x",
+      "mime": "image/jpeg",
+      "artifactUri": "ipfs://QmW11dtP3ZCuPLoFuERTdq1yBJ5mQExM84WDhHEDUc6VWD",
+      "cid": "bafybeidr2wfk6tel7dysacxyiuqlsqjrvbsnrwomiwowpun2mfba6m4f4y"
+    },
+    {
+      "id": 13942,
+      "name": "Mind Pond 2 Little mind, Pitaru",
+      "description": "@pitaru - A code sketch of a mind handling things while a little mind behind it is becoming increasingly aware.",
+      "tags": [
+        "MindPond",
+        "pitaru",
+        "svg",
+        "p5js"
+      ],
+      "creatorAddress": "tz1XQBiuYpkx3s9nF49D9HE2pbC3DUNnKZHJ",
+      "mime": "image/svg+xml",
+      "artifactUri": "ipfs://QmW27P58M5gR2shKY7wcAxMeRrptSx7yiqFo1YgpHCv6yZ",
+      "cid": "bafybeidsdwpde2234wsnm4prtjjoypdxvn3kfogqdmkuok3dk365lkfixq"
+    },
+    {
+      "id": 13873,
+      "name": "Hic et nunc variation",
+      "description": "A version of my recent research referring to the circle of Hic et Nunc to celebrate 10k OBJKT mints",
+      "tags": [
+        ""
+      ],
+      "creatorAddress": "tz1QAevDTqQ92FWh7fXrS6esiFmFgnsEqi1b",
+      "mime": "image/png",
+      "artifactUri": "ipfs://QmeyVA4nVaWNJHv17GCx9FTgo1UHwVVkJ7BPRzaZDwSh6s",
+      "cid": "bafybeihxfkxaonhxfmo4tuqbntxz2shpqwgiu6qvvbtzrt67x2h6hg7vhq"
+    },
+    {
+      "id": 13861,
+      "name": "Undique 5",
+      "description": "Undique 5 (5/8) is part of a series of imaginary planets created from natural interferential colours captured in the sky. In the colours of @DiverseNftArt , this is a special edition offered to celebrate 10k OBJKT mints on @hicetnunc2000 . @dianedrubay",
+      "tags": [
+        "dichroic",
+        "planet",
+        "3Dmodel",
+        "photography",
+        "OBJKT4OBJKT"
+      ],
+      "creatorAddress": "tz1b1sH2FmuVazszFdkUn8GvfvZpNxSa7C8J",
+      "mime": "model/gltf-binary",
+      "artifactUri": "ipfs://QmNaH89UsHTEwbjXXJYzDG7r8LxGiUX5zDmHdrVKtCGZM6",
+      "cid": "bafybeiadpw4xtjyddkdbrvtpczlzvzbnenvsly3bhxu2iwbivefvm5b7ou"
+    },
+    {
+      "id": 13858,
+      "name": "SCANNING THE SURFACE OF VALE TUDO 05",
+      "description": "By @BorisChimp504. Surface scans from ValeTudo moon, a recently discovered Jupiter's moon (which is apparently orbiting in the opposite direction). 4k (3840 x 2160). Extracted from the AV Installation presented in 2018. #OBJKT4OBJKT",
+      "tags": [
+        "TERRAIN",
+        "GRID",
+        "SCAN",
+        "SCI-FI",
+        "OUTER-SPACE",
+        "JUPITER",
+        "MOON",
+        "COSMONAUT",
+        "CHIMP",
+        "SPACE-TRAVELLER"
+      ],
+      "creatorAddress": "tz1WeuBKYd2BQMbwgivmYqvt4dFuNudBHH56",
+      "mime": "image/jpeg",
+      "artifactUri": "ipfs://QmNTq9yEFh1xbeQJHAhZ1v4FmzW1FncEtfGJZ74Zii62Cc",
+      "cid": "bafybeiab23qh2dyvpqvmtf3lsoypace33hhfu3cd2urt4gbyf3xaudskhu"
+    },
+    {
+      "id": 13854,
+      "name": "THE WIDOW",
+      "description": "air is cold right now. - L.A.",
+      "tags": [
+        "photo",
+        "widow",
+        "woman",
+        "dress"
+      ],
+      "creatorAddress": "tz1gwdiqAqnjE7SUQeFvdjC6pHHDdvoyMT5x",
+      "mime": "image/jpeg",
+      "artifactUri": "ipfs://Qmd14pEmQCG5UqTbqRJE8BxQvYZrGnRzzxGBexVJfAR9TK",
+      "cid": "bafybeigz3ly3fox6jgy34lc53kyi7d5wubzq4jhxj6ieqghu4ysgojlhmy"
+    },
+    {
+      "id": 13851,
+      "name": "#6 Doge",
+      "description": "\"One word : Doge\" - Elon Musk",
+      "tags": [
+        "card",
+        "3d",
+        "pixel",
+        "pixelart",
+        "doge",
+        "dog",
+        "dogecoin",
+        "elonmusk"
+      ],
+      "creatorAddress": "tz1RxeY78zE8hNJbqPypB1mTVyTsBRmPuqry",
+      "mime": "video/mp4",
+      "artifactUri": "ipfs://QmRWWgXsvMdop3bcBfbwUqWqSqc6d63bVjLpGUFhtYnPgH",
+      "cid": "bafybeibpdhfolkfpsok527rumgdffcdnb2ckwhnla3jrf7cbyyw25ghi2y"
+    },
+    {
+      "id": 13834,
+      "name": "Three Bars",
+      "description": "0:13, 1080×1080, perfect loop",
+      "tags": [
+        "sdf",
+        "procedural",
+        "monochrome"
+      ],
+      "creatorAddress": "tz1dEF5ZMTnBSkz2ZQPvpJjwyfeUUyGjeMtf",
+      "mime": "video/mp4",
+      "artifactUri": "ipfs://QmQxqhJcJBCJPkcGSxfUMeDQDaHyEVED5dbxTg1EwYKGnC",
+      "cid": "bafybeibg7s2iaguuahxxbu5wn432a3zyzxrzah7nqgidfls6e4fzxwktde"
+    },
+    {
+      "id": 13787,
+      "name": "Little Red Riding Hood",
+      "description": "Personal interpretation of the Little Red Riding Hood tale.",
+      "tags": [
+        "glb",
+        "3d",
+        "illustration",
+        "hatching",
+        "wolf",
+        "forest",
+        "wood",
+        "black",
+        "white",
+        "red"
+      ],
+      "creatorAddress": "tz1hv8sQYPXy1g2E2jaCrmqzjRoGLU1HcAoN",
+      "mime": "model/gltf-binary",
+      "artifactUri": "ipfs://QmfUnguEf4UXMto9s8cTP8Lea2whRjviBiyxGuMbs6Czg4",
+      "cid": "bafybeih6vrmkvjw75a43hadzvsf5njs6nw6a5vupe7mvvd22ekuvni24uu"
+    },
+    {
+      "id": 13781,
+      "name": "TWST XP #1",
+      "description": "Artist: Ricardo Matias / @ricardomatiaspt",
+      "tags": [
+        "OBJKT4OBJKT",
+        "dynamic",
+        "generative"
+      ],
+      "creatorAddress": "tz1fTdo2iex6BPjy38ht8qsee4sMLaqta4z4",
+      "mime": "application/x-directory",
+      "artifactUri": "ipfs://QmYr8UyZsyhx2i9F27x2GjGqS9TgHghkwiuczAZrPvoZi2",
+      "cid": "bafybeie4eio47h6b2oczhiazrlpyakogxpqdxhyxz3jc47vbnkvwrbzcjm"
+    },
+    {
+      "id": 13276,
+      "name": "Collective Flow",
+      "description": "This piece was released to celebrate 10k OBJKT mints on hic et nunc during the OBJKT4OBJKT event organized by twitter.com/DiverseNftArt | 1080 x 1080 px | T: @RT_Artwork | IG: @r.y.a.n.t.h.o.m.p.s.o.n | www.ryanthompson.name ",
+      "tags": [
+        "OBJKT4OBJKT",
+        "generative",
+        "generativeart",
+        "processing"
+      ],
+      "creatorAddress": "tz1YokFzMR1hX4m4aBqgutxLSUKFDdNoYGEN",
+      "mime": "image/png",
+      "artifactUri": "ipfs://QmPovcsJLqNLNQz63A9qx3SGPfTqutXCCyDJTWYfQe9rMt",
+      "cid": "bafybeiav3bnz7cq3wmeeharrbwgd7hsy2mpnnmw747p5tlajih2mmuagr4"
+    },
+    {
+      "id": 12986,
+      "name": "Shipping",
+      "description": "SVG subdivision, click to regenerate. Coded while waiting for Fedex.",
+      "tags": [
+        "js",
+        "svg"
+      ],
+      "creatorAddress": "tz1i7fDupvRU8AWoQgPtqJvKivXnyvuvTLYN",
+      "mime": "application/x-directory",
+      "artifactUri": "ipfs://QmUnBGniqtDxYcbdGy9PH43SoJZTdfmrBVQfrpJo1Me8aA",
+      "cid": "bafybeic7waztk5d73xvxfbenvp6kc7gtclsy4hoke4pofgmoe7yogvc3q4"
+    },
+    {
+      "id": 12724,
+      "name": "Amazônia 01",
+      "description": "\"Amazônia 01\" is a generative video using real data on the deforestation of the Brazilian Amazon rainforest over a 1 year period. Made with Touchdesigner + Ableton Live + After Effects. https://twitter.com/vigasav",
+      "tags": [
+        "touchdesigner",
+        "abletonlive",
+        "vigasartist",
+        "vigas"
+      ],
+      "creatorAddress": "tz1Kqmvynbg9Bh4WEZKob8v2nMacFG4A9dvX",
+      "mime": "video/mp4",
+      "artifactUri": "ipfs://QmckBexm2nL5YEw4M27jFgVc7JSHgZCU9kbxGwgEX7nfFw",
+      "cid": "bafybeigwbl3vde6gl2h5ssp3r5wwtzk5q2luimzqsplcwxrwhknfutojui"
+    },
+    {
+      "id": 12184,
+      "name": "V-BEND-01-01",
+      "description": "Interactive curve bender, series 01, iteration 01 (revision a). Made by @voorbeeld",
+      "tags": [
+        "SVG",
+        "interactive",
+        "creativecoding",
+        "generative",
+        "geometric",
+        "kotlin",
+        "voorbeeld"
+      ],
+      "creatorAddress": "tz1TNtDa487UmKbAvAD8Q3GCWRuLTS1r1B16",
+      "mime": "image/svg+xml",
+      "artifactUri": "ipfs://QmUZErgJKavifPyb2ZvCXYDUJYiHUAusEHVmswpp1UtHHU",
+      "cid": "bafybeic4l6z4tflyz4yweebzpexol72zk3s5mimr46btufyqiqvwwvjz4m"
+    },
+    {
+      "id": 11823,
+      "name": "Sighting 004",
+      "description": "Rangus ⊙—⊙ - Filming the things I spot through my telescope!",
+      "tags": [
+        "rangus",
+        "sighting",
+        "video",
+        "telescope",
+        "bw",
+        "blackandwhite",
+        "lighthouse",
+        "night",
+        "sea"
+      ],
+      "creatorAddress": "tz1bPRcJfZF1D9yw3zEkfiha4pF4VQtgF9Kv",
+      "mime": "video/mp4",
+      "artifactUri": "ipfs://QmcyDGvs23bvpBGQfbXqrm7yMisovJwwRdHdvJ3d1Fuqnz",
+      "cid": "bafybeigzmfmtndc3jhekiuvsdfqiajl6roolpc5jmch7txonjxtyubobfm"
+    },
+    {
+      "id": 11821,
+      "name": "Sighting 003",
+      "description": "Rangus ⊙—⊙ - Filming the things I spot through my telescope!",
+      "tags": [
+        "rangus",
+        "sighting",
+        "video",
+        "telescope",
+        "bw",
+        "blackandwhite",
+        "campfire",
+        "fire",
+        "woods"
+      ],
+      "creatorAddress": "tz1bPRcJfZF1D9yw3zEkfiha4pF4VQtgF9Kv",
+      "mime": "video/mp4",
+      "artifactUri": "ipfs://QmQHu6EA71Cg76aB2sLdTcknZnV4dCYQajfsU3CfS7c4BH",
+      "cid": "bafybeia5alshyx5zbotgg3jrk7esb7ywl23p4gk3nrfyd55tq5kkdccbha"
+    },
+    {
+      "id": 11597,
+      "name": "Pink shard attractor",
+      "description": "A fabulous strange attractor brilliantly exhibits order and chaos.  And pink!  Artist: instagram.com/generomics",
+      "tags": [
+        "pink",
+        "attractor",
+        "chaos",
+        "mathart",
+        "generative",
+        "codeart"
+      ],
+      "creatorAddress": "tz1X5wRkNVQG7QfUg4kSpaQbBWPzCv6wf6mV",
+      "mime": "image/png",
+      "artifactUri": "ipfs://QmZMFdopDbCDUUPDRL8Dwh2gxHmibtr7YCX5b5kszsoL9P",
+      "cid": "bafybeifdtagasfs6pcesqo62ppniwihodaelprk5top2x2nhi2a2uvoqqi"
+    },
+    {
+      "id": 11428,
+      "name": "F*MMXX Commemorative Edition | Light side #2",
+      "description": "Commemorative poster https://spite.github.io/fuck-2020/index.html | 2600x3840 | PNG",
+      "tags": [
+        "f*mmxx",
+        "3d",
+        "realtime",
+        "demo",
+        "blender"
+      ],
+      "creatorAddress": "tz1Ke6zycjmTQqMQ7DMpPg8JZsqWiHs9Qw8M",
+      "mime": "image/png",
+      "artifactUri": "ipfs://QmRUQiCuex9xmLSJPYqoTMM1EBtsx4AZJnpBapj3ahq8cT",
+      "cid": "bafybeibor7qry53dq5dkpqz7foibpgyw5vmq4daugjge3apqhg3fqyl6eq"
+    },
+    {
+      "id": 11246,
+      "name": "Phyllotaxis (Infinite Loop)",
+      "description": "We tend to conceive of time as a linear progression. But perhaps the passage of time is more like the (un)folding of a great fractal spiral; an infinite series of cosmic inhales and exhales. By Will Geary (@wgeary).",
+      "tags": [
+        "Phyllotaxis",
+        "Generativeart"
+      ],
+      "creatorAddress": "tz2Dmeg3NFMuKNBuw2XWufro5tnxuf37ukxB",
+      "mime": "image/svg+xml",
+      "artifactUri": "ipfs://QmS9g7XUGenhceyN7PP6HpYZxSy5CvucJwvqvZtKLeiMgw",
+      "cid": "bafybeibyt3zddkd73sc6oex5ktpbqbjmyphfh3bzyjlufu6yzyh2kkpqoq"
+    },
+    {
+      "id": 11043,
+      "name": "Generative Digit: 0",
+      "description": "Digit 0 of the generative digits series (by Thomas Lin Pedersen, @thomasp85 on Twitter)",
+      "tags": [
+        "Generative",
+        "GenerativeArt",
+        "Particles",
+        "Digits"
+      ],
+      "creatorAddress": "tz2Pkj2xWJovKKCsABjnr3NbyMVJTMBkpTvb",
+      "mime": "image/png",
+      "artifactUri": "ipfs://QmdAeranTNCgWb3WHWbQ1JQ53gTGi15b12ywuNDYYXSRN8",
+      "cid": "bafybeig4j6utv5vsf3okjmehpfnmdhqwdp4kjde4mg5srrkkuxdnfbxzce"
+    },
+    {
+      "id": 10791,
+      "name": "Mohr Cubes",
+      "description": "Hail the cybernetic master.",
+      "tags": [
+        "computational",
+        "cubes",
+        "black",
+        "white",
+        "code",
+        "@rapatski"
+      ],
+      "creatorAddress": "tz1V12yD1yuxhnibYVEQ5CSeixyxzs3Tme5K",
+      "mime": "video/mp4",
+      "artifactUri": "ipfs://QmaFaSiQPAvmd1d9hDtbdpojuf4jY98vKpuE1FFXAvvpmt",
+      "cid": "bafybeifq76cckiiwer7twy6hw2w5xm5rcp7klj3uluqlmxtl5ra2ubxvp4"
+    },
+    {
+      "id": 10744,
+      "name": "Grid 20210322_165847",
+      "description": "Grid cells select two colors which transition across the canvas both vertically and horizontally. Generated in Processing by Dan Gries.",
+      "tags": [
+        "generative",
+        "generativeart",
+        "creativecoding",
+        "processing",
+        "grid",
+        "gries"
+      ],
+      "creatorAddress": "tz1iw3iRSdANk5LKLgYbQQwPTpAZwgH1A1tQ",
+      "mime": "image/png",
+      "artifactUri": "ipfs://QmSzQ9uPJpGVzNK7uNCZR5CxQ9hdFNTtgwzdw3TGyr8osm",
+      "cid": "bafybeicfdjof4o2cwniefuilfe7pev63brrm6w4zcmq6yex2exohfhi64a"
+    },
+    {
+      "id": 10728,
+      "name": "Huahoku",
+      "description": "Tropical fruit whose flavor is reminiscent of mango and papaya. Made with love and maths by Antonio Sánchez Chinchón (Twitter: @aschinchon)",
+      "tags": [
+        "generative",
+        "fractal",
+        "maths"
+      ],
+      "creatorAddress": "tz1LLd8FJJtcTfFLiJeX6UL2oYQeLLAzUH7K",
+      "mime": "image/png",
+      "artifactUri": "ipfs://QmcDzbhYoem92NSExk4ErzobomQTZszqMJRnTb8UtZiaDc",
+      "cid": "bafybeigoj4ffzwriiylme2stcy65mce4nqkiicbldqrnkxbqshyxttrsa4"
+    },
+    {
+      "id": 10693,
+      "name": "Cosmic dispersion - #0e0e0e",
+      "description": "Gif Loop | 450 frames | 7 seconds | 540x540 | Made by creative code - Pizza-punk.com",
+      "tags": [
+        "creativecode",
+        "javascript",
+        "webgl",
+        "gif",
+        "loop"
+      ],
+      "creatorAddress": "tz1QxDQFtjzn7q851vx1McZ6DnJZtbJ8eaxc",
+      "mime": "image/gif",
+      "artifactUri": "ipfs://QmYeHrXmbUFWrZJahqtMeQkAvBtkV4PJgfi5rhsLAwYqhz",
+      "cid": "bafybeiezdg7eqnd7mhyd5pixfp5leeo2svz2fq2s2upj7adscvbjtiwmue"
+    },
+    {
+      "id": 10664,
+      "name": "Assorted debris 002",
+      "description": "8000x8000 Generative geometry by @wblut",
+      "tags": [
+        "Processing",
+        "Creativecoding",
+        "Generativegeometry",
+        "@wblut"
+      ],
+      "creatorAddress": "tz1TSWEDs9wcBx2KiRzVzyzECsNpRiZaLJ1D",
+      "mime": "image/png",
+      "artifactUri": "ipfs://QmQjcVj3xHjviwBCJDmY5bZhXjtmLF3hpqUyoWwpqKicxW",
+      "cid": "bafybeibdte5m2e6riyfw6ucepgxdwbtyg7lets7scgnw33gcwl7zzbf7y4"
+    },
+    {
+      "id": 10656,
+      "name": "Assorted debris 001",
+      "description": "8000x8000 Generative geometry by @wblut",
+      "tags": [
+        "Processing",
+        "Creativecoding",
+        "Generativegeometry",
+        "@wblut"
+      ],
+      "creatorAddress": "tz1TSWEDs9wcBx2KiRzVzyzECsNpRiZaLJ1D",
+      "mime": "image/png",
+      "artifactUri": "ipfs://QmbPiv9Vrnaj8XwbK2VXF8ntNso81opaePGgfFV6NdryjG",
+      "cid": "bafybeigb6fxblcdj7oxtci6vzreasu3icbfka4kfn4ywku4lmfboys3kxm"
+    },
+    {
+      "id": 10643,
+      "name": "Instantâneos em Movimento (Moving Snapshots) - Aves: #2 Onychognathus morio",
+      "description": "Second piece of the Moving Snapshots collection, presenting the Onychognathus morio (Red-Winged Starling). Segunda peça da coleção de Instantâneos em Movimento, apresentando o Estorninho de Asas Vermelhas.",
+      "tags": [
+        "Africa",
+        "brasil",
+        "brazil",
+        "photography",
+        "fotografia",
+        "bird",
+        "ave",
+        "snapshot",
+        "instantâneo",
+        "snapshotcollection",
+        "coleçãodeinstantâneos",
+        "wildlife",
+        "vidaselvagem",
+        "depth",
+        "profundidade",
+        "3D"
+      ],
+      "creatorAddress": "tz1VCNMEvETjyWScgqYVZhhRnAx2FQoJLWbv",
+      "mime": "video/mp4",
+      "artifactUri": "ipfs://QmXs5cKCkjCzVkSSUkCwyJnK2UNnYk7WTneKtk82yETeqN",
+      "cid": "bafybeienqtbohgq6ywela3dy5hjw46rhiqmjonvdwfaao76l6pdqzn5gze"
+    },
+    {
+      "id": 10622,
+      "name": "Careful Picnic with Octocrab Lady",
+      "description": "By Ori Toor (IG: @oritoor) https://bit.ly/3f40qnb ",
+      "tags": [
+        "picnic",
+        "crab",
+        "outside",
+        "spaceship"
+      ],
+      "creatorAddress": "tz1UDLgvFfcnADcDBn39X44EKLURZzfP7jBu",
+      "mime": "image/jpeg",
+      "artifactUri": "ipfs://QmYbdByo5p9boUPPFB9VtGh4J8kRjyxh6woHhYdUy9YHnQ",
+      "cid": "bafybeieynloqndaanqljtkyogkhwkqrgtbtcpziibw6dyiahvrorckkmue"
+    },
+    {
+      "id": 10539,
+      "name": "Free curl #1",
+      "description": "Free lines on a curl field | Dark | 4096x4096 PNG",
+      "tags": [
+        "threejs",
+        "webgl"
+      ],
+      "creatorAddress": "tz1VPAcK6PRLz2i2R7A6dPLurWoSNBARw6VN",
+      "mime": "image/png",
+      "artifactUri": "ipfs://QmYqTChaAqfHMDwBoz3URArkgRETSZMPiPvDNc9A4VT74m",
+      "cid": "bafybeie36wz2hddw7vqhcqhfcuqj4n5yqogpivk7ammb2xvctxv2i33pui"
+    },
+    {
+      "id": 10345,
+      "name": "ATLANTIS - Drowning in Thoughts [Abiogenesis]",
+      "description": "While only fading memories of humanity remain in ATLANTIS, complex interactions are slowly transforming the crystallized minerals into new organic lifeforms. - Biologically inspired real-time shader by RubenFro - Twitter: @Ruben_Fro",
+      "tags": [
+        "pointcloud",
+        "volumetric",
+        "atlantis",
+        "portraits",
+        "rubenfro",
+        "sea",
+        "abyss",
+        "ocean",
+        "realtime",
+        "unity"
+      ],
+      "creatorAddress": "tz1cjn8DAkb7FsCHMJsJq17uRFWhCrGxnzqd",
+      "mime": "video/mp4",
+      "artifactUri": "ipfs://QmPfXhdMZCSEygBxGq96LehN9NqVsGvi5PjbeQAdR63iFV",
+      "cid": "bafybeiatwhgeybqdgyooe37bon2jpzezejr3caz6hea4ptkmpjm2yx7lfq"
+    },
+    {
+      "id": 10222,
+      "name": "tiling undulation",
+      "description": "animated gif 500x500px 96 frames by @echophons",
+      "tags": [
+        "processing",
+        "creativecoding",
+        "generativegeometry"
+      ],
+      "creatorAddress": "tz1hLFtZGZifRn4Nrczm9bBeiiyaXDNygcZ9",
+      "mime": "image/gif",
+      "artifactUri": "ipfs://QmcTUqvhz15BMd36aEcm2it2RLNS4N5z5qGkrSRhnBt8Rz",
+      "cid": "bafybeigryods4pyhwdusjjly77qch4zlvchyuykrcmzmw6nuwf6ksaiulu"
+    },
+    {
+      "id": 9733,
+      "name": "Planned Obsolescence (Patch #1)",
+      "description": "Artist: Mario Klingemann / @Quasimondo | This is the patch #1 for my original work \"Planned Obsolescence\" (https://www.hicetnunc.xyz/objkt/8333) and fixes the problem that the original API call stopped working. This patch is part of the artwork and can not be bought separated from the original token #8333. It was provided for free to all legitimate collectors of the orginal NFT. If you bought this work on the secondary market request the person who sold it to you to also  send you the original token without any additional costs. If you want to collect this work please buy the original token 8333 and you will receive this patch and any future patches for free. ",
+      "tags": [
+        "experimental",
+        "aiart",
+        "decay",
+        "patch",
+        "SVG",
+        "obsolescence",
+        "transactions"
+      ],
+      "creatorAddress": "tz1hb9PiWxQEf6J9xevPsUM6dkuCLnhDMvsp",
+      "mime": "image/svg+xml",
+      "artifactUri": "ipfs://QmcfYedwMXoscxig3GETHD58SDyNvUmvhsjaghmNgsttbM",
+      "cid": "bafybeigu3lgo2eq3pufxzilqqqmh5657bkthgufvycvcxrxrostabffxvq"
+    },
+    {
+      "id": 9634,
+      "name": "Euro-gap",
+      "description": "Handmade stop-motion animation based on a Euro-gap I landed in McCarren skatepark in Brooklyn",
+      "tags": [
+        "Animation",
+        "StopMotion",
+        "Skateboard",
+        "11yo"
+      ],
+      "creatorAddress": "tz1evoMKou7J22EqQarbwaSwbaE5cStPAGmq",
+      "mime": "image/gif",
+      "artifactUri": "ipfs://QmZ11neMnAD6DU7VDu1doVhYgTGzQKfppyAu5LnxoFYgHR",
+      "cid": "bafybeie6ndc7imv5jeoiqjmgrd4nqn5aafxrqzzpajbcei3ddwm7wtol5q"
+    },
+    {
+      "id": 9623,
+      "name": "beegoonkee",
+      "description": "interactive svg, made with p5js. click and drag",
+      "tags": [
+        "p5js",
+        "interactive",
+        "mouse"
+      ],
+      "creatorAddress": "tz1TS14F92TqsEVhWxGkeKq22p7HW7Kd4WXz",
+      "mime": "image/svg+xml",
+      "artifactUri": "ipfs://QmP9HMebPKDKpHR4LvxcxEFFxD2QkmDZNDmcgMvzo8tTXj",
+      "cid": "bafybeial6ityrruco5irhxvzxqpvqz4coyu5kex2juv2bhrwhlynei5xqy"
+    },
+    {
+      "id": 9208,
+      "name": "Behind Asteroids",
+      "description": "adapted a game I've created in 2015, \"Behind Asteroids\", winner of js13kgames of that year. https://github.com/gre/behind-asteroids",
+      "tags": [
+        "greweb",
+        "game"
+      ],
+      "creatorAddress": "tz1cgQAQfECg5bPASYTMyJ9QJQjSUi8rfL67",
+      "mime": "image/svg+xml",
+      "artifactUri": "ipfs://QmbV6qDeRfNDHpgG4CWjwMsy2k1K6pC1ggusedFw4xSyup",
+      "cid": "bafybeigdkioqxppor4w5f7ib3d4wqt4qro3twcg5z7be7unsydfhrg2lr4"
+    },
+    {
+      "id": 9120,
+      "name": "BLACK & WHITE",
+      "description": "Toggle the theme",
+      "tags": [
+        "png",
+        "reactive",
+        "theme",
+        "dark",
+        "light"
+      ],
+      "creatorAddress": "tz1UAY5RSuG6nRJhdHDVMVSg9Lt2pSZez5JR",
+      "mime": "image/png",
+      "artifactUri": "ipfs://QmctZjdH61ZbZPr16yAqkw7BuLEdJA5CAe2ENa1iQZ3C3G",
+      "cid": "bafybeigygckdokhvb53hizluuxgqzgjsgtmyum6l4mcxqll3xl7x3fyh74"
+    },
+    {
+      "id": 9099,
+      "name": "Panzer Dragoon 1k",
+      "description": "remake of Panzer Dragoon is 1k of JavaScript wrapped in a SVG in an NFT =) by @greweb",
+      "tags": [
+        "js1k",
+        "greweb",
+        "game"
+      ],
+      "creatorAddress": "tz1cgQAQfECg5bPASYTMyJ9QJQjSUi8rfL67",
+      "mime": "image/svg+xml",
+      "artifactUri": "ipfs://QmSAqGMS5MBEqBw3j7ggPCiQmdyKVpNarFoxPVtGsDxSa6",
+      "cid": "bafybeiby5lqbgickz2wjjlq5ua2qzrc7r4flz3qzagy4wy2k4i6vkpm53m"
+    },
+    {
+      "id": 8542,
+      "name": "A Noir Type of Evening ",
+      "description": "double crossed, scorned and left for dead in the dessert. a loop by @culturehacker",
+      "tags": [
+        "loop",
+        "glitch",
+        "film",
+        "experimental"
+      ],
+      "creatorAddress": "tz1hA8fvrFV9XbA1Z4BekjLZKthDdobv3AKF",
+      "mime": "video/mp4",
+      "artifactUri": "ipfs://QmeaKeV8tSyyhFY1RFGdgQcphR9YcCJMnL4bgZm6cdUegb",
+      "cid": "bafybeihrhoixkncsak2wtnvsw6g3zmzpdhufvb44gxtk56jg6yl6dxwpyq"
+    },
+    {
+      "id": 8333,
+      "name": "Planned Obsolescence",
+      "description": "Artist: Mario Klingemann / @Quasimondo | More is less. Every time one edition of this NFT is collected the image will get covered up with the new owner's wallet id. Note: This experimental NFT uses a call to an external API which at some point in the future might fail.",
+      "tags": [
+        "self-destructive",
+        "SVG",
+        "aiart",
+        "decay",
+        "obsolescence",
+        "transactions"
+      ],
+      "creatorAddress": "tz1hb9PiWxQEf6J9xevPsUM6dkuCLnhDMvsp",
+      "mime": "image/svg+xml",
+      "artifactUri": "ipfs://QmaBAtgp6CKJwW6R4xKpNdcmjuzF132erhKExqo4wh6FCV",
+      "cid": "bafybeifp32h7ta2uqrnxccmdjjgojo4kly4hbzcdpjdsul4wp6253m3xli"
+    },
+    {
+      "id": 8280,
+      "name": "Full Disclosure",
+      "description": "The rise and fall of the wallet of Mario Klingemann / @Quasimondo. Note: this experimental NFT relies on an external API call which will very likely break in the future.",
+      "tags": [
+        "experimental",
+        "tezos",
+        "transparency",
+        "wallet",
+        "SVG"
+      ],
+      "creatorAddress": "tz1hb9PiWxQEf6J9xevPsUM6dkuCLnhDMvsp",
+      "mime": "image/svg+xml",
+      "artifactUri": "ipfs://QmWFytZCn2nQcEwNmyRakKm5v5HjZ2gom6LEAt1pXviUXy",
+      "cid": "bafybeidvvnduqgfldcy534j6ymeu237iyddgcdastwzeldutq3dxtzywba"
+    },
+    {
+      "id": 7848,
+      "name": "Sakura station",
+      "description": "4K, Generative geometry, @wblut",
+      "tags": [
+        "Processing",
+        "Generativegeometry",
+        "Creativecoding",
+        "@wblut"
+      ],
+      "creatorAddress": "tz1TSWEDs9wcBx2KiRzVzyzECsNpRiZaLJ1D",
+      "mime": "image/png",
+      "artifactUri": "ipfs://QmbLiBfHUXkoeoiiKr9tBtgqgu7NPc2fPwaUP6swTQfzQF",
+      "cid": "bafybeigbfpn7y25abmvupk7sny7uaelevbhvg77t67szgtgvihbmi4vgna"
+    },
+    {
+      "id": 6991,
+      "name": "This is Not a Code of Conduct v1.0",
+      "description": "Some personal thoughts for an emerging community by Mario Klingemann / @Quasimondo ",
+      "tags": [
+        "community",
+        "tolerance",
+        "values"
+      ],
+      "creatorAddress": "tz1hb9PiWxQEf6J9xevPsUM6dkuCLnhDMvsp",
+      "mime": "image/png",
+      "artifactUri": "ipfs://QmPuhLBA7WuS18kc4rPAvG5kBUckqojV3crLD3bZ4jxe4Y",
+      "cid": "bafybeiaxklixldwhxlpgndf3begkvvp57ghl2nafdywgupb4337yfwswde"
+    },
+    {
+      "id": 5765,
+      "name": "Window Still Life 006",
+      "description": ".mp4 by john karel @johnnnnnnnnnn",
+      "tags": [
+        ""
+      ],
+      "creatorAddress": "tz1gqaKjfQBhUMCE6LhbkpuittRiWv5Z6w38",
+      "mime": "video/mp4",
+      "artifactUri": "ipfs://QmdBrWGmfrsg5Z53NV2CektrD8CvHjQMHtSoFvKNrhc8a4",
+      "cid": "bafybeig4tzvbgoihwaagbsqpd5adxfyyz4r4s7gs4ffxu43sowh5fwiwke"
+    },
+    {
+      "id": 5758,
+      "name": "HEXSTAR 0xba9a5d",
+      "description": "written: 2010-01-12, rendered: 2021-03-14, shapes: 2.439.034, cfdg: 2195, variation: thf, source: https://gist.github.com/vse/fb243e936f9c30c0bbc18f5007e96cb8",
+      "tags": [
+        "cfd"
+      ],
+      "creatorAddress": "tz1e7jPfPevUjvkZxpmsXnwwf7NKPm6n2Nzo",
+      "mime": "image/png",
+      "artifactUri": "ipfs://QmXJV47WC5zrn49KtRQrhju46gBNcENAs2pRtM7k463MK5",
+      "cid": "bafybeieffmniyuqvx45yl3klkidbtatiyqlrfdip3kyxdgbcwtzx7cixfa"
+    },
+    {
+      "id": 4961,
+      "name": "Fiber",
+      "description": "Fiber is a @p5xjs sketch designed and coded by @leithba #creativecoding #cleanNFT #tezos #xtz $xtz @hicetnunc2000",
+      "tags": [
+        "creativecoding",
+        "nft",
+        "cleannft",
+        "tezos",
+        "cryptoart",
+        "particle",
+        "p5js",
+        "leithba",
+        "leithba.com"
+      ],
+      "creatorAddress": "tz2HwP1JKEjEy4H8RxPMkoHWuSzUWZsRSC3R",
+      "mime": "image/gif",
+      "artifactUri": "ipfs://QmfGgxsWwmdrx36u418NauvrdR12MQAack5V4sqyFT8Sua",
+      "cid": "bafybeih3sltv2eeeqgkstjikntglzr457mgfr6ylqmyfaysu2rp4ofgd4u"
+    },
+    {
+      "id": 4924,
+      "name": "Blender Default Cube",
+      "description": "",
+      "tags": [
+        "blendergltf"
+      ],
+      "creatorAddress": "tz1UAY5RSuG6nRJhdHDVMVSg9Lt2pSZez5JR",
+      "mime": "model/gltf+json",
+      "artifactUri": "ipfs://Qmaza5qtvvrg9632z4SKEnctVEBvTGa6YbKj8KHAx3ftFu",
+      "cid": "bafybeif4amkyqd2r3bwj4z6kkce5rpwnxo6uv6bifeg2y6gulp4ozt2dhq"
+    },
+    {
+      "id": 2309,
+      "name": "Hexaspore",
+      "description": "Generative geometry, 5400x5400 PNG, @wblut",
+      "tags": [
+        "Processing",
+        "CreativeCoding",
+        "GenerativeGeometry"
+      ],
+      "creatorAddress": "tz1TSWEDs9wcBx2KiRzVzyzECsNpRiZaLJ1D",
+      "mime": "image/png",
+      "artifactUri": "ipfs://QmcrjPo1QsvNzydGQBwFn93dANgvx4A6dMtFBWmcAfpRZy",
+      "cid": "bafybeigxxblhoqckrilbbtrctcadnhdwldd34wt7jmyrjnfqkltubq546a"
+    },
+    {
+      "id": 2071,
+      "name": "🍆 Eggplant Heart Fumble",
+      "description": "Animation loop w/ music by Young Galaxy.",
+      "tags": [],
+      "creatorAddress": "tz1ZMDCUyEvsQykWuxTkBzVDcTzMtUEwTeiw",
+      "mime": "video/mp4",
+      "artifactUri": "ipfs://QmYVZADnoGnru7i8gWnzgM8X1yt6Eq8nyx5gky93qocyXv",
+      "cid": "bafybeiew3tjesapy4d367ctokwpqr3bb2mt7v4rftkifvjndzfzuk2ddxe"
+    },
+    {
+      "id": 910,
+      "name": "Ward 242",
+      "description": "Generative geometry, 6000x6000 PNG",
+      "tags": [],
+      "creatorAddress": "tz1TSWEDs9wcBx2KiRzVzyzECsNpRiZaLJ1D",
+      "mime": "image/png",
+      "artifactUri": "ipfs://QmYFar5hBagkkhiCQD1tTKzDKWt2g5Br1FUoGEYsJxrSPP",
+      "cid": "bafybeietjcmq46sdvnwnhk7quapodkkttnx2cdopjpiobkz5svruzijojy"
+    }
+  ]
+}

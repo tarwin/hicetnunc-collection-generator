@@ -7,6 +7,7 @@
     <meta name="description" content="H=N Collection Example">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="https://fonts.googleapis.com/css2?family=Alegreya:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
     <!-- development version, includes helpful console warnings -->
     <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
     <!-- production version, optimized for size and speed -->
@@ -20,11 +21,19 @@
         /* https://www.heropatterns.com/ */
         --bg-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='4' height='4' viewBox='0 0 4 4'%3E%3Cpath fill='%23c7c7c7' fill-opacity='0.4' d='M1 3h1v1H1V3zm2-2h1v1H3V1z'%3E%3C/path%3E%3C/svg%3E");
         --text-color: #000;
+        --frame-card-color: #fff;
+        --frame-primary-color: hsl(0, 0%, 90%);
+        --frame-secondary-color: hsl(0, 0%, 80%);
+        --fade-color: rgba(0, 0, 0, 0.05)
       }
       [data-theme="dark"] {
-        --bg-color: #000;
+        --bg-color: #111;
         --bg-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='4' height='4' viewBox='0 0 4 4'%3E%3Cpath fill='%237a7a7a' fill-opacity='0.4' d='M1 3h1v1H1V3zm2-2h1v1H3V1z'%3E%3C/path%3E%3C/svg%3E");
         --text-color: #fff;
+        --frame-card-color: rgb(58, 58, 58);
+        --frame-primary-color: #1f1f20;
+        --frame-secondary-color: #2c2d2f;
+        --fade-color: rgba(255, 255, 255, 0.03)
       }
       body {
         font-family: 'Alegreya', serif;
@@ -35,6 +44,10 @@
       }
       a, a:visited {
         color: var(--text-color);
+      }
+      .loading-text {
+        display: inline-block;
+        margin-left: 15px;
       }
       #hen {
         height: 20px;
@@ -54,16 +67,18 @@
         display: inline-block;
       }
       #container .item {
-        background: #fff;
+        background: var(--frame-card-color);
         margin: 30px;
-        border: 1vw solid #fff;
+        border: 1vw solid var(--frame-card-color);
         box-shadow:
-          0 0 0 3px hsl(0, 0%, 80%),
-          0 0 0 15px hsl(0, 0%, 90%),
-          0 0 0 16px hsl(0, 0%, 80%),
+          0 0 0 3px var(--frame-secondary-color),
+          0 0 0 15px var(--frame-primary-color),
+          0 0 0 16px var(--frame-secondary-color),
           0 0 10px 20px rgba(0, 0, 0, 0.1)
         ;
-          position: relative;
+        position: relative;
+        transition: box-shadow, border .5s ease-out;
+        cursor: pointer;
       }
       #container .item img {
         width: calc(30vw - 70px);
@@ -86,8 +101,9 @@
         box-shadow: 3px 3px 5px 0px rgb(0 0 0 / 30%);
       }
 
-      .theme-switch {
-        position: absolute;
+      #theme-switch {
+        position: fixed;
+        z-index: 1000;
         top: 15px;
         right: 15px;
         width: 15px;
@@ -100,11 +116,90 @@
 
       footer {
         padding: 15px;
+        margin-top: 30px;
         background-color: var(--text-color);
         color: var(--bg-color);
       }
       footer a, footer a:visited {
         color: var(--bg-color);
+      }
+
+      #full {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        z-index: 900;
+        background-color: var(--text-color);
+        transition: background-color .5s ease-out;
+      }
+      #full-bg {
+        position: fixed;
+        top: 10px;
+        left: 10px;
+        right: 10px;
+        bottom: 10px;
+        background-color: var(--bg-color);
+        transition: background-color .5s ease-out;
+      }
+      #full-close {
+        position: fixed;
+        z-index: 1000;
+        top: 11px;
+        font-size: 110%;
+        right: 45px;
+        color: var(--text-color);
+        cursor: pointer;
+        transition: color .5s ease-out;
+      }
+      .full-display {
+        max-width: 90vw;
+        max-height: 70vh;
+        height: auto;
+        margin-top: 45px;
+        margin-left: auto;
+        margin-right: auto;
+        display: block;
+      }
+      .full-display-gltf {
+        width: 100%;
+        height: 100%;
+      }
+      .full-display-iframe {
+        width: 100%;
+        height: 100%;
+        border: 0;
+      }
+      .full-display-svg {
+        width: 100%;
+        height: 100%;
+      }
+
+      #obj-info {
+        margin-top: 45px;
+        margin-left: auto;
+        margin-right: auto;
+        max-width: 80vw;
+        overflow: auto;
+        padding-bottom: 45px;
+      }
+      #obj-info .title {
+        font-size: 120%;
+        margin-bottom: 15px;
+      }
+      #obj-info .title img {
+        width: 20px;
+        height: 20px;
+        border-radius: 50%;
+        border: 1px solid var(--text-color);
+        display: inline-block;
+        vertical-align: middle;
+        margin-left: 10px;
+      }
+      #obj-info .description {
+        padding: 15px;
+        background-color: var(--fade-color);
       }
 
       @media only screen and (max-width: 1000px) {
@@ -121,32 +216,90 @@
   </head>
   <body>
     <div id="app">
-      <div class="theme-switch" @click="isDark = !isDark"></div>
+      <div id="theme-switch" @click="isDark = !isDark"></div>
+      <div
+        v-if="currentObject"
+        id="full-close"
+        @click="closeObj"
+      ><i class="fas fa-times"></i></div>
       <div id="header-info">
         <a href="https://www.hicetnunc.xyz/">
           <svg id="hen" viewBox="0 0 196.87 53.23"><path d="M228.9,79.31H211.51a2.26,2.26,0,0,1-.35-.34.75.75,0,0,1-.16-.42c0-11.42,0-22.85,0-34.43H193.24v35H175.41V26.27H228.9Z" transform="translate(-32.03 -26.27)"></path><path d="M67.74,43.78V26.42H85.41V79.19H67.91V62.38a4.24,4.24,0,0,0-.52-.57.77.77,0,0,0-.42-.17H50V79.08H32V26.48H49.78v17.3Z" transform="translate(-32.03 -26.27)"></path><path d="M103.62,43.79V26.43h53.6c.09,5.62,0,11.41.05,17.36Z" transform="translate(-32.03 -26.27)"></path><path d="M103.71,61.71h53.38V78.84c-4.05.69-38.16.91-53.38.31Z" transform="translate(-32.03 -26.27)"></path></svg>
         </a>
-        <div>Collection by {{ owner.alias }}</div>
-        <div>
-          <a :href="`https://www.hicetnunc.xyz/tz/${owner.address}`"><img :src="`https://services.tzkt.io/v1/avatars2/${owner.address}`"></a>
-        </div>
+        <div v-if="loading"><i class="fas fa-spinner fa-pulse" /></i><span class="loading-text">Loading ...</span></div>
+        <template v-else>
+          <div>Collection by {{ owner.alias }}</div>
+          <div>
+            <a :href="`https://www.hicetnunc.xyz/tz/${owner.address}`"><img :src="`https://services.tzkt.io/v1/avatars2/${owner.address}`"></a>
+          </div>
+        </template>
       </div>
-      <div v-masonry id="container" transition-duration="0s" item-selector=".item">
-        <a
+      <div v-if="!currentObject" v-masonry id="container" transition-duration="0s" item-selector=".item">
+        <div
           v-for="obj of objects"
-          :href="`https://www.hicetnunc.xyz/objkt/${obj.id}`"
-          target="_blank"
+          @click="showObj(obj.id)"
           class="item"
           v-masonry-tile
         >
           <img :src="`./${thumbPath}/${obj.id}.webp`" />
           <div class="name-wrapper"><div class="name">{{ obj.name }}</div></div>
-        </a>
+        </div>
       </div>
       <footer>
         <div>Generated using <a href="https://twitter.com/tarwin">@tarwin</a>'s <a href="https://github.com/tarwin/hicetnunc-collection-generator">H=N Collection Generator</a>.</div>
       </footer>
-      <!-- <model-viewer src="shared-assets/models/Astronaut.glb" alt="A 3D model of an astronaut" auto-rotate camera-controls></model-viewer> -->
+      <div v-if="currentObject" id="full">
+        <div id="full-bg">
+          <img v-if="currentObjectType === 'image'" :src="currentObject.url" class="full-display" />
+          <video
+            v-if="currentObjectType === 'video'"
+            class="full-display"
+            autoplay loop controls
+            :src="`https://${currentObject.cid}.ipfs.infura-ipfs.io/`"
+          ></video>
+          <model-viewer
+            v-if="currentObjectType === 'gltf'"
+            class="full-display full-display-gltf"
+            :src="currentObject.url"
+            autoplay="true"
+            auto-rotate="true"
+            data-js-focus-visible="true"
+            ar="true"
+            camera-controls="true"
+            ar-status="not-presenting"
+          >
+            <button slot="ar-button">AR</button>
+          </model-viewer>
+          <iframe
+            v-if="currentObjectType === 'html'"
+            class="full-display full-display-iframe"
+            :src="`https://${currentObject.cid}.ipfs.infura-ipfs.io/?creator=${currentObject.creatorAddress}&amp;viewer=${owner.address}`"
+            sandbox="allow-scripts allow-same-origin"
+            scrolling="no">
+          </iframe>
+          <iframe
+            v-if="currentObjectType === 'svg'"
+            class="full-display full-display-svg"
+            :src="`${currentObject.url}?creator=${currentObject.creatorAddress}&amp;viewer=${owner.address}`"
+            sandbox="allow-scripts"
+            scrolling="no"
+          ></iframe>
+
+          <div id="obj-info">
+            <div class="title">
+              <a :href="`https://www.hicetnunc.xyz/objkt/${currentObject.id}`">
+                OBJKT #{{ currentObject.id }}
+              </a> by 
+              <a :href="`https://www.hicetnunc.xyz/tz/${currentObject.creatorAddress}`">
+                {{ (currentCreator && currentCreator.alias) || currentObject.creatorAddress }}
+              </a>
+              <img :src="`https://services.tzkt.io/v1/avatars2/${currentObject.creatorAddress}`" />
+            </div>
+            <div class="description">{{ currentObject.description }}</div>
+            <!-- <div>{{ currentObject.tags.join(' ') }}</div> -->
+          </div>
+        </div>
+      </div>
     </div>
     <script>
       var VueMasonryPlugin = window["vue-masonry-plugin"].VueMasonryPlugin
@@ -157,15 +310,30 @@
         return await res.json()
       }
 
+      const mimeTypes = [
+        { type: 'image', mime: ['image/gif','image/png','image/jpeg','image/webp','image/tiff','image/bmp'] },
+        { type: 'video', mime: ['video/quicktime','video/mp4','video/webm','video/ogg'] },
+        { type: 'html', mime: ['application/x-directory'] },
+        { type: 'gltf', mime: ['model/gltf+json', 'model/gltf-binary'] },
+        { type: 'html', mime: ['application/x-directory', 'model/gltf-binary'] },
+        { type: 'svg', mime: ['image/svg+xml'] },
+        { type: 'audio', mime: ['audio/mpeg', 'audio/ogg'] },
+        { type: 'pdf', mime: ['application/pdf'] },
+      ]
+
       var app = new Vue({
         el: '#app',
         data: {
+          loading: true,
           owner: {},
           config: {},
           objects: [],
           thumbs: [],
           thumbPath: '',
           isDark: false,
+          currentObject: null,
+          currentCreator: null,
+          mainScroll: 0,
         },
         mounted() {
           fetch('./data.json')
@@ -179,9 +347,14 @@
             console.log(this.owner)
             this.config = json.config
             this.objects = json.objects
+            // add url removing ipfs://
+            this.objects.forEach(obj => {
+              obj.url = `https://cloudflare-ipfs.com/ipfs/${obj.artifactUri.substr(7)}`
+            })
             this.thumbPath = `${this.config.thumbnail.path}/${this.config.thumbnail.image[1].path}`
             // this.thumbs = []
             // for (let obj of json.objects)
+            this.loading = false
           })
 
           this.$watch('isDark', (isDark) => {
@@ -189,6 +362,32 @@
           })
           if (window.matchMedia &&  window.matchMedia('(prefers-color-scheme: dark)').matches) {
             this.isDark = true
+          }
+        },
+        methods: {
+          async showObj(objectId) {
+            this.mainScroll = window.scrollY
+            document.querySelector('body').style.overflow = 'hidden'
+            const obj = this.objects.find(o => o.id === objectId)
+            this.currentObject = obj
+            this.currentCreator = null
+            try {
+              this.currentCreator = await getAddressInfo(obj.creatorAddress)
+            } catch(e) {}
+          },
+          closeObj() {
+            document.querySelector('body').style.overflow = 'auto'
+            this.currentObject = null
+            this.$nextTick(() => {
+              window.scrollTo({ top:this.mainScroll })
+            })
+          }
+        },
+        computed: {
+          currentObjectType() {
+            if (!this.currentObject) return null
+            const mime = mimeTypes.find(m => m.mime.includes(this.currentObject.mime))
+            return mime && mime.type || null
           }
         }
       })

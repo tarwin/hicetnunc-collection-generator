@@ -11,6 +11,8 @@
   "license": "ISC",
   "dependencies": {
     "axios": "^0.21.1",
+    "cids": "^1.1.6",
+    "ipfs-http-client": "^49.0.4",
     "puppeteer": "^8.0.0",
     "puppeteer-video-recorder": "^1.0.3",
     "sharp": "^0.28.1"

@@ -19,6 +19,7 @@ const fs = require('fs');
 const { exec } = require("child_process");
 const axios = require('axios');
 const puppeteer = require('puppeteer');
+const ipfsClient = require('ipfs-http-client')
 // const PuppeteerVideoRecorder = require('puppeteer-video-recorder');
 
 // ------------------------------------------------------------------
@@ -182,6 +183,8 @@ const getNiceData = async() => {
     objects: []
   }
   for (let obj of owned) {
+    const cidv1 = new ipfsClient.CID(obj.token_info.artifactUri.substr(7)).toV1()
+    const subomain = cidv1.toString()
     niceData.objects.push({
       id: obj.token_id,
       name: obj.token_info.name,
@@ -190,6 +193,7 @@ const getNiceData = async() => {
       creatorAddress: obj.token_info.creators[0],
       mime: obj.token_info.formats[0].mimeType,
       artifactUri: obj.token_info.artifactUri,
+      cid: subomain,
     })
   }
   return niceData
@@ -425,7 +429,7 @@ const main = async () => {
 
   // copy data
   const niceData = await getNiceData()
-  fs.writeFileSync(`${config.distPath}/data.json`, JSON.stringify(niceData))
+  fs.writeFileSync(`${config.distPath}/data.json`, JSON.stringify(niceData, '', 2))
 }
 
 main()
