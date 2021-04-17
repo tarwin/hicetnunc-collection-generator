@@ -153,6 +153,16 @@
         cursor: pointer;
         transition: color .5s ease-out;
       }
+      #play-button {
+        position: fixed;
+        z-index: 1000;
+        top: 11px;
+        font-size: 110%;
+        right: 45px;
+        color: var(--text-color);
+        cursor: pointer;
+        transition: color .5s ease-out;
+      }
       .fullscreen-button {
         position: absolute;
         bottom: 10px;
@@ -289,6 +299,11 @@
         id="full-close"
         @click="closeObj"
       ><i class="fas fa-times"></i></div>
+      <div
+        v-if="!currentObject"
+        id="play-button"
+        @click="startPresentation"
+      ><i class="fas fa-play"></i></div>
       <div id="header-info">
         <a href="https://www.hicetnunc.xyz/">
           <svg id="hen" viewBox="0 0 196.87 53.23"><path d="M228.9,79.31H211.51a2.26,2.26,0,0,1-.35-.34.75.75,0,0,1-.16-.42c0-11.42,0-22.85,0-34.43H193.24v35H175.41V26.27H228.9Z" transform="translate(-32.03 -26.27)"></path><path d="M67.74,43.78V26.42H85.41V79.19H67.91V62.38a4.24,4.24,0,0,0-.52-.57.77.77,0,0,0-.42-.17H50V79.08H32V26.48H49.78v17.3Z" transform="translate(-32.03 -26.27)"></path><path d="M103.62,43.79V26.43h53.6c.09,5.62,0,11.41.05,17.36Z" transform="translate(-32.03 -26.27)"></path><path d="M103.71,61.71h53.38V78.84c-4.05.69-38.16.91-53.38.31Z" transform="translate(-32.03 -26.27)"></path></svg>
@@ -384,6 +399,13 @@
         return await res.json()
       }
 
+      // inc, ex
+      function getRandomInt(min, max) {
+        min = Math.ceil(min);
+        max = Math.floor(max);
+        return Math.floor(Math.random() * (max - min)) + min
+      }
+
       const mimeTypes = [
         { type: 'image', mime: ['image/gif','image/png','image/jpeg','image/webp','image/tiff','image/bmp'] },
         { type: 'video', mime: ['video/quicktime','video/mp4','video/webm','video/ogg'] },
@@ -394,6 +416,8 @@
         { type: 'audio', mime: ['audio/mpeg', 'audio/ogg'] },
         { type: 'pdf', mime: ['application/pdf'] },
       ]
+
+      var presTo = null
 
       var app = new Vue({
         el: '#app',
@@ -436,6 +460,12 @@
             }
           })
 
+          document.addEventListener("fullscreenchange", (event) => {
+            if (!document.fullscreenElement) {
+              this.stopPresentation()
+            }
+          })
+
           this.$watch('isDark', (isDark) => {
             document.documentElement.setAttribute('data-theme', isDark ? 'dark' : 'light');
           })
@@ -470,6 +500,24 @@
           },
           goFull() {
             document.querySelector("#full-item").requestFullscreen();
+          },
+          getRandomObjectId() {
+            return this.objects[getRandomInt(0, this.objects.length)].id
+          },
+          startPresentation() {
+            this.showObj(this.getRandomObjectId())
+            this.$nextTick(() => {
+              this.goFull()
+              presTo = setTimeout(this.nextPres, 5000)
+            })
+          },
+          nextPres() {
+            this.showObj(this.getRandomObjectId())
+            presTo = setTimeout(this.nextPres, 5000)
+          },
+          stopPresentation() {
+            if (presTo) clearTimeout(presTo)
+            presTo = null
           }
         },
         computed: {
