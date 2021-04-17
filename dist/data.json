@@ -26,6 +26,40 @@
   },
   "objects": [
     {
+      "id": 34408,
+      "name": "paparazzi",
+      "description": "Little paparazzis are following you. Click to random color. Playing with three.js for first time. ",
+      "tags": [
+        "interactive",
+        "camera",
+        "3d",
+        "three.js",
+        "random"
+      ],
+      "creatorAddress": "tz1h1HHbPAKVaSeFKhfFFizch5hxAnxdAYuX",
+      "mime": "application/x-directory",
+      "artifactUri": "ipfs://QmaecgXowCh9V54EroPNbeksMJkrTFsmMJQeQt2zhPAWLX",
+      "cid": "bafybeifw4zt5hrljxkf4flapinyssks23f2yjonmcdb5pwlyyypxtxnbba"
+    },
+    {
+      "id": 34176,
+      "name": "Unusual holographic#1",
+      "description": "Oh these lovely colors...by @yourfacce",
+      "tags": [
+        "3d",
+        "animation",
+        "cube",
+        "art",
+        "loop",
+        "holographic",
+        "color"
+      ],
+      "creatorAddress": "tz1LGP5vaVjZvyskCwN1EK99FoVdKoQbQoMt",
+      "mime": "video/mp4",
+      "artifactUri": "ipfs://QmTAqV5Pjq7txMGLDzUKLVcT5TxhC1KgxzKSLopDDSWuwA",
+      "cid": "bafybeichy3hw2odf6a3fnkwu2k7cc7r7wqmrvhk25i2nfpeto24t24qqvu"
+    },
+    {
       "id": 27668,
       "name": "adam",
       "description": "180f 600px */ @p1xelfool",
@@ -187,7 +221,7 @@
     {
       "id": 19579,
       "name": "Multiverse [Relativity Paths #3/5]",
-      "description": "#3 of 5 in the ‘Relativity Paths’ series from ‘Multiverse’ audiovisual installation, 2018. Created by @fuse_works with openFrameworks. Edition of 30. More info on fuseworks.it/en/works/multiverse",
+      "description": "#3 of 5 in the ‘Relativity Paths’ series from ‘Multiverse’ audiovisual installation, 2018. Created by @fuse_works with openFrameworks. Edition of 30. More info on fuseworks.it/en/works/multiverse ",
       "tags": [
         "multiverse",
         "relativity",
@@ -217,6 +251,31 @@
       "mime": "image/png",
       "artifactUri": "ipfs://QmaRK4BNXvxsjizzQRga8xBJaZJXCVchj1NzxCPGbQqfdS",
       "cid": "bafybeiftpxwkmjueqmcc25zawv7otrm6hno6za6hkraq5duzb3bzi3jare"
+    },
+    {
+      "id": 17307,
+      "name": "Bluetail (1998-; NFT/SVG Version, 3.30.2021)",
+      "description": "\"Bluetail\" (1998-), a previously unpublished cousin of @Golan Levin’s \"Yellowtail\" software, is an interactive system for the gestural creation and performance of real-time abstract animation. The software repeats the movement of a mark between its endpoints, allowing the simultaneous specification of a line’s shape and quality of movement. Each line repeats according to its own period, producing an ever-changing display of lively, worm-like textures. This is the official SVG/NFT version.",
+      "tags": [
+        "interactive",
+        "dynamic",
+        "gestural",
+        "abstract",
+        "drawingtool",
+        "animation",
+        "line",
+        "generative",
+        "performance",
+        "looping",
+        "rhythm",
+        "visualinstrument",
+        "@golan",
+        "golanlevin"
+      ],
+      "creatorAddress": "tz1eQThmh9yuuxjvFBWbRGKUr2goUw1gAd39",
+      "mime": "image/svg+xml",
+      "artifactUri": "ipfs://QmVxwbpS31K8jBXvHoaTv6CQ4amkvqNThLfJXGQwEBueMq",
+      "cid": "bafybeidrjxismhobbeww4aipzgv725g5sjw3ykljxj42uubqcgmuircyzq"
     },
     {
       "id": 15833,
@@ -833,6 +892,28 @@
       "mime": "image/gif",
       "artifactUri": "ipfs://QmcTUqvhz15BMd36aEcm2it2RLNS4N5z5qGkrSRhnBt8Rz",
       "cid": "bafybeigryods4pyhwdusjjly77qch4zlvchyuykrcmzmw6nuwf6ksaiulu"
+    },
+    {
+      "id": 9954,
+      "name": "Yellowtail (1998-; SVG/NFT version, 3.2021)",
+      "description": "Yellowtail (1998-, by @Golan Levin) is an interactive system for the gestural performance of real-time abstract animation. Repeating your drawings end-over-end, it allows simultaneous specification of a line's shape and its quality of movement. This is the official SVG version.",
+      "tags": [
+        "interactive",
+        "dynamic",
+        "gestural",
+        "abstract",
+        "drawingtool",
+        "animation",
+        "line",
+        "generative",
+        "performance",
+        "visualinstrument",
+        "golanlevin"
+      ],
+      "creatorAddress": "tz1eQThmh9yuuxjvFBWbRGKUr2goUw1gAd39",
+      "mime": "image/svg+xml",
+      "artifactUri": "ipfs://QmUAGaLH6DzdPUjsNkSwyobnzKbnG5pryWYiVebMnGbDRL",
+      "cid": "bafybeicwpvevi7ffaii7kctllwkek6tleumictpzzlyya5sd6lq4iykysm"
     },
     {
       "id": 9733,

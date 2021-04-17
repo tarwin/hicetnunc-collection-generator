@@ -391,6 +391,9 @@
       </div>
     </div>
     <script>
+      // one minute
+      const presentationTimePerObject = 60 * 1000;
+
       var VueMasonryPlugin = window["vue-masonry-plugin"].VueMasonryPlugin
       Vue.use(VueMasonryPlugin)
 
@@ -508,12 +511,12 @@
             this.showObj(this.getRandomObjectId())
             this.$nextTick(() => {
               this.goFull()
-              presTo = setTimeout(this.nextPres, 5000)
+              presTo = setTimeout(this.nextPres, presentationTimePerObject)
             })
           },
           nextPres() {
             this.showObj(this.getRandomObjectId())
-            presTo = setTimeout(this.nextPres, 5000)
+            presTo = setTimeout(this.nextPres, presentationTimePerObject)
           },
           stopPresentation() {
             if (presTo) clearTimeout(presTo)
