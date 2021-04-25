@@ -1,0 +1,61 @@
+DISPLAY
+
+- from URL
+
+  present=1
+  objectId=123
+  fullscreen=1
+  filterType=image,3d,etc
+
+  presentSeconds=60
+  fullscreenHideNames=1
+
+  isChromecastReciever=1
+
+- reciever
+  - setDataUrl
+  - setThumbnailBase
+
+  - present(startingObject, filters)
+  - screensaver
+    - aka Apple TV
+  - showObject(objId)
+    - loads max from screen size
+    - shows whole
+    - zooms in to width or height and pans?
+  - getScreenSize()
+
+  - supportsVideo
+  - getIsAudioOnly
+
+- chromecast
+
+- fullscreen
+  - allow zooming / panning of large images
+
+- presenting
+  - auto zoom / pan large images
+
+GENERATE
+
+- creator list
+- animated thumbnails from displayUri
+- animted thumbnails from video
+- animated thumbnails from 3D
+- animated thumbnails from HTML / SVG. Rotate mouse. Click mouse.
+
+- for reciever
+  - make sure we generate 1920x1080 and 4K
+  - convert MOV to other video format?
+
+==========================================
+
+DISPLAY
+
+- mobile
+  - larger buttons
+
+- add title to object page
+
+- present
+  - display title / user

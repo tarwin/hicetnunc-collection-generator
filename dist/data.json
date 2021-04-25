@@ -2,21 +2,32 @@
   "config": {
     "thumbnail": {
       "path": "thumbs",
+      "defaultImageFormat": "webp",
       "image": [
         {
           "size": 128,
           "type": "contain",
-          "path": "thumb-128"
+          "path": "thumb-128",
+          "animated": true
         },
         {
           "size": 400,
           "type": "contain",
-          "path": "thumb-400"
+          "path": "thumb-400",
+          "animated": true
         },
         {
           "size": 800,
           "type": "contain",
-          "path": "thumb-800"
+          "path": "thumb-800",
+          "animated": true
+        }
+      ],
+      "video": [
+        {
+          "size": 200,
+          "type": "contain",
+          "path": "video-thumb"
         }
       ]
     }
@@ -24,7 +35,163 @@
   "owner": {
     "address": "tz1g7Aaac9ssD7cDUTngyXyx8QiVUsAVZCjQ"
   },
-  "objects": [
+  "collectedObjects": [
+    {
+      "id": 45293,
+      "name": "Girl with a Pearl Earring (sometimes)",
+      "description": "60 oil paint simulations with varying degree of color accuracy. Specially done for the #OBJKT4OBJKT II event (23-25 April 2021) to celebrate diversity and free art. Author: Javier Gracia Carpio / @jagracar",
+      "tags": [
+        "oilpaint",
+        "simulation",
+        "openframeworks",
+        "creativecoding",
+        "OBJKT4OBJKT"
+      ],
+      "creatorAddress": "tz1g6JRCpsEnD2BLiAzPNK3GBD1fKicV9rCx",
+      "mime": "video/mp4",
+      "artifactUri": "ipfs://Qmc1VfuiDakMQwJYyCip8gJgRpZXcrXtcqDuLwz78G4CKU",
+      "cid": "bafybeigldnomq34ienbex2fh2kpbaxhptlddireybqepdwavcfsvut6oqm"
+    },
+    {
+      "id": 43589,
+      "name": "Jawbreaker 01",
+      "description": "Interactive sculpture. Created by Kyle Phillips (@hapticdata), April 2021. Drag to rotate.",
+      "tags": [
+        "interactive",
+        "generative",
+        "sculpture",
+        "geometry"
+      ],
+      "creatorAddress": "tz1cZRgLNDsYM6RnNW4XThpgX9KWr4LMpywA",
+      "mime": "application/x-directory",
+      "artifactUri": "ipfs://QmZaEmUsxZumbW2Qqt9LmyqFon2tHvMVXRe5yQJb1B9yK3",
+      "cid": "bafybeifg5oo43xvky5gu6cvat632llobtufxfovr7r4dngysam3cdde52y"
+    },
+    {
+      "id": 43318,
+      "name": "Genie the cat",
+      "description": "This grumpy genie is not very helpful, but you can call him anytime just for fun.",
+      "tags": [
+        "animation",
+        "cat",
+        "genie",
+        "magiclamp",
+        "3D"
+      ],
+      "creatorAddress": "tz1MaNYPQB6AWtrHv7ArMUGJwUJi8jKmtXCV",
+      "mime": "video/mp4",
+      "artifactUri": "ipfs://QmZzVW7wvdaoFMkCRi6EZAiyvboKj2hN5EwWuyQEdt5aDT",
+      "cid": "bafybeifnei3ysf2kpymfmu4tvmseme2bh7cuasn7mycc3hj2i57gwtlyqy"
+    },
+    {
+      "id": 43023,
+      "name": "2003-07-10 [Thursday].html",
+      "description": "My exported 2003 AIM chat logs with my AIM buddy where we talk about absolutely nothing for hours in the middle of the night during the summer middle school break. For teenage millennial nostalgia's sake: away messages, g2g, l8r, j/k, cable television, dial-up modems, & misspelling words becuz it wuz cool.",
+      "tags": [
+        "NETART",
+        "INTERNETART",
+        "INTERNET",
+        "HISTORY",
+        "AOL",
+        "AIM",
+        "MYSPACE",
+        "NOSTALGIA"
+      ],
+      "creatorAddress": "tz1YMqQQme7jcERyk2586QDT9fqWGCz9L2fQ",
+      "mime": "application/x-directory",
+      "artifactUri": "ipfs://QmSBXt5yzz4FZoLD2tH3knrFfjG5awKdwjY5bYT3JvCzN8",
+      "cid": "bafybeibzddgnblmcvrhqhrts224kqvynsnijaldybds6udkz4cj67ybn6u"
+    },
+    {
+      "id": 42294,
+      "name": "Bad Glitch Club 😇💋",
+      "description": "The Bad Glitch club is made up of all types of women. These women do what they want and don't take no shhh. ",
+      "tags": [
+        "bad",
+        "glitch",
+        "ladies",
+        "1st",
+        "forallqueens",
+        "animation",
+        "gif",
+        "halo"
+      ],
+      "creatorAddress": "tz1SZFcNDKH7dhZ26QGK2emRJLwtE2Kr5NtH",
+      "mime": "image/gif",
+      "artifactUri": "ipfs://QmTV9xPLpfg48g9oiNZLPM6ywNZdE1zmg9b5ot5pdYm2e2",
+      "cid": "bafybeicmpatf5sjcdc65ybd45n3fltwfezhy7zqmpbh5ospysg6krlecs4"
+    },
+    {
+      "id": 42279,
+      "name": "Farewell at Dawn",
+      "description": "3041 × 3944 a glitch landscape by @culturehacker - lanceweiler.com",
+      "tags": [
+        "glitch",
+        "landscape",
+        "future",
+        "culturehacker"
+      ],
+      "creatorAddress": "tz1hA8fvrFV9XbA1Z4BekjLZKthDdobv3AKF",
+      "mime": "image/jpeg",
+      "artifactUri": "ipfs://QmQFixvadxiAA4brjnesV7KevqQ9kKmTVyygBwaKyMbrcm",
+      "cid": "bafybeia4orebajqlojezl6wk5chaxvjeutpao6gwkh3kui7es72qcffgry"
+    },
+    {
+      "id": 42266,
+      "name": "disco physarum",
+      "description": "@eggsovereager a cyborg dreams of physarum",
+      "tags": [
+        "cyborgimagination",
+        "cyborg",
+        "physarum",
+        "geometry",
+        "shallowdepthoffield",
+        "bokeh",
+        "filmgrain",
+        "blackandwhite",
+        "minimal",
+        "generative",
+        "glitch"
+      ],
+      "creatorAddress": "tz1dxQBtb7iEkCqRq1o6BS4obUjEviLA5aCu",
+      "mime": "video/mp4",
+      "artifactUri": "ipfs://QmaU2bVw8TMCJggXZv1MarugQD6H7XXBnJz3XtCcJnaYQc",
+      "cid": "bafybeifugahde2xrhjqaetk445digbvicp4uiprd7ipqtz75y6arf35eru"
+    },
+    {
+      "id": 41792,
+      "name": "Totally Rad",
+      "description": "NES emulator hex glitch",
+      "tags": [
+        "NES",
+        "glitch"
+      ],
+      "creatorAddress": "tz1cNFGNAQrFQucdvc4txsdR8rEuHkUUYrjJ",
+      "mime": "image/gif",
+      "artifactUri": "ipfs://QmTfsw7Pxny851RoykRpSCaau4yZ4R5my5Mvx7x4KK986j",
+      "cid": "bafybeicpg5wdimhek5u5he5xcxosjczuqfmckfonsdunvtfsqia23umdfa"
+    },
+    {
+      "id": 37532,
+      "name": "Tiny Device #02: Mint-o-Meter",
+      "description": "This #OBJKT shows minted NFTs per hour on hicetnunc, local min & max values with a timeline showing the current local date & time. You can explore the data by: 1) Rotating the knob, 2) Mouse wheel, 3) Panning the graph directly, 4) Keyboard Left & Right arrows. Many thanks to better-call.dev. Made by https://twitter.com/neelts.",
+      "tags": [
+        "tinydevice",
+        "svg",
+        "app",
+        "interactive",
+        "bettercalldev",
+        "api",
+        "operations",
+        "mints",
+        "retro",
+        "graph"
+      ],
+      "creatorAddress": "tz1LCENa3HQkcHPfonn1aYNqS66zWu3LQ4ny",
+      "mime": "image/svg+xml",
+      "artifactUri": "ipfs://QmZxHTLk9PkuEm3BXCaRs6CbtA9v9uK5rzcd9MaZ6RL5Bj",
+      "cid": "bafybeifmsfxmjuxie2kh3fjcrom2q7u4xg2vw4qwfuot6yi5tm2trppmcy"
+    },
     {
       "id": 34408,
       "name": "paparazzi",
@@ -58,6 +225,22 @@
       "mime": "video/mp4",
       "artifactUri": "ipfs://QmTAqV5Pjq7txMGLDzUKLVcT5TxhC1KgxzKSLopDDSWuwA",
       "cid": "bafybeichy3hw2odf6a3fnkwu2k7cc7r7wqmrvhk25i2nfpeto24t24qqvu"
+    },
+    {
+      "id": 31984,
+      "name": "sleepy allosaurus",
+      "description": "artist: @itsinthestairs // he's sleepy!!",
+      "tags": [
+        "dino",
+        "dinosaur",
+        "3d",
+        "cute",
+        "sleepy"
+      ],
+      "creatorAddress": "tz1Td8EcRFNWTLQdvZpsnAfAdg6AuMQ2f4AB",
+      "mime": "model/gltf-binary",
+      "artifactUri": "ipfs://QmeYANGcwVYh2avjWkoxbpihjWhZ3SAX5DKZA9guiYkswF",
+      "cid": "bafybeihqvxvahmkfbcgnkckc3uz6kpl6otca4btlyvlf527zehzrnioodi"
     },
     {
       "id": 27668,
@@ -113,6 +296,20 @@
       "mime": "image/svg+xml",
       "artifactUri": "ipfs://QmY6sd3GdYfqnitTwj52dbigNZ9g8yD6xD3LU7xroHas18",
       "cid": "bafybeierbvljwzoauhjsou6oq523dbpxxpwbaeqafcx3ikjzsc4iowvxw4"
+    },
+    {
+      "id": 25784,
+      "name": "ride",
+      "description": "@percentcer | Entry for Inktober 2019 (day 28). GLSL on canvas.",
+      "tags": [
+        "glsl",
+        "shader",
+        "inktober"
+      ],
+      "creatorAddress": "tz1aJ4r8qXfE7cZDgYVbgcwcMspaeDbxrL63",
+      "mime": "image/svg+xml",
+      "artifactUri": "ipfs://QmcfJD3iDfXj7NiUppoMSZ2coeLPLoMTAys8YdB4pGdPY9",
+      "cid": "bafybeiguzj4mlidaru3a6wn7zyqjhdyvtgkekuaxznx4wgw7bailq6od2y"
     },
     {
       "id": 24439,
@@ -1171,6 +1368,266 @@
       "mime": "image/png",
       "artifactUri": "ipfs://QmYFar5hBagkkhiCQD1tTKzDKWt2g5Br1FUoGEYsJxrSPP",
       "cid": "bafybeietjcmq46sdvnwnhk7quapodkkttnx2cdopjpiobkz5svruzijojy"
+    }
+  ],
+  "createdObjects": [
+    {
+      "id": 25119,
+      "name": "Certitude. 2001.",
+      "description": "This piece was originally conceived in the early 2000s. It was a time of Digital Rights Management and DVD decryption - the code being sold on t-shirts. It was before we knew exactly what control of content meant. I wanted to create an artwork that would be guaranteed to infringe on a lot of copyrights, but not right away. To play with what it meant to have a copyright. - @tarwin",
+      "tags": [
+        "generative",
+        "experimental",
+        "binary"
+      ],
+      "creatorAddress": "tz1g7Aaac9ssD7cDUTngyXyx8QiVUsAVZCjQ",
+      "mime": "application/x-directory",
+      "artifactUri": "ipfs://QmRsqC2fUBwnScSw7HLNY3cKJUXECaoKrCW8dNEYqg5BbU",
+      "cid": "bafybeibur7vnbwwlj6sv4ib4aed6s4kowcoiswhw5fk7ux6k3pzbakk2q4"
+    },
+    {
+      "id": 17038,
+      "name": "Everyone Collects",
+      "description": "@tarwin - An experiment. The \"art\" will now display until all minted OBJKTs have been collected. It uses IPNS so the ID of the minted artwork can be added later.",
+      "tags": [
+        "GENERATIVE",
+        "JS",
+        "ONCHAIN",
+        "EXPERIMENTS",
+        "IPNS"
+      ],
+      "creatorAddress": "tz1g7Aaac9ssD7cDUTngyXyx8QiVUsAVZCjQ",
+      "mime": "application/x-directory",
+      "artifactUri": "ipfs://QmQPdJ6StaLxYAL9MPUe6RnqJxRmyJ686pFi5BMQ1sn7q5",
+      "cid": "bafybeia6pkchrmdtvdhynhwjwie7ustarw7c6gjair5cohbvkvnwxuoxuq"
+    },
+    {
+      "id": 17032,
+      "name": "Everyone Collects",
+      "description": "@TARWIN - AN EXPERIMENT. THE \"ART\" WILL NOW DISPLAY UNTIL ALL MINTED OBJKTS HAVE BEEN COLLECTED. IT USES IPNS SO THE ID OF THE MINTED ARTWORK CAN BE ADDED LATER.",
+      "tags": [
+        "GENERATIVE",
+        "JS",
+        "ONCHAIN",
+        "EXPERIMENTS",
+        "IPNS"
+      ],
+      "creatorAddress": "tz1g7Aaac9ssD7cDUTngyXyx8QiVUsAVZCjQ",
+      "mime": "application/x-directory",
+      "artifactUri": "ipfs://QmYdnLaSbp3AmhNmah7HsfmZiB6ThkYbCgsnVLCHi571tc",
+      "cid": "bafybeiey7bphfhb6t5bem6wa3vetrzwkyxoidp62qukqg7wd7bfmq4jkae"
+    },
+    {
+      "id": 9426,
+      "name": "Example: SVG for NFT - HTML",
+      "description": "An SVG example NFT with embedded HTML + IFrame. Tutorial here (https://tarwin.medium.com/hit-et-nunc-advanced-svg-nfts-a6040262f4d5).",
+      "tags": [
+        "example",
+        "svg",
+        "html",
+        "iframe"
+      ],
+      "creatorAddress": "tz1g7Aaac9ssD7cDUTngyXyx8QiVUsAVZCjQ",
+      "mime": "image/svg+xml",
+      "artifactUri": "ipfs://QmYsm2PemCeGQDtmpd3BqsQdoZ5CtFQNtpSFbrQRibHCoa",
+      "cid": "bafybeie4rub5rlcowebqx5uiymqvd4253qobojaa46kxtfuiuhybz4bm3e"
+    },
+    {
+      "id": 9416,
+      "name": "Example: SVG for NFT - Image",
+      "description": "An SVG example NFT with embedded Image. Tutorial here (https://tarwin.medium.com/hit-et-nunc-advanced-svg-nfts-a6040262f4d5).",
+      "tags": [
+        "example",
+        "svg",
+        "image"
+      ],
+      "creatorAddress": "tz1g7Aaac9ssD7cDUTngyXyx8QiVUsAVZCjQ",
+      "mime": "image/svg+xml",
+      "artifactUri": "ipfs://QmWiQz7Zy1V3JCaBgc9YzNnoNMx2UXKz2E2E8SGShfxpkm",
+      "cid": "bafybeid4odawgzsnaha7qm5sbmpembrj76rbmnbdp25kbdok5usqw7ryhy"
+    },
+    {
+      "id": 9414,
+      "name": "Example: SVG for NFT - Javascript",
+      "description": "An SVG example NFT with embedded Javascript. Tutorial here (https://tarwin.medium.com/hit-et-nunc-advanced-svg-nfts-a6040262f4d5).",
+      "tags": [
+        "example",
+        "svg",
+        "javascript"
+      ],
+      "creatorAddress": "tz1g7Aaac9ssD7cDUTngyXyx8QiVUsAVZCjQ",
+      "mime": "image/svg+xml",
+      "artifactUri": "ipfs://QmWoWexD7QNrmB1i55rm7tuW551sRBRSrmrvZRB7FLJJhD",
+      "cid": "bafybeid5x4i7jrifhxekiujb4kqveivij7tg34pvihty3ovkk3qegb3ota"
+    },
+    {
+      "id": 9413,
+      "name": "Example: SVG for NFT - Simple",
+      "description": "A simple SVG example NFT. Tutorial here (https://tarwin.medium.com/hit-et-nunc-advanced-svg-nfts-a6040262f4d5).",
+      "tags": [
+        "example",
+        "svg",
+        "simple"
+      ],
+      "creatorAddress": "tz1g7Aaac9ssD7cDUTngyXyx8QiVUsAVZCjQ",
+      "mime": "image/svg+xml",
+      "artifactUri": "ipfs://Qmea6BDTYsdqqV45Uh6SWDviA9DupabkDr9urKPVWMsLkH",
+      "cid": "bafybeihrfrlgbzkybxgnsig2lvipuvzazhxcdltwminx4du6jckjf4wzvi"
+    },
+    {
+      "id": 9054,
+      "name": "Circles. 1993. QBasic. Memory of.",
+      "description": "The first generative art I created on a computer. My father taught me how to load QBasic and then Nibbles or Gorillas. Curiosity caught and I tried programming myself. My first lesson about how computers worked came from this exercise. Calling RANDOMIZE TIMER on each iteration meant the pseudo random number generator was reset, and instead of getting what looked like random placement I ended up with ... well you will see. Computers just aren't that random. By @tarwin.",
+      "tags": [
+        "qbasic",
+        "memory",
+        "generative",
+        "svg",
+        "realtime"
+      ],
+      "creatorAddress": "tz1g7Aaac9ssD7cDUTngyXyx8QiVUsAVZCjQ",
+      "mime": "image/svg+xml",
+      "artifactUri": "ipfs://QmTK42iwzRz5fePZMJr1WBLDdv7wkChL3rBXKRBxomkrCt",
+      "cid": "bafybeicj4gsggwzzzumsu35zq3ysj6tiiys7rob22fqcrxu466s4srsrru"
+    },
+    {
+      "id": 25122,
+      "name": "Certitude. 2001.",
+      "description": "This piece was originally conceived in the early 2000s. It was a time of Digital Rights Management and DVD decryption - the code being sold on t-shirts. It was before we knew exactly what control of content meant. I wanted to create an artwork that would be guaranteed to infringe on a lot of copyrights, but not right away. To play with what it meant to have a copyright. - @tarwin",
+      "tags": [
+        "experimental",
+        "html",
+        "binary",
+        "generative"
+      ],
+      "creatorAddress": "tz1g7Aaac9ssD7cDUTngyXyx8QiVUsAVZCjQ",
+      "mime": "application/x-directory",
+      "artifactUri": "ipfs://QmepXTTLVjz3AnbnqvCvb82qwCuB4p8pkdCnFyLafgqPkY",
+      "cid": "bafybeihu34gyx2up6cmtiujjj6pcxudiqyswzxyompdtaf7vg5fgikglmu"
+    },
+    {
+      "id": 21430,
+      "name": "Street Terrain // No Beatles",
+      "description": "Part of a series of \"found objects\" created between March 21st 2013 and August 24th 2016 by abusing Google maps using various techniques in various browsers. // @tarwin",
+      "tags": [
+        "foundobject",
+        "screenshot",
+        "mapping",
+        "destruction"
+      ],
+      "creatorAddress": "tz1g7Aaac9ssD7cDUTngyXyx8QiVUsAVZCjQ",
+      "mime": "image/jpeg",
+      "artifactUri": "ipfs://QmUGd188xodVKJvcKsj1cYDR7iitWtZg5sf11YMsxtJuBc",
+      "cid": "bafybeicydxpgbpriysgpeyylwmfldoglysg4tjoi2cpb6nqxhwsnu4xdn4"
+    },
+    {
+      "id": 21428,
+      "name": "Street Terrain // ... and the sky is grey",
+      "description": "Part of a series of \"found objects\" created between March 21st 2013 and August 24th 2016 by abusing Google maps using various techniques in various browsers. // @tarwin",
+      "tags": [
+        "foundobject",
+        "screenshot",
+        "mapping",
+        "destruction"
+      ],
+      "creatorAddress": "tz1g7Aaac9ssD7cDUTngyXyx8QiVUsAVZCjQ",
+      "mime": "image/jpeg",
+      "artifactUri": "ipfs://QmUj1SMqhuDstaExD6iogqK4uvn2GQBxbpSWf4i3sGNptz",
+      "cid": "bafybeic64ble72ietq3uwetfrlcoxa3d7mqli4bp4jhzvlhukcd2rru53m"
+    },
+    {
+      "id": 21426,
+      "name": "Street Terrain // Very fast tree",
+      "description": "Part of a series of \"found objects\" created between March 21st 2013 and August 24th 2016 by abusing Google maps using various techniques in various browsers. // @tarwin",
+      "tags": [
+        "foundobject",
+        "screenshot",
+        "mapping",
+        "destruction"
+      ],
+      "creatorAddress": "tz1g7Aaac9ssD7cDUTngyXyx8QiVUsAVZCjQ",
+      "mime": "image/jpeg",
+      "artifactUri": "ipfs://QmdHFZDaX6616edcVAAjEZNjvypQJg3PAyB3C6BXrwQ2ri",
+      "cid": "bafybeig6abq4u6pcfmamtq2fu5b5ueoo734mhuraqizvbp5jaaeflbcwp4"
+    },
+    {
+      "id": 21424,
+      "name": "Street Terrain // Dark Forest Path",
+      "description": "Part of a series of \"found objects\" created between March 21st 2013 and August 24th 2016 by abusing Google maps using various techniques in various browsers. // @tarwin",
+      "tags": [
+        "foundobject",
+        "screenshot",
+        "mapping",
+        "destruction"
+      ],
+      "creatorAddress": "tz1g7Aaac9ssD7cDUTngyXyx8QiVUsAVZCjQ",
+      "mime": "image/jpeg",
+      "artifactUri": "ipfs://QmReS2Wiq1Y3tJY9DyotJpc989hwrQmtezLSNuSbBPuyhe",
+      "cid": "bafybeibreewm5st2iofoyukggmyj4pxl7gn6qqd5hanop3otyhc2asen2u"
+    },
+    {
+      "id": 21401,
+      "name": "Street Terrain // Horizon House and Red Smudge",
+      "description": "Part of a series of \"found objects\" created between March 21st 2013 and August 24th 2016 by abusing Google maps using various techniques in various browsers. // @tarwin",
+      "tags": [
+        "foundobject",
+        "screenshot",
+        "mapping",
+        "destruction"
+      ],
+      "creatorAddress": "tz1g7Aaac9ssD7cDUTngyXyx8QiVUsAVZCjQ",
+      "mime": "image/jpeg",
+      "artifactUri": "ipfs://QmYvX6DTZq4kUR1mpjeRTS5dvVPcEj1Rn3rFt9LYbyLAcX",
+      "cid": "bafybeie5iiai2pnn5l5whp2gzo4y3zdwve362sviyxryvacmk7vrk34jja"
+    },
+    {
+      "id": 21399,
+      "name": "Street Terrain // Mesa",
+      "description": "Part of a series of \"found objects\" created between March 21st 2013 and August 24th 2016 by abusing Google maps using various techniques in various browsers. - @tarwin",
+      "tags": [
+        "foundobject",
+        "screenshot",
+        "mapping",
+        "destruction"
+      ],
+      "creatorAddress": "tz1g7Aaac9ssD7cDUTngyXyx8QiVUsAVZCjQ",
+      "mime": "image/jpeg",
+      "artifactUri": "ipfs://QmZiujj9sRAZkvb3qQHYsCEshGabMPERP4zVFeWJpzEKhZ",
+      "cid": "bafybeifjerjx4kotdmd74alhxjos7d3bfdklntsauitat7zcjwjfdxa6oa"
+    },
+    {
+      "id": 17102,
+      "name": "Everyone Collects",
+      "description": "An experiment. The \"art\" will not display until all minted OBJKTs have been collected. It uses IPNS so the ID of the minted artwork can be added later. @tarwin",
+      "tags": [
+        "GENERATIVE",
+        "JS",
+        "ONCHAIN",
+        "EXPERIMENTS",
+        "IPNS"
+      ],
+      "creatorAddress": "tz1g7Aaac9ssD7cDUTngyXyx8QiVUsAVZCjQ",
+      "mime": "application/x-directory",
+      "artifactUri": "ipfs://QmQPdJ6StaLxYAL9MPUe6RnqJxRmyJ686pFi5BMQ1sn7q5",
+      "cid": "bafybeia6pkchrmdtvdhynhwjwie7ustarw7c6gjair5cohbvkvnwxuoxuq"
+    },
+    {
+      "id": 10931,
+      "name": "Music. 1993. QBasic. Memory of.",
+      "description": "(@tarwin, 1993/2021) After I had created my first generative artwork I caught the bug. I'd heard notes being created by Gorillas so I knew I must be able to do it too. Second lesson: sometimes randomness can feel like intention.",
+      "tags": [
+        "QBASIC",
+        "MEMORY",
+        "GENERATIVE",
+        "SVG",
+        "REALTIME",
+        "MUSIC",
+        "AUDIO"
+      ],
+      "creatorAddress": "tz1g7Aaac9ssD7cDUTngyXyx8QiVUsAVZCjQ",
+      "mime": "image/svg+xml",
+      "artifactUri": "ipfs://QmaPa4kgh9pYpAKrN4kBP6MRVc8yrLX2DYD8aUjjX11FAc",
+      "cid": "bafybeiftbo6awca34hj65zefxgkt35wjozn53htpfhbpv5xh56ea7vqdmu"
     }
   ]
 }

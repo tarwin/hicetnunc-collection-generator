@@ -5,7 +5,8 @@
   "main": "test.js",
   "scripts": {
     "start": "node index.js",
-    "serve-dist": "serve ./dist/ -C"
+    "serve-dist": "serve ./dist/ -C",
+    "emulate-cast": "node ./cast/emulator.js"
   },
   "author": "",
   "license": "ISC",
@@ -13,8 +14,12 @@
     "axios": "^0.21.1",
     "cids": "^1.1.6",
     "ipfs-http-client": "^49.0.4",
+    "node-fetch": "^2.6.1",
     "puppeteer": "^8.0.0",
     "puppeteer-video-recorder": "^1.0.3",
     "sharp": "^0.28.1"
+  },
+  "devDependencies": {
+    "chromecast-device-emulator": "^1.2.7"
   }
 }

@@ -2,15 +2,8 @@
 // config
 const config = require('./config.json')
 
-const browserWidth = 2000;
-const browserHeight = 2000;
-
-// data from your TZ profile page
-const data = require('./data.json').result
-
-// items you own, others are ones you created
-const owned = data.filter(d => !d.token_info.creators.includes(config.ownerAddress))
-console.log('OWNED: ', owned.length)
+const browserWidth = config.puppetSize;
+const browserHeight = config.puppetSize;
 
 // ------------------------------------------------------------------
 // libs
@@ -20,6 +13,7 @@ const { exec } = require("child_process");
 const axios = require('axios');
 const puppeteer = require('puppeteer');
 const ipfsClient = require('ipfs-http-client')
+const fetch = require('node-fetch')
 // const PuppeteerVideoRecorder = require('puppeteer-video-recorder');
 
 // ------------------------------------------------------------------
@@ -172,20 +166,12 @@ const createLargeImage = async (filename, objectId) => {
   )
 }
 
-const getNiceData = async() => {
-  const niceData = {
-    config: {
-      thumbnail: config.thumbnail
-    },
-    owner: {
-      address: config.ownerAddress
-    },
-    objects: []
-  }
-  for (let obj of owned) {
+const getNiceDataObjects = async(objects) => {
+  const out = []
+  for (let obj of objects) {
     const cidv1 = new ipfsClient.CID(obj.token_info.artifactUri.substr(7)).toV1()
     const subomain = cidv1.toString()
-    niceData.objects.push({
+    out.push({
       id: obj.token_id,
       name: obj.token_info.name,
       description: obj.token_info.description,
@@ -196,6 +182,21 @@ const getNiceData = async() => {
       cid: subomain,
     })
   }
+  return out
+}
+
+const getNiceData = async(collected, created) => {
+  const niceData = {
+    config: {
+      thumbnail: config.thumbnail
+    },
+    owner: {
+      address: config.ownerAddress
+    },
+    collectedObjects: await getNiceDataObjects(collected),
+    createdObjects: await getNiceDataObjects(created),
+  }
+
   return niceData
 }
 
@@ -203,13 +204,14 @@ const getNiceData = async() => {
 // main func / loop
 const main = async () => {
 
-  // tried to get it directly but had problems
-  // const res = await fetch('https://51rknuvw76.execute-api.us-east-1.amazonaws.com/dev/tz', {
-  //   method: 'post',
-  //   body: JSON.stringify({ tz: config.ownerAddress })
-  // })
-  // const data = await res.json()
-  // console.log(data)
+  const res = await fetch(`https://51rknuvw76.execute-api.us-east-1.amazonaws.com/dev/tz?tz=${config.ownerAddress}`)
+  const objects = (await res.json()).result
+
+  // items you own, others are ones you created
+  const collected = objects.filter(d => !d.token_info.creators.includes(config.ownerAddress))
+  const created = objects.filter(d => d.token_info.creators.includes(config.ownerAddress))
+  console.log('COLLECTED: ', collected.length)
+  console.log('CREATED: ', created.length)
 
   // start puppeteer
   const browser = await puppeteer.launch({
@@ -227,7 +229,7 @@ const main = async () => {
   });
 
   // go through each object
-  for (let obj of owned) {
+  for (let obj of objects) {
     const tokenId = obj.token_id
     const mime = obj.token_info.formats[0].mimeType
     const converter = converters[mime]
@@ -318,6 +320,8 @@ const main = async () => {
               #viewer {
                 width: ${browserWidth}px;
                 height: ${browserHeight}px;
+                --poster-color: transparent;
+                --progress-bar-color: transparent;
               }
             </style>
           </head>
@@ -435,7 +439,7 @@ const main = async () => {
   await browser.close();
 
   // copy data
-  const niceData = await getNiceData()
+  const niceData = await getNiceData(collected, created)
   fs.writeFileSync(`${config.distPath}/data.json`, JSON.stringify(niceData, '', 2))
 }
 
