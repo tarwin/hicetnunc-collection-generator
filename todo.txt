@@ -50,6 +50,18 @@ GENERATE
 
 ==========================================
 
+const imageSettings = {
+  quality: 4,
+  sizes: [256, 512, 1024, 2048],
+}
+
+const videoSettings = {
+  quality: 4,
+  maxTime: 10,
+  sizes: [512, 1024],
+}
+
+
 DISPLAY
 
 - mobile

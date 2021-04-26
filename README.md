@@ -57,6 +57,10 @@ Also thanks to
 
 This is just a simple test so far.
 
+# Depoying
+
+I have my `/dist/` directory connected to Github, and have Netlify watching this repo. To update I simply run the tool and then push inside the `/dist/` directory.
+
 # Thanks
 
 - @quasimondo scraper: https://gist.github.com/Quasimondo/30416ce22243610a9c95424e8796b008

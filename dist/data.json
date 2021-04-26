@@ -37,6 +37,31 @@
   },
   "collectedObjects": [
     {
+      "id": 49561,
+      "name": "TezFrog - #OBJKT4OBJKT Frogs",
+      "description": "This is a special Tezfrog named #OBJKT4OBJKT Frogs. It's a collection of some of my favorite Tezfrogs I created. The Hicetnunc community's support has been one of the best things to ever happen to me!",
+      "tags": [
+        "tezfrog",
+        "party"
+      ],
+      "creatorAddress": "tz1TmN3k7oZuCFi9Ec4RB8X8q9NGGa65d4Qn",
+      "mime": "image/png",
+      "artifactUri": "ipfs://Qmd2ifFQeG7viSH3f6tTiksaecFxpY7CK1c4sz33DDfXHo",
+      "cid": "bafybeig2i5iqete325oo6j75lnqhqgymsjkv566x7i3d2qxnjg5nl5acwy"
+    },
+    {
+      "id": 48971,
+      "name": "ceci n'est pas un nft",
+      "description": "",
+      "tags": [
+        ""
+      ],
+      "creatorAddress": "tz1dxQBtb7iEkCqRq1o6BS4obUjEviLA5aCu",
+      "mime": "image/png",
+      "artifactUri": "ipfs://QmNwzKQtEKkQZhbbKCfXuBntUGq8uzkWjmTxV1g7nS5fLx",
+      "cid": "bafybeiajbv774j5qntwni76v7iq5vvmcmvdycjpilqvpkz3gegn7ectxfu"
+    },
+    {
       "id": 48230,
       "name": "After Party",
       "description": "made in 2019, 2500x2500px, edition of 300 for OBJKT4OBJKT",
@@ -173,6 +198,34 @@
       "mime": "image/jpeg",
       "artifactUri": "ipfs://QmbS7cYov7r5cNQw5opHrsdrkxgVbjHc6cB31pi5dz6V1t",
       "cid": "bafybeigcrzatn32jgtwrt74n6xstiagoh5wrmkpbjwmwe54dnkef3fgepm"
+    },
+    {
+      "id": 44104,
+      "name": "attention economy",
+      "description": "a cyborg acts out",
+      "tags": [
+        "cyborgimagination",
+        "cyborg",
+        "ghostintheshell",
+        "glitch",
+        "audiovisual",
+        "audioreactive",
+        "sounddesign",
+        "raymarching",
+        "glsl",
+        "shader",
+        "fractal",
+        "beatmaker",
+        "hiphop",
+        "brightcolors",
+        "red",
+        "loud",
+        "brash"
+      ],
+      "creatorAddress": "tz1dxQBtb7iEkCqRq1o6BS4obUjEviLA5aCu",
+      "mime": "video/mp4",
+      "artifactUri": "ipfs://QmeLSH7wk1aKviEgkcLPFq4UKf7U7PLaUYovi9YrthS5Po",
+      "cid": "bafybeihnvtxw4ukejngkiifwchdqgdmtpqef5z3wdek4axsrhn3xrde6yi"
     },
     {
       "id": 43589,
