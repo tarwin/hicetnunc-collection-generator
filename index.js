@@ -205,7 +205,10 @@ const getNiceData = async(collected, created) => {
 const main = async () => {
 
   const res = await fetch(`https://51rknuvw76.execute-api.us-east-1.amazonaws.com/dev/tz?tz=${config.ownerAddress}`)
-  const objects = (await res.json()).result
+  const objects = (await res.json()).result.filter(obj => {
+    // filter out unwanted
+    return !config.ignoreObjects.includes(obj.token_id)
+  })
 
   // items you own, others are ones you created
   const collected = objects.filter(d => !d.token_info.creators.includes(config.ownerAddress))
@@ -231,6 +234,7 @@ const main = async () => {
   // go through each object
   for (let obj of objects) {
     const tokenId = obj.token_id
+
     const mime = obj.token_info.formats[0].mimeType
     const converter = converters[mime]
 

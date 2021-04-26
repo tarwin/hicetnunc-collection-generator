@@ -215,6 +215,9 @@ footer a, footer a:visited {
   max-width: 100vw;
   max-height: 100vh;
   margin-top: 0px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 #full-item:hover .fullscreen-button {
   opacity: 1;
@@ -230,10 +233,15 @@ footer a, footer a:visited {
 :fullscreen .full-display {
   max-width: 100vw;
   max-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 .full-display-image img {
-  /* width: 100%;
-  height: auto; */
+  max-height: 100%;
+  width: auto;
+  height: auto;
+  max-width: 100%;
 }
 .full-display-video {
   width: 100%;
