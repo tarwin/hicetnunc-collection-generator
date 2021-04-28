@@ -9,10 +9,8 @@
     <link href="https://fonts.googleapis.com/css2?family=Alegreya:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
     <link rel="stylesheet" href="./style.css">
-    <!-- development version, includes helpful console warnings -->
-    <!-- <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script> -->
-    <!-- production version, optimized for size and speed -->
     <script src="https://cdn.jsdelivr.net/npm/vue@2"></script>
+    <script src="https://unpkg.com/vue-masonry-css"></script>
     <script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
     <script src="https://unpkg.com/vue-masonry@0.11.3/dist/vue-masonry-plugin-window.js"></script>
     <link rel="preconnect" href="https://fonts.gstatic.com">
@@ -54,7 +52,12 @@
           <button :disabled="showList === 'collected'" @click="switchCollection">Collected</button>
           <button :disabled="showList === 'created'" @click="switchCollection">Created</button>
         </div>
-        <div id="container" class="grid--masonry">
+
+        <masonry
+          id="container"
+          :cols="{default: 4, 1000: 3, 700: 2, 400: 1}"
+          :gutter="{default: '0px', 1000: '0px'}"
+        >
           <div
             v-for="obj of objects"
             @click="showObj(obj.id)"
@@ -63,7 +66,8 @@
             <img :src="`./${thumbPath}/${obj.id}.webp`" />
             <div class="name-wrapper"><div class="name">{{ obj.name }}</div></div>
           </div>
-        </div>
+        </masonry>
+
         <footer>
           <div>Generated using <a href="https://twitter.com/tarwin">@tarwin</a>'s <a href="https://github.com/tarwin/hicetnunc-collection-generator">H=N Collection Generator</a>.</div>
         </footer>

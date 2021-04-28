@@ -52,6 +52,7 @@ a, a:visited {
 #container .item {
   background: var(--frame-card-color);
   margin: 30px;
+  margin-bottom: 60px;
   border: 1vw solid var(--frame-card-color);
   box-shadow:
     0 0 0 3px var(--frame-secondary-color),
@@ -60,7 +61,7 @@ a, a:visited {
     0 0 10px 20px rgba(0, 0, 0, 0.1)
   ;
   position: relative;
-  transition: box-shadow, border .5s ease-out;
+  /* transition: box-shadow, border .5s ease-out; */
   cursor: pointer;
 }
 #container .item img {
@@ -314,16 +315,6 @@ footer a, footer a:visited {
   padding: 15px;
   background-color: var(--fade-color);
 }
-
-.grid--masonry {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(Min(20em, 100%), 1fr));
-  grid-template-rows: masonry;
-  justify-content: center;
-  grid-gap: .5em;
-  padding: .5em;
-}
-.grid--masonry > * { align-self: start }
 
 @media only screen and (max-width: 1000px) {
   /* #container .item img {
