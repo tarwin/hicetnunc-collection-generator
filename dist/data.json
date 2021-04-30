@@ -402,6 +402,24 @@
       "cid": "bafybeichy3hw2odf6a3fnkwu2k7cc7r7wqmrvhk25i2nfpeto24t24qqvu"
     },
     {
+      "id": 32978,
+      "name": "NES Controller",
+      "description": "a NES Controller in a minimalist style twitter.com/Z3r0NT",
+      "tags": [
+        "Classic",
+        "NES",
+        "Controller",
+        "Nintendo",
+        "MINIMALIST",
+        "ISOMETRIC",
+        "NFT"
+      ],
+      "creatorAddress": "tz1QxnvhrhY3BzdGkLPe4qMZzMkxXBa21GbV",
+      "mime": "image/png",
+      "artifactUri": "ipfs://QmRjfdu75Lsjrm7WRYyZE1PQX3d6gcACtqXm2WeBrcv8Nj",
+      "cid": "bafybeibspb35gqq7bcfxo53s5rqanpvrahbrphzspa3ucxz5kwnmhgxsaa"
+    },
+    {
       "id": 31984,
       "name": "sleepy allosaurus",
       "description": "artist: @itsinthestairs // he's sleepy!!",

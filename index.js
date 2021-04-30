@@ -57,7 +57,6 @@ const niceExec = async (cmd) => {
       //   console.log(`stderr: ${stderr}`);
       //   return reject(stderr)
       // }
-      console.log(`stdout: ${stdout}`);
       resolve(stdout)
     });
   })
@@ -283,12 +282,19 @@ const main = async () => {
           fs.unlinkSync(`${config.largeImagePath}/${tokenId}.png`) 
         }
         // extract image from middle of video
-        let convertCommand = `ffmpeg -i ${config.downloadPath}/${filename} -vcodec mjpeg -vframes 1 -an -f rawvideo`
-        convertCommand += ` -ss \`ffmpeg -i ${config.downloadPath}/${filename} 2>&1 | grep Duration | awk '{print $2}' | tr -d , | awk -F ':' '{print ($3+$2*60+$1*3600)/2}'\``
-        convertCommand += ` ${config.largeImagePath}/${tokenId}.png`
-        await niceExec(convertCommand)
-
-        await createThumbnails(`${tokenId}.png`, tokenId)
+        const info = await niceExec(`ffprobe ${config.downloadPath}/${filename} 2>&1`)
+        const durationMatch = info.match(/Duration: ([0-9][0-9]):([0-9][0-9]):([0-9][0-9]\.[0-9]+)/i)
+        if (durationMatch) {
+          let midpoint = (parseFloat(durationMatch[3]) + parseInt(durationMatch[2]) * 60 + parseInt(durationMatch[1]) * 3600) / 2
+          let convertCommand = `ffmpeg -i ${config.downloadPath}/${filename} -vcodec mjpeg -vframes 1 -an -f rawvideo`
+          convertCommand += ` -ss ${midpoint}`
+          convertCommand += ` ${config.largeImagePath}/${tokenId}.png`
+          await niceExec(convertCommand)
+  
+          await createThumbnails(`${tokenId}.png`, tokenId)
+        } else {
+          console.log('Failed creating large for video', tokenId)
+        }
       } else if (converter.use === 'html') {
         // has thumb
         if (obj.token_info.displayUri) {
