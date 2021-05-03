@@ -65,11 +65,12 @@ var app = new Vue({
     })
     .then(async (json) => {
       this.data = json
+
+      this.config = this.data.config
+      this.thumbPath = `${this.config.thumbnail.path}`
+
       this.owner = await getAddressInfo(this.data.owner.address)
       this.owner.address = this.data.owner.address
-      console.log(this.owner)
-      this.config = this.data.config
-      this.thumbPath = `${this.config.thumbnail.path}/${this.config.thumbnail.image[1].path}`
       
       // add url removing ipfs://
       this.data.collectedObjects.forEach(obj => {

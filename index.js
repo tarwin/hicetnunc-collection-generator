@@ -7,14 +7,22 @@ const browserHeight = config.puppetSize;
 
 // ------------------------------------------------------------------
 // libs
-const sharp = require('sharp');
 const fs = require('fs');
-const { exec } = require("child_process");
-const axios = require('axios');
 const puppeteer = require('puppeteer');
 const ipfsClient = require('ipfs-http-client')
 const fetch = require('node-fetch')
 // const PuppeteerVideoRecorder = require('puppeteer-video-recorder');
+
+const {
+  createThumbnails,
+  createLargeImage,
+  resizeImageToMaxSize,
+  sleep,
+  getMaxDimensions,
+  niceExec,
+  downloadFile,
+  getImageMetadata
+} = require('./utils')
 
 // ------------------------------------------------------------------
 // mime type setup
@@ -46,95 +54,6 @@ const converters = {
 
 // ------------------------------------------------------------------
 // utility functions
-const niceExec = async (cmd) => {
-  return new Promise((resolve, reject) => {
-    exec(cmd, function(error, stdout, stderr) {
-      if (error) {
-        console.log(`error: ${error.message}`);
-        return reject(error)
-      }
-      // if (stderr) {
-      //   console.log(`stderr: ${stderr}`);
-      //   return reject(stderr)
-      // }
-      resolve(stdout)
-    });
-  })
-}
-
-const downloadFile = (url, imagePath) => {
-  return axios({
-    url,
-    responseType: 'stream',
-    headers: {
-      Range: `bytes=0-`
-    }
-  }).then(response => {
-    return new Promise((resolve, reject) => {
-      response.data
-        .pipe(fs.createWriteStream(imagePath))
-        .on('finish', () => resolve())
-        .on('error', e => reject(e));
-    })
-  })
-}
-
-// gets information about an image
-// format (ie png), width, height, pages (if exists is animated, # of frames)
-const getImageMetadata = async (file) => {
-  return new Promise((resolve, reject) => {
-    sharp(file)
-    .metadata()
-    .then(info => {
-      resolve(info)
-    })
-    .catch((e) => {
-      reject(e)
-    })
-  })
-}
-
-// gives you dimensions maximized to a measure
-const getMaxDimensions = (width, height, maxDim) => {
-  let w = width
-  let h = height
-  if (width <= maxDim && height <= maxDim) {
-    w = maxDim
-    h = maxDim
-  } else if (width === height) {
-    w = maxDim
-    h = maxDim
-  } else if (width > height) {
-    w = maxDim
-    h = height / width * maxDim
-  } else {
-    w = width / height * maxDim
-    h = maxDim
-  }
-  return {
-    width: Math.round(w),
-    height: Math.round(h)
-  }
-}
-
-const resizeImageToMaxSize = async (maxDim, inFile, outFile) => {
-  console.log('resizeImageToMaxSize', inFile, outFile)
-  const meta = await getImageMetadata(inFile)
-  const dims = getMaxDimensions(meta.width, meta.height, maxDim)
-  let options = {}
-  // if it's animated ie GIF, get an image from the middle
-  if (meta.pages) {
-    options.pages = 1
-    options.page = Math.floor(meta.pages / 2)
-  }
-  return await sharp(inFile, options)
-    .resize(dims.width, dims.height)
-    .toFile(outFile)
-}
-
-function sleep(ms) {
-  return new Promise(resolve => setTimeout(resolve, ms));
-}
 
 // create directories if they don't exist
 const thumbnailPath = `${config.distPath}/${config.thumbnail.path}`
@@ -142,28 +61,6 @@ if (!fs.existsSync(config.downloadPath)) fs.mkdirSync(config.downloadPath)
 if (!fs.existsSync(config.largeImagePath)) fs.mkdirSync(config.largeImagePath)
 if (!fs.existsSync(config.distPath)) fs.mkdirSync(config.distPath)
 if (!fs.existsSync(thumbnailPath)) fs.mkdirSync(thumbnailPath)
-
-for (let thumbDef of config.thumbnail.image) {
-  if (!fs.existsSync(`${thumbnailPath}/${thumbDef.path}`)) fs.mkdirSync(`${thumbnailPath}/${thumbDef.path}`)
-}
-
-const createThumbnails = async (largeImageFilename, objectId) => {
-  for (let thumbDef of config.thumbnail.image) {
-    await resizeImageToMaxSize(
-      thumbDef.size,
-      `${config.largeImagePath}/${largeImageFilename}`,
-      `${thumbnailPath}/${thumbDef.path}/${objectId}.webp`
-    )
-  }
-}
-
-const createLargeImage = async (filename, objectId) => {
-  await resizeImageToMaxSize(
-    2000,
-    `${config.downloadPath}/${filename}`,
-    `${config.largeImagePath}/${objectId}.png`
-  )
-}
 
 const getNiceDataObjects = async(objects) => {
   const out = []
@@ -268,7 +165,7 @@ const main = async () => {
     if (converter) {
 
       // skip for existing thumbnails (only checks first folder)
-      if (fs.existsSync(`${thumbnailPath}/${config.thumbnail.image[0].path}/${tokenId}.webp`)) {
+      if (fs.existsSync(`${thumbnailPath}/${tokenId}-${config.thumbnail.image.sizes[0]}.${config.thumbnail.image.formats[0]}`)) {
         continue
       }
 
@@ -342,7 +239,7 @@ const main = async () => {
               auto-rotate
               auto-rotate-delay="1"
               interaction-prompt="none"
-              rotation-per-second="360deg"
+              rotation-per-second="0deg"
             ></model-viewer>
             <script>
               const modelViewerParameters = document.querySelector('model-viewer#viewer');

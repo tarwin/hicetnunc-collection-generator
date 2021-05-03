@@ -4,37 +4,14 @@
   "downloadPath": "./downloads",
   "largeImagePath": "./large-images",
   "distPath": "./dist",
-  "puppetSize": 1200,
+  "puppetSize": 1024,
   "thumbnail": {
     "path": "thumbs",
-    "defaultImageFormat": "webp",
-    "image": [
-      {
-        "size": 128,
-        "type": "contain",
-        "path": "thumb-128",
-        "animated": true
-      },
-      {
-        "size": 400,
-        "type": "contain",
-        "path": "thumb-400",
-        "animated": true
-      },
-      {
-        "size": 800,
-        "type": "contain",
-        "path": "thumb-800",
-        "animated": true
-      }
-    ],
-    "video": [
-      {
-        "size": 200,
-        "type": "contain",
-        "path": "video-thumb"
-      }
-    ]
+    "image": {
+      "sizes": [128, 256, 512],
+      "formats": ["webp", "jpg", "avif"]
+    },
+    "video": [128, 256, 512]
   },
   "ignoreObjects": [17038, 17032, 9426, 9416, 9414, 9413, 25119, 17102]
 }

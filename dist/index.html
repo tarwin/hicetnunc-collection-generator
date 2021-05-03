@@ -55,7 +55,7 @@
 
         <masonry
           id="container"
-          :cols="{default: 4, 1000: 3, 700: 2, 400: 1}"
+          :cols="{default: 4, 1200: 3, 900: 2, 600: 1}"
           :gutter="{default: '0px', 1000: '0px'}"
         >
           <div
@@ -63,7 +63,11 @@
             @click="showObj(obj.id)"
             class="item"
           >
-            <img :src="`./${thumbPath}/${obj.id}.webp`" />
+            <picture>
+              <source type="image/avif" :srcset="`./${thumbPath}/${obj.id}-512.avif`">
+              <source type="image/webp" :srcset="`./${thumbPath}/${obj.id}-512.webp`">
+              <img :src="`./${thumbPath}/${obj.id}-512.jpg`" />
+            </picture>
             <div class="name-wrapper"><div class="name">{{ obj.name }}</div></div>
           </div>
         </masonry>
