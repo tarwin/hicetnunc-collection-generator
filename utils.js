@@ -7,12 +7,29 @@ const config = require('./config.json')
 const thumbnailPath = `${config.distPath}/${config.thumbnail.path}`
 
 const createThumbnails = async (largeImageFilename, objectId) => {
+  const meta = await getImageMetadata(`${config.largeImagePath}/${largeImageFilename}`)
   for (let size of config.thumbnail.image.sizes) {
     for (let format of config.thumbnail.image.formats) {
       await resizeImageToMaxWidth(
+        meta,
         size,
         `${config.largeImagePath}/${largeImageFilename}`,
         `${thumbnailPath}/${objectId}-${size}.${format}`,
+      )
+    }
+  }
+  return meta
+}
+
+const createAudioThumbnail = async (filename, objectId) => {
+  for (let size of config.thumbnail.image.sizes) {
+    for (let format of config.thumbnail.image.formats) {
+      await resizeImageToMaxWidth(
+        { width: 1024, height: 512 },
+        size,
+        `${config.largeImagePath}/${filename}`,
+        `${thumbnailPath}/${objectId}-${size}.${format}`,
+        true
       )
     }
   }
@@ -20,16 +37,16 @@ const createThumbnails = async (largeImageFilename, objectId) => {
 
 const createLargeImage = async (filename, objectId) => {
   await resizeImageToMaxWidth(
+    meta,
     1024,
     `${config.downloadPath}/${filename}`,
     `${config.largeImagePath}/${objectId}.png`
   )
 }
 
-const resizeImageToMaxWidth = async (width, inFile, outFile) => {
+const resizeImageToMaxWidth = async (meta, width, inFile, outFile, forceWidth = false) => {
   console.log('resizeImageToMaxWidth', inFile, outFile)
-  const meta = await getImageMetadata(inFile)
-  const dims = getMaxDimensions(meta.width, meta.height, width)
+  const dims = getMaxDimensions(meta.width, meta.height, width, forceWidth)
   let options = {}
   // if it's animated ie GIF, get an image from the middle
   if (meta.pages) {
@@ -46,12 +63,16 @@ function sleep(ms) {
 }
 
 // gives you dimensions maximized to a measure
-const getMaxDimensions = (width, height, maxWidth) => {
+const getMaxDimensions = (width, height, maxWidth, forceWidth = false) => {
   let w = width
   let h = height
   if (width > maxWidth) {
     w = maxWidth
     h = height * (maxWidth / width)
+  }
+  if (forceWidth && width < maxWidth) {
+    w = maxWidth
+    h = maxWidth * (width / height)
   }
   return {
     width: Math.round(w),
@@ -115,5 +136,6 @@ module.exports = {
   getMaxDimensions,
   niceExec,
   downloadFile,
-  getImageMetadata
+  getImageMetadata,
+  createAudioThumbnail
 }

@@ -23,6 +23,7 @@ Also thanks to
 - serve: `npm install -g serve`
 - python3
 - python3: `python -m pip install ipfsapi` (IPFS API)
+- For PDFs: `brew install imagemagick ghostscript poppler` (sorry MacOS only ATM)
 
 # First
 
@@ -35,14 +36,14 @@ Also thanks to
 - `downloadPath : string`: the location to store downloaded files
 - `largeImagePath : string`: the location to store large images
 - `distPath : string`: the location for generated data
+- `puppetSize`: the size of large images for HTML, SVG and GLTF (browser size)
 - `thumbnail`: options for thumbnail generation
   - `path: string`: the directory under your `distPath` to store generated thumbnails
-  - `image : Array<{size, type, path}>`: an array of image thumbnail versions to create
-    - `size : int`: width or height, depending on type
-    - `type : string`: can be one of `contain`, `width` or `height`
-    - `path : string`: the path under `thumbnailPath` to store these thumbnails
-
-*Only `"type": "contain"` works so far*
+  - `image : Array<{sizes, formats}>`: an array of image thumbnail versions to create
+    - `sizes : Array<int>`: width of generated thumbs
+    - `formats : Array<string>`: format of thumbnails
+  - `video: Array<int>`: size of video thumbnails to create (TODO)
+- `ignoreObjects`: list of OBJKT IDs to ignore when generating
 
 # Run
 

@@ -96,6 +96,20 @@
                 <img :src="currentObject.url" />
               </pinch-zoom>
             </template>
+            <template v-if="currentObjectType === 'pdf'">
+              <iframe
+                class="full-display full-display-pdf"
+                :src="`${currentObject.url}`"
+                scrolling="no"
+              ></iframe>
+            </template>
+            <template v-if="currentObjectType === 'audio'">
+              <img :src="`./${thumbPath}/${currentObject.id}.svg`" />
+              <audio
+                :src="`https://${currentObject.cid}.ipfs.infura-ipfs.io/`"
+                controls=""
+              ></audio>
+            </template>
             <video
               v-if="currentObjectType === 'video'"
               class="full-display full-display-video"

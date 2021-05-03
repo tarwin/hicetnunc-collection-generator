@@ -11,6 +11,8 @@ const fs = require('fs');
 const puppeteer = require('puppeteer');
 const ipfsClient = require('ipfs-http-client')
 const fetch = require('node-fetch')
+const audioToSvgWaveform = require('./lib/audio-to-svg-waveform');
+var PDFImage = require("pdf-image").PDFImage;
 // const PuppeteerVideoRecorder = require('puppeteer-video-recorder');
 
 const {
@@ -21,7 +23,9 @@ const {
   getMaxDimensions,
   niceExec,
   downloadFile,
-  getImageMetadata
+  getImageMetadata,
+  createAudioThumbnail,
+  createPdfThumbnail
 } = require('./utils')
 
 // ------------------------------------------------------------------
@@ -164,15 +168,29 @@ const main = async () => {
     // we should have one for each, but if more are added maybe not?
     if (converter) {
 
-      // skip for existing thumbnails (only checks first folder)
+      // skip for existing thumbnails
       if (fs.existsSync(`${thumbnailPath}/${tokenId}-${config.thumbnail.image.sizes[0]}.${config.thumbnail.image.formats[0]}`)) {
         continue
       }
 
-      if (converter.use === 'sharp') {
-        // making thumb
+      if (converter.use === 'pdf') {
+        const pdfImage = new PDFImage(`${config.downloadPath}/${filename}`)
+        await pdfImage.convertPage(0) // saves in downloads / tokenId-0.png
+        fs.copyFileSync(`${config.downloadPath}/${tokenId}-0.png`, `${config.largeImagePath}/${tokenId}.png`)
+        const meta = await createThumbnails(`${tokenId}.png`, tokenId)
+      } else if (converter.use === 'audio') {
+        fs.copyFileSync(`./${config.largeImagePath}/${tokenId}.svg`, `./${thumbnailPath}/${tokenId}.svg`)
+        await createAudioThumbnail(`${tokenId}.svg`, tokenId)
+      } else if (converter.use === 'sharp') {
         fs.copyFileSync(`${config.downloadPath}/${filename}`, `${config.largeImagePath}/${filename}`)
-        await createThumbnails(filename, tokenId)
+        const preMata = await getImageMetadata(`${config.largeImagePath}/${filename}`)
+        if (preMata.format === 'gif' && preMata.pages > 1) {
+
+        } else {
+          // making thumb
+          const meta = await createThumbnails(filename, tokenId)
+          obj.info = { width: meta.width, height: meta.height, frames: meta.pages || 1 }
+        }
       } else if (converter.use === 'ffmpeg') {
         // remove if exists, otherwise FFMPEG may complain
         if (fs.existsSync(`${config.largeImagePath}/${tokenId}.png`)) {

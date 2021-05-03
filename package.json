@@ -15,9 +15,12 @@
     "cids": "^1.1.6",
     "ipfs-http-client": "^49.0.4",
     "node-fetch": "^2.6.1",
+    "pdf-image": "^2.0.0",
     "puppeteer": "^8.0.0",
     "puppeteer-video-recorder": "^1.0.3",
-    "sharp": "^0.28.1"
+    "sharp": "^0.28.1",
+    "svgo": "^2.3.0",
+    "web-audio-api": "^0.2.2"
   },
   "devDependencies": {
     "chromecast-device-emulator": "^1.2.7"

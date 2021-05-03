@@ -402,6 +402,41 @@
       "cid": "bafybeifmsfxmjuxie2kh3fjcrom2q7u4xg2vw4qwfuot6yi5tm2trppmcy"
     },
     {
+      "id": 36049,
+      "name": "Absinthe Carousel ",
+      "description": "“Absinthe Carousel” - An unbelievable journey through Portugal, Spain, and France. An account immersed in the rich culture of the regions. Complete with images that transport you into mysterious corners, ethereal rendezvous with Scottish wizards, an unwitting encounter with dark revolutionaries, the spirit realm, and much more.  Punch your ticket and come along for a once in a lifetime, spectacular adventure aboard the Absinth Carousel! - eBook PDF 23.1MB - © 2019 Skip Hunt - @skiphunt",
+      "tags": [
+        "travel",
+        "ebook",
+        "pdf",
+        "journey",
+        "photography",
+        "adventure",
+        "skiphunt"
+      ],
+      "creatorAddress": "tz1Nn7epGL5W5YpE4vGq2eUZUJecA8QyEZjK",
+      "mime": "application/pdf",
+      "artifactUri": "ipfs://QmR8TCHBuNNAjHQstkEzDaSG98vZ4n9EZPzqFDrgctq5AD",
+      "cid": "bafybeibjomjglcrep7aumyt4l457zlkt2vmwmnmix4mzbvarsrwneaxdoy"
+    },
+    {
+      "id": 34506,
+      "name": "Poliwog - UNR Work In Progress",
+      "description": "This is an experimental mint of an unreleased psychedelic trance track of my project Poliwog. ",
+      "tags": [
+        "psytrance",
+        "music",
+        "psychedelic",
+        "audio",
+        "beats",
+        "electronicmusic"
+      ],
+      "creatorAddress": "tz1MUcbDL1UbE4DTibDuDs8dLnih4u6Ka8uT",
+      "mime": "audio/mpeg",
+      "artifactUri": "ipfs://Qmc7rFFKmUzasjej9y3tkjc1kwrWQPjPWdK2gNdFFymdbu",
+      "cid": "bafybeigmxqoh2fgfsvf4qnxvwdpccter24tdiurbmgz4qqyqs7ex7h62ta"
+    },
+    {
       "id": 34408,
       "name": "paparazzi",
       "description": "Little paparazzis are following you. Click to random color. Playing with three.js for first time. ",
