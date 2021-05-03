@@ -1,3 +1,6 @@
+- convert GIF to thumbs
+- convert video to video thumbs
+
 DISPLAY
 
 - from URL

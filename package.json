@@ -5,8 +5,7 @@
   "main": "test.js",
   "scripts": {
     "start": "node index.js",
-    "serve-dist": "serve ./dist/ -C",
-    "emulate-cast": "node ./cast/emulator.js"
+    "serve-dist": "serve ./dist/ -C"
   },
   "author": "",
   "license": "ISC",

@@ -11,21 +11,18 @@ const fs = require('fs');
 const puppeteer = require('puppeteer');
 const ipfsClient = require('ipfs-http-client')
 const fetch = require('node-fetch')
-const audioToSvgWaveform = require('./lib/audio-to-svg-waveform');
 var PDFImage = require("pdf-image").PDFImage;
 // const PuppeteerVideoRecorder = require('puppeteer-video-recorder');
 
 const {
   createThumbnails,
   createLargeImage,
-  resizeImageToMaxSize,
   sleep,
   getMaxDimensions,
   niceExec,
   downloadFile,
   getImageMetadata,
-  createAudioThumbnail,
-  createPdfThumbnail
+  createAudioThumbnail
 } = require('./utils')
 
 // ------------------------------------------------------------------
