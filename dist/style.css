@@ -283,6 +283,7 @@ footer a, footer a:visited {
 
 #switch-collection {
   padding-left: 15px;
+  color: var(--text-color);
 }
 #switch-collection button {
   background: none;
