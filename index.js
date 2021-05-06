@@ -122,18 +122,6 @@ const main = async () => {
   if (!fillMode) {
     const res = await fetch(`https://51rknuvw76.execute-api.us-east-1.amazonaws.com/dev/tz?tz=${config.ownerAddress}`)
     objects = (await res.json()).result
-    if (config.ignoreObjects && config.ignoreObjects.length) {
-      objects = objects.filter(obj => {
-        // filter out unwanted
-        return !config.ignoreObjects.includes(obj.token_id)
-      })
-    }
-    if (config.onlyObjects && config.onlyObjects.length) {
-      objects = objects.filter(obj => {
-        // filter out unwanted
-        return config.onlyObjects.includes(obj.token_id)
-      })
-    }
   } else {
     objects = require(config.fillMode.data)
     if (config.fillMode.limit) {
@@ -145,6 +133,19 @@ const main = async () => {
       objects = objects.slice(start, end)
     }
     console.log(`Working to fill ${objects.length} OBJKTs.`)
+  }
+
+  if (config.ignoreObjects && config.ignoreObjects.length) {
+    objects = objects.filter(obj => {
+      // filter out unwanted
+      return !config.ignoreObjects.includes(obj.token_id)
+    })
+  }
+  if (config.onlyObjects && config.onlyObjects.length) {
+    objects = objects.filter(obj => {
+      // filter out unwanted
+      return config.onlyObjects.includes(obj.token_id)
+    })
   }
 
   // items you own, others are ones you created
@@ -296,7 +297,7 @@ const main = async () => {
           const durationMatch = info.match(/Duration: ([0-9][0-9]):([0-9][0-9]):([0-9][0-9]\.[0-9]+)/i)
           if (durationMatch) {
             let midpoint = (parseFloat(durationMatch[3]) + parseInt(durationMatch[2]) * 60 + parseInt(durationMatch[1]) * 3600) / 2
-            let convertCommand = `ffmpeg -y -i ${config.downloadPath}/${filename} -vcodec mjpeg -vframes 1 -an -f rawvideo`
+            let convertCommand = `ffmpeg -y -i ${config.downloadPath}/${filename} -vcodec mjpeg -vframes 1 -an -f rawvideo -vf scale=iw*sar:ih `
             convertCommand += ` -ss ${midpoint}`
             convertCommand += ` ${config.largeImagePath}/${tokenId}.png`
             await niceExec(convertCommand)

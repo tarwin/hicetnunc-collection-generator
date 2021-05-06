@@ -1,17 +1,33 @@
+- test weird video
 
+maxGifSizeKb: max GIF size option
+maxLengthSeconds: add max video length
 
-- convert GIF to thumbs
-  - if file size smaller than 100k use original
-    - save webp and avif versions if asked for
-  - otherwise
-    - if width < size don't do size
-      - convert to MP4
-  - convert to still images of required
+- add w.json o.json to ignore lists
+- make sure images go with mp4 in JSON
 
-ffmpeg -t 3 -i 10345.mp4 -movflags faststart -an -pix_fmt yuv420p -vf "fps=12,scale=512:-1:flags=lanczos" video.mp4
-ffmpeg -t 3 -i 22030.gif -movflags faststart -an -pix_fmt yuv420p -vf "fps=12,scale=512:120:flags=lanczos" video.mp4
+- add "gifThumb" for personal collection
 
-- convert video to video thumbs
+- make sure nothing gets LARGER when resizing
+- add HH:MM:SS to videos (and GIFs)
+
+----
+
+- add AVIF to example FILL creation
+- add AV1 for video to example
+
+await navigator.mediaCapabilities.decodingInfo({
+  type: "file",
+    video: {
+      contentType: "video/mp4; codecs=avc1.420034",
+      width: 800,
+      height: 600,
+      bitrate: 10000,
+      framerate: 15
+   }
+})
+
+================================================
 
 DISPLAY
 
@@ -89,73 +105,3 @@ DISPLAY
 
 
 ==========================================
-
-
-const imageSettings = {
-  quality: 4,
-  sizes: [128, 256, 512],
-}
-
-const videoSettings = {
-  quality: 4,
-  maxTime: 10,
-  sizes: [128, 256, 512],
-}
-
-
-{
-  token_id: 40230,
-  mime: 'mp4',
-  width: 2000,
-  height: 1200,
-  size: 25000000 // in bytes
-  media: [
-    { m: 'jpg', w: 256, h: 120, f: '40230-256.jpg' },
-    { m: 'jpg', w: 512, h: 240, f: '40230-512.jpg' },
-    { m: 'webp', w: 256, h: 120, f: '40230-256.webp' },
-    { m: 'webp', w: 512, h: 240, f: '40230-512.webp' },
-    { m: 'avif', w: 256, h: 120, f: '40230-256.avif' },
-    { m: 'avif', w: 512, h: 240, f: '40230-512.avif' },
-    { m: 'mp4', w: 256, h: 120, f: '40230-256.mp4' },
-    { m: 'mp4', w: 512, h: 240, f: '40230-512.mp4' },
-  ]
-}
-
-{
-  token_id: 40230,
-  mime: 'gif',
-  media: [
-    { m: 'gif', w: 256, h: 120, f: '40230-256.gif' },
-    { m: 'gif', w: 512, h: 240, f: '40230-512.gif' },
-    { m: 'webp', w: 256, h: 120, f: '40230-256.webp' },
-    { m: 'webp', w: 512, h: 240, f: '40230-512.webp' },
-    { m: 'avif', w: 256, h: 120, f: '40230-256.avif' },
-    { m: 'avif', w: 512, h: 240, f: '40230-512.avif' },
-  ]
-}
-
-{
-  token_id: 40230,
-  mime: 'gltf',
-  media: [
-    { m: 'jpg', w: 256, h: 120, f: '40230-256.jpg' },
-    { m: 'jpg', w: 512, h: 240, f: '40230-512.jpg' },
-    { m: 'webp', w: 256, h: 120, f: '40230-256.webp' },
-    { m: 'webp', w: 512, h: 240, f: '40230-512.webp' },
-    { m: 'avif', w: 256, h: 120, f: '40230-256.avif' },
-    { m: 'avif', w: 512, h: 240, f: '40230-512.avif' },
-  ]
-}
-
-{
-  token_id: 40230,
-  mime: 'png',
-  media: [
-    { m: 'jpg', w: 256, h: 120, f: '40230-256.jpg' },
-    { m: 'jpg', w: 512, h: 240, f: '40230-512.jpg' },
-    { m: 'webp', w: 256, h: 120, f: '40230-256.webp' },
-    { m: 'webp', w: 512, h: 240, f: '40230-512.webp' },
-    { m: 'avif', w: 256, h: 120, f: '40230-256.avif' },
-    { m: 'avif', w: 512, h: 240, f: '40230-512.avif' },
-  ]
-}

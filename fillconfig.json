@@ -6,28 +6,38 @@
   "fillMode": {
     "data": "./fill.json",
     "uploadToIpfs": false,
-    "deleteDownloadsAfterCreation": true,
-    "deleteLargeAfterCreation": true,
+    "deleteDownloadsAfterCreation": false,
+    "deleteLargeAfterCreation": false,
     "objPath": "./tmp/obj",
-    "limit": 2,
-    "offest": 0
+    "limit": 50,
+    "offest": 45000
   },
   "puppetSize": 1024,
   "thumbnail": {
     "path": "thumbs",
+    "maxGifSizeKb": 300,
     "image": {
       "formats": [{
         "type": "jpeg",
         "options": {
           "quality": 60
         }
+      },
+      {
+        "type": "avif"
       }],
-      "sizes": [128, 256, 512]
+      "sizes": [128, 256, 512, 1024]
     },
     "video": {
+      "maxLengthSeconds": 15,
+      "formats": [{
+        "type": "av1"
+      },{
+        "type": "h264"
+      }],
       "sizes": [128, 256, 512]
     }
   },
   "ignoreObjects": [],
-  "onlyObjects": []
+  "onlyObjects": [38417]
 }

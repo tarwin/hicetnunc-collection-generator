@@ -8,6 +8,7 @@
   "puppetSize": 1024,
   "thumbnail": {
     "path": "thumbs",
+    "maxGifSizeKb": 300,
     "image": {
       "formats": [{
         "type": "webp"
@@ -22,6 +23,12 @@
       "sizes": [128, 256, 512]
     },
     "video": {
+      "maxLengthSeconds": 3,
+      "formats": [{
+        "type": "av1"
+      },{
+        "type": "h264"
+      }],
       "sizes": [128, 256, 512]
     }
   },
