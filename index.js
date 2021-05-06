@@ -275,7 +275,7 @@ const main = async () => {
             // for non fill mode we also want general thumbs
             if (!fillMode) {
               // general thumbnails
-              objThumbnails[tokenId].concat(await createThumbnails(filename, tokenId))
+              objThumbnails[tokenId] = objThumbnails[tokenId].concat(await createThumbnails(filename, tokenId))
             }
           }
         }
@@ -300,7 +300,7 @@ const main = async () => {
         objThumbnails[tokenId] = await createVideoThumbnailsFromVideo(`${config.downloadPath}/${filename}`, `${config.largeImagePath}/${tokenId}.png`, tokenId)
 
         // create image thumbs
-        objThumbnails[tokenId].concat(await createThumbnails(`${tokenId}.png`, tokenId))
+        objThumbnails[tokenId] = objThumbnails[tokenId].concat(await createThumbnails(`${tokenId}.png`, tokenId))
 
         canDeleteLarge.push(`${config.largeImagePath}/${tokenId}.png`)
       } else if (converter.use === 'html') {
