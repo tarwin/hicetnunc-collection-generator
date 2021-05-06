@@ -1,10 +1,10 @@
-- test weird video
+- make sure images go with mp4 in JSON
 
 maxGifSizeKb: max GIF size option
 maxLengthSeconds: add max video length
 
 - add w.json o.json to ignore lists
-- make sure images go with mp4 in JSON
+
 
 - add "gifThumb" for personal collection
 

@@ -198,7 +198,8 @@ const main = async () => {
     // could use another IPFS HTTP gateway?
     const url = config.cloudFlareUrl + ipfsUri
 
-    const canDelete = []
+    const canDeleteDownload = []
+    const canDeleteLarge = []
 
     // write actual
     const filename = `${tokenId}.${converter.ext}`
@@ -216,9 +217,7 @@ const main = async () => {
         } else {
           await downloadFile(url, `${config.downloadPath}/${filename}`)
         }
-        if (config.fillMode.deleteDownloadsAfterCreation) {
-          canDelete.push(`${config.downloadPath}/${filename}`)
-        }
+        canDeleteDownload.push(`${config.downloadPath}/${filename}`)
         console.log(`Written "${filename}"`)
       } else {
         console.log(`Exists "${filename}"`)
@@ -240,12 +239,8 @@ const main = async () => {
           await pdfImage.convertPage(0) // saves in downloads / tokenId-0.png
           fs.copyFileSync(`${config.downloadPath}/${tokenId}-0.png`, `${config.largeImagePath}/${tokenId}.png`)
           
-          if (config.fillMode.deleteDownloadsAfterCreation) {
-            canDelete.push(`${config.downloadPath}/${tokenId}-0.png`)
-          }
-          if (config.fillMode.deleteLargeAfterCreation) {
-            canDelete.push(`${config.largeImagePath}/${tokenId}.png`)
-          }
+          canDeleteDownload.push(`${config.downloadPath}/${tokenId}-0.png`)
+          canDeleteLarge.push(`${config.largeImagePath}/${tokenId}.png`)
         }
         objThumbnails[tokenId] = await createThumbnails(`${tokenId}.png`, tokenId)
 
@@ -256,9 +251,7 @@ const main = async () => {
         fs.copyFileSync(`./${config.largeImagePath}/${tokenId}.svg`, `./${thumbnailPath}/${tokenId}.svg`)
         objThumbnails[tokenId] = await createAudioThumbnail(`${tokenId}.svg`, tokenId)
 
-        if (config.fillMode.deleteLargeAfterCreation) {
-          canDelete.push(`${config.largeImagePath}/${tokenId}.svg`)
-        }
+        canDeleteLarge.push(`${config.largeImagePath}/${tokenId}.svg`)
       } else if (converter.use === 'sharp') {
         if (!fs.existsSync(`${config.largeImagePath}/${filename}`)) {
           fs.copyFileSync(`${config.downloadPath}/${filename}`, `${config.largeImagePath}/${filename}`)
@@ -287,9 +280,7 @@ const main = async () => {
           }
         }
 
-        if (config.fillMode.deleteLargeAfterCreation) {
-          canDelete.push(`${config.largeImagePath}/${filename}`)
-        }
+        canDeleteLarge.push(`${config.largeImagePath}/${filename}`)
       } else if (converter.use === 'ffmpeg') {
         if (!fs.existsSync(`${config.largeImagePath}/${tokenId}.png`)) {
           // extract image from middle of video
@@ -311,9 +302,7 @@ const main = async () => {
         // create image thumbs
         objThumbnails[tokenId].concat(await createThumbnails(`${tokenId}.png`, tokenId))
 
-        if (config.fillMode.deleteLargeAfterCreation) {
-          canDelete.push(`${config.largeImagePath}/${tokenId}.png`)
-        }
+        canDeleteLarge.push(`${config.largeImagePath}/${tokenId}.png`)
       } else if (converter.use === 'html') {
         // has thumb
         if (obj.token_info.displayUri) {
@@ -327,9 +316,7 @@ const main = async () => {
           // create thumbnail
           objThumbnails[tokenId] = await createThumbnails(`${tokenId}.${meta.format}`, tokenId)
 
-          if (config.fillMode.deleteLargeAfterCreation) {
-            canDelete.push(`${config.largeImagePath}/${tokenId}.${meta.format}`)
-          }
+          canDelete.push(`${config.largeImagePath}/${tokenId}.${meta.format}`)
         } else {
           // could use puppeteer to make a thumb but these SHOULD have them defined
           console.log(`ERROR: Missing "displayUri" for ${tokenId}`)
@@ -397,9 +384,7 @@ const main = async () => {
 
         objThumbnails[tokenId] = await createThumbnails(`${tokenId}.png`, tokenId)
 
-        if (config.fillMode.deleteLargeAfterCreation) {
-          canDelete.push(`${config.largeImagePath}/${tokenId}.png`)
-        }
+        canDeleteLarge.push(`${config.largeImagePath}/${tokenId}.png`)
       } else if (converter.use === 'svg') {
         // has thumb
         if (obj.token_info.displayUri) {
@@ -411,9 +396,7 @@ const main = async () => {
           fs.renameSync(`${config.downloadPath}/${tokenId}_display`, `${config.downloadPath}/${tokenId}.${meta.format}`)
           await createLargeImage(`${tokenId}.${meta.format}`, tokenId)
 
-          if (config.fillMode.deleteLargeAfterCreation) {
-            canDelete.push(`${config.largeImagePath}/${tokenId}.${meta.format}`)
-          }
+          canDeleteLarge.push(`${config.largeImagePath}/${tokenId}.${meta.format}`)
         } else if (!fs.existsSync(`${config.largeImagePath}/${tokenId}.png`)) {
           const url = `http://localhost:5000/${config.downloadPath.substr(2)}/${tokenId}.svg`
           const meta = await getImageMetadata(`./${config.downloadPath}/${tokenId}.svg`)
@@ -477,15 +460,20 @@ const main = async () => {
         // create thumbnails from display or from created image
         objThumbnails[tokenId] = await createThumbnails(`${tokenId}.png`, tokenId)
 
-        if (config.fillMode.deleteLargeAfterCreation) {
-          canDelete.push(`${config.largeImagePath}/${tokenId}.png`)
-        }
+        canDeleteLarge.push(`${config.largeImagePath}/${tokenId}.png`)
       }
 
       if (fillMode) {
         // delete any temporary files if asked
-        for (let file of canDelete) {
-          fs.unlinkSync(file)
+        if (config.fillMode.deleteDownloadsAfterCreation) {
+          for (let file of canDeleteDownload) {
+            fs.unlinkSync(file)
+          }
+        }
+        if (config.fillMode.deleteLargeAfterCreation) {
+          for (let file of canDeleteLarge) {
+            fs.unlinkSync(file)
+          }
         }
 
         const objData = objThumbnails[tokenId].map(meta => {
