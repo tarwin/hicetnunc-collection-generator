@@ -1,4 +1,16 @@
+
+
 - convert GIF to thumbs
+  - if file size smaller than 100k use original
+    - save webp and avif versions if asked for
+  - otherwise
+    - if width < size don't do size
+      - convert to MP4
+  - convert to still images of required
+
+ffmpeg -t 3 -i 10345.mp4 -movflags faststart -an -pix_fmt yuv420p -vf "fps=12,scale=512:-1:flags=lanczos" video.mp4
+ffmpeg -t 3 -i 22030.gif -movflags faststart -an -pix_fmt yuv420p -vf "fps=12,scale=512:120:flags=lanczos" video.mp4
+
 - convert video to video thumbs
 
 DISPLAY

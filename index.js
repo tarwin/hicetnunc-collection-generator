@@ -1,6 +1,29 @@
+const {
+  createThumbnails,
+  createLargeImage,
+  sleep,
+  getMaxDimensions,
+  niceExec,
+  downloadFile,
+  getImageMetadata,
+  createAudioThumbnail,
+  getArgs,
+  createGifThumbnails,
+  createVideoThumbnailsFromGif,
+  createVideoThumbnailsFromVideo
+} = require('./utils')
+
 // ----------------------
 // config
-const config = require('./config.json')
+let config = require('./config.json')
+if (getArgs()[0]) {
+  config = require(`./${getArgs()[0]}config.json`)
+}
+
+let fillMode = false
+if (config.fillMode) {
+  fillMode = true
+}
 
 const browserWidth = config.puppetSize;
 const browserHeight = config.puppetSize;
@@ -12,18 +35,8 @@ const puppeteer = require('puppeteer');
 const ipfsClient = require('ipfs-http-client')
 const fetch = require('node-fetch')
 var PDFImage = require("pdf-image").PDFImage;
+const audioToSvgWaveform = require('./lib/audio-to-svg-waveform')
 // const PuppeteerVideoRecorder = require('puppeteer-video-recorder');
-
-const {
-  createThumbnails,
-  createLargeImage,
-  sleep,
-  getMaxDimensions,
-  niceExec,
-  downloadFile,
-  getImageMetadata,
-  createAudioThumbnail
-} = require('./utils')
 
 // ------------------------------------------------------------------
 // mime type setup
@@ -62,6 +75,9 @@ if (!fs.existsSync(config.downloadPath)) fs.mkdirSync(config.downloadPath)
 if (!fs.existsSync(config.largeImagePath)) fs.mkdirSync(config.largeImagePath)
 if (!fs.existsSync(config.distPath)) fs.mkdirSync(config.distPath)
 if (!fs.existsSync(thumbnailPath)) fs.mkdirSync(thumbnailPath)
+if (fillMode) {
+  if (!fs.existsSync(config.fillMode.objPath)) fs.mkdirSync(config.fillMode.objPath)
+}
 
 const getNiceDataObjects = async(objects) => {
   const out = []
@@ -77,6 +93,7 @@ const getNiceDataObjects = async(objects) => {
       mime: obj.token_info.formats[0].mimeType,
       artifactUri: obj.token_info.artifactUri,
       cid: subomain,
+      formats: obj.formats
     })
   }
   return out
@@ -101,17 +118,44 @@ const getNiceData = async(collected, created) => {
 // main func / loop
 const main = async () => {
 
-  const res = await fetch(`https://51rknuvw76.execute-api.us-east-1.amazonaws.com/dev/tz?tz=${config.ownerAddress}`)
-  const objects = (await res.json()).result.filter(obj => {
-    // filter out unwanted
-    return !config.ignoreObjects.includes(obj.token_id)
-  })
+  let objects = []
+  if (!fillMode) {
+    const res = await fetch(`https://51rknuvw76.execute-api.us-east-1.amazonaws.com/dev/tz?tz=${config.ownerAddress}`)
+    objects = (await res.json()).result
+    if (config.ignoreObjects && config.ignoreObjects.length) {
+      objects = objects.filter(obj => {
+        // filter out unwanted
+        return !config.ignoreObjects.includes(obj.token_id)
+      })
+    }
+    if (config.onlyObjects && config.onlyObjects.length) {
+      objects = objects.filter(obj => {
+        // filter out unwanted
+        return config.onlyObjects.includes(obj.token_id)
+      })
+    }
+  } else {
+    objects = require(config.fillMode.data)
+    if (config.fillMode.limit) {
+      let start = config.fillMode.offset || 0
+      let end = start + config.fillMode.limit
+      if (end > objects.length - 1) {
+        end = objects.length - 1
+      }
+      objects = objects.slice(start, end)
+    }
+    console.log(`Working to fill ${objects.length} OBJKTs.`)
+  }
 
   // items you own, others are ones you created
-  const collected = objects.filter(d => !d.token_info.creators.includes(config.ownerAddress))
-  const created = objects.filter(d => d.token_info.creators.includes(config.ownerAddress))
-  console.log('COLLECTED: ', collected.length)
-  console.log('CREATED: ', created.length)
+  let collected
+  let created
+  if (!fillMode) {
+    collected = objects.filter(d => !d.token_info.creators.includes(config.ownerAddress))
+    created = objects.filter(d => d.token_info.creators.includes(config.ownerAddress))
+    console.log('COLLECTED: ', collected.length)
+    console.log('CREATED: ', created.length)
+  }
 
   // start puppeteer
   const browser = await puppeteer.launch({
@@ -128,16 +172,32 @@ const main = async () => {
       ],
   });
 
+  const objThumbnails = {}
+
   // go through each object
   for (let obj of objects) {
     const tokenId = obj.token_id
+    let mime
+    let ipfsUri
 
-    const mime = obj.token_info.formats[0].mimeType
+    if (fillMode) {
+      if (!obj.formats || !obj.formats[0] || !obj.formats[0].mimeType) {
+        console.warn(`No formats for ${tokenId}.`)
+        continue
+      }
+      mime = obj.formats[0].mimeType
+      ipfsUri = obj.artifact_uri.substr(7)
+    } else {
+      mime = obj.token_info.formats[0].mimeType
+      ipfsUri = obj.token_info.artifactUri.substr(7)
+    }
+
     const converter = converters[mime]
 
-    const ipfsUri = obj.token_info.artifactUri.substr(7)
     // could use another IPFS HTTP gateway?
     const url = config.cloudFlareUrl + ipfsUri
+
+    const canDelete = []
 
     // write actual
     const filename = `${tokenId}.${converter.ext}`
@@ -155,6 +215,9 @@ const main = async () => {
         } else {
           await downloadFile(url, `${config.downloadPath}/${filename}`)
         }
+        if (config.fillMode.deleteDownloadsAfterCreation) {
+          canDelete.push(`${config.downloadPath}/${filename}`)
+        }
         console.log(`Written "${filename}"`)
       } else {
         console.log(`Exists "${filename}"`)
@@ -166,46 +229,89 @@ const main = async () => {
     if (converter) {
 
       // skip for existing thumbnails
-      if (fs.existsSync(`${thumbnailPath}/${tokenId}-${config.thumbnail.image.sizes[0]}.${config.thumbnail.image.formats[0]}`)) {
+      if (fs.existsSync(`${thumbnailPath}/${tokenId}-${config.thumbnail.image.sizes[0]}.${config.thumbnail.image.formats[0].type}`)) {
         continue
       }
 
       if (converter.use === 'pdf') {
-        const pdfImage = new PDFImage(`${config.downloadPath}/${filename}`)
-        await pdfImage.convertPage(0) // saves in downloads / tokenId-0.png
-        fs.copyFileSync(`${config.downloadPath}/${tokenId}-0.png`, `${config.largeImagePath}/${tokenId}.png`)
-        const meta = await createThumbnails(`${tokenId}.png`, tokenId)
-      } else if (converter.use === 'audio') {
-        fs.copyFileSync(`./${config.largeImagePath}/${tokenId}.svg`, `./${thumbnailPath}/${tokenId}.svg`)
-        await createAudioThumbnail(`${tokenId}.svg`, tokenId)
-      } else if (converter.use === 'sharp') {
-        fs.copyFileSync(`${config.downloadPath}/${filename}`, `${config.largeImagePath}/${filename}`)
-        const preMata = await getImageMetadata(`${config.largeImagePath}/${filename}`)
-        if (preMata.format === 'gif' && preMata.pages > 1) {
+        if (!fs.existsSync(`${config.largeImagePath}/${tokenId}.png`)) {
+          const pdfImage = new PDFImage(`${config.downloadPath}/${filename}`)
+          await pdfImage.convertPage(0) // saves in downloads / tokenId-0.png
+          fs.copyFileSync(`${config.downloadPath}/${tokenId}-0.png`, `${config.largeImagePath}/${tokenId}.png`)
+          
+          if (config.fillMode.deleteDownloadsAfterCreation) {
+            canDelete.push(`${config.downloadPath}/${tokenId}-0.png`)
+          }
+          if (config.fillMode.deleteLargeAfterCreation) {
+            canDelete.push(`${config.largeImagePath}/${tokenId}.png`)
+          }
+        }
+        objThumbnails[tokenId] = await createThumbnails(`${tokenId}.png`, tokenId)
 
+      } else if (converter.use === 'audio') {
+        if (!fs.existsSync(`./${config.largeImagePath}/${tokenId}.svg`)) {
+          await audioToSvgWaveform(`${config.downloadPath}/${filename}`, `./${config.largeImagePath}/${tokenId}.svg`)
+        }
+        fs.copyFileSync(`./${config.largeImagePath}/${tokenId}.svg`, `./${thumbnailPath}/${tokenId}.svg`)
+        objThumbnails[tokenId] = await createAudioThumbnail(`${tokenId}.svg`, tokenId)
+
+        if (config.fillMode.deleteLargeAfterCreation) {
+          canDelete.push(`${config.largeImagePath}/${tokenId}.svg`)
+        }
+      } else if (converter.use === 'sharp') {
+        if (!fs.existsSync(`${config.largeImagePath}/${filename}`)) {
+          fs.copyFileSync(`${config.downloadPath}/${filename}`, `${config.largeImagePath}/${filename}`)
+        }
+        const preMata = await getImageMetadata(`${config.largeImagePath}/${filename}`)
+        if (preMata.format !== 'gif') {
+          objThumbnails[tokenId]= await createThumbnails(filename, tokenId)
         } else {
-          // making thumb
-          const meta = await createThumbnails(filename, tokenId)
-          obj.info = { width: meta.width, height: meta.height, frames: meta.pages || 1 }
+          // single frame so just make thumbs as expected
+          if (preMata.pages === 1) {
+            objThumbnails[tokenId]= await createThumbnails(filename, tokenId)
+          } else {
+            // if smaller than 100k use GIF
+            if (fs.statSync(`${config.largeImagePath}/${filename}`).size <= 100000) {
+              objThumbnails[tokenId] = await createGifThumbnails(filename, tokenId)
+            } else {
+              // else use MP4
+              objThumbnails[tokenId] = await createVideoThumbnailsFromGif(filename, tokenId)
+            }
+
+            // for non fill mode we also want general thumbs
+            if (!fillMode) {
+              // general thumbnails
+              objThumbnails[tokenId].concat(await createThumbnails(filename, tokenId))
+            }
+          }
+        }
+
+        if (config.fillMode.deleteLargeAfterCreation) {
+          canDelete.push(`${config.largeImagePath}/${filename}`)
         }
       } else if (converter.use === 'ffmpeg') {
-        // remove if exists, otherwise FFMPEG may complain
-        if (fs.existsSync(`${config.largeImagePath}/${tokenId}.png`)) {
-          fs.unlinkSync(`${config.largeImagePath}/${tokenId}.png`) 
+        if (!fs.existsSync(`${config.largeImagePath}/${tokenId}.png`)) {
+          // extract image from middle of video
+          const info = await niceExec(`ffprobe ${config.downloadPath}/${filename} 2>&1`)
+          const durationMatch = info.match(/Duration: ([0-9][0-9]):([0-9][0-9]):([0-9][0-9]\.[0-9]+)/i)
+          if (durationMatch) {
+            let midpoint = (parseFloat(durationMatch[3]) + parseInt(durationMatch[2]) * 60 + parseInt(durationMatch[1]) * 3600) / 2
+            let convertCommand = `ffmpeg -y -i ${config.downloadPath}/${filename} -vcodec mjpeg -vframes 1 -an -f rawvideo`
+            convertCommand += ` -ss ${midpoint}`
+            convertCommand += ` ${config.largeImagePath}/${tokenId}.png`
+            await niceExec(convertCommand)
+          } else {
+            console.log('Failed creating large for video', tokenId)
+          }
         }
-        // extract image from middle of video
-        const info = await niceExec(`ffprobe ${config.downloadPath}/${filename} 2>&1`)
-        const durationMatch = info.match(/Duration: ([0-9][0-9]):([0-9][0-9]):([0-9][0-9]\.[0-9]+)/i)
-        if (durationMatch) {
-          let midpoint = (parseFloat(durationMatch[3]) + parseInt(durationMatch[2]) * 60 + parseInt(durationMatch[1]) * 3600) / 2
-          let convertCommand = `ffmpeg -i ${config.downloadPath}/${filename} -vcodec mjpeg -vframes 1 -an -f rawvideo`
-          convertCommand += ` -ss ${midpoint}`
-          convertCommand += ` ${config.largeImagePath}/${tokenId}.png`
-          await niceExec(convertCommand)
-  
-          await createThumbnails(`${tokenId}.png`, tokenId)
-        } else {
-          console.log('Failed creating large for video', tokenId)
+        // create video thumbs
+        objThumbnails[tokenId] = await createVideoThumbnailsFromVideo(`${config.downloadPath}/${filename}`, `${config.largeImagePath}/${tokenId}.png`, tokenId)
+
+        // create image thumbs
+        objThumbnails[tokenId].concat(await createThumbnails(`${tokenId}.png`, tokenId))
+
+        if (config.fillMode.deleteLargeAfterCreation) {
+          canDelete.push(`${config.largeImagePath}/${tokenId}.png`)
         }
       } else if (converter.use === 'html') {
         // has thumb
@@ -218,7 +324,11 @@ const main = async () => {
           fs.renameSync(`${config.downloadPath}/${tokenId}_display`, `${config.downloadPath}/${tokenId}.${meta.format}`)
           fs.copyFileSync(`${config.downloadPath}/${tokenId}.${meta.format}`, `${config.largeImagePath}/${tokenId}.${meta.format}`)
           // create thumbnail
-          await createThumbnails(`${tokenId}.${meta.format}`, tokenId)
+          objThumbnails[tokenId] = await createThumbnails(`${tokenId}.${meta.format}`, tokenId)
+
+          if (config.fillMode.deleteLargeAfterCreation) {
+            canDelete.push(`${config.largeImagePath}/${tokenId}.${meta.format}`)
+          }
         } else {
           // could use puppeteer to make a thumb but these SHOULD have them defined
           console.log(`ERROR: Missing "displayUri" for ${tokenId}`)
@@ -226,63 +336,69 @@ const main = async () => {
       } else if (converter.use === 'gltf') {
         // don't think GL requires a displayUri so we're just going to have
         // to make thumbs ourselves.
-        const url = `http://localhost:5000/${config.downloadPath}/${tokenId}.gltf`
+        if (!fs.existsSync(`${config.largeImagePath}/${tokenId}.png`)) {
+          const url = `http://localhost:5000/${config.downloadPath}/${tokenId}.gltf`
 
-        const html = `<html>
-          <head>
-            <meta name="viewport" content="width=device-width, initial-scale=1">
-            <script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
-            <style>
-              html, body {
-                width: 100%;
-                height: 100%;
-                padding: 0;
-                margin: 0;
-              }
-              #viewer {
-                width: ${browserWidth}px;
-                height: ${browserHeight}px;
-                --poster-color: transparent;
-                --progress-bar-color: transparent;
-              }
-            </style>
-          </head>
-          <body>
-            <model-viewer
-              id="viewer"
-              src="${url}"
-              auto-rotate
-              auto-rotate-delay="1"
-              interaction-prompt="none"
-              rotation-per-second="0deg"
-            ></model-viewer>
-            <script>
-              const modelViewerParameters = document.querySelector('model-viewer#viewer');
-              // once the model is visible
-              modelViewerParameters.addEventListener('model-visibility', (e) => {
-                // wait a second in case the browser hasn't actually rendered it yet
-                setTimeout(() => {
-                  // add a div#done which puppeteer will wait for before taking a screenshot
-                  const d = document.createElement('div')
-                  d.setAttribute('id', 'done')
-                  document.body.appendChild(d)
-                }, 1000)
-              });
-            </script>
-          </body>
-        </html>`
-        
-        let base64Html = Buffer.from(html).toString('base64');
+          const html = `<html>
+            <head>
+              <meta name="viewport" content="width=device-width, initial-scale=1">
+              <script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
+              <style>
+                html, body {
+                  width: 100%;
+                  height: 100%;
+                  padding: 0;
+                  margin: 0;
+                }
+                #viewer {
+                  width: ${browserWidth}px;
+                  height: ${browserHeight}px;
+                  --poster-color: transparent;
+                  --progress-bar-color: transparent;
+                }
+              </style>
+            </head>
+            <body>
+              <model-viewer
+                id="viewer"
+                src="${url}"
+                auto-rotate
+                auto-rotate-delay="1"
+                interaction-prompt="none"
+                rotation-per-second="0deg"
+              ></model-viewer>
+              <script>
+                const modelViewerParameters = document.querySelector('model-viewer#viewer');
+                // once the model is visible
+                modelViewerParameters.addEventListener('model-visibility', (e) => {
+                  // wait a second in case the browser hasn't actually rendered it yet
+                  setTimeout(() => {
+                    // add a div#done which puppeteer will wait for before taking a screenshot
+                    const d = document.createElement('div')
+                    d.setAttribute('id', 'done')
+                    document.body.appendChild(d)
+                  }, 1000)
+                });
+              </script>
+            </body>
+          </html>`
+          
+          let base64Html = Buffer.from(html).toString('base64');
 
-        const browserPage = await browser.newPage();
-        await browserPage.goto(`data:text/html;base64,${base64Html}`);
-        console.log('Waiting for visibility')
-        await browserPage.waitForSelector('#done')
-        console.log('Visible')
-        await browserPage.screenshot({path: `${config.largeImagePath}/${tokenId}.png`, omitBackground: true});
-        await browserPage.close()
+          const browserPage = await browser.newPage();
+          await browserPage.goto(`data:text/html;base64,${base64Html}`);
+          console.log('Waiting for visibility')
+          await browserPage.waitForSelector('#done')
+          console.log('Visible')
+          await browserPage.screenshot({path: `${config.largeImagePath}/${tokenId}.png`, omitBackground: true});
+          await browserPage.close()
+        }
 
-        await createThumbnails(`${tokenId}.png`, tokenId)
+        objThumbnails[tokenId] = await createThumbnails(`${tokenId}.png`, tokenId)
+
+        if (config.fillMode.deleteLargeAfterCreation) {
+          canDelete.push(`${config.largeImagePath}/${tokenId}.png`)
+        }
       } else if (converter.use === 'svg') {
         // has thumb
         if (obj.token_info.displayUri) {
@@ -293,7 +409,11 @@ const main = async () => {
           const meta = await getImageMetadata(`${config.downloadPath}/${tokenId}_display`)
           fs.renameSync(`${config.downloadPath}/${tokenId}_display`, `${config.downloadPath}/${tokenId}.${meta.format}`)
           await createLargeImage(`${tokenId}.${meta.format}`, tokenId)
-        } else {
+
+          if (config.fillMode.deleteLargeAfterCreation) {
+            canDelete.push(`${config.largeImagePath}/${tokenId}.${meta.format}`)
+          }
+        } else if (!fs.existsSync(`${config.largeImagePath}/${tokenId}.png`)) {
           const url = `http://localhost:5000/${config.downloadPath.substr(2)}/${tokenId}.svg`
           const meta = await getImageMetadata(`./${config.downloadPath}/${tokenId}.svg`)
           const dims = getMaxDimensions(meta.width, meta.height, 2000)
@@ -354,18 +474,43 @@ const main = async () => {
           await chosenPage.close()
         }
         // create thumbnails from display or from created image
-        await createThumbnails(`${tokenId}.png`, tokenId)
+        objThumbnails[tokenId] = await createThumbnails(`${tokenId}.png`, tokenId)
+
+        if (config.fillMode.deleteLargeAfterCreation) {
+          canDelete.push(`${config.largeImagePath}/${tokenId}.png`)
+        }
+      }
+
+      if (fillMode) {
+        // delete any temporary files if asked
+        for (let file of canDelete) {
+          fs.unlinkSync(file)
+        }
+
+        const objData = objThumbnails[tokenId].map(meta => {
+          return {
+            mimeType: meta.mime,
+            file: meta.file,
+            fileSize: meta.fileSize,
+            dimensions: {
+              value: `${meta.width}x${meta.height}`,
+              unit: 'px'
+            }
+          }
+        })
+        fs.writeFileSync(`${config.fillMode.objPath}/${tokenId}.json` , JSON.stringify(objData, '', 2))
       }
     }
   }
   await browser.close();
 
-  // copy data
-  const niceData = await getNiceData(collected, created)
-  fs.writeFileSync(`${config.distPath}/data.json`, JSON.stringify(niceData, '', 2))
+  if (!fillMode) {
+    // copy data
+    const niceData = await getNiceData(collected, created)
+    fs.writeFileSync(`${config.distPath}/data.json`, JSON.stringify(niceData, '', 2))
+  }
 }
 
 main()
-.catch(e => console.log(e))
-.finally(async () => {
-})
+  .catch(e => console.log(e))
+  .finally(async () => {})

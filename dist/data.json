@@ -3,22 +3,33 @@
     "thumbnail": {
       "path": "thumbs",
       "image": {
+        "formats": [
+          {
+            "type": "webp"
+          },
+          {
+            "type": "jpeg",
+            "options": {
+              "quality": 60
+            }
+          },
+          {
+            "type": "avif"
+          }
+        ],
         "sizes": [
           128,
           256,
           512
-        ],
-        "formats": [
-          "webp",
-          "jpg",
-          "avif"
         ]
       },
-      "video": [
-        128,
-        256,
-        512
-      ]
+      "video": {
+        "sizes": [
+          128,
+          256,
+          512
+        ]
+      }
     }
   },
   "owner": {
@@ -1633,6 +1644,20 @@
     }
   ],
   "createdObjects": [
+    {
+      "id": 65407,
+      "name": "Tetromino / Jeremy / Healthy",
+      "description": "Created for an unreleased game, TEst TRace ISolate. This healthy specimen is very common. Collect them all!",
+      "tags": [
+        "tetromino",
+        "gif",
+        "game"
+      ],
+      "creatorAddress": "tz1g7Aaac9ssD7cDUTngyXyx8QiVUsAVZCjQ",
+      "mime": "image/gif",
+      "artifactUri": "ipfs://QmaR5gZPQ2aUthPrwec52rqWfUnVXQhnA1nmrAtAF68jgc",
+      "cid": "bafybeiftn3g4iorcu4nnzph2r7zykiaibrpizj6a6mbjsmqgzz7wargcze"
+    },
     {
       "id": 9054,
       "name": "Circles. 1993. QBasic. Memory of.",

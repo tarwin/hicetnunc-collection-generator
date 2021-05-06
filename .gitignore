@@ -3,8 +3,11 @@ out
 
 downloads
 large-images
+fill.json
 
 dist/thumbs
 dist/data.json
 dist/.gitignore
 dist/.git
+
+tmp

@@ -1,23 +1,26 @@
 {
-  "ownerAddress": "tz1g7Aaac9ssD7cDUTngyXyx8QiVUsAVZCjQ",
   "cloudFlareUrl": "https://cloudflare-ipfs.com/ipfs/",
-  "downloadPath": "./downloads",
-  "largeImagePath": "./large-images",
-  "distPath": "./dist",
-  "fillMode": false,
+  "downloadPath": "./tmp/downloads",
+  "largeImagePath": "./tmp/large-images",
+  "distPath": "./tmp",
+  "fillMode": {
+    "data": "./fill.json",
+    "uploadToIpfs": false,
+    "deleteDownloadsAfterCreation": true,
+    "deleteLargeAfterCreation": true,
+    "objPath": "./tmp/obj",
+    "limit": 2,
+    "offest": 0
+  },
   "puppetSize": 1024,
   "thumbnail": {
     "path": "thumbs",
     "image": {
       "formats": [{
-        "type": "webp"
-      },{
         "type": "jpeg",
         "options": {
           "quality": 60
         }
-      },{
-        "type": "avif"
       }],
       "sizes": [128, 256, 512]
     },
@@ -25,6 +28,6 @@
       "sizes": [128, 256, 512]
     }
   },
-  "ignoreObjects": [17038, 17032, 9426, 9416, 9414, 9413, 25119, 17102],
+  "ignoreObjects": [],
   "onlyObjects": []
 }
