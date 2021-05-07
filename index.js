@@ -10,7 +10,8 @@ const {
   getArgs,
   createGifThumbnails,
   createVideoThumbnailsFromGif,
-  createVideoThumbnailsFromVideo
+  createVideoThumbnailsFromVideo,
+  getVideoOrGifDuration
 } = require('./utils')
 
 // ----------------------
@@ -36,6 +37,7 @@ const ipfsClient = require('ipfs-http-client')
 const fetch = require('node-fetch')
 var PDFImage = require("pdf-image").PDFImage;
 const audioToSvgWaveform = require('./lib/audio-to-svg-waveform')
+const { inflate } = require('zlib')
 // const PuppeteerVideoRecorder = require('puppeteer-video-recorder');
 
 // ------------------------------------------------------------------
@@ -271,6 +273,9 @@ const main = async () => {
               // else use MP4
               objThumbnails[tokenId] = await createVideoThumbnailsFromGif(filename, tokenId)
             }
+            // get duration of video/gif thumbs
+            const duration = await getVideoOrGifDuration(`${thumbnailPath}/${objThumbnails[tokenId][0].file}`)
+            objThumbnails[tokenId].forEach(o => o.duration = duration)
 
             // for non fill mode we also want general thumbs
             if (!fillMode) {
@@ -284,10 +289,9 @@ const main = async () => {
       } else if (converter.use === 'ffmpeg') {
         if (!fs.existsSync(`${config.largeImagePath}/${tokenId}.png`)) {
           // extract image from middle of video
-          const info = await niceExec(`ffprobe ${config.downloadPath}/${filename} 2>&1`)
-          const durationMatch = info.match(/Duration: ([0-9][0-9]):([0-9][0-9]):([0-9][0-9]\.[0-9]+)/i)
-          if (durationMatch) {
-            let midpoint = (parseFloat(durationMatch[3]) + parseInt(durationMatch[2]) * 60 + parseInt(durationMatch[1]) * 3600) / 2
+          const duration = await getVideoOrGifDuration(`${config.downloadPath}/${filename}`, true)
+          if (duration > 0) {
+            let midpoint = duration / 2
             let convertCommand = `ffmpeg -y -i ${config.downloadPath}/${filename} -vcodec mjpeg -vframes 1 -an -f rawvideo -vf scale=iw*sar:ih `
             convertCommand += ` -ss ${midpoint}`
             convertCommand += ` ${config.largeImagePath}/${tokenId}.png`
@@ -298,6 +302,9 @@ const main = async () => {
         }
         // create video thumbs
         objThumbnails[tokenId] = await createVideoThumbnailsFromVideo(`${config.downloadPath}/${filename}`, `${config.largeImagePath}/${tokenId}.png`, tokenId)
+        // get duration of video thumb
+        const duration = await getVideoOrGifDuration(`${thumbnailPath}/${objThumbnails[tokenId][0].file}`)
+        objThumbnails[tokenId].forEach(o => o.duration = duration)
 
         // create image thumbs
         objThumbnails[tokenId] = objThumbnails[tokenId].concat(await createThumbnails(`${tokenId}.png`, tokenId))
@@ -477,7 +484,7 @@ const main = async () => {
         }
 
         const objData = objThumbnails[tokenId].map(meta => {
-          return {
+          const o = {
             mimeType: meta.mime,
             file: meta.file,
             fileSize: meta.fileSize,
@@ -486,6 +493,10 @@ const main = async () => {
               unit: 'px'
             }
           }
+          if (meta.duration) {
+            o.duration = meta.duration
+          }
+          return o
         })
         fs.writeFileSync(`${config.fillMode.objPath}/${tokenId}.json` , JSON.stringify(objData, '', 2))
       }

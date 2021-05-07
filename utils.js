@@ -191,6 +191,19 @@ const resizeImageToMaxWidth = async (meta, width, inFile, outFile, forceWidth = 
     .toFile(outFile)
 }
 
+const getVideoOrGifDuration = async (file, inSeconds = false) => {
+  const info = await niceExec(`ffprobe ${file} 2>&1`)
+  const durationMatch = info.match(/Duration: ([0-9][0-9]):([0-9][0-9]):([0-9][0-9]\.[0-9]+)/i)
+  if (!durationMatch) {
+    return -1
+  }
+  if (inSeconds) {
+    return parseFloat(durationMatch[3]) + parseInt(durationMatch[2]) * 60 + parseInt(durationMatch[1]) * 3600
+  } else {
+    return `${durationMatch[1]}:${durationMatch[2]}:${durationMatch[3]}`
+  }
+}
+
 function sleep(ms) {
   return new Promise(resolve => setTimeout(resolve, ms));
 }
@@ -258,5 +271,6 @@ module.exports = {
   getArgs,
   createGifThumbnails,
   createVideoThumbnailsFromGif,
-  createVideoThumbnailsFromVideo
+  createVideoThumbnailsFromVideo,
+  getVideoOrGifDuration
 }

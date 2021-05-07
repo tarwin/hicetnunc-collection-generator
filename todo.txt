@@ -1,15 +1,8 @@
-- make sure images go with mp4 in JSON
-
-maxGifSizeKb: max GIF size option
-maxLengthSeconds: add max video length
+- add HH:MM:SS to videos (and GIFs)
+- add info about original in JSON
 
 - add w.json o.json to ignore lists
-
-
 - add "gifThumb" for personal collection
-
-- make sure nothing gets LARGER when resizing
-- add HH:MM:SS to videos (and GIFs)
 
 ----
 
