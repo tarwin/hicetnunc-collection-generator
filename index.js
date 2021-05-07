@@ -264,8 +264,8 @@ const main = async () => {
           if (preMata.pages === 1) {
             objThumbnails[tokenId]= await createThumbnails(filename, tokenId)
           } else {
-            // if smaller than 100k use GIF
-            if (fs.statSync(`${config.largeImagePath}/${filename}`).size <= 100000) {
+            // if smaller than X use GIF
+            if (fs.statSync(`${config.largeImagePath}/${filename}`).size <= config.thumbnail.maxGifSizeKb * 1000) {
               objThumbnails[tokenId] = await createGifThumbnails(filename, tokenId)
             } else {
               // else use MP4
