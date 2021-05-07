@@ -13,6 +13,7 @@ if (getArgs()[0]) {
 }
 
 const thumbnailPath = `${config.distPath}/${config.thumbnail.path}`
+const maxVideoLength = config.thumbnail.video.maxLengthSeconds
 
 const niceExec = async (cmd) => {
   return new Promise((resolve, reject) => {
@@ -123,7 +124,7 @@ const createVideoThumbnailsFromGif = async (largeImageFilename, objectId) => {
     // make sure is divisible by 2 for video
     dims.width = dims.width - dims.width % 2
     dims.height = dims.height - dims.height % 2
-    await niceExec(`ffmpeg -y -t 3 -i ${config.largeImagePath}/${largeImageFilename} -movflags faststart -an -pix_fmt yuv420p -vf "fps=12,scale=${dims.width}:${dims.height}:flags=lanczos" ${toFilename}`)
+    await niceExec(`ffmpeg -y -t ${maxVideoLength} -i ${config.largeImagePath}/${largeImageFilename} -movflags faststart -an -pix_fmt yuv420p -vf "fps=12,scale=${dims.width}:${dims.height}:flags=lanczos" ${toFilename}`)
     const fileSize = fs.statSync(toFilename).size
     meta.push({
       width: dims.width,
@@ -145,7 +146,7 @@ const createVideoThumbnailsFromVideo = async (originalVideo, largeImageFilename,
     // make sure is divisible by 2 for video
     dims.width = dims.width - dims.width % 2
     dims.height = dims.height - dims.height % 2
-    const cmd = `ffmpeg -y -t 3 -i ${originalVideo} -movflags faststart -an -pix_fmt yuv420p -vf "fps=12,scale=${dims.width}:${dims.height}:flags=lanczos" ${toFilename}`
+    const cmd = `ffmpeg -y -t ${maxVideoLength} -i ${originalVideo} -movflags faststart -an -pix_fmt yuv420p -vf "fps=12,scale=${dims.width}:${dims.height}:flags=lanczos" ${toFilename}`
     await niceExec(cmd)
     const fileSize = fs.statSync(toFilename).size
     meta.push({
