@@ -11,7 +11,8 @@ const {
   createGifThumbnails,
   createVideoThumbnailsFromGif,
   createVideoThumbnailsFromVideo,
-  getVideoOrGifDuration
+  getVideoOrGifDuration,
+  getVideoWidthHeight
 } = require('./utils')
 
 // ----------------------
@@ -176,6 +177,7 @@ const main = async () => {
   });
 
   const objThumbnails = {}
+  const objOriginal = {}
 
   // go through each object
   for (let obj of objects) {
@@ -252,6 +254,8 @@ const main = async () => {
         }
         fs.copyFileSync(`./${config.largeImagePath}/${tokenId}.svg`, `./${thumbnailPath}/${tokenId}.svg`)
         objThumbnails[tokenId] = await createAudioThumbnail(`${tokenId}.svg`, tokenId)
+        const duration = await getVideoOrGifDuration(`${config.downloadPath}/${filename}`)
+        objOriginal[tokenId] = { duration }
 
         canDeleteLarge.push(`${config.largeImagePath}/${tokenId}.svg`)
       } else if (converter.use === 'sharp') {
@@ -272,6 +276,8 @@ const main = async () => {
             } else {
               // else use MP4
               objThumbnails[tokenId] = await createVideoThumbnailsFromGif(filename, tokenId)
+              // and still images
+              objThumbnails[tokenId]= await createThumbnails(filename, tokenId)
             }
             // get duration of video/gif thumbs
             const duration = await getVideoOrGifDuration(`${thumbnailPath}/${objThumbnails[tokenId][0].file}`)
@@ -283,6 +289,11 @@ const main = async () => {
               objThumbnails[tokenId] = objThumbnails[tokenId].concat(await createThumbnails(filename, tokenId))
             }
           }
+        }
+
+        objOriginal[tokenId] = {
+          width: preMata.width,
+          height: preMata.height
         }
 
         canDeleteLarge.push(`${config.largeImagePath}/${filename}`)
@@ -308,6 +319,13 @@ const main = async () => {
 
         // create image thumbs
         objThumbnails[tokenId] = objThumbnails[tokenId].concat(await createThumbnails(`${tokenId}.png`, tokenId))
+
+        const widthHeight = await getVideoWidthHeight(`${config.downloadPath}/${filename}`)
+        objOriginal[tokenId] = {
+          width: widthHeight.width,
+          height: widthHeight.height,
+          duration
+        }
 
         canDeleteLarge.push(`${config.largeImagePath}/${tokenId}.png`)
       } else if (converter.use === 'html') {
@@ -499,6 +517,9 @@ const main = async () => {
           return o
         })
         fs.writeFileSync(`${config.fillMode.objPath}/${tokenId}.json` , JSON.stringify(objData, '', 2))
+        if (objOriginal[tokenId]) {
+          fs.writeFileSync(`${config.fillMode.objPath}/${tokenId}-original.json` , JSON.stringify(objOriginal[tokenId], '', 2))
+        }
       }
     }
   }

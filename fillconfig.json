@@ -10,7 +10,7 @@
     "deleteLargeAfterCreation": false,
     "objPath": "./tmp/obj",
     "limit": 50,
-    "offest": 45000
+    "offest": 50000
   },
   "puppetSize": 1024,
   "thumbnail": {
@@ -31,13 +31,11 @@
     "video": {
       "maxLengthSeconds": 15,
       "formats": [{
-        "type": "av1"
-      },{
         "type": "h264"
       }],
       "sizes": [128, 256, 512]
     }
   },
   "ignoreObjects": [],
-  "onlyObjects": [38417]
+  "onlyObjects": []
 }

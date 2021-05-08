@@ -204,6 +204,15 @@ const getVideoOrGifDuration = async (file, inSeconds = false) => {
   }
 }
 
+const getVideoWidthHeight = async (file) => {
+  const info = await niceExec(`ffprobe -v error -show_entries stream=width,height ${file} 2>&1`)
+  const match = info.match(/width=([0-9]+)\s*\nheight=([0-9]+)/i)
+  if (!match) {
+    return { width: -1, height: -1 }
+  }
+  return { width: match[1], height: match[2] }
+}
+
 function sleep(ms) {
   return new Promise(resolve => setTimeout(resolve, ms));
 }
@@ -272,5 +281,6 @@ module.exports = {
   createGifThumbnails,
   createVideoThumbnailsFromGif,
   createVideoThumbnailsFromVideo,
-  getVideoOrGifDuration
+  getVideoOrGifDuration,
+  getVideoWidthHeight
 }
