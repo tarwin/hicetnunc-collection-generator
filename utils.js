@@ -115,10 +115,9 @@ const createGifThumbnails = async (largeImageFilename, objectId) => {
 }
 
 const createVideoThumbnailsFromGif = async (largeImageFilename, objectId) => {
-  const imageConf = config.thumbnail.image
   const largeMeta = await getImageMetadata(`${config.largeImagePath}/${largeImageFilename}`)
   const meta = []
-  for (let size of imageConf.sizes) {
+  for (let size of config.thumbnail.video.sizes) {
     const toFilename = `${thumbnailPath}/${objectId}-${size}.mp4`
     const dims = getMaxDimensions(largeMeta.width, largeMeta.height, size)
     // make sure is divisible by 2 for video
