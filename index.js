@@ -277,7 +277,7 @@ const main = async () => {
               // else use MP4
               objThumbnails[tokenId] = await createVideoThumbnailsFromGif(filename, tokenId)
               // and still images
-              objThumbnails[tokenId]= await createThumbnails(filename, tokenId)
+              objThumbnails[tokenId] = objThumbnails[tokenId].concat(await createThumbnails(filename, tokenId))
             }
             // get duration of video/gif thumbs
             const duration = await getVideoOrGifDuration(`${thumbnailPath}/${objThumbnails[tokenId][0].file}`)
