@@ -1,6 +1,3 @@
-- add info about original in JSON
-- add duration to audio original
-
 ----
 
 - add "gifThumb" for personal collection

@@ -2,6 +2,7 @@ const axios = require('axios');
 const { exec } = require("child_process");
 const sharp = require('sharp');
 const fs = require('fs');
+const fetch = require('node-fetch')
 
 const getArgs = function() {
   return process.argv.slice(2)
@@ -266,6 +267,24 @@ const getImageMetadata = async (file) => {
   })
 }
 
+const getDisplayUri = async (obj) => {
+  if (obj && obj.token_info && obj.token_info.displayUri) {
+    return obj.token_info.displayUri
+  }
+  if (obj && obj.extras && obj.extras['@@empty']) {
+    try {
+      const infoUri = obj.extras['@@empty'].substr(7)
+      const displayUrl = config.cloudFlareUrl + infoUri
+      const res = await fetch(displayUrl)
+      const json = (await res.json())
+      return json.displayUri
+    } catch {
+      return null
+    }
+  }
+  return null
+}
+
 module.exports = {
   createThumbnails,
   createLargeImage,
@@ -281,5 +300,6 @@ module.exports = {
   createVideoThumbnailsFromGif,
   createVideoThumbnailsFromVideo,
   getVideoOrGifDuration,
-  getVideoWidthHeight
+  getVideoWidthHeight,
+  getDisplayUri
 }

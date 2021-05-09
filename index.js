@@ -12,7 +12,8 @@ const {
   createVideoThumbnailsFromGif,
   createVideoThumbnailsFromVideo,
   getVideoOrGifDuration,
-  getVideoWidthHeight
+  getVideoWidthHeight,
+  getDisplayUri
 } = require('./utils')
 
 // ----------------------
@@ -38,7 +39,6 @@ const ipfsClient = require('ipfs-http-client')
 const fetch = require('node-fetch')
 var PDFImage = require("pdf-image").PDFImage;
 const audioToSvgWaveform = require('./lib/audio-to-svg-waveform')
-const { inflate } = require('zlib')
 // const PuppeteerVideoRecorder = require('puppeteer-video-recorder');
 
 // ------------------------------------------------------------------
@@ -72,6 +72,8 @@ const converters = {
 // ------------------------------------------------------------------
 // utility functions
 
+let errorLog = './error.log'
+
 // create directories if they don't exist
 const thumbnailPath = `${config.distPath}/${config.thumbnail.path}`
 if (!fs.existsSync(config.downloadPath)) fs.mkdirSync(config.downloadPath)
@@ -79,7 +81,12 @@ if (!fs.existsSync(config.largeImagePath)) fs.mkdirSync(config.largeImagePath)
 if (!fs.existsSync(config.distPath)) fs.mkdirSync(config.distPath)
 if (!fs.existsSync(thumbnailPath)) fs.mkdirSync(thumbnailPath)
 if (fillMode) {
+  errorLog = `${config.fillMode.objPath}/error.log`
   if (!fs.existsSync(config.fillMode.objPath)) fs.mkdirSync(config.fillMode.objPath)
+  if (fs.existsSync(errorLog)) {
+    fs.unlinkSync(errorLog)
+  }
+  fs.writeFileSync(errorLog, '')
 }
 
 const getNiceDataObjects = async(objects) => {
@@ -150,6 +157,10 @@ const main = async () => {
       return config.onlyObjects.includes(obj.token_id)
     })
   }
+
+  objects = objects.sort((a, b) => {
+    return a.token_id - b.token_id
+  })
 
   // items you own, others are ones you created
   let collected
@@ -330,8 +341,9 @@ const main = async () => {
         canDeleteLarge.push(`${config.largeImagePath}/${tokenId}.png`)
       } else if (converter.use === 'html') {
         // has thumb
-        if (obj.token_info.displayUri) {
-          const displayIpfsUri = obj.token_info.displayUri.substr(7)
+        const displayUri = await getDisplayUri(obj)
+        if (displayUri) {
+          const displayIpfsUri = displayUri.substr(7)
           const displayUrl = config.cloudFlareUrl + displayIpfsUri
           await downloadFile(displayUrl, `${config.downloadPath}/${tokenId}_display`)
           // rename to correct ext
@@ -341,10 +353,11 @@ const main = async () => {
           // create thumbnail
           objThumbnails[tokenId] = await createThumbnails(`${tokenId}.${meta.format}`, tokenId)
 
-          canDelete.push(`${config.largeImagePath}/${tokenId}.${meta.format}`)
+          canDeleteLarge.push(`${config.largeImagePath}/${tokenId}.${meta.format}`)
         } else {
           // could use puppeteer to make a thumb but these SHOULD have them defined
           console.log(`ERROR: Missing "displayUri" for ${tokenId}`)
+          fs.appendFileSync(errorLog, `\nERROR: Missing "displayUri" for ${tokenId}`)
         }
       } else if (converter.use === 'gltf') {
         // don't think GL requires a displayUri so we're just going to have
@@ -412,8 +425,9 @@ const main = async () => {
         canDeleteLarge.push(`${config.largeImagePath}/${tokenId}.png`)
       } else if (converter.use === 'svg') {
         // has thumb
-        if (obj.token_info.displayUri) {
-          const displayIpfsUri = obj.token_info.displayUri.substr(7)
+        const displayUri = await getDisplayUri(obj)
+        if (displayUri) {
+          const displayIpfsUri = displayUri.substr(7)
           const displayUrl = config.cloudFlareUrl + displayIpfsUri
           await downloadFile(displayUrl, `${config.downloadPath}/${tokenId}_display`)
           // rename to correct ext
@@ -501,24 +515,28 @@ const main = async () => {
           }
         }
 
-        const objData = objThumbnails[tokenId].map(meta => {
-          const o = {
-            mimeType: meta.mime,
-            file: meta.file,
-            fileSize: meta.fileSize,
-            dimensions: {
-              value: `${meta.width}x${meta.height}`,
-              unit: 'px'
+        if (!objThumbnails[tokenId]) {
+            fs.appendFileSync(errorLog, `\nMissing thumbnail info for ${tokenId}.`)
+        } else {
+          const objData = objThumbnails[tokenId].map(meta => {
+            const o = {
+              mimeType: meta.mime,
+              file: meta.file,
+              fileSize: meta.fileSize,
+              dimensions: {
+                value: `${meta.width}x${meta.height}`,
+                unit: 'px'
+              }
             }
+            if (meta.duration) {
+              o.duration = meta.duration
+            }
+            return o
+          })
+          fs.writeFileSync(`${config.fillMode.objPath}/${tokenId}.json` , JSON.stringify(objData, '', 2))
+          if (objOriginal[tokenId]) {
+            fs.writeFileSync(`${config.fillMode.objPath}/${tokenId}-original.json` , JSON.stringify(objOriginal[tokenId], '', 2))
           }
-          if (meta.duration) {
-            o.duration = meta.duration
-          }
-          return o
-        })
-        fs.writeFileSync(`${config.fillMode.objPath}/${tokenId}.json` , JSON.stringify(objData, '', 2))
-        if (objOriginal[tokenId]) {
-          fs.writeFileSync(`${config.fillMode.objPath}/${tokenId}-original.json` , JSON.stringify(objOriginal[tokenId], '', 2))
         }
       }
     }

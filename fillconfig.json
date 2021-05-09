@@ -9,8 +9,8 @@
     "deleteDownloadsAfterCreation": false,
     "deleteLargeAfterCreation": false,
     "objPath": "./tmp/obj",
-    "limit": 50,
-    "offest": 50000
+    "limit": 1000,
+    "offest": 40000
   },
   "puppetSize": 1024,
   "thumbnail": {
@@ -22,18 +22,15 @@
         "options": {
           "quality": 60
         }
-      },
-      {
-        "type": "avif"
       }],
-      "sizes": [128, 256, 512, 1024]
+      "sizes": [128, 512, 1024]
     },
     "video": {
       "maxLengthSeconds": 15,
       "formats": [{
         "type": "h264"
       }],
-      "sizes": [128, 256, 512]
+      "sizes": [256, 512]
     }
   },
   "ignoreObjects": [],
