@@ -53,6 +53,12 @@ const getVideoOrGifDuration = async (file, inSeconds = false) => {
   }
 }
 
+const getVideoOrGifFrames = async (file) => {
+  const info = await niceExec(`ffprobe -v error -select_streams v:0 -count_packets -show_entries stream=nb_read_packets -of csv=p=0 ${file} 2>&1`)
+  const frames = parseInt(info)
+  return frames
+}
+
 const createThumbnails = async (largeImageFilename, objectId) => {
   const imageConf = config.thumbnail.image
   const largeMeta = await getImageMetadata(`${config.largeImagePath}/${largeImageFilename}`)
@@ -161,6 +167,11 @@ const createVideoThumbnailsFromGif = async (largeImageFilename, objectId) => {
 
 const createVideoThumbnailsFromVideo = async (originalVideo, largeImageFilename, objectId) => {
   const meta = []
+  const frames = await getVideoOrGifFrames(originalVideo)
+  // don't creat thumbs for video of 1 frame
+  if (frames < 2) {
+    return meta
+  }
   const largeMeta = await getImageMetadata(`${largeImageFilename}`)
   for (let size of config.thumbnail.video.sizes) {
     const toFilename = `${thumbnailPath}/${objectId}-${size}.mp4`
@@ -208,6 +219,9 @@ const createLargeFromVideo = async (filename, tokenId) => {
   const duration = await getVideoOrGifDuration(`${config.downloadPath}/${filename}`, true)
   if (duration > 0) {
     let midpoint = duration / 2
+    if (midpoint < 1) {
+      midpoint = 0
+    }
     let convertCommand = `ffmpeg -y -i ${config.downloadPath}/${filename} -vcodec mjpeg -vframes 1 -an -f rawvideo -vf scale=iw*sar:ih `
     convertCommand += ` -ss ${midpoint}`
     convertCommand += ` ${config.largeImagePath}/${tokenId}.png`

@@ -139,14 +139,24 @@ const main = async () => {
   if (!fillMode) {
     const res = await fetch(`https://51rknuvw76.execute-api.us-east-1.amazonaws.com/dev/tz?tz=${config.ownerAddress}`)
     objects = (await res.json()).result
+    
+    objects = objects.sort((a, b) => {
+      return a.token_id - b.token_id
+    })
   } else {
     objects = require(config.fillMode.data)
-    if (config.fillMode.limit) {
+    // have to sort first
+    objects = objects.sort((a, b) => {
+      return a.token_id - b.token_id
+    })
+
+    if (config.fillMode.limit || config.fillMode.offset) {
       let start = config.fillMode.offset || 0
-      let end = start + config.fillMode.limit
+      let end = config.fillMode.limit ? (start + config.fillMode.limit) : objects.length
       if (end > objects.length - 1) {
         end = objects.length - 1
       }
+      console.log(`Slicing: ${start} => ${end}`)
       objects = objects.slice(start, end)
     }
     console.log(`Working to fill ${objects.length} OBJKTs.`)
@@ -164,10 +174,6 @@ const main = async () => {
       return config.onlyObjects.includes(obj.token_id)
     })
   }
-
-  objects = objects.sort((a, b) => {
-    return a.token_id - b.token_id
-  })
 
   // items you own, others are ones you created
   let collected
@@ -347,9 +353,14 @@ const main = async () => {
         }
         // create video thumbs
         objThumbnails[tokenId] = await createVideoThumbnailsFromVideo(`${config.downloadPath}/${filename}`, `${config.largeImagePath}/${tokenId}.png`, tokenId)
-        // get duration of video thumb
-        const duration = await getVideoOrGifDuration(`${thumbnailPath}/${objThumbnails[tokenId][0].file}`)
-        objThumbnails[tokenId].forEach(o => o.duration = duration)
+
+        // we might not create if single frame video
+        let duration = 0
+        if (objThumbnails[tokenId].length) {
+          // get duration of video thumb
+          duration = await getVideoOrGifDuration(`${thumbnailPath}/${objThumbnails[tokenId][0].file}`)
+          objThumbnails[tokenId].forEach(o => o.duration = duration)
+        }
 
         // create image thumbs
         objThumbnails[tokenId] = objThumbnails[tokenId].concat(await createThumbnails(`${tokenId}.png`, tokenId))
