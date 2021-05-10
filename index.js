@@ -91,7 +91,7 @@ if (fillMode) {
 }
 
 function addWarning(str) {
-  console.log('\x1b[33m%s\x1b[0m', `WARNING: ${str}`)
+  console.log('\n\x1b[33m%s\x1b[0m', `WARNING: ${str}`)
   fs.appendFileSync(errorLog, `\n${str}`)
 }
 
@@ -229,7 +229,7 @@ const main = async () => {
 
     // write actual
     const filename = `${tokenId}.${converter.ext}`
-    console.log(`\n====================\nProcessing ${filename}`)
+    console.log(`====================\nProcessing ${filename}`)
 
     // if we don't have the original file download it
     if (converter.use !== 'html') {
@@ -563,9 +563,10 @@ const main = async () => {
             fs.writeFileSync(`${config.fillMode.objPath}/${tokenId}-original.json` , JSON.stringify(objOriginal[tokenId], '', 2))
           }
         }
-      }
-    }
-  }
+      } // end fill mode?
+    } // end if converter
+    console.log('\n\n')
+  } // end loop
   await browser.close();
 
   if (!fillMode) {
