@@ -197,11 +197,17 @@ const main = async () => {
   const objThumbnails = {}
   const objOriginal = {}
 
+  let totalToProcess = objects.length
+  let currentlyProcessing = 0
+
   // go through each object
   for (let obj of objects) {
     const tokenId = obj.token_id
     let mime
     let ipfsUri
+
+    currentlyProcessing++
+    console.log(`${currentlyProcessing} / ${totalToProcess}`)
 
     if (fillMode) {
       if (!obj.formats || !obj.formats[0] || !obj.formats[0].mimeType) {
@@ -337,7 +343,7 @@ const main = async () => {
         }
       } else if (converter.use === 'ffmpeg') {
         if (!fs.existsSync(`${config.largeImagePath}/${tokenId}.png`)) {
-          createLargeFromVideo(filename, tokenId)
+          await createLargeFromVideo(filename, tokenId)
         }
         // create video thumbs
         objThumbnails[tokenId] = await createVideoThumbnailsFromVideo(`${config.downloadPath}/${filename}`, `${config.largeImagePath}/${tokenId}.png`, tokenId)
