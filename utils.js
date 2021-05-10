@@ -17,6 +17,7 @@ const thumbnailPath = `${config.distPath}/${config.thumbnail.path}`
 const maxVideoLength = config.thumbnail.video.maxLengthSeconds
 
 const niceExec = async (cmd) => {
+  console.log('\x1b[36m%s\x1b[0m', cmd)
   return new Promise((resolve, reject) => {
     exec(cmd, function(error, stdout, stderr) {
       if (error) {
@@ -30,6 +31,26 @@ const niceExec = async (cmd) => {
       resolve(stdout)
     });
   })
+}
+
+const getMaxRate = (size) => {
+  let maxRate = '-crf 23 -maxrate 1M'
+  if (size < 600) maxRate = '-crf 23 -maxrate 700k -bufsize 1M'
+  if (size < 300) maxRate = '-crf 23 -maxrate 400k -bufsize 1M'
+  return maxRate
+}
+
+const getVideoOrGifDuration = async (file, inSeconds = false) => {
+  const info = await niceExec(`ffprobe ${file} 2>&1`)
+  const durationMatch = info.match(/Duration: ([0-9][0-9]):([0-9][0-9]):([0-9][0-9]\.[0-9]+)/i)
+  if (!durationMatch) {
+    return -1
+  }
+  if (inSeconds) {
+    return parseFloat(durationMatch[3]) + parseInt(durationMatch[2]) * 60 + parseInt(durationMatch[1]) * 3600
+  } else {
+    return `${durationMatch[1]}:${durationMatch[2]}:${durationMatch[3]}`
+  }
 }
 
 const createThumbnails = async (largeImageFilename, objectId) => {
@@ -124,7 +145,8 @@ const createVideoThumbnailsFromGif = async (largeImageFilename, objectId) => {
     // make sure is divisible by 2 for video
     dims.width = dims.width - dims.width % 2
     dims.height = dims.height - dims.height % 2
-    await niceExec(`ffmpeg -y -t ${maxVideoLength} -i ${config.largeImagePath}/${largeImageFilename} -movflags faststart -an -pix_fmt yuv420p -vf "fps=12,scale=${dims.width}:${dims.height}:flags=lanczos" ${toFilename}`)
+    let maxRate = getMaxRate(size)
+    await niceExec(`ffmpeg -y -t ${maxVideoLength} -i ${config.largeImagePath}/${largeImageFilename} -movflags faststart -an -pix_fmt yuv420p -vf "fps=12,scale=${dims.width}:${dims.height}:flags=lanczos" ${maxRate} ${toFilename}`)
     const fileSize = fs.statSync(toFilename).size
     meta.push({
       width: dims.width,
@@ -146,7 +168,8 @@ const createVideoThumbnailsFromVideo = async (originalVideo, largeImageFilename,
     // make sure is divisible by 2 for video
     dims.width = dims.width - dims.width % 2
     dims.height = dims.height - dims.height % 2
-    const cmd = `ffmpeg -y -t ${maxVideoLength} -i ${originalVideo} -movflags faststart -an -pix_fmt yuv420p -vf "fps=12,scale=${dims.width}:${dims.height}:flags=lanczos" ${toFilename}`
+    let maxRate = getMaxRate(size)
+    const cmd = `ffmpeg -y -t ${maxVideoLength} -i ${originalVideo} -movflags faststart -an -pix_fmt yuv420p -vf "fps=12,scale=${dims.width}:${dims.height}:flags=lanczos" ${maxRate} ${toFilename}`
     await niceExec(cmd)
     const fileSize = fs.statSync(toFilename).size
     meta.push({
@@ -180,6 +203,20 @@ const createLargeFromBmp = async (bmpFilename, objectId) => {
   await niceExec(`ffmpeg -y -i ${bmpFilename} ${toFilename}`)
 }
 
+const createLargeFromVideo = async (filename, tokenId) => {
+  // extract image from middle of video
+  const duration = await getVideoOrGifDuration(`${config.downloadPath}/${filename}`, true)
+  if (duration > 0) {
+    let midpoint = duration / 2
+    let convertCommand = `ffmpeg -y -i ${config.downloadPath}/${filename} -vcodec mjpeg -vframes 1 -an -f rawvideo -vf scale=iw*sar:ih `
+    convertCommand += ` -ss ${midpoint}`
+    convertCommand += ` ${config.largeImagePath}/${tokenId}.png`
+    await niceExec(convertCommand)
+  } else {
+    console.log('Failed creating large for video', tokenId)
+  }
+}
+
 const resizeImageToMaxWidth = async (meta, width, inFile, outFile, forceWidth = false, format = 'jpg', fileOptionsParam = {}) => {
   console.log('resizeImageToMaxWidth', inFile, outFile)
   const dims = getMaxDimensions(meta.width, meta.height, width, forceWidth)
@@ -194,19 +231,6 @@ const resizeImageToMaxWidth = async (meta, width, inFile, outFile, forceWidth = 
     .resize(dims.width, dims.height)
     .toFormat(format, fileOptions)
     .toFile(outFile)
-}
-
-const getVideoOrGifDuration = async (file, inSeconds = false) => {
-  const info = await niceExec(`ffprobe ${file} 2>&1`)
-  const durationMatch = info.match(/Duration: ([0-9][0-9]):([0-9][0-9]):([0-9][0-9]\.[0-9]+)/i)
-  if (!durationMatch) {
-    return -1
-  }
-  if (inSeconds) {
-    return parseFloat(durationMatch[3]) + parseInt(durationMatch[2]) * 60 + parseInt(durationMatch[1]) * 3600
-  } else {
-    return `${durationMatch[1]}:${durationMatch[2]}:${durationMatch[3]}`
-  }
 }
 
 const getVideoWidthHeight = async (file) => {
@@ -307,5 +331,6 @@ module.exports = {
   getVideoOrGifDuration,
   getVideoWidthHeight,
   getDisplayUri,
-  createLargeFromBmp
+  createLargeFromBmp,
+  createLargeFromVideo
 }

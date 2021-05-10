@@ -6,8 +6,8 @@
   "fillMode": {
     "data": "./fill.json",
     "uploadToIpfs": false,
-    "deleteDownloadsAfterCreation": false,
-    "deleteLargeAfterCreation": false,
+    "deleteDownloadsAfterCreation": true,
+    "deleteLargeAfterCreation": true,
     "objPath": "./tmp/obj",
     "limit": 0,
     "offest": 0

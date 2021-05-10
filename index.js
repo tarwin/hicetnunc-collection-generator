@@ -14,7 +14,8 @@ const {
   getVideoOrGifDuration,
   getVideoWidthHeight,
   getDisplayUri,
-  createLargeFromBmp
+  createLargeFromBmp,
+  createLargeFromVideo
 } = require('./utils')
 
 // ----------------------
@@ -336,17 +337,7 @@ const main = async () => {
         }
       } else if (converter.use === 'ffmpeg') {
         if (!fs.existsSync(`${config.largeImagePath}/${tokenId}.png`)) {
-          // extract image from middle of video
-          const duration = await getVideoOrGifDuration(`${config.downloadPath}/${filename}`, true)
-          if (duration > 0) {
-            let midpoint = duration / 2
-            let convertCommand = `ffmpeg -y -i ${config.downloadPath}/${filename} -vcodec mjpeg -vframes 1 -an -f rawvideo -vf scale=iw*sar:ih `
-            convertCommand += ` -ss ${midpoint}`
-            convertCommand += ` ${config.largeImagePath}/${tokenId}.png`
-            await niceExec(convertCommand)
-          } else {
-            console.log('Failed creating large for video', tokenId)
-          }
+          createLargeFromVideo(filename, tokenId)
         }
         // create video thumbs
         objThumbnails[tokenId] = await createVideoThumbnailsFromVideo(`${config.downloadPath}/${filename}`, `${config.largeImagePath}/${tokenId}.png`, tokenId)
