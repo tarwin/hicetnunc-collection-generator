@@ -1,6 +1,6 @@
 ----
 
-- add "gifThumb" for personal collection
+- add "gifThumb" for personal collection (also check if has video thumbs may not?)
 - look at formats for video (allow AV1)
 - add AV1 for video to example
 
