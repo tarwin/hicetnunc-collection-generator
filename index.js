@@ -13,7 +13,8 @@ const {
   createVideoThumbnailsFromVideo,
   getVideoOrGifDuration,
   getVideoWidthHeight,
-  getDisplayUri
+  getDisplayUri,
+  createLargeFromBmp
 } = require('./utils')
 
 // ----------------------
@@ -270,44 +271,59 @@ const main = async () => {
 
         canDeleteLarge.push(`${config.largeImagePath}/${tokenId}.svg`)
       } else if (converter.use === 'sharp') {
-        if (!fs.existsSync(`${config.largeImagePath}/${filename}`)) {
-          fs.copyFileSync(`${config.downloadPath}/${filename}`, `${config.largeImagePath}/${filename}`)
-        }
-        const preMata = await getImageMetadata(`${config.largeImagePath}/${filename}`)
-        if (preMata.format !== 'gif') {
-          objThumbnails[tokenId]= await createThumbnails(filename, tokenId)
+        if (converter.ext === 'bmp') {
+          // bmps are annoying! sharp doesn't do 'em
+          await createLargeFromBmp(`${config.downloadPath}/${filename}`, tokenId)
+          
+          objThumbnails[tokenId]= await createThumbnails(`${tokenId}.png`, tokenId)
+
+          const preMata = await getImageMetadata(`${config.largeImagePath}/${tokenId}.png`)
+          objOriginal[tokenId] = {
+            width: preMata.width,
+            height: preMata.height
+          }
+
+          canDeleteLarge.push(`${config.largeImagePath}/${filename}`)
         } else {
-          // single frame so just make thumbs as expected
-          if (preMata.pages === 1) {
+          if (!fs.existsSync(`${config.largeImagePath}/${filename}`)) {
+            fs.copyFileSync(`${config.downloadPath}/${filename}`, `${config.largeImagePath}/${filename}`)
+          }
+          const preMata = await getImageMetadata(`${config.largeImagePath}/${filename}`)
+          if (preMata.format !== 'gif') {
             objThumbnails[tokenId]= await createThumbnails(filename, tokenId)
           } else {
-            // if smaller than X use GIF
-            if (fs.statSync(`${config.largeImagePath}/${filename}`).size <= config.thumbnail.maxGifSizeKb * 1000) {
-              objThumbnails[tokenId] = await createGifThumbnails(filename, tokenId)
+            // single frame so just make thumbs as expected
+            if (preMata.pages === 1) {
+              objThumbnails[tokenId]= await createThumbnails(filename, tokenId)
             } else {
-              // else use MP4
-              objThumbnails[tokenId] = await createVideoThumbnailsFromGif(filename, tokenId)
-              // and still images
-              objThumbnails[tokenId] = objThumbnails[tokenId].concat(await createThumbnails(filename, tokenId))
-            }
-            // get duration of video/gif thumbs
-            const duration = await getVideoOrGifDuration(`${thumbnailPath}/${objThumbnails[tokenId][0].file}`)
-            objThumbnails[tokenId].forEach(o => o.duration = duration)
+              // if smaller than X use GIF
+              if (fs.statSync(`${config.largeImagePath}/${filename}`).size <= config.thumbnail.maxGifSizeKb * 1000) {
+                objThumbnails[tokenId] = await createGifThumbnails(filename, tokenId)
+              } else {
+                // else use MP4
+                objThumbnails[tokenId] = await createVideoThumbnailsFromGif(filename, tokenId)
+                // and still images
+                objThumbnails[tokenId] = objThumbnails[tokenId].concat(await createThumbnails(filename, tokenId))
+              }
+              // get duration of video/gif thumbs
+              const duration = await getVideoOrGifDuration(`${thumbnailPath}/${objThumbnails[tokenId][0].file}`)
+              objThumbnails[tokenId].forEach(o => o.duration = duration)
 
-            // for non fill mode we also want general thumbs
-            if (!fillMode) {
-              // general thumbnails
-              objThumbnails[tokenId] = objThumbnails[tokenId].concat(await createThumbnails(filename, tokenId))
+              // for non fill mode we also want general thumbs
+              if (!fillMode) {
+                // general thumbnails
+                objThumbnails[tokenId] = objThumbnails[tokenId].concat(await createThumbnails(filename, tokenId))
+              }
             }
           }
-        }
 
-        objOriginal[tokenId] = {
-          width: preMata.width,
-          height: preMata.height
-        }
+          objOriginal[tokenId] = {
+            width: preMata.width,
+            height: preMata.height
+          }
 
-        canDeleteLarge.push(`${config.largeImagePath}/${filename}`)
+          canDeleteLarge.push(`${config.largeImagePath}/${filename}`)
+        }
       } else if (converter.use === 'ffmpeg') {
         if (!fs.existsSync(`${config.largeImagePath}/${tokenId}.png`)) {
           // extract image from middle of video

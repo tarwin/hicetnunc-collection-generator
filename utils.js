@@ -175,6 +175,11 @@ const createLargeImage = async (filename, objectId) => {
   )
 }
 
+const createLargeFromBmp = async (bmpFilename, objectId) => {
+  const toFilename = `${config.largeImagePath}/${objectId}.png`
+  await niceExec(`ffmpeg -y -i ${bmpFilename} ${toFilename}`)
+}
+
 const resizeImageToMaxWidth = async (meta, width, inFile, outFile, forceWidth = false, format = 'jpg', fileOptionsParam = {}) => {
   console.log('resizeImageToMaxWidth', inFile, outFile)
   const dims = getMaxDimensions(meta.width, meta.height, width, forceWidth)
@@ -301,5 +306,6 @@ module.exports = {
   createVideoThumbnailsFromVideo,
   getVideoOrGifDuration,
   getVideoWidthHeight,
-  getDisplayUri
+  getDisplayUri,
+  createLargeFromBmp
 }
