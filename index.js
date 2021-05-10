@@ -90,6 +90,11 @@ if (fillMode) {
   fs.writeFileSync(errorLog, '')
 }
 
+function addWarning(str) {
+  console.log('\x1b[33m%s\x1b[0m', `WARNING: ${str}`)
+  fs.appendFileSync(errorLog, `\n${str}`)
+}
+
 const getNiceDataObjects = async(objects) => {
   const out = []
   for (let obj of objects) {
@@ -210,6 +215,11 @@ const main = async () => {
     }
 
     const converter = converters[mime]
+
+    if (!converter) {
+      addWarning(`No converter for ${tokenId} - MIME: ${mime}`)
+      continue
+    }
 
     // could use another IPFS HTTP gateway?
     const url = config.cloudFlareUrl + ipfsUri
@@ -372,8 +382,7 @@ const main = async () => {
           canDeleteLarge.push(`${config.largeImagePath}/${tokenId}.${meta.format}`)
         } else {
           // could use puppeteer to make a thumb but these SHOULD have them defined
-          console.log(`ERROR: Missing "displayUri" for ${tokenId}`)
-          fs.appendFileSync(errorLog, `\nERROR: Missing "displayUri" for ${tokenId}`)
+          addWarning(`Missing "displayUri" for ${tokenId}`)
         }
       } else if (converter.use === 'gltf') {
         // don't think GL requires a displayUri so we're just going to have
@@ -532,7 +541,7 @@ const main = async () => {
         }
 
         if (!objThumbnails[tokenId]) {
-            fs.appendFileSync(errorLog, `\nMissing thumbnail info for ${tokenId}.`)
+            addWarning(`Missing thumbnail info for ${tokenId}.`)
         } else {
           const objData = objThumbnails[tokenId].map(meta => {
             const o = {

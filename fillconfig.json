@@ -9,8 +9,8 @@
     "deleteDownloadsAfterCreation": false,
     "deleteLargeAfterCreation": false,
     "objPath": "./tmp/obj",
-    "limit": 1000,
-    "offest": 40000
+    "limit": 0,
+    "offest": 0
   },
   "puppetSize": 1024,
   "thumbnail": {
