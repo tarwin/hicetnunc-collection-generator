@@ -146,8 +146,13 @@ const main = async () => {
       return a.token_id - b.token_id
     })
 
-    if (config.fillMode.limit || config.fillMode.offset) {
-      let start = config.fillMode.offset || 0
+    let offset = config.fillMode.offset
+    if (config.fillMode.startAtObjectNumber) {
+      console.log('startAtObjectNumber', config.fillMode.startAtObjectNumber)
+      offset = objects.findIndex(o => o.token_id === config.fillMode.startAtObjectNumber)
+    }
+    if (config.fillMode.limit || offset) {
+      let start = offset || 0
       let end = config.fillMode.limit ? (start + config.fillMode.limit) : objects.length
       if (end > objects.length - 1) {
         end = objects.length - 1
