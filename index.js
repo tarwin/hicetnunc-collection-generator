@@ -291,6 +291,14 @@ const main = async () => {
           }
           fs.copyFileSync(`./${config.largeImagePath}/${tokenId}.svg`, `./${thumbnailPath}/${tokenId}.svg`)
           objThumbnails[tokenId] = await createAudioThumbnail(`${tokenId}.svg`, tokenId)
+          // add SVG
+          objThumbnails[tokenId].push({
+            mimeType: 'image/svg+xml',
+            file: `${tokenId}.svg`,
+            fileSize: 12691,
+            width: 200,
+            height: 81,
+          })
           const duration = await getVideoOrGifDuration(`${config.downloadPath}/${filename}`)
           objOriginal[tokenId] = { duration }
 
