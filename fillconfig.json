@@ -10,7 +10,7 @@
     "deleteLargeAfterCreation": true,
     "objPath": "./tmp/obj",
     "limit": 0,
-    "offset": 779
+    "offset": 11030
   },
   "puppetSize": 1024,
   "thumbnail": {
@@ -33,6 +33,6 @@
       "sizes": [256, 512]
     }
   },
-  "ignoreObjects": [],
+  "ignoreObjects": [2770, 2136, 3155, 3158, 3470],
   "onlyObjects": []
 }
