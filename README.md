@@ -37,26 +37,40 @@ Also thanks to
 - `largeImagePath : string`: the location to store large images
 - `distPath : string`: the location for generated data
 - `puppetSize`: the size of large images for HTML, SVG and GLTF (browser size)
+- `fillMode: object`: if set runs in a different mode. Used to fill out missing information in H=N database
+    `data: string`: ie `./fill.json` the data to load OBJKTs from
+    `uploadToIpfs: boolean`: (currently unsupported) if `true` uploads created thumbs to IPFS
+    `deleteDownloadsAfterCreation: boolean`: if `true` deletes downloaded files after each is processed
+    `deleteLargeAfterCreation: boolean`: if `true` deletes large images after thumbnail creation
+    `objPath: string`: ie `./tmp/obj` where to store JSON files with info about created tnumbnails. Also stores error file.
+    `limit: int`: if set above `0` will only process this # of OBJKTs,
+    `offset: int`: if set above `0` will process from this # in the queue,
+    `startAtObjectNumber: int`: if set above `0` will override `offset` and start at OBJKT with this `token_id`
 - `thumbnail`: options for thumbnail generation
   - `path: string`: the directory under your `distPath` to store generated thumbnails
-  - `image : Array<{sizes, formats}>`: an array of image thumbnail versions to create
-    - `sizes : Array<int>`: width of generated thumbs
-    - `formats : Array<string>`: format of thumbnails
-  - `video: Array<int>`: size of video thumbnails to create (TODO)
-- `ignoreObjects`: list of OBJKT IDs to ignore when generating
+  - `maxGifSizeKb`: size in KBs before GIFs are converted to videos
+  - `image: {formats, sizes}`: format and sizes for image thumbnails
+    - `formats: Array<{type, options}>`
+      - `type: string`: one of `jpeg`, `png`, `avif`, `webp`
+      - `options: object`: valid options object for type from Sharp (https://sharp.pixelplumbing.com/api-output) 
+    - `sizes Array<int>:`: width dimension for thumbnails
+  - `video: {formats, sizes, maxLengthSeconds}`: options, format and sizes for video thumbnails
+    - `maxLengthSeconds: float`: maximum length in seconds for video thumbnails ie `15` will truncate all video thumbnails to 15 seconds long (max)
+    - `formats`: currently ignored
+    - `sizes Array<int>:`: width dimension for thumbnails
+- `ignoreObjects: Array<int>`: list of OBJKT IDs to ignore when generating
+- `onlyObjects: Array<int>`: only process OBJKTs with these IDs
 
 # Run
 
 - In two different CLIs run:
   - `serve -C`
-  - `npm start`
+  - then `npm start`
 
 # Viewing
 
 - run `npm run serve-dist`
 - open a URL displayed
-
-This is just a simple test so far.
 
 # Depoying
 
