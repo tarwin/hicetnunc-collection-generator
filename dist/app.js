@@ -72,6 +72,9 @@ var app = new Vue({
       this.owner = await getAddressInfo(this.data.owner.address)
       this.owner.address = this.data.owner.address
       
+      this.data.collectedObjects.reverse()
+      this.data.createdObjects.reverse()
+
       // add url removing ipfs://
       this.data.collectedObjects.forEach(obj => {
         obj.url = `https://cloudflare-ipfs.com/ipfs/${obj.artifactUri.substr(7)}`
@@ -266,7 +269,7 @@ var app = new Vue({
       const objects = this.showList === 'collected' ?
         this.data.collectedObjects :
         this.data.createdObjects
-      return objects.reverse()
+      return objects
     },
     currentObjectType() {
       if (!this.currentObject) return null

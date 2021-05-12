@@ -2,12 +2,9 @@
   "config": {
     "thumbnail": {
       "path": "thumbs",
-      "maxGifSizeKb": 300,
+      "maxGifSizeKb": 100,
       "image": {
         "formats": [
-          {
-            "type": "webp"
-          },
           {
             "type": "jpeg",
             "options": {
@@ -19,8 +16,6 @@
           }
         ],
         "sizes": [
-          128,
-          256,
           512
         ]
       },
@@ -35,8 +30,6 @@
           }
         ],
         "sizes": [
-          128,
-          256,
           512
         ]
       }
@@ -1326,7 +1319,8 @@
       "creatorAddress": "tz1cNFGNAQrFQucdvc4txsdR8rEuHkUUYrjJ",
       "mime": "image/gif",
       "artifactUri": "ipfs://QmTfsw7Pxny851RoykRpSCaau4yZ4R5my5Mvx7x4KK986j",
-      "cid": "bafybeicpg5wdimhek5u5he5xcxosjczuqfmckfonsdunvtfsqia23umdfa"
+      "cid": "bafybeicpg5wdimhek5u5he5xcxosjczuqfmckfonsdunvtfsqia23umdfa",
+      "gifThumb": true
     },
     {
       "id": 42266,
@@ -1912,7 +1906,8 @@
       "creatorAddress": "tz1g7Aaac9ssD7cDUTngyXyx8QiVUsAVZCjQ",
       "mime": "image/gif",
       "artifactUri": "ipfs://QmaR5gZPQ2aUthPrwec52rqWfUnVXQhnA1nmrAtAF68jgc",
-      "cid": "bafybeiftn3g4iorcu4nnzph2r7zykiaibrpizj6a6mbjsmqgzz7wargcze"
+      "cid": "bafybeiftn3g4iorcu4nnzph2r7zykiaibrpizj6a6mbjsmqgzz7wargcze",
+      "gifThumb": true
     },
     {
       "id": 74876,
@@ -1926,7 +1921,8 @@
       "creatorAddress": "tz1g7Aaac9ssD7cDUTngyXyx8QiVUsAVZCjQ",
       "mime": "image/gif",
       "artifactUri": "ipfs://QmVH5N2PhZw2Hur7MWbw5dqHCW5zukAptQ5wDHoX46T1Ue",
-      "cid": "bafybeidhc5oichkn52h5ecyviwre2lpfpfef36oedos5vwjnikaxxay7am"
+      "cid": "bafybeidhc5oichkn52h5ecyviwre2lpfpfef36oedos5vwjnikaxxay7am",
+      "gifThumb": true
     },
     {
       "id": 74890,
@@ -1940,7 +1936,8 @@
       "creatorAddress": "tz1g7Aaac9ssD7cDUTngyXyx8QiVUsAVZCjQ",
       "mime": "image/gif",
       "artifactUri": "ipfs://QmZp2mmCdkTXCQMZhSxJfYHaTMztWnS3iYMR3ccaB7TQkQ",
-      "cid": "bafybeifkoqxu5d45o6xhzhhdrbh37ue66yhwggf6e3hbmdhtnbli2kalqe"
+      "cid": "bafybeifkoqxu5d45o6xhzhhdrbh37ue66yhwggf6e3hbmdhtnbli2kalqe",
+      "gifThumb": true
     },
     {
       "id": 74906,
@@ -1954,7 +1951,8 @@
       "creatorAddress": "tz1g7Aaac9ssD7cDUTngyXyx8QiVUsAVZCjQ",
       "mime": "image/gif",
       "artifactUri": "ipfs://QmU89Tz6NebfBk48njY4pkknuD4W77agUKoTrkpmD9qu3w",
-      "cid": "bafybeicv6ila3tzuimuc7p6mdroifyy3hhjpxhvumd2nmclxibrvsuw47i"
+      "cid": "bafybeicv6ila3tzuimuc7p6mdroifyy3hhjpxhvumd2nmclxibrvsuw47i",
+      "gifThumb": true
     },
     {
       "id": 74917,
@@ -1968,7 +1966,8 @@
       "creatorAddress": "tz1g7Aaac9ssD7cDUTngyXyx8QiVUsAVZCjQ",
       "mime": "image/gif",
       "artifactUri": "ipfs://QmW4pkLoc33dvcX2tVSCdZKgBuvtZrdwP2AX9hrLYQfcMw",
-      "cid": "bafybeidsz6gzn5temp52uh2s7zqgg7lnkfn4g7r7xhrkadvx6242mrk6vi"
+      "cid": "bafybeidsz6gzn5temp52uh2s7zqgg7lnkfn4g7r7xhrkadvx6242mrk6vi",
+      "gifThumb": true
     },
     {
       "id": 74922,
@@ -1982,7 +1981,8 @@
       "creatorAddress": "tz1g7Aaac9ssD7cDUTngyXyx8QiVUsAVZCjQ",
       "mime": "image/gif",
       "artifactUri": "ipfs://QmZpxdbyStRMDHXwHT8axFyFnmuKFSyfittetMUDzrVEpr",
-      "cid": "bafybeifkwekw6gsjqgcfx5ge5itbzhrs5j4n7676tf3oaaywrqfjtkohhm"
+      "cid": "bafybeifkwekw6gsjqgcfx5ge5itbzhrs5j4n7676tf3oaaywrqfjtkohhm",
+      "gifThumb": true
     },
     {
       "id": 74929,
@@ -1996,7 +1996,8 @@
       "creatorAddress": "tz1g7Aaac9ssD7cDUTngyXyx8QiVUsAVZCjQ",
       "mime": "image/gif",
       "artifactUri": "ipfs://QmQGn26EWebWE4XNt8b7mpcBJnzFkyitqtycQuUFi4gEsV",
-      "cid": "bafybeia4xfio52nrmfum7kjbuf472mcerscrzkaixh4deqghbg53j26jfq"
+      "cid": "bafybeia4xfio52nrmfum7kjbuf472mcerscrzkaixh4deqghbg53j26jfq",
+      "gifThumb": true
     },
     {
       "id": 74937,
@@ -2010,7 +2011,8 @@
       "creatorAddress": "tz1g7Aaac9ssD7cDUTngyXyx8QiVUsAVZCjQ",
       "mime": "image/gif",
       "artifactUri": "ipfs://QmQpCiQGE9FuYyz858BfHESKsM6p27TQg4mqGNkh5wfecU",
-      "cid": "bafybeibeyy7hjqi4lpkoi4l3p3j35rhylehmzcxkssu7gyphhac2kacqru"
+      "cid": "bafybeibeyy7hjqi4lpkoi4l3p3j35rhylehmzcxkssu7gyphhac2kacqru",
+      "gifThumb": true
     }
   ]
 }

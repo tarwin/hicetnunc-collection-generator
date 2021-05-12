@@ -8,11 +8,9 @@
   "puppetSize": 1024,
   "thumbnail": {
     "path": "thumbs",
-    "maxGifSizeKb": 300,
+    "maxGifSizeKb": 100,
     "image": {
       "formats": [{
-        "type": "webp"
-      },{
         "type": "jpeg",
         "options": {
           "quality": 60

@@ -106,7 +106,8 @@ const getNiceDataObjects = async(objects) => {
       mime: obj.token_info.formats[0].mimeType,
       artifactUri: obj.token_info.artifactUri,
       cid: subomain,
-      formats: obj.formats
+      formats: obj.formats,
+      gifThumb: obj.gifThumb,
     })
   }
   return out
@@ -339,6 +340,7 @@ const main = async () => {
                 // if smaller than X use GIF
                 if (fs.statSync(`${config.largeImagePath}/${filename}`).size <= config.thumbnail.maxGifSizeKb * 1000) {
                   objThumbnails[tokenId] = await createGifThumbnails(filename, tokenId)
+                  obj.gifThumb = true
                 } else {
                   // else use MP4
                   objThumbnails[tokenId] = await createVideoThumbnailsFromGif(filename, tokenId)

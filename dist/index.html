@@ -64,15 +64,20 @@
             class="item"
           >
             <video
-              v-if="obj.mime.indexOf('video') === 0 || obj.mime === 'image/gif'"
+              v-if="obj.mime.indexOf('video') === 0 || (obj.mime === 'image/gif' && !obj.gifThumb)"
               autoplay
               loop
               :src="`./${thumbPath}/${obj.id}-512.mp4`"
               style="width: 100%; height: auto;"
             ></video>
             <picture v-else>
-              <source type="image/avif" :srcset="`./${thumbPath}/${obj.id}-512.avif`">
-              <img :src="`./${thumbPath}/${obj.id}-512.jpg`" />
+              <template v-if="obj.gifThumb">
+                <img :src="`./${thumbPath}/${obj.id}-512.gif`" />
+              </template>
+              <template v-else>
+                <source type="image/avif" :srcset="`./${thumbPath}/${obj.id}-512.avif`">
+                <img :src="`./${thumbPath}/${obj.id}-512.jpg`" />
+              </template>
             </picture>
             <div class="name-wrapper"><div class="name">{{ obj.name }}</div></div>
           </div>
