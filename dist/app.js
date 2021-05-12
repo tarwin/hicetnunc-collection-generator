@@ -266,7 +266,7 @@ var app = new Vue({
       const objects = this.showList === 'collected' ?
         this.data.collectedObjects :
         this.data.createdObjects
-      return objects
+      return objects.reverse()
     },
     currentObjectType() {
       if (!this.currentObject) return null
