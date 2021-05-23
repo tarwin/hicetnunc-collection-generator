@@ -10,7 +10,7 @@ const getArgs = function() {
 
 let config = require('./config.json')
 if (getArgs()[0]) {
-  config = require(`./${getArgs()[0]}config.json`)
+  config = require(`./config.${getArgs()[0]}.json`)
 }
 
 const thumbnailPath = `${config.distPath}/${config.thumbnail.path}`
