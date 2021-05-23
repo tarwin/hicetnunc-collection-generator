@@ -1,0 +1,206 @@
+
+Missing "displayUri" for 87289
+49561 - TypeError: Cannot read property 'formats' of undefined
+50304 - TypeError: Cannot read property 'formats' of undefined
+54713 - TypeError: Cannot read property 'formats' of undefined
+56914 - TypeError: Cannot read property 'formats' of undefined
+65401 - TypeError: Cannot read property 'formats' of undefined
+65407 - TypeError: Cannot read property 'formats' of undefined
+73572 - TypeError: Cannot read property 'formats' of undefined
+73810 - TypeError: Cannot read property 'formats' of undefined
+74636 - TypeError: Cannot read property 'formats' of undefined
+74876 - TypeError: Cannot read property 'formats' of undefined
+74890 - TypeError: Cannot read property 'formats' of undefined
+74906 - TypeError: Cannot read property 'formats' of undefined
+74917 - TypeError: Cannot read property 'formats' of undefined
+74922 - TypeError: Cannot read property 'formats' of undefined
+74929 - TypeError: Cannot read property 'formats' of undefined
+74937 - TypeError: Cannot read property 'formats' of undefined
+76029 - TypeError: Cannot read property 'formats' of undefined
+76126 - TypeError: Cannot read property 'formats' of undefined
+76618 - TypeError: Cannot read property 'formats' of undefined
+83522 - TypeError: Cannot read property 'formats' of undefined
+86315 - TypeError: Cannot read property 'formats' of undefined
+87289 - TypeError: Cannot read property 'formats' of undefined
+88948 - TypeError: Cannot read property 'formats' of undefined
+90853 - TypeError: Cannot read property 'formats' of undefined
+49561 - TypeError: Cannot read property 'substr' of undefined
+50304 - TypeError: Cannot read property 'substr' of undefined
+54713 - TypeError: Cannot read property 'substr' of undefined
+56914 - TypeError: Cannot read property 'substr' of undefined
+65401 - TypeError: Cannot read property 'substr' of undefined
+65407 - TypeError: Cannot read property 'substr' of undefined
+73572 - TypeError: Cannot read property 'substr' of undefined
+73810 - TypeError: Cannot read property 'substr' of undefined
+74636 - TypeError: Cannot read property 'substr' of undefined
+74876 - TypeError: Cannot read property 'substr' of undefined
+74890 - TypeError: Cannot read property 'substr' of undefined
+74906 - TypeError: Cannot read property 'substr' of undefined
+74917 - TypeError: Cannot read property 'substr' of undefined
+74922 - TypeError: Cannot read property 'substr' of undefined
+74929 - TypeError: Cannot read property 'substr' of undefined
+74937 - TypeError: Cannot read property 'substr' of undefined
+76029 - TypeError: Cannot read property 'substr' of undefined
+76126 - TypeError: Cannot read property 'substr' of undefined
+76618 - TypeError: Cannot read property 'substr' of undefined
+83522 - TypeError: Cannot read property 'substr' of undefined
+86315 - TypeError: Cannot read property 'substr' of undefined
+87289 - TypeError: Cannot read property 'substr' of undefined
+88948 - TypeError: Cannot read property 'substr' of undefined
+90853 - TypeError: Cannot read property 'substr' of undefined
+Missing "displayUri" for 87289
+Missing "displayUri" for 87289
+Missing "displayUri" for 87289
+Missing "displayUri" for 87289
+Missing "displayUri" for 87289
+Missing "displayUri" for 87289
+0 - TypeError: Cannot read property '0' of undefined
+Missing "displayUri" for 87289
+0 - TypeError: Cannot read property '0' of undefined
+Missing "displayUri" for 87289
+Missing "displayUri" for 87289
+ERROR when getting data for OBJKT 11823
+ERROR when getting data for OBJKT 11821
+ERROR when getting data for OBJKT 0
+ERROR when getting data for OBJKT 0
+Missing "displayUri" for 87289
+ERROR when getting data for OBJKT 11823
+ERROR when getting data for OBJKT 11821
+ERROR when getting data for OBJKT 0
+ERROR when getting data for OBJKT 0
+ERROR when getting data for OBJKT 11823
+ERROR when getting data for OBJKT 11821
+Missing "displayUri" for 87289
+ERROR when getting data for OBJKT 11823
+ERROR when getting data for OBJKT 11821
+Missing "displayUri" for 87289
+ERROR when getting data for OBJKT 11823
+ERROR when getting data for OBJKT 11821
+Missing "displayUri" for 87289
+Missing creators for OBJKT 11823
+Missing creators for OBJKT 11821
+Missing "displayUri" for 87289
+Missing creators for OBJKT 11823
+Missing creators for OBJKT 11821
+Missing "displayUri" for 87289
+Missing creators for OBJKT 11823
+Missing creators for OBJKT 11821
+Missing "displayUri" for 87289
+Missing creators for OBJKT 11823
+Missing creators for OBJKT 11821
+Missing "displayUri" for 87289
+Missing creators for OBJKT 11823
+Missing creators for OBJKT 11821
+Missing "displayUri" for 87289
+Missing creators for OBJKT 11823
+Missing creators for OBJKT 11821
+Missing "displayUri" for 87289
+Missing creators for OBJKT 11823
+Missing creators for OBJKT 11821
+Missing creators for OBJKT 11823
+Missing creators for OBJKT 11821
+Missing creators for OBJKT 11823
+Missing creators for OBJKT 11821
+Missing creators for OBJKT 11823
+Missing creators for OBJKT 11821
+Missing "displayUri" for 12986
+Missing "displayUri" for 13781
+Missing "displayUri" for 14310
+Missing "displayUri" for 14435
+Missing "displayUri" for 15676
+Missing "displayUri" for 22330
+Missing "displayUri" for 24227
+Missing "displayUri" for 24439
+Missing "displayUri" for 25122
+Missing "displayUri" for 27585
+Missing "displayUri" for 34408
+Missing "displayUri" for 37786
+Missing "displayUri" for 43023
+Missing "displayUri" for 43589
+Missing "displayUri" for 90853
+Missing creators for OBJKT 11823
+Missing creators for OBJKT 11821
+12986 - TypeError: Cannot read property 'display_uri' of undefined
+13781 - TypeError: Cannot read property 'display_uri' of undefined
+14310 - TypeError: Cannot read property 'display_uri' of undefined
+14435 - TypeError: Cannot read property 'display_uri' of undefined
+15676 - TypeError: Cannot read property 'display_uri' of undefined
+22330 - TypeError: Cannot read property 'display_uri' of undefined
+24227 - TypeError: Cannot read property 'display_uri' of undefined
+24439 - TypeError: Cannot read property 'display_uri' of undefined
+25122 - TypeError: Cannot read property 'display_uri' of undefined
+27585 - TypeError: Cannot read property 'display_uri' of undefined
+34408 - TypeError: Cannot read property 'display_uri' of undefined
+37786 - TypeError: Cannot read property 'display_uri' of undefined
+43023 - TypeError: Cannot read property 'display_uri' of undefined
+43589 - TypeError: Cannot read property 'display_uri' of undefined
+90853 - TypeError: Cannot read property 'display_uri' of undefined
+Missing creators for OBJKT 11823
+Missing creators for OBJKT 11821
+Missing creators for OBJKT 11823
+Missing creators for OBJKT 11821
+2071 - Error: ENOENT: no such file or directory, stat './large-images/2071.mp4'
+4924 - Error: ENOENT: no such file or directory, stat './large-images/4924.gltf'
+5765 - Error: ENOENT: no such file or directory, stat './large-images/5765.mp4'
+8280 - Error: ENOENT: no such file or directory, stat './large-images/8280.svg'
+8333 - Error: ENOENT: no such file or directory, stat './large-images/8333.svg'
+8542 - Error: ENOENT: no such file or directory, stat './large-images/8542.mp4'
+9054 - Error: ENOENT: no such file or directory, stat './large-images/9054.svg'
+9099 - Error: ENOENT: no such file or directory, stat './large-images/9099.svg'
+9208 - Error: ENOENT: no such file or directory, stat './large-images/9208.svg'
+9415 - Error: ENOENT: no such file or directory, stat './large-images/9415.svg'
+9417 - Error: ENOENT: no such file or directory, stat './large-images/9417.svg'
+9623 - Error: ENOENT: no such file or directory, stat './large-images/9623.svg'
+9733 - Error: ENOENT: no such file or directory, stat './large-images/9733.svg'
+9954 - Error: ENOENT: no such file or directory, stat './large-images/9954.svg'
+10345 - Error: ENOENT: no such file or directory, stat './large-images/10345.mp4'
+10643 - Error: ENOENT: no such file or directory, stat './large-images/10643.mp4'
+10791 - Error: ENOENT: no such file or directory, stat './large-images/10791.mp4'
+10931 - Error: ENOENT: no such file or directory, stat './large-images/10931.svg'
+11246 - Error: ENOENT: no such file or directory, stat './large-images/11246.svg'
+11821 - Error: ENOENT: no such file or directory, stat './large-images/11821.mp4'
+11823 - Error: ENOENT: no such file or directory, stat './large-images/11823.mp4'
+12184 - Error: ENOENT: no such file or directory, stat './large-images/12184.svg'
+12724 - Error: ENOENT: no such file or directory, stat './large-images/12724.mp4'
+12986 - Error: ENOENT: no such file or directory, stat './large-images/12986.html'
+13781 - Error: ENOENT: no such file or directory, stat './large-images/13781.html'
+13787 - Error: ENOENT: no such file or directory, stat './large-images/13787.gltf'
+13834 - Error: ENOENT: no such file or directory, stat './large-images/13834.mp4'
+13851 - Error: ENOENT: no such file or directory, stat './large-images/13851.mp4'
+13861 - Error: ENOENT: no such file or directory, stat './large-images/13861.gltf'
+13942 - Error: ENOENT: no such file or directory, stat './large-images/13942.svg'
+14310 - Error: ENOENT: no such file or directory, stat './large-images/14310.html'
+14423 - Error: ENOENT: no such file or directory, stat './large-images/14423.svg'
+14435 - Error: ENOENT: no such file or directory, stat './large-images/14435.html'
+15614 - Error: ENOENT: no such file or directory, stat './large-images/15614.gltf'
+15676 - Error: ENOENT: no such file or directory, stat './large-images/15676.html'
+17307 - Error: ENOENT: no such file or directory, stat './large-images/17307.svg'
+19579 - Error: ENOENT: no such file or directory, stat './large-images/19579.mp4'
+20089 - Error: ENOENT: no such file or directory, stat './large-images/20089.mp4'
+20137 - Error: ENOENT: no such file or directory, stat './large-images/20137.svg'
+20783 - Error: ENOENT: no such file or directory, stat './large-images/20783.mov'
+22330 - Error: ENOENT: no such file or directory, stat './large-images/22330.html'
+24227 - Error: ENOENT: no such file or directory, stat './large-images/24227.html'
+24439 - Error: ENOENT: no such file or directory, stat './large-images/24439.html'
+25122 - Error: ENOENT: no such file or directory, stat './large-images/25122.html'
+25784 - Error: ENOENT: no such file or directory, stat './large-images/25784.svg'
+26667 - Error: ENOENT: no such file or directory, stat './large-images/26667.svg'
+27585 - Error: ENOENT: no such file or directory, stat './large-images/27585.html'
+31984 - Error: ENOENT: no such file or directory, stat './large-images/31984.gltf'
+34176 - Error: ENOENT: no such file or directory, stat './large-images/34176.mp4'
+34408 - Error: ENOENT: no such file or directory, stat './large-images/34408.html'
+34506 - Error: ENOENT: no such file or directory, stat './large-images/34506.m4a'
+36049 - Error: ENOENT: no such file or directory, stat './large-images/36049.pdf'
+37532 - Error: ENOENT: no such file or directory, stat './large-images/37532.svg'
+37786 - Error: ENOENT: no such file or directory, stat './large-images/37786.html'
+42266 - Error: ENOENT: no such file or directory, stat './large-images/42266.mp4'
+43023 - Error: ENOENT: no such file or directory, stat './large-images/43023.html'
+43318 - Error: ENOENT: no such file or directory, stat './large-images/43318.mp4'
+43589 - Error: ENOENT: no such file or directory, stat './large-images/43589.html'
+44104 - Error: ENOENT: no such file or directory, stat './large-images/44104.mp4'
+45293 - Error: ENOENT: no such file or directory, stat './large-images/45293.mp4'
+45409 - Error: ENOENT: no such file or directory, stat './large-images/45409.mp4'
+45743 - Error: ENOENT: no such file or directory, stat './large-images/45743.mp4'
+54713 - Error: ENOENT: no such file or directory, stat './large-images/54713.mp4'
+76029 - Error: ENOENT: no such file or directory, stat './large-images/76029.mp4'
+90853 - Error: ENOENT: no such file or directory, stat './large-images/90853.html'

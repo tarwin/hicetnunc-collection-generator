@@ -1,0 +1,35 @@
+{
+  "ownerAddress": "tz1MH7vTRc4yXkttnoU93CYqiZfhEzk7C17a",
+  "cloudFlareUrl": "https://cloudflare-ipfs.com/ipfs/",
+  "downloadPath": "./lonliboy/downloads",
+  "largeImagePath": "./lonliboy/large-images",
+  "distPath": "./lonliboy/dist",
+  "fillMode": false,
+  "puppetSize": 1024,
+  "thumbnail": {
+    "path": "thumbs",
+    "maxGifSizeKb": 100,
+    "image": {
+      "formats": [{
+        "type": "jpeg",
+        "options": {
+          "quality": 60
+        }
+      },{
+        "type": "avif"
+      }],
+      "sizes": [512]
+    },
+    "video": {
+      "maxLengthSeconds": 3,
+      "formats": [{
+        "type": "av1"
+      },{
+        "type": "h264"
+      }],
+      "sizes": [512]
+    }
+  },
+  "ignoreObjects": [17038, 17032, 9426, 9416, 9414, 9413, 25119, 17102],
+  "onlyObjects": []
+}

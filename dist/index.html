@@ -13,8 +13,10 @@
     <script src="https://unpkg.com/vue-masonry-css"></script>
     <script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
     <script src="https://unpkg.com/vue-masonry@0.11.3/dist/vue-masonry-plugin-window.js"></script>
+    <script src="http://vtimofeev.github.io/vue-check-view/plugin.js"></script>
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <script src="https://www.gstatic.com/cv/js/sender/v1/cast_sender.js?loadCastFramework=1"></script>
+    <!-- <script src="https://unpkg.com/wavesurfer.js"></script> -->
 
     <script src="./lib/vuePinchZoom.umd.js"></script>
     <link rel="stylesheet" href="./lib/vuePinchZoom.css">
@@ -63,20 +65,22 @@
             @click="showObj(obj.id)"
             class="item"
           >
-            <video
-              v-if="obj.mime.indexOf('video') === 0 || (obj.mime === 'image/gif' && !obj.gifThumb)"
-              autoplay
-              loop
-              :src="`./${thumbPath}/${obj.id}-512.mp4`"
-              style="width: 100%; height: auto;"
-            ></video>
+            <template v-if="obj.mime.indexOf('video') === 0 || (obj.mime === 'image/gif' && !obj.gifThumb)">
+              <video
+                v-view="viewHandler"
+                preload="none"
+                loop
+                :poster="`./${thumbPath}/${obj.id}-512.avif`"
+                :src="`./${thumbPath}/${obj.id}-512.mp4`"
+              ></video>
+            </template>
             <picture v-else>
               <template v-if="obj.gifThumb">
                 <img :src="`./${thumbPath}/${obj.id}-512.gif`" />
               </template>
               <template v-else>
                 <source type="image/avif" :srcset="`./${thumbPath}/${obj.id}-512.avif`">
-                <img :src="`./${thumbPath}/${obj.id}-512.jpg`" />
+                <img :src="`./${thumbPath}/${obj.id}-512.jpeg`" />
               </template>
             </picture>
             <div class="name-wrapper"><div class="name">{{ obj.name }}</div></div>
@@ -115,6 +119,7 @@
               ></iframe>
             </template>
             <template v-if="currentObjectType === 'audio'">
+              <!-- <div id="waveform"></div> -->
               <img :src="`./${thumbPath}/${currentObject.id}.svg`" />
               <audio
                 :src="`https://${currentObject.cid}.ipfs.infura-ipfs.io/`"

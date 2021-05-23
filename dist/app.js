@@ -119,6 +119,18 @@ var app = new Vue({
     }
   },
   methods: {
+    viewHandler(e) {
+      const el = e.target.element
+      if (el.nodeName === 'VIDEO') {
+        try {
+          if (e.type === 'enter') {
+            el.play()
+          } else if (e.type === 'exit') {
+            el.pause()
+          }
+        } catch(e) {}
+      }
+    },
     async showObj(objectId) {
       this.mainScroll = window.scrollY
       document.body.style.position = 'fixed';
@@ -129,6 +141,17 @@ var app = new Vue({
       this.currentObject = obj
       this.currentCreator = null
       window.location.hash = `obj=${objectId}`
+      //
+      // if (obj.mime.indexOf('audio') === 0) {
+      //   this.$nextTick(() => {
+      //     var wavesurfer = WaveSurfer.create({
+      //       container: '#waveform',
+      //       waveColor: '#000',
+      //       progressColor: '#fff'
+      //     })
+      //     wavesurfer.load(`https://${obj.cid}.ipfs.infura-ipfs.io/`)
+      //   })
+      // }
       try {
         this.currentCreator = await getAddressInfo(obj.creatorAddress)
       } catch(e) {}

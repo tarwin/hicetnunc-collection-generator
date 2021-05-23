@@ -311,8 +311,8 @@ const getImageMetadata = async (file) => {
 }
 
 const getDisplayUri = async (obj) => {
-  if (obj && obj.token_info && obj.token_info.displayUri) {
-    return obj.token_info.displayUri
+  if (obj && obj.display_uri) {
+    return obj.display_uri
   }
   if (obj && obj.extras && obj.extras['@@empty']) {
     try {

@@ -63,11 +63,18 @@ a, a:visited {
   position: relative;
   /* transition: box-shadow, border .5s ease-out; */
   cursor: pointer;
+  /* content-visibility: auto; */
+  /* aspect-ratio: 1 / 1; */
 }
 #container .item img {
   width: 100%;
   height: auto;
 }
+#container .item video {
+  width: 100%;
+  height: auto;
+}
+
 .item .name-wrapper {
   position: absolute;
   bottom: -32px;

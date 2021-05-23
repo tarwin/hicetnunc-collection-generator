@@ -9,5 +9,8 @@ dist/thumbs
 dist/data.json
 dist/.gitignore
 dist/.git
+processed
+lonliboy
+temp.json
 
 tmp

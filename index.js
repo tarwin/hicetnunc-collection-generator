@@ -22,7 +22,7 @@ const {
 // config
 let config = require('./config.json')
 if (getArgs()[0]) {
-  config = require(`./${getArgs()[0]}config.json`)
+  config = require(`./config.${getArgs()[0]}.json`)
 }
 
 let fillMode = false
@@ -41,6 +41,7 @@ const ipfsClient = require('ipfs-http-client')
 const fetch = require('node-fetch')
 var PDFImage = require("pdf-image").PDFImage;
 const audioToSvgWaveform = require('./lib/audio-to-svg-waveform')
+const { curly } = require('node-libcurl')
 // const PuppeteerVideoRecorder = require('puppeteer-video-recorder');
 
 // ------------------------------------------------------------------
@@ -95,16 +96,16 @@ function addWarning(str) {
 const getNiceDataObjects = async(objects) => {
   const out = []
   for (let obj of objects) {
-    const cidv1 = new ipfsClient.CID(obj.token_info.artifactUri.substr(7)).toV1()
+    const cidv1 = new ipfsClient.CID(obj.artifact_uri.substr(7)).toV1()
     const subomain = cidv1.toString()
     out.push({
       id: obj.token_id,
-      name: obj.token_info.name,
-      description: obj.token_info.description,
-      tags: obj.token_info.tags,
-      creatorAddress: obj.token_info.creators[0],
-      mime: obj.token_info.formats[0].mimeType,
-      artifactUri: obj.token_info.artifactUri,
+      name: obj.name,
+      description: obj.description,
+      tags: obj.tags,
+      creatorAddress: obj.creators[0],
+      mime: obj.formats[0].mimeType,
+      artifactUri: obj.artifact_uri,
       cid: subomain,
       formats: obj.formats,
       gifThumb: obj.gifThumb,
@@ -128,15 +129,84 @@ const getNiceData = async(collected, created) => {
   return niceData
 }
 
+const getUserObjkts = async(address) => {
+  let apiUrl = `https://api.better-call.dev/v1/account/mainnet/${address}/token_balances`
+  // const res = await fetch(apiUrl)
+  const { data: baseJson } = await curly.get(apiUrl)
+  // const baseJson = JSON.parse(res)
+  const total = baseJson.total
+  console.log('All OBJKTs:', total)
+  let allObj = []
+  for (let i=0; i<Math.ceil(total / 10); i++) {
+    console.log(`Get data for ${i*10}-${i*10+10} - ${apiUrl}` + `?size=10&offset=${i*10}`)
+    // const objRes = await fetch(apiUrl + `?size=10&offset=${i*10}`)
+    const { data: json } = await curly.get(apiUrl + `?size=10&offset=${i*10}`)
+    // const json = JSON.parse(objRes)
+    // make sure they at least have a token
+    allObj.push(...json.balances)
+    allObj = allObj.filter(o => o.token_id)
+    // may have to wait?
+    // await sleep(1000)
+  }
+  // remove any multiples
+  const added = []
+  const creatorLookup = fs.existsSync('./creator_lookup.json') ? JSON.parse(fs.readFileSync('./creator_lookup.json')) : {}
+  for (let o of allObj) {
+    if (!o.creators) {
+      if (creatorLookup[o.token_id]) {
+        o.creators = creatorLookup[o.token_id]
+        continue
+      }
+      console.log(`Getting missing creators for OBJKT ${o.token_id}`)
+      try {
+        // const resObj = await fetch(`https://1xgf1e26jb.execute-api.us-east-1.amazonaws.com/dev/objkt?id=${o.token_id}`)
+        // const jsonObj = (await resObj.json()).result
+        const { data: jsonObj } = await curly.get(`https://1xgf1e26jb.execute-api.us-east-1.amazonaws.com/dev/objkt?id=${o.token_id}`)
+        if (jsonObj && jsonObj.token_info && jsonObj.token_info.creators) {
+          o.creators = jsonObj.token_info.creators
+        } else {
+          addWarning(`Missing creators for OBJKT ${o.token_id}`)
+        }
+      } catch (e) {
+        addWarning(`ERROR when getting data for OBJKT ${o.token_id}`)
+      }
+    }
+  }
+
+  // save a list of creators for lookup if we run again
+  const newCreatorLookup = allObj.map(o => {
+    return {
+      token_id: o.token_id,
+      creators: o.creators
+    }
+  })
+  const creatorsMap = {}
+  newCreatorLookup.forEach(o => creatorsMap[o.token_id] = o.creators)
+  fs.writeFileSync('./creator_lookup.json', JSON.stringify(creatorsMap, null, 2))
+
+  // a bunch of filtering
+  allObj = allObj.filter(o => {
+    // get rid of non OBJKTs
+    if (o.symbol !== 'OBJKT') return false
+    // get rid of things you DID own but burnt
+    if ((o.balance === 0 || o.balance === '0') && !o.creators.includes(config.ownerAddress)) return false
+    // only add once
+    if (!added.includes(o.token_id)) {
+      added.push(o.token_id)
+      return true
+    }
+    return false
+  })
+  return allObj
+}
+
 // ------------------------------------------------------------------
 // main func / loop
 const main = async () => {
 
   let objects = []
   if (!fillMode) {
-    const res = await fetch(`https://51rknuvw76.execute-api.us-east-1.amazonaws.com/dev/tz?tz=${config.ownerAddress}`)
-    objects = (await res.json()).result
-    
+    objects = await getUserObjkts(config.ownerAddress)
     objects = objects.sort((a, b) => {
       return a.token_id - b.token_id
     })
@@ -178,13 +248,9 @@ const main = async () => {
   }
 
   // items you own, others are ones you created
-  let collected
-  let created
   if (!fillMode) {
-    collected = objects.filter(d => !d.token_info.creators.includes(config.ownerAddress))
-    created = objects.filter(d => d.token_info.creators.includes(config.ownerAddress))
-    console.log('COLLECTED: ', collected.length)
-    console.log('CREATED: ', created.length)
+    console.log('COLLECTED: ', objects.filter(d => d.creators && !d.creators.includes(config.ownerAddress)).length)
+    console.log('CREATED: ', objects.filter(d => d.creators && d.creators.includes(config.ownerAddress)).length)
   }
 
   // start puppeteer
@@ -226,8 +292,8 @@ const main = async () => {
         mime = obj.formats[0].mimeType
         ipfsUri = obj.artifact_uri.substr(7)
       } else {
-        mime = obj.token_info.formats[0].mimeType
-        ipfsUri = obj.token_info.artifactUri.substr(7)
+        mime = obj.formats[0].mimeType
+        ipfsUri = obj.artifact_uri.substr(7)
       }
 
       const converter = converters[mime]
@@ -269,6 +335,12 @@ const main = async () => {
       // if we actually have a converter for this mime type
       // we should have one for each, but if more are added maybe not?
       if (converter) {
+
+        // has to be done before quick exit
+        const largeImageFileSize = fs.statSync(`${config.largeImagePath}/${filename}`).size
+        if (largeImageFileSize <= config.thumbnail.maxGifSizeKb * 1024) {
+          obj.gifThumb = true
+        }
 
         // skip for existing thumbnails
         if (fs.existsSync(`${thumbnailPath}/${tokenId}-${config.thumbnail.image.sizes[0]}.${config.thumbnail.image.formats[0].type}`)) {
@@ -338,9 +410,8 @@ const main = async () => {
                 objThumbnails[tokenId]= await createThumbnails(filename, tokenId)
               } else {
                 // if smaller than X use GIF
-                if (fs.statSync(`${config.largeImagePath}/${filename}`).size <= config.thumbnail.maxGifSizeKb * 1000) {
+                if (largeImageFileSize <= config.thumbnail.maxGifSizeKb * 1024) {
                   objThumbnails[tokenId] = await createGifThumbnails(filename, tokenId)
-                  obj.gifThumb = true
                 } else {
                   // else use MP4
                   objThumbnails[tokenId] = await createVideoThumbnailsFromGif(filename, tokenId)
@@ -601,7 +672,11 @@ const main = async () => {
 
   if (!fillMode) {
     // copy data
-    const niceData = await getNiceData(collected, created)
+    const niceData = await getNiceData(
+      objects.filter(d => d.creators && !d.creators.includes(config.ownerAddress)),
+      objects.filter(d => d.creators && d.creators.includes(config.ownerAddress)),
+      objects
+    )
     fs.writeFileSync(`${config.distPath}/data.json`, JSON.stringify(niceData, '', 2))
   }
 }
