@@ -101,17 +101,13 @@ var app = new Vue({
         console.log('canCast', val)
       })
 
-      // make sure videos are playig that are displayed?
-      this.$nextTick(() => {
-        for (let el of document.getElementsByTagName('video')) {
-          if (this.isInViewport(el)) {
-            el.play()
-          }
-        }
-      })
+      this.checkVideoPlaying()
 
       this.checkCaster()
       // this.setupMasonry()
+
+      this.$watch('showList', this.checkVideoPlaying)
+      this.$watch('filterType', this.checkVideoPlaying)
     })
 
     document.addEventListener("fullscreenchange", (event) => {
@@ -129,6 +125,21 @@ var app = new Vue({
     }
   },
   methods: {
+    checkVideoPlaying() {
+      // make sure videos are playig that are displayed?
+      this.$nextTick(() => {
+        for (let el of document.getElementsByTagName('video')) {
+          if (this.isInViewport(el)) {
+            el.play()
+          }
+        }
+      })
+    },
+    stopAllVideos() {
+      for (let el of document.getElementsByTagName('video')) {
+        el.pause()
+      }
+    },
     isInViewport(elem) {
       const bounding = elem.getBoundingClientRect()
       return (
@@ -149,6 +160,8 @@ var app = new Vue({
       }
     },
     async showObj(objectId) {
+      this.stopAllVideos()
+
       this.mainScroll = window.scrollY
       document.body.style.position = 'fixed';
       document.body.style.top = `-${window.scrollY}px`;
@@ -183,6 +196,7 @@ var app = new Vue({
           document.body.style.top = '';
           window.scrollTo({ top: this.mainScroll })
         }, 100)
+        this.checkVideoPlaying()
       })
     },
     miniAddress(str) {
@@ -201,6 +215,8 @@ var app = new Vue({
       }
     },
     startPresentation() {
+      this.stopAllVideos()
+      
       this.isPresenting = true
       this.isFullscreen = true
       this.showObj(this.currentObject ? this.currentObject.id : this.getRandomObjectId())
