@@ -288,17 +288,17 @@ footer a, footer a:visited {
   cursor: pointer;
 }
 
-#switch-collection {
+#switch-collection, #filter-collection {
   padding-left: 15px;
   color: var(--text-color);
 }
-#switch-collection button {
+#switch-collection button, #filter-collection button {
   background: none;
   color: var(--text-color);
   border: 0;
   cursor: pointer;
 }
-#switch-collection button:disabled {
+#switch-collection button:disabled, #filter-collection button:disabled {
   cursor: auto;
   text-decoration: underline;
 }

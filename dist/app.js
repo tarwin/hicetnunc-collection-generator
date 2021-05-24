@@ -57,6 +57,7 @@ var app = new Vue({
     isCasting: false,
     showList: 'collected',
     data: {},
+    filterType: '',
   },
   mounted() {
     fetch('./data.json')
@@ -100,6 +101,15 @@ var app = new Vue({
         console.log('canCast', val)
       })
 
+      // make sure videos are playig that are displayed?
+      this.$nextTick(() => {
+        for (let el of document.getElementsByTagName('video')) {
+          if (this.isInViewport(el)) {
+            el.play()
+          }
+        }
+      })
+
       this.checkCaster()
       // this.setupMasonry()
     })
@@ -119,16 +129,23 @@ var app = new Vue({
     }
   },
   methods: {
+    isInViewport(elem) {
+      const bounding = elem.getBoundingClientRect()
+      return (
+        bounding.top >= 0 &&
+        bounding.left >= 0 &&
+        bounding.bottom <= (window.innerHeight || document.documentElement.clientHeight) &&
+        bounding.right <= (window.innerWidth || document.documentElement.clientWidth)
+      )
+    },
     viewHandler(e) {
       const el = e.target.element
       if (el.nodeName === 'VIDEO') {
-        try {
-          if (e.type === 'enter') {
-            el.play()
-          } else if (e.type === 'exit') {
-            el.pause()
-          }
-        } catch(e) {}
+        if (e.type === 'enter') {
+          el.play()
+        } else if (e.type === 'exit') {
+          el.pause()
+        }
       }
     },
     async showObj(objectId) {
@@ -292,6 +309,12 @@ var app = new Vue({
       const objects = this.showList === 'collected' ?
         this.data.collectedObjects :
         this.data.createdObjects
+      if (this.filterType) {
+        if (this.filterType === 'still') {
+          return objects.filter(o => o.mime !== 'image/gif' && o.mime.indexOf('image/') === 0)
+        }
+        return objects.filter(o => o.mime.indexOf(this.filterType) === 0)
+      }
       return objects
     },
     currentObjectType() {

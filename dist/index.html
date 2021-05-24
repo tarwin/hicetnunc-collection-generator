@@ -24,7 +24,6 @@
   <body>
     <google-cast-launcher id="cast-button"></google-cast-launcher>
 
-
     <div id="app">
       <div id="theme-switch" @click="isDark = !isDark"></div>
       <div
@@ -53,6 +52,17 @@
         <div id="switch-collection">
           <button :disabled="showList === 'collected'" @click="switchCollection">Collected</button>
           <button :disabled="showList === 'created'" @click="switchCollection">Created</button>
+        </div>
+
+        <div id="filter-collection">
+          <button :disabled="filterType === ''" @click="filterType = ''">All</button>
+          <button :disabled="filterType === 'still'" @click="filterType = 'still'">Stills</button>
+          <button :disabled="filterType === 'image/gif'" @click="filterType = 'image/gif'">GIF</button>
+          <button :disabled="filterType === 'video'" @click="filterType = 'video'">Video</button>
+          <button :disabled="filterType === 'model'" @click="filterType = 'model'">3D</button>
+          <button :disabled="filterType === 'application/x-directory'" @click="filterType = 'application/x-directory'">HTML</button>
+          <button :disabled="filterType === 'audio'" @click="filterType = 'audio'">Audio</button>
+          <button :disabled="filterType === 'application/pdf'" @click="filterType = 'application/pdf'">PDF</button>
         </div>
 
         <masonry
