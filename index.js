@@ -74,7 +74,6 @@ const converters = {
 
 // ------------------------------------------------------------------
 // utility functions
-
 let errorLog = './error.log'
 
 // create directories if they don't exist
@@ -130,6 +129,7 @@ const getNiceData = async(collected, created) => {
 }
 
 const getUserObjkts = async(address) => {
+  console.log('Getting OBJKT count')
   let apiUrl = `https://api.better-call.dev/v1/account/mainnet/${address}/token_balances`
   // const res = await fetch(apiUrl)
   const { data: baseJson } = await curly.get(apiUrl)
@@ -146,7 +146,9 @@ const getUserObjkts = async(address) => {
     allObj.push(...json.balances)
     allObj = allObj.filter(o => o.token_id)
     // may have to wait?
-    // await sleep(1000)
+    if (i && i % 10 === 0) {
+      await sleep(5000)
+    }
   }
   // remove any multiples
   const added = []
@@ -162,8 +164,8 @@ const getUserObjkts = async(address) => {
         // const resObj = await fetch(`https://1xgf1e26jb.execute-api.us-east-1.amazonaws.com/dev/objkt?id=${o.token_id}`)
         // const jsonObj = (await resObj.json()).result
         const { data: jsonObj } = await curly.get(`https://1xgf1e26jb.execute-api.us-east-1.amazonaws.com/dev/objkt?id=${o.token_id}`)
-        if (jsonObj && jsonObj.token_info && jsonObj.token_info.creators) {
-          o.creators = jsonObj.token_info.creators
+        if (jsonObj && jsonObj.result && jsonObj.result.token_info && jsonObj.result.token_info.creators) {
+          o.creators = jsonObj.result.token_info.creators
         } else {
           addWarning(`Missing creators for OBJKT ${o.token_id}`)
         }
@@ -182,14 +184,14 @@ const getUserObjkts = async(address) => {
   })
   const creatorsMap = {}
   newCreatorLookup.forEach(o => creatorsMap[o.token_id] = o.creators)
-  fs.writeFileSync('./creator_lookup.json', JSON.stringify(creatorsMap, null, 2))
+  fs.writeFileSync('./creator_lookup.json', JSON.stringify({ ...creatorLookup, ...creatorsMap }, null, 2))
 
   // a bunch of filtering
   allObj = allObj.filter(o => {
     // get rid of non OBJKTs
     if (o.symbol !== 'OBJKT') return false
     // get rid of things you DID own but burnt
-    if ((o.balance === 0 || o.balance === '0') && !o.creators.includes(config.ownerAddress)) return false
+    if ((o.balance === 0 || o.balance === '0') && !(o.creators && o.creators.includes(config.ownerAddress))) return false
     // only add once
     if (!added.includes(o.token_id)) {
       added.push(o.token_id)
@@ -264,7 +266,8 @@ const main = async () => {
       headless: false, // has to be non-headless to get webgl working properly?
       args: [
         '--hide-scrollbars',
-        '--mute-audio'
+        '--mute-audio',
+        '--allow-insecure-localhost'
       ],
   });
 
@@ -337,8 +340,8 @@ const main = async () => {
       if (converter) {
 
         // has to be done before quick exit
-        const largeImageFileSize = fs.statSync(`${config.largeImagePath}/${filename}`).size
-        if (largeImageFileSize <= config.thumbnail.maxGifSizeKb * 1024) {
+        const largeImageFileSize = fs.statSync(`${config.downloadPath}/${filename}`).size
+        if (converter.ext === 'gif' && largeImageFileSize <= config.thumbnail.maxGifSizeKb * 1024) {
           obj.gifThumb = true
         }
 
@@ -539,6 +542,7 @@ const main = async () => {
             console.log('Waiting for visibility')
             await browserPage.waitForSelector('#done')
             console.log('Visible')
+            await sleep(1000000)
             await browserPage.screenshot({path: `${config.largeImagePath}/${tokenId}.png`, omitBackground: true});
             await browserPage.close()
           }

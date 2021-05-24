@@ -5,6 +5,7 @@
   "main": "test.js",
   "scripts": {
     "start": "node index.js",
+    "serve-generate": "serve -C",
     "serve-dist": "serve ./dist/ -C"
   },
   "author": "",
