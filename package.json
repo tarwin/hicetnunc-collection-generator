@@ -13,7 +13,9 @@
   "dependencies": {
     "axios": "^0.21.1",
     "cids": "^1.1.6",
+    "express": "^4.17.1",
     "ipfs-http-client": "^49.0.4",
+    "localtunnel": "^2.0.1",
     "node-fetch": "^2.6.1",
     "node-libcurl": "^2.3.3",
     "pdf-image": "^2.0.0",

@@ -19,6 +19,8 @@ Also thanks to
 
 # Requirements
 
+- Mac OSX. Sorry for now at least it is only tested on OSX and uses Chrome path for OSX.
+- Node 12 ... I think?
 - `npm install`
 - serve: `npm install -g serve`
 - python3
@@ -79,4 +81,5 @@ I have my `/dist/` directory connected to Github, and have Netlify watching this
 # Thanks
 
 - @quasimondo scraper: https://gist.github.com/Quasimondo/30416ce22243610a9c95424e8796b008
+- @__orderandchaos: random inspiration to fix Chromium (by replacing with Chrome)
 - all @hicetnunc2000 community

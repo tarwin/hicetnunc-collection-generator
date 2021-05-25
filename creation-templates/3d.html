@@ -1,0 +1,43 @@
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
+    <style>
+      html, body {
+        width: 100%;
+        height: 100%;
+        padding: 0;
+        margin: 0;
+      }
+      #viewer {
+        width: __browserWidth__px;
+        height: __browserHeight__px;
+        --poster-color: transparent;
+        --progress-bar-color: transparent;
+      }
+    </style>
+  </head>
+  <body>
+    <model-viewer
+      id="viewer"
+      src="__url__"
+      auto-rotate
+      auto-rotate-delay="1"
+      interaction-prompt="none"
+      rotation-per-second="0deg"
+    ></model-viewer>
+    <script>
+      const modelViewerParameters = document.querySelector('model-viewer#viewer');
+      // once the model is visible
+      modelViewerParameters.addEventListener('model-visibility', (e) => {
+        // wait a second in case the browser hasn't actually rendered it yet
+        setTimeout(() => {
+          // add a div#done which puppeteer will wait for before taking a screenshot
+          const d = document.createElement('div')
+          d.setAttribute('id', 'done')
+          document.body.appendChild(d)
+        }, 1000)
+      });
+    </script>
+  </body>
+</html>

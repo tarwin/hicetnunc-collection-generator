@@ -15,7 +15,8 @@ const {
   getVideoWidthHeight,
   getDisplayUri,
   createLargeFromBmp,
-  createLargeFromVideo
+  createLargeFromVideo,
+  askQuestion
 } = require('./utils')
 
 // ----------------------
@@ -42,7 +43,14 @@ const fetch = require('node-fetch')
 var PDFImage = require("pdf-image").PDFImage;
 const audioToSvgWaveform = require('./lib/audio-to-svg-waveform')
 const { curly } = require('node-libcurl')
+const express = require('express')
+// const localtunnel = require('localtunnel')
 // const PuppeteerVideoRecorder = require('puppeteer-video-recorder');
+
+const expressApp = express()
+const expressPort = 5001
+let expressServer
+// let tunnelUrl
 
 // ------------------------------------------------------------------
 // mime type setup
@@ -257,6 +265,8 @@ const main = async () => {
 
   // start puppeteer
   const browser = await puppeteer.launch({
+      // use chrome instead of chromium because it wasn't working :(
+      executablePath: '/Applications/Google Chrome.app/Contents/MacOS/Google Chrome',
       defaultViewport: {
           width: browserWidth,
           height: browserHeight,
@@ -266,8 +276,7 @@ const main = async () => {
       headless: false, // has to be non-headless to get webgl working properly?
       args: [
         '--hide-scrollbars',
-        '--mute-audio',
-        '--allow-insecure-localhost'
+        '--mute-audio'
       ],
   });
 
@@ -489,60 +498,21 @@ const main = async () => {
           // don't think GL requires a displayUri so we're just going to have
           // to make thumbs ourselves.
           if (!fs.existsSync(`${config.largeImagePath}/${tokenId}.png`)) {
-            const url = `http://localhost:5000/${config.downloadPath}/${tokenId}.gltf`
+            const contentUrl = `http://localhost:${expressPort}/public/${config.downloadPath}/${tokenId}.gltf`
 
-            const html = `<html>
-              <head>
-                <meta name="viewport" content="width=device-width, initial-scale=1">
-                <script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
-                <style>
-                  html, body {
-                    width: 100%;
-                    height: 100%;
-                    padding: 0;
-                    margin: 0;
-                  }
-                  #viewer {
-                    width: ${browserWidth}px;
-                    height: ${browserHeight}px;
-                    --poster-color: transparent;
-                    --progress-bar-color: transparent;
-                  }
-                </style>
-              </head>
-              <body>
-                <model-viewer
-                  id="viewer"
-                  src="${url}"
-                  auto-rotate
-                  auto-rotate-delay="1"
-                  interaction-prompt="none"
-                  rotation-per-second="0deg"
-                ></model-viewer>
-                <script>
-                  const modelViewerParameters = document.querySelector('model-viewer#viewer');
-                  // once the model is visible
-                  modelViewerParameters.addEventListener('model-visibility', (e) => {
-                    // wait a second in case the browser hasn't actually rendered it yet
-                    setTimeout(() => {
-                      // add a div#done which puppeteer will wait for before taking a screenshot
-                      const d = document.createElement('div')
-                      d.setAttribute('id', 'done')
-                      document.body.appendChild(d)
-                    }, 1000)
-                  });
-                </script>
-              </body>
-            </html>`
-            
-            let base64Html = Buffer.from(html).toString('base64');
+            const vars = {
+              __browserWidth__: browserHeight,
+              __browserHeight__: browserHeight,
+              __url__: contentUrl
+            }
 
-            const browserPage = await browser.newPage();
-            await browserPage.goto(`data:text/html;base64,${base64Html}`);
+            const browserPage = await browser.newPage()
+            const browserUrl = `http://localhost:${expressPort}/?template=3d&vars=${encodeURIComponent(JSON.stringify(vars))}`
+            await browserPage.goto(browserUrl)
+            console.log(`Loading ${browserUrl}`)
             console.log('Waiting for visibility')
             await browserPage.waitForSelector('#done')
             console.log('Visible')
-            await sleep(1000000)
             await browserPage.screenshot({path: `${config.largeImagePath}/${tokenId}.png`, omitBackground: true});
             await browserPage.close()
           }
@@ -564,7 +534,7 @@ const main = async () => {
 
             canDeleteLarge.push(`${config.largeImagePath}/${tokenId}.${meta.format}`)
           } else if (!fs.existsSync(`${config.largeImagePath}/${tokenId}.png`)) {
-            const url = `http://localhost:5000/${config.downloadPath.substr(2)}/${tokenId}.svg`
+            const url = `http://localhost:${expressPort}/public/${config.downloadPath.substr(2)}/${tokenId}.svg`
             const meta = await getImageMetadata(`./${config.downloadPath}/${tokenId}.svg`)
             const dims = getMaxDimensions(meta.width, meta.height, 2000)
 
@@ -685,6 +655,38 @@ const main = async () => {
   }
 }
 
-main()
+expressApp.use('/public', express.static('./'))
+
+expressApp.get('/', (req, res) => {
+  if (!req.query || !Object.keys(req.query).length) {
+    return res.send('Content server working.')
+  }
+
+  const templateReq = req.query.template
+  const vars = JSON.parse(req.query.vars)
+  let template = fs.readFileSync(`./creation-templates/${templateReq}.html`, { encoding: 'utf8' })
+  for (let v of Object.keys(vars)) {
+    template = template.replace(new RegExp(v, 'g'), vars[v])
+  }
+  res.send(template)
+})
+
+expressServer = expressApp.listen(expressPort, async () => {
+  console.log(`Server listening on http://localhost:${expressPort}`)
+
+  // const tunnel = await localtunnel({ port: expressPort });
+  // tunnelUrl = tunnel.url
+
+  // console.log('Before continueing please allow the tunnel access by going to the following URL.')
+  // console.log(`\n\x1b[33m%s\x1b[0m\n`, tunnelUrl)
+
+  // await askQuestion('Press ENTER to continue.')
+  
+  main()
   .catch(e => console.log(e))
-  .finally(async () => {})
+  .finally(() => {
+    if (expressServer) {
+      expressServer.close()
+    }
+  })
+})

@@ -3,6 +3,7 @@ const { exec } = require("child_process");
 const sharp = require('sharp');
 const fs = require('fs');
 const fetch = require('node-fetch')
+const readline = require('readline')
 
 const getArgs = function() {
   return process.argv.slice(2)
@@ -328,6 +329,18 @@ const getDisplayUri = async (obj) => {
   return null
 }
 
+const askQuestion = (query) => {
+  const rl = readline.createInterface({
+      input: process.stdin,
+      output: process.stdout,
+  });
+
+  return new Promise(resolve => rl.question(query, ans => {
+      rl.close()
+      resolve(ans)
+  }))
+}
+
 module.exports = {
   createThumbnails,
   createLargeImage,
@@ -346,5 +359,6 @@ module.exports = {
   getVideoWidthHeight,
   getDisplayUri,
   createLargeFromBmp,
-  createLargeFromVideo
+  createLargeFromVideo,
+  askQuestion,
 }
