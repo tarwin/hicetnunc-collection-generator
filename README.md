@@ -64,10 +64,10 @@ Also thanks to
 - `onlyObjects: Array<int>`: only process OBJKTs with these IDs
 
 # Run
+- `npm start`
 
-- In two different CLIs run:
-  - `serve -C`
-  - then `npm start`
+# Using a different config
+- `node index.js <other_config_name>`: ie `node index fill`
 
 # Viewing
 
