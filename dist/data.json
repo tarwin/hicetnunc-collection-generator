@@ -1739,6 +1739,29 @@
       ]
     },
     {
+      "id": 69268,
+      "name": "CITY LIGHTS",
+      "description": "DOTS WITH ENERGY",
+      "tags": [
+        "SPIRIT",
+        "WEED",
+        "POEM",
+        "NFTCOLLECTOR",
+        "COLLECTOR",
+        "AIM1000NFTS"
+      ],
+      "creatorAddress": "tz1UR3Npc8ZM5ErYEoo8xE1GV9GRvuVJ2q4z",
+      "mime": "image/jpeg",
+      "artifactUri": "ipfs://QmcuA9AAvvSzKvXA4QZocDsBG9hbsjELmmGnDhEModb2pc",
+      "cid": "bafybeigyk55u3softrhowotobduuhibmn5t6cmbmtsptmgdimzqmv3t3xu",
+      "formats": [
+        {
+          "mimeType": "image/jpeg",
+          "uri": "ipfs://QmcuA9AAvvSzKvXA4QZocDsBG9hbsjELmmGnDhEModb2pc"
+        }
+      ]
+    },
+    {
       "id": 73572,
       "name": "SOFT",
       "description": "#jjjjjjjjjjohn4jjjjjjjjjjohn",

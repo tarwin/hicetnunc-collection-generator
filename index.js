@@ -25,6 +25,7 @@ let config = require('./config.json')
 if (getArgs()[0]) {
   config = require(`./config.${getArgs()[0]}.json`)
 }
+config.forceGeneration = config.forceGeneration || []
 
 let fillMode = false
 if (config.fillMode) {
@@ -147,9 +148,7 @@ const getUserObjkts = async(address) => {
   let allObj = []
   for (let i=0; i<Math.ceil(total / 10); i++) {
     console.log(`Get data for ${i*10}-${i*10+10} - ${apiUrl}` + `?size=10&offset=${i*10}`)
-    // const objRes = await fetch(apiUrl + `?size=10&offset=${i*10}`)
     const { data: json } = await curly.get(apiUrl + `?size=10&offset=${i*10}`)
-    // const json = JSON.parse(objRes)
     // make sure they at least have a token
     allObj.push(...json.balances)
     allObj = allObj.filter(o => o.token_id)
@@ -169,8 +168,6 @@ const getUserObjkts = async(address) => {
       }
       console.log(`Getting missing creators for OBJKT ${o.token_id}`)
       try {
-        // const resObj = await fetch(`https://1xgf1e26jb.execute-api.us-east-1.amazonaws.com/dev/objkt?id=${o.token_id}`)
-        // const jsonObj = (await resObj.json()).result
         const { data: jsonObj } = await curly.get(`https://1xgf1e26jb.execute-api.us-east-1.amazonaws.com/dev/objkt?id=${o.token_id}`)
         if (jsonObj && jsonObj.result && jsonObj.result.token_info && jsonObj.result.token_info.creators) {
           o.creators = jsonObj.result.token_info.creators
@@ -310,6 +307,9 @@ const main = async () => {
 
       const converter = converters[mime]
 
+      console.log(`Name`, obj.name)
+      console.log(`MIME`, mime)
+
       if (!converter) {
         addWarning(`No converter for ${tokenId} - MIME: ${mime}`)
         continue
@@ -322,26 +322,41 @@ const main = async () => {
       const canDeleteLarge = []
 
       // write actual
-      const filename = `${tokenId}.${converter.ext}`
+      let filename = `${tokenId}.${converter.ext}`
       console.log(`====================\nProcessing ${filename}`)
 
       // if we don't have the original file download it
-      if (converter.use !== 'html') {
-        if (!fs.existsSync(`${config.downloadPath}/${filename}`)) {
-          console.log(`Downloading ${tokenId}`)
-          // for some reason I couldn't simply use `fetch` to download from IPFS
-          // something to do with HTTP Partial Content and me not wanting to handle it
-          if (converter.use === 'ffmpeg') {
-            // so yeah, I use stolen python code instead ...
-            await niceExec(`python3 download.py ${ipfsUri} ${config.downloadPath} ${filename}`)
+      if (!fs.existsSync(`${config.downloadPath}/${filename}`)) {
+        console.log(`Downloading ${tokenId}`)
+        // for some reason I couldn't simply use `fetch` to download from IPFS
+        // something to do with HTTP Partial Content and me not wanting to handle it
+        if (converter.use === 'ffmpeg') {
+          // so yeah, I use stolen python code instead ...
+          await niceExec(`python3 download.py ${ipfsUri} ${config.downloadPath} ${filename}`)
+        } else if (converter.use === 'html') {
+          const displayUri = await getDisplayUri(obj)
+          if (displayUri) {
+            const displayIpfsUri = displayUri.substr(7)
+            const displayUrl = config.cloudFlareUrl + displayIpfsUri
+            await downloadFile(displayUrl, `${config.downloadPath}/${tokenId}_display`)
+            // rename to correct ext
+            const meta = await getImageMetadata(`${config.downloadPath}/${tokenId}_display`)
+            fs.renameSync(`${config.downloadPath}/${tokenId}_display`, `${config.downloadPath}/${tokenId}.${meta.format}`)
+            fs.copyFileSync(`${config.downloadPath}/${tokenId}.${meta.format}`, `${config.largeImagePath}/${tokenId}.${meta.format}`)
+
+            // needs the filename of downloaded file, not HTML
+            filename = `${tokenId}.${meta.format}`
           } else {
-            await downloadFile(url, `${config.downloadPath}/${filename}`)
+            // could use puppeteer to make a thumb but these SHOULD have them defined
+            addWarning(`Missing "displayUri" for ${tokenId}`)
           }
-          canDeleteDownload.push(`${config.downloadPath}/${filename}`)
-          console.log(`Written "${filename}"`)
         } else {
-          console.log(`Exists "${filename}"`)
+          await downloadFile(url, `${config.downloadPath}/${filename}`)
         }
+        canDeleteDownload.push(`${config.downloadPath}/${filename}`)
+        console.log(`Written "${filename}"`)
+      } else {
+        console.log(`Exists "${filename}"`)
       }
 
       // if we actually have a converter for this mime type
@@ -349,14 +364,17 @@ const main = async () => {
       if (converter) {
 
         // has to be done before quick exit
-        const largeImageFileSize = fs.statSync(`${config.downloadPath}/${filename}`).size
-        if (converter.ext === 'gif' && largeImageFileSize <= config.thumbnail.maxGifSizeKb * 1024) {
+        let downloadImageSize
+        downloadImageSize = fs.statSync(`${config.downloadPath}/${filename}`).size
+        if (converter.ext === 'gif' && downloadImageSize <= config.thumbnail.maxGifSizeKb * 1024) {
           obj.gifThumb = true
         }
 
-        // skip for existing thumbnails
-        if (fs.existsSync(`${thumbnailPath}/${tokenId}-${config.thumbnail.image.sizes[0]}.${config.thumbnail.image.formats[0].type}`)) {
-          continue
+        if (!config.forceGeneration.includes(converter.use)) {
+          // skip for existing thumbnails
+          if (fs.existsSync(`${thumbnailPath}/${tokenId}-${config.thumbnail.image.sizes[0]}.${config.thumbnail.image.formats[0].type}`)) {
+            continue
+          }
         }
 
         if (converter.use === 'pdf') {
@@ -388,7 +406,7 @@ const main = async () => {
           objOriginal[tokenId] = { duration }
 
           canDeleteLarge.push(`${config.largeImagePath}/${tokenId}.svg`)
-        } else if (converter.use === 'sharp') {
+        } else if (converter.use === 'sharp' || converter.use === 'html') {
           if (converter.ext === 'bmp') {
             // bmps are annoying! sharp doesn't do 'em
             await createLargeFromBmp(`${config.downloadPath}/${filename}`, tokenId)
@@ -422,7 +440,7 @@ const main = async () => {
                 objThumbnails[tokenId]= await createThumbnails(filename, tokenId)
               } else {
                 // if smaller than X use GIF
-                if (largeImageFileSize <= config.thumbnail.maxGifSizeKb * 1024) {
+                if (downloadImageSize <= config.thumbnail.maxGifSizeKb * 1024) {
                   objThumbnails[tokenId] = await createGifThumbnails(filename, tokenId)
                 } else {
                   // else use MP4
@@ -475,25 +493,6 @@ const main = async () => {
           }
 
           canDeleteLarge.push(`${config.largeImagePath}/${tokenId}.png`)
-        } else if (converter.use === 'html') {
-          // has thumb
-          const displayUri = await getDisplayUri(obj)
-          if (displayUri) {
-            const displayIpfsUri = displayUri.substr(7)
-            const displayUrl = config.cloudFlareUrl + displayIpfsUri
-            await downloadFile(displayUrl, `${config.downloadPath}/${tokenId}_display`)
-            // rename to correct ext
-            const meta = await getImageMetadata(`${config.downloadPath}/${tokenId}_display`)
-            fs.renameSync(`${config.downloadPath}/${tokenId}_display`, `${config.downloadPath}/${tokenId}.${meta.format}`)
-            fs.copyFileSync(`${config.downloadPath}/${tokenId}.${meta.format}`, `${config.largeImagePath}/${tokenId}.${meta.format}`)
-            // create thumbnail
-            objThumbnails[tokenId] = await createThumbnails(`${tokenId}.${meta.format}`, tokenId)
-
-            canDeleteLarge.push(`${config.largeImagePath}/${tokenId}.${meta.format}`)
-          } else {
-            // could use puppeteer to make a thumb but these SHOULD have them defined
-            addWarning(`Missing "displayUri" for ${tokenId}`)
-          }
         } else if (converter.use === 'gltf') {
           // don't think GL requires a displayUri so we're just going to have
           // to make thumbs ourselves.
@@ -682,11 +681,14 @@ expressServer = expressApp.listen(expressPort, async () => {
 
   // await askQuestion('Press ENTER to continue.')
   
-  main()
+main()
   .catch(e => console.log(e))
   .finally(() => {
+    console.log('Complete')
     if (expressServer) {
+      console.log('Closing server')
       expressServer.close()
+      process.exit(0)
     }
   })
 })
