@@ -84,6 +84,8 @@ var app = new Vue({
         obj.url = `https://cloudflare-ipfs.com/ipfs/${obj.artifactUri.substr(7)}`
       })
 
+      console.log(this.data.collectedObjects.filter(o => o.id === 34408))
+
       this.loading = false
 
       const objIdMatch = window.location.hash.match(/obj=([0-9]+)/)

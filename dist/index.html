@@ -75,7 +75,11 @@
             @click="showObj(obj.id)"
             class="item"
           >
-            <template v-if="obj.mime.indexOf('video') === 0 || (obj.mime === 'image/gif' && !obj.gifThumb)">
+            <template v-if="
+              obj.mime.indexOf('video') === 0 ||
+              (obj.mime === 'image/gif' && !obj.gifThumb) ||
+              (obj.mime === 'application/x-directory' && obj.vidThumb)
+            ">
               <video
                 v-view="viewHandler"
                 preload="none"

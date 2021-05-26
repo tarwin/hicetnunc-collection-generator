@@ -981,7 +981,8 @@
           "mimeType": "application/x-directory",
           "uri": "ipfs://QmWcAaK61oPQvD6Ja2tfTmsVLWiTAEAF1dSa3haD9G4pJp"
         }
-      ]
+      ],
+      "vidThumb": true
     },
     {
       "id": 24227,
@@ -996,7 +997,8 @@
           "mimeType": "application/x-directory",
           "uri": "ipfs://QmUHCcJ4FsGhT643F5sKe9BpeuJkxuW951Qo95gHBegMzb"
         }
-      ]
+      ],
+      "vidThumb": true
     },
     {
       "id": 24439,
@@ -1163,7 +1165,8 @@
           "mimeType": "application/x-directory",
           "uri": "ipfs://QmaecgXowCh9V54EroPNbeksMJkrTFsmMJQeQt2zhPAWLX"
         }
-      ]
+      ],
+      "vidThumb": true
     },
     {
       "id": 34506,
@@ -1261,7 +1264,8 @@
           "mimeType": "application/x-directory",
           "uri": "ipfs://QmT7cYkjxYR7v5neULYMdxNaZG1vm8g9RKN92BAoNTGn9v"
         }
-      ]
+      ],
+      "vidThumb": true
     },
     {
       "id": 41792,
@@ -1999,7 +2003,8 @@
           "mimeType": "application/x-directory",
           "uri": "ipfs://QmPKB278rc7MVEjzbP8xEbn56kvF14oFhnvFPSrApgnvjk"
         }
-      ]
+      ],
+      "gifThumb": true
     }
   ],
   "createdObjects": [

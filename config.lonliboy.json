@@ -30,6 +30,7 @@
       "sizes": [512]
     }
   },
-  "ignoreObjects": [17038, 17032, 9426, 9416, 9414, 9413, 25119, 17102],
-  "onlyObjects": []
+  "ignoreObjects": [],
+  "onlyObjects": [],
+  "forceGeneration": ["html"]
 }

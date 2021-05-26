@@ -117,6 +117,7 @@ const getNiceDataObjects = async(objects) => {
       cid: subomain,
       formats: obj.formats,
       gifThumb: obj.gifThumb,
+      vidThumb: obj.vidThumb,
     })
   }
   return out
@@ -368,6 +369,12 @@ const main = async () => {
         downloadImageSize = fs.statSync(`${config.downloadPath}/${filename}`).size
         if (converter.ext === 'gif' && downloadImageSize <= config.thumbnail.maxGifSizeKb * 1024) {
           obj.gifThumb = true
+        } else if (converter.use === 'html' && filename.indexOf('.gif') === filename.length - 4) {
+          if (downloadImageSize <= config.thumbnail.maxGifSizeKb * 1024) {
+            obj.gifThumb = true
+          } else {
+            obj.vidThumb = true
+          }
         }
 
         if (!config.forceGeneration.includes(converter.use)) {
