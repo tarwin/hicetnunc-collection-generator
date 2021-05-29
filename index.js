@@ -139,6 +139,7 @@ const getNiceData = async(collected, created) => {
 }
 
 const getUserObjkts = async(address) => {
+
   console.log('Getting OBJKT count')
   let apiUrl = `https://api.better-call.dev/v1/account/mainnet/${address}/token_balances`
   // const res = await fetch(apiUrl)
@@ -146,20 +147,39 @@ const getUserObjkts = async(address) => {
   // const baseJson = JSON.parse(res)
   const total = baseJson.total
   console.log('All OBJKTs:', total)
-  let allObj = []
+
+  let allObj
+  const objStoreLocation = `${config.downloadPath}/_all_objkts.json`
+  if (fs.existsSync(objStoreLocation)) {
+    allObj = JSON.parse(fs.readFileSync(objStoreLocation, { encoding: 'utf-8' }))
+  } else {
+    allObj = []
+  }
+
+  console.log('OBJKT data already downloaded: ', allObj.length)
+
+  breakEarly:
   for (let i=0; i<Math.ceil(total / 10); i++) {
     console.log(`Get data for ${i*10}-${i*10+10} - ${apiUrl}` + `?size=10&offset=${i*10}`)
-    const { data: json } = await curly.get(apiUrl + `?size=10&offset=${i*10}`)
+    let { data: json } = await curly.get(apiUrl + `?size=10&offset=${i*10}`)
     // make sure they at least have a token
-    allObj.push(...json.balances)
-    allObj = allObj.filter(o => o.token_id)
+    json.balances = json.balances.filter(o => o.token_id)
+
+    for (const obj of json.balances) {
+      if (allObj.find(o => o.token_id === obj.token_id)) {
+        console.log('Breaking early as already has data')
+        break breakEarly
+      } else {
+        allObj.push(obj)
+      }
+    }
+
     // may have to wait?
     if (i && i % 10 === 0) {
       await sleep(5000)
     }
   }
-  // remove any multiples
-  const added = []
+
   const creatorLookup = fs.existsSync('./creator_lookup.json') ? JSON.parse(fs.readFileSync('./creator_lookup.json')) : {}
   for (let o of allObj) {
     if (!o.creators) {
@@ -181,17 +201,8 @@ const getUserObjkts = async(address) => {
     }
   }
 
-  // save a list of creators for lookup if we run again
-  const newCreatorLookup = allObj.map(o => {
-    return {
-      token_id: o.token_id,
-      creators: o.creators
-    }
-  })
-  const creatorsMap = {}
-  newCreatorLookup.forEach(o => creatorsMap[o.token_id] = o.creators)
-  fs.writeFileSync('./creator_lookup.json', JSON.stringify({ ...creatorLookup, ...creatorsMap }, null, 2))
-
+  // remove any multiples
+  const added = []
   // a bunch of filtering
   allObj = allObj.filter(o => {
     // get rid of non OBJKTs
@@ -205,6 +216,21 @@ const getUserObjkts = async(address) => {
     }
     return false
   })
+
+  // save a list of creators for lookup if we run again
+  const newCreatorLookup = allObj.map(o => {
+    return {
+      token_id: o.token_id,
+      creators: o.creators
+    }
+  })
+  const creatorsMap = {}
+  newCreatorLookup.forEach(o => creatorsMap[o.token_id] = o.creators)
+  fs.writeFileSync('./creator_lookup.json', JSON.stringify({ ...creatorLookup, ...creatorsMap }, null, 2))
+
+  // write our store
+  fs.writeFileSync(objStoreLocation, JSON.stringify(allObj, null, 2))
+
   return allObj
 }
 

@@ -1,9 +1,9 @@
 {
-  "ownerAddress": "tz1MH7vTRc4yXkttnoU93CYqiZfhEzk7C17a",
+  "ownerAddress": "tz1aRPbvjrtvt7wC9352giq3LhWpH3s8NoBv",
   "cloudFlareUrl": "https://cloudflare-ipfs.com/ipfs/",
-  "downloadPath": "./other/lonliboy/downloads",
-  "largeImagePath": "./other/lonliboy/large-images",
-  "distPath": "./other/lonliboy/dist",
+  "downloadPath": "./other/kalel/downloads",
+  "largeImagePath": "./other/kalel/large-images",
+  "distPath": "./other/kalel/dist",
   "fillMode": false,
   "puppetSize": 1024,
   "thumbnail": {
@@ -32,5 +32,5 @@
   },
   "ignoreObjects": [],
   "onlyObjects": [],
-  "forceGeneration": ["html"]
+  "forceGeneration": []
 }
