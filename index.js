@@ -158,7 +158,7 @@ const getUserObjkts = async(address) => {
 
   console.log('OBJKT data already downloaded: ', allObj.length)
 
-  breakEarly:
+  let breakEarly = false
   for (let i=0; i<Math.ceil(total / 10); i++) {
     console.log(`Get data for ${i*10}-${i*10+10} - ${apiUrl}` + `?size=10&offset=${i*10}`)
     let { data: json } = await curly.get(apiUrl + `?size=10&offset=${i*10}`)
@@ -168,10 +168,16 @@ const getUserObjkts = async(address) => {
     for (const obj of json.balances) {
       if (allObj.find(o => o.token_id === obj.token_id)) {
         console.log('Breaking early as already has data')
-        break breakEarly
+        // do not break until parsed this set of data
+        // used to used labelled break but sometimes missed data if bought OBJKTs quickly
+        breakEarly = true
       } else {
         allObj.push(obj)
       }
+    }
+
+    if (breakEarly) {
+      break
     }
 
     // may have to wait?
