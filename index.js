@@ -167,10 +167,11 @@ const getUserObjkts = async(address) => {
 
     for (const obj of json.balances) {
       if (allObj.find(o => o.token_id === obj.token_id)) {
-        console.log('Breaking early as already has data')
         // do not break until parsed this set of data
         // used to used labelled break but sometimes missed data if bought OBJKTs quickly
-        breakEarly = true
+        
+        // console.log('Breaking early as already has data')
+        // breakEarly = true
       } else {
         allObj.push(obj)
       }

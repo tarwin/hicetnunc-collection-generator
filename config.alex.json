@@ -1,0 +1,36 @@
+{
+  "ownerAddress": "tz1SvPd1aUYZSkr22JTdRzUEGMb6ZjoPEXTz",
+  "cloudFlareUrl": "https://cloudflare-ipfs.com/ipfs/",
+  "downloadPath": "./other/alex/downloads",
+  "largeImagePath": "./other/alex/large-images",
+  "distPath": "./other/alex/dist",
+  "fillMode": false,
+  "puppetSize": 1024,
+  "thumbnail": {
+    "path": "thumbs",
+    "maxGifSizeKb": 100,
+    "image": {
+      "formats": [{
+        "type": "jpeg",
+        "options": {
+          "quality": 60
+        }
+      },{
+        "type": "avif"
+      }],
+      "sizes": [512]
+    },
+    "video": {
+      "maxLengthSeconds": 3,
+      "formats": [{
+        "type": "av1"
+      },{
+        "type": "h264"
+      }],
+      "sizes": [512]
+    }
+  },
+  "ignoreObjects": [],
+  "onlyObjects": [],
+  "forceGeneration": []
+}

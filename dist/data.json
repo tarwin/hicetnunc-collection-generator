@@ -954,6 +954,29 @@
       ]
     },
     {
+      "id": 20840,
+      "name": "Soylent Green Crush",
+      "description": "Based upon the iconic Warhol Campbell's cans. 3 Flavors, 3 variations, 9 editions of each.  16 bit PNG, 3000px x 4385px",
+      "tags": [
+        "soylent",
+        "green",
+        "warhol",
+        "campbells",
+        "can",
+        "graffiti"
+      ],
+      "creatorAddress": "tz1XrwckKqPho7zpF45Z9ZURxjRYQPg56zvK",
+      "mime": "image/png",
+      "artifactUri": "ipfs://QmbtokX7uawvHfSnswkvztgbh1QtRRQzdpXNg2YKwPK5ZZ",
+      "cid": "bafybeigjms6uhtctz6b5oapahs5z2nvcsqtj4l22whwir4yilwduznpc4a",
+      "formats": [
+        {
+          "mimeType": "image/png",
+          "uri": "ipfs://QmbtokX7uawvHfSnswkvztgbh1QtRRQzdpXNg2YKwPK5ZZ"
+        }
+      ]
+    },
+    {
       "id": 22030,
       "name": "Family Issues",
       "description": "ig: @burkabayram / tw: @burkabayramart",
@@ -1266,6 +1289,29 @@
         }
       ],
       "vidThumb": true
+    },
+    {
+      "id": 39230,
+      "name": "loading #2",
+      "description": "gonna find a way. // 1200x1200 // @jpagliarini",
+      "tags": [
+        "LOOP",
+        "3D",
+        "EVOLUTION",
+        "PERPETUAL",
+        "INFINITE",
+        "ENDLESS"
+      ],
+      "creatorAddress": "tz1VXwrrqeu4VqNeESYNT5sfZ34wwdtXnrs4",
+      "mime": "video/mp4",
+      "artifactUri": "ipfs://QmQDL4Z5Vw8uV6Z8x5ssTdeZWX1R1WkjawE8VK7o8BdNpc",
+      "cid": "bafybeia3244tgmc7vyw2bhrvaespaamodrbypsub373giu5g262ztzms3u",
+      "formats": [
+        {
+          "mimeType": "video/mp4",
+          "uri": "ipfs://QmQDL4Z5Vw8uV6Z8x5ssTdeZWX1R1WkjawE8VK7o8BdNpc"
+        }
+      ]
     },
     {
       "id": 41792,
@@ -1582,6 +1628,24 @@
       ]
     },
     {
+      "id": 46332,
+      "name": "rainbow 1",
+      "description": "for #OBJKT4OBJKT 2",
+      "tags": [
+        "OBJKT4OBJKT"
+      ],
+      "creatorAddress": "tz1f8C3UzHL3sUVb9UYCuAsfnFaBtX1HzC3Q",
+      "mime": "video/mp4",
+      "artifactUri": "ipfs://QmTYkFaLLvt6yXV2pF1PhB58zfrKiFDTN5V98BV2mHyQUv",
+      "cid": "bafybeicnmov52bk3t7yfhkugxkzdcmzxbnsjclgoucgyxysza2agetwcb4",
+      "formats": [
+        {
+          "mimeType": "video/mp4",
+          "uri": "ipfs://QmTYkFaLLvt6yXV2pF1PhB58zfrKiFDTN5V98BV2mHyQUv"
+        }
+      ]
+    },
+    {
       "id": 48034,
       "name": "ⴿ",
       "description": "Transformation of the substance.",
@@ -1743,6 +1807,63 @@
       ]
     },
     {
+      "id": 57171,
+      "name": "back to the future retro hud",
+      "description": "Imagine that you set off on a parallel line in 1977, cars have been flying for a long time and roads have been built between the stars. You need navigation. You need a retro future interface.",
+      "tags": [
+        "future",
+        "retro",
+        "hud.ui",
+        "art",
+        "free",
+        "collect",
+        "cars",
+        "stars",
+        "cyber",
+        "cyberpunk",
+        "punks",
+        "mox"
+      ],
+      "creatorAddress": "tz1UVqdadM9iFZ3GiMmRSsmb1CuF5RKiepRa",
+      "mime": "image/gif",
+      "artifactUri": "ipfs://QmVjo2Y6X7EuU4MzWWkybZzRSnKVo5CsHQHJRuDRW3K99T",
+      "cid": "bafybeidn56jg7uiq5wi6egseikclppffujvwdqmwphqqrt2jxgbqpsh3di",
+      "formats": [
+        {
+          "mimeType": "image/gif",
+          "uri": "ipfs://QmVjo2Y6X7EuU4MzWWkybZzRSnKVo5CsHQHJRuDRW3K99T"
+        }
+      ]
+    },
+    {
+      "id": 65922,
+      "name": "KALEIDOKUBES N.6",
+      "description": "A Tribute To John Karel. Click to regenerate. © Claudio Dalla Bernardina - 2021",
+      "tags": [
+        "kaleidokubes",
+        "cdb",
+        "generativeart",
+        "kaleidoscopes",
+        "3D",
+        "generative",
+        "cubes",
+        "isometric",
+        "window",
+        "jjjjjjjjjjohn",
+        "babylon"
+      ],
+      "creatorAddress": "tz1VMMQBmQdkzBTZYmHpwxDwf7Ap6LBR71qt",
+      "mime": "application/x-directory",
+      "artifactUri": "ipfs://QmZ4uSQmNL6HyZV4GPaPz31BR3AEHh2nHWkZFkmKDxpAp1",
+      "cid": "bafybeie7m7vpkss3zjvftbxfnph3dhnjkomi72uetpumg2t2rgr343u5wi",
+      "formats": [
+        {
+          "mimeType": "application/x-directory",
+          "uri": "ipfs://QmZ4uSQmNL6HyZV4GPaPz31BR3AEHh2nHWkZFkmKDxpAp1"
+        }
+      ]
+    },
+    {
       "id": 69268,
       "name": "CITY LIGHTS",
       "description": "DOTS WITH ENERGY",
@@ -1762,6 +1883,29 @@
         {
           "mimeType": "image/jpeg",
           "uri": "ipfs://QmcuA9AAvvSzKvXA4QZocDsBG9hbsjELmmGnDhEModb2pc"
+        }
+      ]
+    },
+    {
+      "id": 72574,
+      "name": "fly away",
+      "description": "the sky is a neighborhood. // 1200x1200 // @jpagliarini",
+      "tags": [
+        "LOOP",
+        "3D",
+        "EVOLUTION",
+        "PERPETUAL",
+        "INFINITE",
+        "ENDLESS"
+      ],
+      "creatorAddress": "tz1VXwrrqeu4VqNeESYNT5sfZ34wwdtXnrs4",
+      "mime": "video/mp4",
+      "artifactUri": "ipfs://QmPsCZovi7Lm98jov7bdagoz37fJhZTmPKvraWtbA8PgoX",
+      "cid": "bafybeiawv4q4rqy32tsw6roarnvtpoxdekktswai6vcb3t4jcj4wiofxqy",
+      "formats": [
+        {
+          "mimeType": "video/mp4",
+          "uri": "ipfs://QmPsCZovi7Lm98jov7bdagoz37fJhZTmPKvraWtbA8PgoX"
         }
       ]
     },
@@ -1808,6 +1952,31 @@
         {
           "mimeType": "image/gif",
           "uri": "ipfs://QmdfwB8ET2v5fkGuetjSEKCZE2FLN3MbNPwvxqDX7JpdjQ"
+        }
+      ]
+    },
+    {
+      "id": 74105,
+      "name": "#3 Lanterns - Floating Space Lanterns",
+      "description": "Ancient tradition to free lantern medusas into space🚀✨",
+      "tags": [
+        "Space",
+        "Lantern",
+        "Medusa",
+        "Stars",
+        "3dcg",
+        "animation",
+        "loop",
+        "fire"
+      ],
+      "creatorAddress": "tz1YN6anj2jehLmHw3CxuC61EiXjRSvtwyei",
+      "mime": "video/mp4",
+      "artifactUri": "ipfs://QmZQ36u96UhSSyhQrk5Cx84cbQzcx5YCUAghwzZgVBUGWM",
+      "cid": "bafybeifej2pfe6wmc5wevrg6tlx5d4k4nu2k5pyldh46ehs2dion4pxo3i",
+      "formats": [
+        {
+          "mimeType": "video/mp4",
+          "uri": "ipfs://QmZQ36u96UhSSyhQrk5Cx84cbQzcx5YCUAghwzZgVBUGWM"
         }
       ]
     },
@@ -1905,6 +2074,72 @@
       ]
     },
     {
+      "id": 78292,
+      "name": "pocket cube",
+      "description": "a mechanical puzzle.  // 1200x1200 // @jpagliarini",
+      "tags": [
+        "LOOP",
+        "3D",
+        "EVOLUTION",
+        "PERPETUAL",
+        "INFINITE",
+        "ENDLESS"
+      ],
+      "creatorAddress": "tz1VXwrrqeu4VqNeESYNT5sfZ34wwdtXnrs4",
+      "mime": "video/mp4",
+      "artifactUri": "ipfs://QmZvCriH2niBjy22byfdHRkeUpvygwDRtsavaob42uYwnT",
+      "cid": "bafybeifmbejlxemjnqshtvulhq2d5574vzrqhn3xkorlb7uyritec3ctlq",
+      "formats": [
+        {
+          "mimeType": "video/mp4",
+          "uri": "ipfs://QmZvCriH2niBjy22byfdHRkeUpvygwDRtsavaob42uYwnT"
+        }
+      ]
+    },
+    {
+      "id": 81391,
+      "name": "orbitz",
+      "description": "the gravitationally curved trajectory of an object.  // 1200x1200 // @jpagliarini",
+      "tags": [
+        "LOOP",
+        "3D",
+        "EVOLUTION",
+        "PERPETUAL",
+        "INFINITE",
+        "ENDLESS"
+      ],
+      "creatorAddress": "tz1VXwrrqeu4VqNeESYNT5sfZ34wwdtXnrs4",
+      "mime": "video/mp4",
+      "artifactUri": "ipfs://QmW7Q2p1EPVPVkbj96PX1LDsv8gCkLFXetS4voewTafDjn",
+      "cid": "bafybeidtpbmvn3o2mcuvl5w5ej6cbzas5n6wcswh7rp3izh5n2nykfauue",
+      "formats": [
+        {
+          "mimeType": "video/mp4",
+          "uri": "ipfs://QmW7Q2p1EPVPVkbj96PX1LDsv8gCkLFXetS4voewTafDjn"
+        }
+      ]
+    },
+    {
+      "id": 82115,
+      "name": "Inter pares",
+      "description": "We are accustomed to having the autonomy to work with little supervision, they said.",
+      "tags": [
+        "interactive",
+        "javascript",
+        "ik"
+      ],
+      "creatorAddress": "tz1eFNQAijoHS3J6YsABA1QK1gGV7PMaunPm",
+      "mime": "application/x-directory",
+      "artifactUri": "ipfs://QmbF6JUGEf2Y2W2D8rYEHyCqzmhXNWqGKZu3srQMXQDvba",
+      "cid": "bafybeif7xnq7r5ac7ers65l3jkp7jhxles5zu4bru4ksh3sfm5nk2vfk3e",
+      "formats": [
+        {
+          "mimeType": "application/x-directory",
+          "uri": "ipfs://QmbF6JUGEf2Y2W2D8rYEHyCqzmhXNWqGKZu3srQMXQDvba"
+        }
+      ]
+    },
+    {
       "id": 83522,
       "name": "Permutations",
       "description": "Spinning planes become a cube. The cube opens as a box. The box unfolds to a plane. A slight hop and everything starts again. Hand drawn animation scanned in frame by frame. Image inverted from white grid paper to black background.   Animated gif,  67 frames, 431 x 468 Pixels, B & W, ~10fps, 2009.",
@@ -1927,6 +2162,31 @@
           "uri": "ipfs://QmcayeivpUSCAgWS5w6qpV3qrFviK5cR3Aa3kQmRgdUznD"
         }
       ]
+    },
+    {
+      "id": 85498,
+      "name": "what you’re describing is hell",
+      "description": " This generative piece runs forever, producing infinite and unique combinations of personal hells for your viewing pleasure. Synthetic people were created using an AI. Each was asked “What is your idea of a personal hell?” Click to speed up. Double-click to start over with a new seed.",
+      "tags": [
+        "hell",
+        "AI",
+        "words",
+        "literature",
+        "infinite",
+        "generative",
+        "GPT-3"
+      ],
+      "creatorAddress": "tz1gNtfk9SParRfmZGR4jF11M5dka51R1jmr",
+      "mime": "application/x-directory",
+      "artifactUri": "ipfs://QmUBhYdiHmLW85ZZSbZmPyVo9nrRNDtGzBJ5FRfDvjsLjx",
+      "cid": "bafybeicw3mnat7eqizecuyo4ymp37qbq3zdyyf6i56fkxj7vorsqya7t64",
+      "formats": [
+        {
+          "mimeType": "application/x-directory",
+          "uri": "ipfs://QmUBhYdiHmLW85ZZSbZmPyVo9nrRNDtGzBJ5FRfDvjsLjx"
+        }
+      ],
+      "vidThumb": true
     },
     {
       "id": 86315,
@@ -2005,6 +2265,71 @@
         }
       ],
       "gifThumb": true
+    },
+    {
+      "id": 91956,
+      "name": "Walking City - Slice 4",
+      "description": "Artist : Universal Everything / Excerpt from Walking City / 1920 x 1080 video loop with sound / Walking City is a slowly evolving video sculpture.The language of materials and patterns seen in radical architecture transform as the nomadic city walks endlessly / Winner of Prix Ars Electronica 2014",
+      "tags": [
+        "Video",
+        "UniversalEverything",
+        "thefen",
+        "Architecture",
+        "Generative"
+      ],
+      "creatorAddress": "tz1fzB7H3w24zVjjUKn91PAfAmq7b9wdAm46",
+      "mime": "video/mp4",
+      "artifactUri": "ipfs://QmXdyEnAtjyH1LdBA12N7L7C6yMvgBXeDSdZzTu7qSbaJu",
+      "cid": "bafybeiekfea3re5tmai4urfwrykcbn3oikk6gtuj7r64jk7a25okkpk7ci",
+      "formats": [
+        {
+          "mimeType": "video/mp4",
+          "uri": "ipfs://QmXdyEnAtjyH1LdBA12N7L7C6yMvgBXeDSdZzTu7qSbaJu"
+        }
+      ]
+    },
+    {
+      "id": 97551,
+      "name": "ↈ",
+      "description": "Dilation.",
+      "tags": [
+        "3D",
+        "Houdini",
+        "Crystal",
+        "Loop",
+        "Sound"
+      ],
+      "creatorAddress": "tz1NYsoizhrDqG6yHRRAxKpDefqYiWisG714",
+      "mime": "video/mp4",
+      "artifactUri": "ipfs://QmRLY1ER75RcYVF8b6GPUm3ZEqC8xtBpHnSPmVDw1eSaHj",
+      "cid": "bafybeibmrn5m462j7742ehdymvprlfm322apcqot4zwt3wlhnj5ha5s2ey",
+      "formats": [
+        {
+          "mimeType": "video/mp4",
+          "uri": "ipfs://QmRLY1ER75RcYVF8b6GPUm3ZEqC8xtBpHnSPmVDw1eSaHj"
+        }
+      ]
+    },
+    {
+      "id": 97854,
+      "name": "Bore",
+      "description": "Horizontal Passageway 02",
+      "tags": [
+        "3d",
+        "animation",
+        "loop",
+        "JoeRyba"
+      ],
+      "creatorAddress": "tz1TWbBhXtFAvDjAu9fw56z8prQ9asWTo4FG",
+      "mime": "video/mp4",
+      "artifactUri": "ipfs://QmQv8QqyeGjeKbVj6ANL41zEFLZeVot1qZ88YfbeCmcEop",
+      "cid": "bafybeibgjlor4va63necvh4zvesafailu35w2yvyzob4wl4f7d5qwp7by4",
+      "formats": [
+        {
+          "mimeType": "video/mp4",
+          "uri": "ipfs://QmQv8QqyeGjeKbVj6ANL41zEFLZeVot1qZ88YfbeCmcEop"
+        }
+      ]
     },
     {
       "id": 97966,
@@ -2092,6 +2417,33 @@
       ]
     },
     {
+      "id": 104277,
+      "name": "Space-time Dreams",
+      "description": "Visualizing a moment of time in space while dreaming of multiple planets and their properties rotating and intersecting. --- 1080x1080px --- 19sec looping animation --- 24.5MB MP4",
+      "tags": [
+        "circle",
+        "dreaming",
+        "glitch",
+        "liquid",
+        "loop",
+        "time",
+        "planet",
+        "space",
+        "spectrum",
+        "sphere"
+      ],
+      "creatorAddress": "tz1SRnYeFnqVj2dp1LVdwUyWMmYWfFwW1bDf",
+      "mime": "video/mp4",
+      "artifactUri": "ipfs://QmeF7hRCoHA1cAHuSBxfopX9SZ4FjxPRm1viWXKB5rJbhA",
+      "cid": "bafybeihmkacyhq6omf7h7cwgmm4zxj6fihjmwyj7caogqpgbnjgqyeeste",
+      "formats": [
+        {
+          "mimeType": "video/mp4",
+          "uri": "ipfs://QmeF7hRCoHA1cAHuSBxfopX9SZ4FjxPRm1viWXKB5rJbhA"
+        }
+      ]
+    },
+    {
       "id": 104644,
       "name": "Urban Can",
       "description": "instagram: @birolbayraminstagram",
@@ -2129,6 +2481,375 @@
         {
           "mimeType": "image/gif",
           "uri": "ipfs://QmSGvVEHdzGGZZEvhauAGaVKUxbWGzo967wJLwwxbbDLXj"
+        }
+      ]
+    },
+    {
+      "id": 106167,
+      "name": "Drone Squadron: Elite #0016",
+      "description": "Drones Purilia Mk XXXV (0.795), Nonia (0.611), Topra (0.533), Qazuno (0.511), Voria v43.45 (0.489), Hocury (0.472) were created by tz1g7Aaac9ssD7cDUTngyXyx8QiVUsAVZCjQ burning OBJKT#103271 with seed onhzEL2sG9hWM5y1YhMQroSicBWiMSqFsD76MtTRiqeq283JyLZ. By @__orderandchaos.",
+      "tags": [
+        "DroneSquadron",
+        "Collectible",
+        "Cards",
+        "Interactive",
+        "Random",
+        "Generative"
+      ],
+      "creatorAddress": "tz1VgpmwW66LCbskjudK54Zp96vKn2cHjpGN",
+      "mime": "application/x-directory",
+      "artifactUri": "ipfs://QmefX9nGdaM21YzHRwnaLT1SBgJPbzhiDxmC3epLJ7KCcc",
+      "cid": "bafybeihssb5srpisqnq3ujztyjm2kfcifcwsgrqofjbsxvyyazjbns2gvu",
+      "formats": [
+        {
+          "mimeType": "application/x-directory",
+          "uri": "ipfs://QmefX9nGdaM21YzHRwnaLT1SBgJPbzhiDxmC3epLJ7KCcc"
+        }
+      ]
+    },
+    {
+      "id": 109737,
+      "name": "Leave the door",
+      "description": "Spogelsesmaskinen, 640x480, 201 frames, 16 colors",
+      "tags": [
+        "640x480",
+        "201frames",
+        "16colors",
+        "pixels",
+        "spogelsesmaskine"
+      ],
+      "creatorAddress": "tz1fnrNZjMZgkuaHXFgvodk3N1TuXcvcaFgB",
+      "mime": "image/gif",
+      "artifactUri": "ipfs://QmYCcvk8MxhYpUf8AF9srvjoKYCyu8kbavzELgBUzDiziR",
+      "cid": "bafybeiesqy2s64ga4yb6zvnowthcxpnxbnr25hkmqkiyquctb5ufdeug5y",
+      "formats": [
+        {
+          "mimeType": "image/gif",
+          "uri": "ipfs://QmYCcvk8MxhYpUf8AF9srvjoKYCyu8kbavzELgBUzDiziR"
+        }
+      ]
+    },
+    {
+      "id": 110824,
+      "name": "06 Rhice",
+      "description": "Nature: Fire, Water, Wood, Metal, Earth. Love is love, and love has no gender. Whoever you are, you are loved. R(h)ice is Love.",
+      "tags": [
+        "Rhice",
+        "PrideMonth",
+        "RhicePride"
+      ],
+      "creatorAddress": "tz1PuiDXr5YJGBkUPLx6Nm9ZFiittQt6sfgz",
+      "mime": "video/mp4",
+      "artifactUri": "ipfs://QmRMohBtgLzVXiXqAQi6RnJf2HDKEb8Ts9DPC1cqkuUfu5",
+      "cid": "bafybeibm33gm4vb5fwcbb3bilad7jk6czakn6eg3sbyfyeobg5ko34x37q",
+      "formats": [
+        {
+          "mimeType": "video/mp4",
+          "uri": "ipfs://QmRMohBtgLzVXiXqAQi6RnJf2HDKEb8Ts9DPC1cqkuUfu5"
+        }
+      ]
+    },
+    {
+      "id": 112366,
+      "name": "Memoreverse  ",
+      "description": "A GAN audio/visual piece trained on a thousand selfies. Exploring the trappings of my neurodivergence (specifically, my struggles with memory loss) through machine learning. Inspired by the album 'Everywhere at the end of time' by The Caretaker.",
+      "tags": [
+        "GAN",
+        "LatentSpace",
+        "AI",
+        "MAchineLearning",
+        "Audio/Visual",
+        "Selfie",
+        "creativecoding",
+        "Adioohgaga",
+        "AdidelaZufall"
+      ],
+      "creatorAddress": "tz1KqzBPfhoTquknvyWSsHQ3PX5VDaoYMqq7",
+      "mime": "video/mp4",
+      "artifactUri": "ipfs://QmbvntbxixTviHXzosVQSQg5XmqZYhwELy9Xcg6XFUKTrR",
+      "cid": "bafybeigj43wykzxyxh6ivktyvqshyaicpprcrzocoj7fuxx5pszlujcedi",
+      "formats": [
+        {
+          "mimeType": "video/mp4",
+          "uri": "ipfs://QmbvntbxixTviHXzosVQSQg5XmqZYhwELy9Xcg6XFUKTrR"
+        }
+      ]
+    },
+    {
+      "id": 118911,
+      "name": "REBORN SK",
+      "description": "re·born /rēˈbôrn/ born again; having new life, spirit, etc.; regenerated",
+      "tags": [
+        "SKULL",
+        "SK",
+        "NACHOPCORS",
+        "BLENDER",
+        "BLENDER3D",
+        "3D"
+      ],
+      "creatorAddress": "tz1PNy2qav9EgcwAUTyvQYxKVtcVM5sfsESj",
+      "mime": "image/jpeg",
+      "artifactUri": "ipfs://QmZ9EbPd9RGMmf92zrvyVoEpBcNxZcfrtfsWvm5iNpGi1u",
+      "cid": "bafybeifaqpteiwcx4v6harhmabwlccrggdgshua2r5fgrsdibg4iwyelua",
+      "formats": [
+        {
+          "mimeType": "image/jpeg",
+          "uri": "ipfs://QmZ9EbPd9RGMmf92zrvyVoEpBcNxZcfrtfsWvm5iNpGi1u"
+        }
+      ]
+    },
+    {
+      "id": 118915,
+      "name": "Colour Mood",
+      "description": "Here's my version of @dielamaharanie's colouring page",
+      "tags": [
+        "dielamaharanie",
+        "mumu_thestan",
+        "pixelart",
+        "gif",
+        "rainbow",
+        "eye",
+        "tears",
+        "mood",
+        "animation",
+        "pink",
+        "color",
+        "colorful",
+        "colour",
+        "colourful",
+        "girl"
+      ],
+      "creatorAddress": "tz1cALmpTf7EeeSBXHAX2rcnR4WAP8tSWkt6",
+      "mime": "image/gif",
+      "artifactUri": "ipfs://QmZsj1WkxzmULEnV4DWxe1m3enRAv8MkXXEVoqo5Y2nNjW",
+      "cid": "bafybeiflmzwgm3p7qh44vktaa3jjq3jp6p37xc6d337t3jql7tutk5psbu",
+      "formats": [
+        {
+          "mimeType": "image/gif",
+          "uri": "ipfs://QmZsj1WkxzmULEnV4DWxe1m3enRAv8MkXXEVoqo5Y2nNjW"
+        }
+      ]
+    },
+    {
+      "id": 118936,
+      "name": "The Mario 64",
+      "description": "[PT/BR]Um dos melhores jogos da Nintendo até hoje,\"Infelizmente nunca zerei ;-;\". [ENG]One of the best Nintendo's games to date,\"Unfortunately I never finished the game ;-;\".",
+      "tags": [
+        "#mario",
+        "#mario64",
+        "#special",
+        "#rpg",
+        "#pixel",
+        "#pixelart",
+        "#3d",
+        "#pixelmon",
+        "#It'same",
+        "#MamaMia!",
+        "#pixelball",
+        "#brazilianart",
+        "#Brazil",
+        "#gadgets",
+        "#collection",
+        "#nostalgic"
+      ],
+      "creatorAddress": "tz1VvibQd1hhvQ2G4NzvgDRQMv9fBtGkuW1F",
+      "mime": "image/gif",
+      "artifactUri": "ipfs://QmYoFJrsqCmJxaPy4v1XA3Bf1AkKt7NVmSP19dCbjaqFLY",
+      "cid": "bafybeie3mulxzz6nbtsvmraogpjrt5rjjorzgk5eyuy4qr2qynvyqne3gu",
+      "formats": [
+        {
+          "mimeType": "image/gif",
+          "uri": "ipfs://QmYoFJrsqCmJxaPy4v1XA3Bf1AkKt7NVmSP19dCbjaqFLY"
+        }
+      ]
+    },
+    {
+      "id": 121057,
+      "name": "Heavenly",
+      "description": "To HEN, a heavenly place. Happy 100 days!",
+      "tags": [
+        "100hen",
+        "hen100",
+        "surreal",
+        "conceptual",
+        "concept",
+        "abstract"
+      ],
+      "creatorAddress": "tz1gVVLFuogUV4pqAkNm2cprireAuuDmq44S",
+      "mime": "image/jpeg",
+      "artifactUri": "ipfs://QmeMNwHmYGkBu7A41PwPNmxzv7jvNJgMSKMpsGX16zxRW4",
+      "cid": "bafybeihn5k6mj2fi4rgjj2z7zby5hirfz77huzqixlhnx2roado24asphu",
+      "formats": [
+        {
+          "mimeType": "image/jpeg",
+          "uri": "ipfs://QmeMNwHmYGkBu7A41PwPNmxzv7jvNJgMSKMpsGX16zxRW4"
+        }
+      ]
+    },
+    {
+      "id": 123530,
+      "name": "Adam",
+      "description": "Many years ago Tardigreats were living happily in the garden- that was until Adam bit into the forbidden fruit and discovered a little knowledge is a dangerous thing!",
+      "tags": [
+        "genesis",
+        "adam",
+        "eve",
+        "tardigrade",
+        "tardigreat",
+        "apple",
+        "eden",
+        "microbe",
+        "animated",
+        "kawaii",
+        ""
+      ],
+      "creatorAddress": "tz1bMY43V88srGDdWd3g879RQQTL8fqH56GD",
+      "mime": "video/mp4",
+      "artifactUri": "ipfs://QmcKW9Y35v5tsaFYNadWpM2pfqSzzfHHV8sZHeWVVLaM2W",
+      "cid": "bafybeigpxbnqnb6oze2v7ymemo2ccrdne5p6drd4mhxq7fkp46jzqf5ap4",
+      "formats": [
+        {
+          "mimeType": "video/mp4",
+          "uri": "ipfs://QmcKW9Y35v5tsaFYNadWpM2pfqSzzfHHV8sZHeWVVLaM2W"
+        }
+      ]
+    },
+    {
+      "id": 123558,
+      "name": "Eve",
+      "description": "Can anyone be surprised that this beautiful Eve was able to seduce the foolish Adam into tasting the fruit of forbidden knowledge?",
+      "tags": [
+        "genesis",
+        "adam",
+        "eve",
+        "tardigrade",
+        "tardigreat",
+        "apple",
+        "eden",
+        "microbe",
+        "animated",
+        "kawaii",
+        ""
+      ],
+      "creatorAddress": "tz1bMY43V88srGDdWd3g879RQQTL8fqH56GD",
+      "mime": "video/mp4",
+      "artifactUri": "ipfs://QmdDcKrWTLEUTYQjxG297FcXN3iW88X1WtMjwoJRZzmcqL",
+      "cid": "bafybeig5cgfqgvfjlokkjowwadgsiy4p7teiwxcvgt547vdxopqbhlx4z4",
+      "formats": [
+        {
+          "mimeType": "video/mp4",
+          "uri": "ipfs://QmdDcKrWTLEUTYQjxG297FcXN3iW88X1WtMjwoJRZzmcqL"
+        }
+      ]
+    },
+    {
+      "id": 124636,
+      "name": "but I saw it!",
+      "description": "better search in your room first to find the answer, scan the whole place",
+      "tags": [
+        "Andreas",
+        "Karaoulanis",
+        "bestbefore",
+        "berlin",
+        "search",
+        "room",
+        ""
+      ],
+      "creatorAddress": "tz1aV1iRJ8vSP9z4NNHCjmuBCqxF2G3KvZCX",
+      "mime": "image/gif",
+      "artifactUri": "ipfs://QmeoFBaiWgzfS8ms8tuk7ECxn2HevwukYCR8A6VaAP45bX",
+      "cid": "bafybeihurmjeqcdpn6osxemz26ibewulm5azvxvbvtlzfgyzhmaw2b74di",
+      "formats": [
+        {
+          "mimeType": "image/gif",
+          "uri": "ipfs://QmeoFBaiWgzfS8ms8tuk7ECxn2HevwukYCR8A6VaAP45bX"
+        }
+      ]
+    },
+    {
+      "id": 124877,
+      "name": "Interfaces - ",
+      "description": "A collaboration artwork of Dilan Dibek, Play (@playnft) and Demokan Özkök",
+      "tags": [
+        "interactive",
+        "interactiveart",
+        "play",
+        "click",
+        "faces",
+        "face",
+        "colorful",
+        "game",
+        "gameart",
+        "indiegame",
+        "nftgame",
+        ""
+      ],
+      "creatorAddress": "tz1dCAVrjoL4zwztiSJFu8vaFuLNLPGh3zqW",
+      "mime": "application/x-directory",
+      "artifactUri": "ipfs://QmXYtNgKNY7aCmC2dbB8FFin3dCvn5THykc727RAgcSvZF",
+      "cid": "bafybeiei3ongqf4dib4ff3qerwwnrs6zjsu4fzrr4td6qd272zzwks4wpi",
+      "formats": [
+        {
+          "mimeType": "application/x-directory",
+          "uri": "ipfs://QmXYtNgKNY7aCmC2dbB8FFin3dCvn5THykc727RAgcSvZF"
+        }
+      ],
+      "vidThumb": true
+    },
+    {
+      "id": 124976,
+      "name": "echoes",
+      "description": "echoes of silence.  // 1200x1200 // @jpagliarini",
+      "tags": [
+        "LOOP",
+        "3D",
+        "EVOLUTION",
+        "PERPETUAL",
+        "INFINITE",
+        "ENDLESS"
+      ],
+      "creatorAddress": "tz1VXwrrqeu4VqNeESYNT5sfZ34wwdtXnrs4",
+      "mime": "video/mp4",
+      "artifactUri": "ipfs://QmXSn5ewJFRt2nimyYU7pLvDHWnfMsZu1KBotphR6PbTDQ",
+      "cid": "bafybeiehjmajabi6tgbb6qduj6jkgjqnhjnpgeugmczr4znbkt66vrf4i4",
+      "formats": [
+        {
+          "mimeType": "video/mp4",
+          "uri": "ipfs://QmXSn5ewJFRt2nimyYU7pLvDHWnfMsZu1KBotphR6PbTDQ"
+        }
+      ]
+    },
+    {
+      "id": 124994,
+      "name": "Just Keep Dancing 🕺💃",
+      "description": "Stop thinking, Start dancing",
+      "tags": [
+        "dance",
+        "fun",
+        "effit",
+        "Fit",
+        "F",
+        "it",
+        "dancing",
+        "dancingawaydepression",
+        "moveit",
+        "moveyourbum",
+        "moveyourbooty",
+        "dancewithme",
+        "groovy",
+        "funky",
+        "groove",
+        "metaverse",
+        "metaconcert"
+      ],
+      "creatorAddress": "tz1SZFcNDKH7dhZ26QGK2emRJLwtE2Kr5NtH",
+      "mime": "image/gif",
+      "artifactUri": "ipfs://QmbAL1VPLquYthJQg27QaHPxovUdjnXNmgMe5GXNc3fMuL",
+      "cid": "bafybeif6ql5dxqea46sjd6rve6ij755eadu3tk53n6jgpltruu3dgds43m",
+      "formats": [
+        {
+          "mimeType": "image/gif",
+          "uri": "ipfs://QmbAL1VPLquYthJQg27QaHPxovUdjnXNmgMe5GXNc3fMuL"
         }
       ]
     }
@@ -2484,6 +3205,90 @@
         {
           "mimeType": "image/gif",
           "uri": "ipfs://QmQpCiQGE9FuYyz858BfHESKsM6p27TQg4mqGNkh5wfecU"
+        }
+      ],
+      "gifThumb": true
+    },
+    {
+      "id": 117795,
+      "name": "CGAiri | GPT3 | CLIP | DeepMind | CGA // Nobody knows why a imaginary waves explicitly hit , and laughingly fed his many unaccountable wax.",
+      "description": "An old experiment of mine called \"CGA-IRI\" generates a nonsense sentence. GPT-3 then takes this and generates instructions for CLIP-GLaSS to generate an image DeepMindBigGAN256. Finally converted to CGA colorspace.",
+      "tags": [
+        "cgairi",
+        "gpt3",
+        "clip"
+      ],
+      "creatorAddress": "tz1g7Aaac9ssD7cDUTngyXyx8QiVUsAVZCjQ",
+      "mime": "image/gif",
+      "artifactUri": "ipfs://QmeWEVxgDzk1YhUsqX7WCBcauyoMHzBnrcnqTmFJFEKMtT",
+      "cid": "bafybeihqf5wnzo6ewtbx3tfqjqkjjtl553omlhokt44vvzgj6yyxsvjhda",
+      "formats": [
+        {
+          "mimeType": "image/gif",
+          "uri": "ipfs://QmeWEVxgDzk1YhUsqX7WCBcauyoMHzBnrcnqTmFJFEKMtT"
+        }
+      ],
+      "gifThumb": true
+    },
+    {
+      "id": 117803,
+      "name": "CGAiri | GPT3 | CLIP | DeepMind | CGA // I've seen a flame that understood the nerd",
+      "description": "An old experiment \"CGA-IRI\" generates a nonsense sentence. GPT-3 takes this and generates instructions for CLIP-GLaSS to generate an image using DeepMindBigGAN256. Finally converted to CGA colorspace.",
+      "tags": [
+        "CGAiri",
+        "GPT3",
+        "CLIP"
+      ],
+      "creatorAddress": "tz1g7Aaac9ssD7cDUTngyXyx8QiVUsAVZCjQ",
+      "mime": "image/gif",
+      "artifactUri": "ipfs://QmXssy7BxfSNWBSFrdcard8z6E7kgXEAG9HyjcG6vwL1MJ",
+      "cid": "bafybeienxew5gvf7t4n6k3m3vl3ecpiibstszr32g3ylwysliytd4f7u2e",
+      "formats": [
+        {
+          "mimeType": "image/gif",
+          "uri": "ipfs://QmXssy7BxfSNWBSFrdcard8z6E7kgXEAG9HyjcG6vwL1MJ"
+        }
+      ],
+      "gifThumb": true
+    },
+    {
+      "id": 117805,
+      "name": "CGAiri | GPT3 | CLIP | DeepMind | CGA // Did you know that a table cherubically taught and did not totter its liquid",
+      "description": "An old experiment \"CGA-IRI\" generates a nonsense sentence. GPT-3 takes this and generates instructions for CLIP-GLaSS to generate an image using DeepMindBigGAN256. Finally converted to CGA colorspace.",
+      "tags": [
+        "CGAiri",
+        "GPT3",
+        "CLIP"
+      ],
+      "creatorAddress": "tz1g7Aaac9ssD7cDUTngyXyx8QiVUsAVZCjQ",
+      "mime": "image/gif",
+      "artifactUri": "ipfs://QmZ46ga7yYNfTbBTEP5jTK4NeWxkkZ4JznoKNqqCTVoQGF",
+      "cid": "bafybeie7gmgqdtzuymoooix32kffoxrjojofj75i4tlbp65kt753kuj3ua",
+      "formats": [
+        {
+          "mimeType": "image/gif",
+          "uri": "ipfs://QmZ46ga7yYNfTbBTEP5jTK4NeWxkkZ4JznoKNqqCTVoQGF"
+        }
+      ],
+      "gifThumb": true
+    },
+    {
+      "id": 117818,
+      "name": "CGAiri | GPT3 | CLIP | DeepMind | CGA // Many times over the years a adjustment who frugally woke his pink cake",
+      "description": "An old experiment \"CGA-IRI\" generates a nonsense sentence. GPT-3 takes this and generates instructions for CLIP-GLaSS to generate an image using DeepMindBigGAN256. Finally converted to CGA colorspace.",
+      "tags": [
+        "CGAiri",
+        "GPT3",
+        "CLIP"
+      ],
+      "creatorAddress": "tz1g7Aaac9ssD7cDUTngyXyx8QiVUsAVZCjQ",
+      "mime": "image/gif",
+      "artifactUri": "ipfs://QmXfUV1oGvntrHqT8iAR2i1ZHLXmSj2XTMk8P7aubrQX1a",
+      "cid": "bafybeiekrot4wqdvogh66f52aq64erw2cyxytchrrzzrxobi3u6hrvxyye",
+      "formats": [
+        {
+          "mimeType": "image/gif",
+          "uri": "ipfs://QmXfUV1oGvntrHqT8iAR2i1ZHLXmSj2XTMk8P7aubrQX1a"
         }
       ],
       "gifThumb": true
