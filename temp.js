@@ -1,0 +1,5 @@
+const fs = require('fs')
+const str = fs.readFileSync('fill.json')
+let objects = JSON.parse(str)
+objects = objects.sort((a, b) => { return a.token_id - b.token_id })
+fs.writeFileSync('./fill-new.json', JSON.stringify(objects, null, 2))

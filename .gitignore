@@ -4,6 +4,7 @@ out
 downloads
 large-images
 fill.json
+fill-old.json
 
 dist/thumbs
 dist/data.json
@@ -13,4 +14,4 @@ processed
 other
 temp.json
 
-tmp
+fill

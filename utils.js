@@ -34,6 +34,22 @@ const niceExec = async (cmd) => {
   })
 }
 
+/*
+* Gives back a str such as 'aa/01/bf' which can be used to store/retrieve
+* when you have too many files for a single directory
+*/
+function numToDir(num) {
+  num = parseInt(num)
+  if (num < 256) return ['00']
+  var n = num
+  let out = n.toString(16)
+  const len = out.length
+  out = out.padStart(len % 2 ? len + 1 : len, '0')
+  out = out.match(/.{1,2}/g)
+  out.pop()
+  return `${out.join('/')}`
+}
+
 const getMaxRate = (size) => {
   let maxRate = '-crf 23 -maxrate 1M'
   if (size < 600) maxRate = '-crf 23 -maxrate 700k -bufsize 1M'
@@ -361,4 +377,5 @@ module.exports = {
   createLargeFromBmp,
   createLargeFromVideo,
   askQuestion,
+  numToDir
 }

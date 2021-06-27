@@ -16,7 +16,8 @@ const {
   getDisplayUri,
   createLargeFromBmp,
   createLargeFromVideo,
-  askQuestion
+  askQuestion,
+  numToDir
 } = require('./utils')
 
 // ----------------------
@@ -255,14 +256,19 @@ const main = async () => {
     objects = require(config.fillMode.data)
     // have to sort first
     objects = objects.sort((a, b) => {
-      return a.token_id - b.token_id
+      return parseInt(a.token_id) - parseInt(b.token_id)
     })
 
+    console.log('total', objects.length)
+    console.log('first', objects[0].token_id)
+    console.log('last', objects[objects.length - 1].token_id)
+    console.log('# with token_id', objects.filter(o => o.token_id).length)
+
     let offset = config.fillMode.offset
-    if (config.fillMode.startAtObjectNumber) {
-      console.log('startAtObjectNumber', config.fillMode.startAtObjectNumber)
-      offset = objects.findIndex(o => o.token_id === config.fillMode.startAtObjectNumber)
-    }
+    // if (config.fillMode.startAtObjectNumber) {
+    //   console.log('startAtObjectNumber', config.fillMode.startAtObjectNumber)
+    //   offset = objects.findIndex(o => o.token_id === config.fillMode.startAtObjectNumber)
+    // }
     if (config.fillMode.limit || offset) {
       let start = offset || 0
       let end = config.fillMode.limit ? (start + config.fillMode.limit) : objects.length
@@ -274,6 +280,8 @@ const main = async () => {
     }
     console.log(`Working to fill ${objects.length} OBJKTs.`)
   }
+
+  // process.exit(0)
 
   if (config.ignoreObjects && config.ignoreObjects.length) {
     objects = objects.filter(obj => {
@@ -358,6 +366,11 @@ const main = async () => {
       // write actual
       let filename = `${tokenId}.${converter.ext}`
       console.log(`====================\nProcessing ${filename}`)
+
+      if (config.fillMode && fs.existsSync(`${config.fillMode.objPath}/${numToDir(tokenId)}/${tokenId}.json`)) {
+        console.log(`Skipping ${tokenId} (fill)`)
+        continue
+      }
 
       // if we don't have the original file download it
       if (!fs.existsSync(`${config.downloadPath}/${filename}`)) {
@@ -669,9 +682,17 @@ const main = async () => {
               }
               return o
             })
-            fs.writeFileSync(`${config.fillMode.objPath}/${tokenId}.json` , JSON.stringify(objData, '', 2))
+
+            fs.mkdirSync(`${config.fillMode.objPath}/${numToDir(tokenId)}`, { recursive: true })
+            fs.writeFileSync(`${config.fillMode.objPath}/${numToDir(tokenId)}/${tokenId}.json` , JSON.stringify(objData, '', 2))
             if (objOriginal[tokenId]) {
-              fs.writeFileSync(`${config.fillMode.objPath}/${tokenId}-original.json` , JSON.stringify(objOriginal[tokenId], '', 2))
+              fs.writeFileSync(`${config.fillMode.objPath}/${numToDir(tokenId)}/${tokenId}-original.json` , JSON.stringify(objOriginal[tokenId], '', 2))
+            }
+
+            // for fill move thumbs to deep directories
+            fs.mkdirSync(`${thumbnailPath}/${numToDir(tokenId)}`, { recursive: true })
+            for (let meta of objThumbnails[tokenId]) {
+              fs.renameSync(`${thumbnailPath}/${meta.file}`, `${thumbnailPath}/${numToDir(tokenId)}/${meta.file}`)
             }
           }
         } // end fill mode?
