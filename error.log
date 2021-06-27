@@ -1,0 +1,10 @@
+
+10539 - Error: Request failed with status code 524
+10664 - Error: Request failed with status code 524
+20840 - Error: Request failed with status code 524
+21399 - Error: Request failed with status code 524
+42279 - Error: Request failed with status code 524
+133153 - Error: Request failed with status code 524
+138486 - ReferenceError: meta is not defined
+139533 - Error: VipsJpeg: Premature end of input file
+VipsJpeg: out of order read at line 276
